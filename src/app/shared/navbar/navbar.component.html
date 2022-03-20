@@ -1,1 +1,93 @@
-<p>navbar works!</p>
+<nav class="navbar navbar-expand-sm navbar-dark py-2 topnav">
+  <div class="container-fluid">
+    <!--LOGO-->
+    <a
+      class="navbar-brand hoverZoom"
+      routerLink="/"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <img src="" alt="logo" class="icon" />
+    </a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#collapsibleNavbar"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!--MENÚ-->
+    <div class="collapse navbar-collapse justify-content-center">
+      <!--PUBLIC AREA-->
+      <ul
+        *ngIf="menuIndicator == 'userNotRegistered'; else loggedIn"
+        class="navbar-nav align-items-center"
+      >
+      <!--Login-->
+        <li class="nav-item hoverZoom">
+          <a
+            routerLink="/login"
+            class="nav-link text-black"
+            alt="login"
+            routerLinkActive="active"
+            ><img
+              src="../../assets/login.png"
+              class="icon imgIconos signup"
+              alt="Signup"
+            />
+            Login</a
+          >
+        </li>
+
+        <!--Signup-->
+        <li class="nav-item hoverZoom">
+          <a
+            routerLink="/register"
+            class="nav-link text-black"
+            alt="login"
+            routerLinkActive="active"
+            ><img
+              src="../../assets/account.png"
+              class="icon imgIconos signup"
+              alt="Signup"
+            />
+            Sign up</a
+          >
+        </li>
+
+        <!--Contact us-->
+        <li class="nav-item hoverZoom">
+          <a
+            class="nav-link text-black mx-md-3 mx-sm-3"
+            routerLink="/contactUs"
+            routerLinkActive="active"
+          >
+            <img
+              src="../../assets/email.png"
+              class="icon imgIconos"
+              alt="Contact us"
+            /> Contact Us</a
+          >
+        </li>
+      </ul>
+
+      <!--USER AREA-->
+      <ng-template #loggedIn>
+        <ul
+          *ngIf="menuIndicator == 'registeredUser'; else administrator"
+          class="navbar-nav"
+        >
+
+
+      </ul>
+      </ng-template>
+
+      <!--ADMINISTRATIVE AREA-->
+      <ng-template #administrator>
+        <ul class="navbar-nav"></ul>
+      </ng-template>
+    </div>
+  </div>
+</nav>
