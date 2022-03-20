@@ -16,6 +16,8 @@ import { ShowUsersComponent } from './show-users/show-users.component';
   imports: [
     CommonModule,
     AdministratorDashboardRoutingModule
+  ],
+  exports:[
   ]
 })
 export class AdministratorDashboardModule { }

@@ -26,9 +26,13 @@ export class AppComponent {
     'register',
     'home',
     'contactUs',
-    ''
+    '',
   ];
-  administratorRoutes: string[] = ['administratorDashboard'];
+  administratorRoutes: string[] = [
+    'administratorDashboard',
+    'showUsers',
+    'incidences',
+  ];
   menuIndicator: string = ''; //atributo usado como @Input para mostrar un menú u otro. Los valores serán 'administrator', 'registeredUser', 'userNotRegistered'
   /**
    * Comprueba todos los cambios que se producen en la ruta-
