@@ -7,7 +7,7 @@
       routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: true }"
     >
-      <img src="" alt="logo" class="icon" />
+      <img src="./../../../assets/quitItLogo2.png" alt="logo" class="logo" />
     </a>
 
     <button
@@ -71,6 +71,22 @@
             /> Contact Us</a
           >
         </li>
+
+        <!--User area-->
+        <li class="nav-item hoverZoom">
+          <a
+            class="nav-link text-black hover-zoom"
+            routerLink="/userArea"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            ><img
+              src="../../assets/casa.png"
+              class="icon"
+              alt="Dashboard"
+            />
+            User area</a
+          >
+        </li>
       </ul>
 
       <!--USER AREA-->
@@ -80,9 +96,127 @@
           class="navbar-nav"
         >
 
+        <!--User area-->
+        <li class="nav-item hoverZoom">
+          <a
+            class="nav-link text-black hover-zoom"
+            routerLink="/userArea"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            ><img
+              src="../../assets/casa.png"
+              class="icon"
+              alt="Dashboard"
+            />
+            User area</a
+          >
+        </li>
 
+        <!--logout-->
+        <li class="nav-item hoverZoom">
+          <a
+            class="nav-link text-black"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+            routerLinkActive="active"
+            ><img
+              src="../../assets/logout.png"
+              class="icon imgIconos"
+              alt="Logout"
+            />
+            Logout</a
+          >
+        </li>
+
+        <!--group area-->
+        <li class="nav-item hoverZoom">
+          <a
+            class="nav-link text-black hover-zoom"
+            routerLink="/groupArea"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            ><img
+              src="../../assets/people.png"
+              class="icon"
+              alt="Group area"
+            />
+            Group area</a
+          >
+        </li>
+
+         <!--friends-->
+         <li class="nav-item hoverZoom">
+          <a
+            class="nav-link text-black hover-zoom"
+            routerLink="/friends"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            ><img
+              src="../../assets/friends.png"
+              class="icon"
+              alt="Friends area"
+            />
+            Friends area</a
+          >
+        </li>
       </ul>
+
+      <!--Settings-->
+      <li class="nav-item settings hoverZoom">
+        <a
+          class="text-black"
+          routerLink="/settings"
+          routerLinkActive="active"
+        >
+          <img
+            src="../../assets/settings.png"
+            class="icon"
+            alt="Settings"
+          />
+          Settings
+        </a>
+      </li>
       </ng-template>
+       <!--MODAL-->
+       <div
+       class="modal fade"
+       id="exampleModal"
+       tabindex="-1"
+       aria-labelledby="exampleModalLabel"
+       aria-hidden="true"
+     >
+       <div class="modal-dialog">
+         <div class="modal-content text-center">
+           <div class="modal-header">
+             <h5 class="modal-title" id="exampleModalLabel">LOGOUT</h5>
+             <button
+               type="button"
+               class="btn-close"
+               data-bs-dismiss="modal"
+               aria-label="Close"
+             ></button>
+           </div>
+           <div class="modal-body">Are you sure?</div>
+           <div class="modal-footer justify-content-center">
+             <button
+               type="button"
+               class="btn btn-danger"
+               data-bs-dismiss="modal"
+             >
+               No
+             </button>
+             <button
+               type="button"
+               class="btn btn-primary"
+               data-bs-dismiss="modal"
+               (click)="logout()"
+             >
+               Yes
+             </button>
+           </div>
+         </div>
+       </div>
+     </div>
 
       <!--ADMINISTRATIVE AREA-->
       <ng-template #administrator>

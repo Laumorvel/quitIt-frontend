@@ -14,5 +14,42 @@
   font-size: 25px;
 }
 
+.logo{
+  max-width: 70%;
+}
+
+
+
+
+/*Móvil*/
+@media screen and (max-width: 575px) {
+  .settings {
+    position: relative;
+    list-style: none;
+    margin-top: 0.5em;
+  }
+
+  .settings a {
+    text-decoration: none;
+  }
+}
+
+
+/*TÁBLET EN ADELANTE*/
+@media screen and (min-width: 576px) {
+  .settings {
+    right: 0;
+    position: absolute;
+    list-style: none;
+  }
+
+  .settings a {
+    text-decoration: none;
+  }
+
+  .nav-item{
+    margin-left: 2rem;
+  }
+}
 
 
