@@ -1,1 +1,76 @@
-<p>login works!</p>
+<div class="row text-center  gx-0" >
+    <div class="col-md-12 col-lg-6 col-6 offset-md-auto  d-none d-lg-block">
+
+        <img src="../../../assets/img/youcanwinifyouwant.jpg" class="cup" alt="Mug with message You can win if you want" >
+    </div>
+    <div class="col-md-5 offset-md-1 mt-5 bordeForm m-sm-5">
+        <form
+              #miFormulario="ngForm"
+              autocomplete="off">
+            
+            <!-- EMAIL -->
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Email</label>
+                <div class="col-sm-9">
+                    
+                    <input type="email"
+                           class="form-control marginExtra"
+                           [(ngModel)]="email"
+                           name="email"
+                           placeholder="Email"
+                           required="required">  
+                </div>
+            </div>
+  
+  
+            <!-- PASSWORD -->
+            <div class="mb-3 row">
+              <label class="col-sm-3 col-form-label">Password</label>
+              <div class="col-sm-9">
+                  
+                  <input type="password"
+                         class="form-control marginExtra"
+                         [(ngModel)]="password"
+                         name="password"
+                         placeholder="Password"
+                         required="required">
+  
+
+              </div>
+          </div>
+  
+  
+          <!--LOGIN BUTTON-->
+            <div class="row ">
+                <div class="col">
+                    <button type="submit"
+                            [disabled]="miFormulario.invalid"
+                            class="custom-btn btn"
+                            (click)="login()"> 
+                        Enter
+                    </button>
+                </div>
+            </div>
+
+            <div class="row ">
+                <div class="col mt-5">
+                    <span>You do not have an account?</span>
+                    
+            
+                </div>
+            </div>
+            <!--REGISTER BUTTON-->
+            <div class="row ">
+                <div class="col">
+                    <button class="col-md-4 offset-md-1  mt-3 btn m-2 register" 
+                    routerLink="/auth/register" >Register </button>   
+                    
+            
+                </div>
+            </div>
+    </form>
+</div>
+
+        <div class="col-md-12 col-lg-6 offset-md-auto d-lg-none ">
+            <img src="../../../assets/img/youcanwinifyouwant.jpg" class="cup" alt="Mug with message You can win if you want" >
+        </div>
