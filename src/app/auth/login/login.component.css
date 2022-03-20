@@ -1,0 +1,57 @@
+
+/**DISEÑO A PARTIR DE PÁGINAS LG**/
+@media screen and (min-width: 846px) {
+
+    /*BORDE TABLA*/
+    .bordeForm{
+      padding-top: 2em;
+      padding-bottom: 2em;
+      border: 2px solid;
+      border-radius: 4%;
+      border: none;
+      background-color: #be8f8c;     
+      margin: auto !important;
+      margin-top: 3.6em !important;
+    }
+
+
+    /*IMAGEN*/
+    .cup{
+      width: 30%;
+      text-align: center;
+      margin-left: 2em;
+      margin-top: 4.3em;
+    }
+}
+
+/**DISEÑO PARA MOVILES Y TABLETS**/
+@media screen and (max-width: 846px) {
+
+  /*BORDE TABLA*/
+  .bordeForm{
+    padding-top: 2em;
+    width: 80%;
+    padding-bottom: 2em;
+    border: 2px solid;
+    border-radius: 4%;
+    border: none;
+    background-color: #be8f8c;
+    margin: auto !important;
+    margin-top: 2em !important;
+  }
+
+   /*IMAGEN*/
+   .cup{
+    width: 50%;
+    text-align: center;
+    margin-top: 2em;
+
+  }
+
+
+}
+
+.form-control {
+  width: 80% !important;
+  margin: auto !important;
+}
