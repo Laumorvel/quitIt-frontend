@@ -39,7 +39,7 @@ export class AuthService {
   }
 
   newMensaje(message: Message){
-    const url = `${this.baseUrl}/sendMail`;
+    const url = `${this.baseUrl}/mail`;
     const opcion = new HttpHeaders();
     opcion.append('Access-Control-Allow-Origin','*');
     return this.http.post<Message>(url, message,{headers:opcion});
@@ -48,6 +48,7 @@ export class AuthService {
   register(user: User){
     const url = `${this.baseUrl}/auth/register`;
     const body = user;//user con los campos a rellenos
+    console.log(user);
     const opcionHeader = new HttpHeaders();
     opcionHeader.append('Access-Control-Allow-Origin','*');
     return this.http.post<AuthResponse>(url, body, {headers:opcionHeader});

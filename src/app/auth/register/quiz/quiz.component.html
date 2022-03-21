@@ -1,5 +1,5 @@
 <h2 class="text-center my-5">
-    Hi, {{ nombre }}! Set your weekly goals to complete your profile
+    Hi, {{ nombre }}! Set your ex-smoker information to complete your profile
   </h2>
   
   <form>
@@ -17,15 +17,12 @@
               {{ cigarettesBeforePerDay }}
             </div>
             <input
-              type="range"
+              type="number"
               [(ngModel)]="cigarettesBeforePerDay"
               name="cigarettesBeforePerDay"
               class="form-control-range"
               id="cigarettesBeforePerDay"
-              min="1"
-              max="7"
-              step="1"
-              value="1"
+              
             />
           </div>
         </div>
@@ -38,15 +35,11 @@
               {{ moneyPerDay }}
             </div>
             <input
-              type="range"
+              type="number"
               [(ngModel)]="moneyPerDay"
               name="moneyPerDay"
               class="form-control-range"
               id="moneyPerDay"
-              min="1"
-              max="7"
-              step="1"
-              value="1"
             />
           </div>
         </div>
