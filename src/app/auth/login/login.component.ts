@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
   getIdUser() {
     this.authService.loginGetIdUser().subscribe((resp) => {
       localStorage.setItem('userId', JSON.stringify(resp));
-      this.router.navigateByUrl("/home");
+      this.router.navigateByUrl("/userArea");
     });
   }
 
