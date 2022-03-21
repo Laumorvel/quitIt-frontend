@@ -30,10 +30,13 @@ export class AuthGuardGuard implements CanActivate {
           return true;
         }),
         catchError(err => {
-          Swal.fire(
-            'Error', err.error.message,'error'
+          Swal.fire({
+            title:'Error',
+            icon: 'error',
+            text: 'You must login first'
+          }
           );
-          this.router.navigate(['']);
+          this.router.navigateByUrl("");
           return of(false);
         })
       )
