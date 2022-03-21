@@ -16,6 +16,7 @@ export class NavbarComponent implements OnInit {
   @Input()menuIndicator:string = "";
 
   logout(){
+    localStorage.clear();
     this.router.navigateByUrl('/');
   }
 

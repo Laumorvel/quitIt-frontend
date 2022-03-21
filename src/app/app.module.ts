@@ -8,20 +8,18 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { ClockComponent } from './user/clock/clock.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthGuardGuard } from './auth-guard.guard';
+import { AdminGuardGuard } from './admin-guard.guard';
+import { UserGuardGuard } from './user-guard.guard';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     FooterComponent,
-    ClockComponent
+    ClockComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule
-  ],
-  providers: [AuthGuardGuard],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  providers: [AuthGuardGuard, AdminGuardGuard, UserGuardGuard],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
