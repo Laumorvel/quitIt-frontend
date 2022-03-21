@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminGuardGuard } from './admin-guard.guard';
 import { AuthGuardGuard } from './auth-guard.guard';
+import { UserGuardGuard } from './user-guard.guard';
 
 const routes: Routes = [
   {
@@ -15,7 +17,7 @@ const routes: Routes = [
   },
   {
     path: 'administratorDashboard',
-    canActivate: [AuthGuardGuard],
+    canActivate: [AuthGuardGuard, AdminGuardGuard],
     loadChildren: () =>
       import('./administrator-dashboard/administrator-dashboard.module').then(
         (m) => m.AdministratorDashboardModule
@@ -43,13 +45,13 @@ const routes: Routes = [
   },
   {
     path: 'groupArea',
-    canActivate: [AuthGuardGuard],
+    canActivate: [AuthGuardGuard, UserGuardGuard],
     loadChildren: () =>
       import('./group-area/group-area.module').then((m) => m.GroupAreaModule),
   },
   {
     path: 'userArea',
-    canActivate: [AuthGuardGuard],
+    canActivate: [AuthGuardGuard, UserGuardGuard],
     loadChildren: () =>
       import('./user/user-area/user-area.module').then((m) => m.UserAreaModule),
   },
@@ -61,25 +63,25 @@ const routes: Routes = [
   },
   {
     path: 'settings',
-    canActivate: [AuthGuardGuard],
+    canActivate: [AuthGuardGuard, UserGuardGuard],
     loadChildren: () =>
       import('./user/settings/settings.module').then((m) => m.SettingsModule),
   },
   {
     path: 'friends',
-    canActivate: [AuthGuardGuard],
+    canActivate: [AuthGuardGuard, UserGuardGuard],
     loadChildren: () =>
       import('./user/friends/friends.module').then((m) => m.FriendsModule),
   },
   {
     path: 'meetUps',
-    canActivate: [AuthGuardGuard],
+    canActivate: [AuthGuardGuard, UserGuardGuard],
     loadChildren: () =>
       import('./user/meet-ups/meet-ups.module').then((m) => m.MeetUpsModule),
   },
   {
     path: 'achievements',
-    canActivate: [AuthGuardGuard],
+    canActivate: [AuthGuardGuard, UserGuardGuard],
     loadChildren: () =>
       import('./user/achievements/achievements.module').then(
         (m) => m.AchievementsModule
@@ -87,7 +89,7 @@ const routes: Routes = [
   },
   {
     path: 'penalties',
-    canActivate: [AuthGuardGuard],
+    canActivate: [AuthGuardGuard, UserGuardGuard],
     loadChildren: () =>
       import('./user/penalties/penalties.module').then(
         (m) => m.PenaltiesModule
@@ -95,7 +97,7 @@ const routes: Routes = [
   },
   {
     path: 'rankingCommunity',
-    canActivate: [AuthGuardGuard],
+    canActivate: [AuthGuardGuard, UserGuardGuard],
     loadChildren: () =>
       import('./user/ranking-community/ranking-community.module').then(
         (m) => m.RankingCommunityModule
@@ -103,7 +105,7 @@ const routes: Routes = [
   },
   {
     path: 'commentsCommunity',
-    canActivate: [AuthGuardGuard],
+    canActivate: [AuthGuardGuard, UserGuardGuard],
     loadChildren: () =>
       import('./user/comments-community/comments-community.module').then(
         (m) => m.CommentsCommunityModule

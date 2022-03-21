@@ -154,7 +154,10 @@
         </ul>
 
         <!--Settings. Necesaria la condición extra para que no aparezca en el menú del administrador-->
-        <li *ngIf="menuIndicator == 'registeredUser'" class="nav-item settings hoverZoom">
+        <li
+          *ngIf="menuIndicator == 'registeredUser'"
+          class="nav-item settings hoverZoom"
+        >
           <a
             class="text-black"
             routerLink="/settings"
@@ -209,6 +212,7 @@
       <!--ADMINISTRATIVE AREA-->
       <ng-template #administrator>
         <ul class="navbar-nav">
+          <!--incidences-->
           <li class="nav-item hoverZoom">
             <a
               class="nav-link text-black hover-zoom"
@@ -223,7 +227,7 @@
               Incidences</a
             >
           </li>
-
+          <!--Users-->
           <li class="nav-item hoverZoom">
             <a
               class="nav-link text-black hover-zoom"
@@ -236,6 +240,22 @@
                 alt="Friends area"
               />
               Users</a
+            >
+          </li>
+
+          <!--logout-->
+          <li class="nav-item hoverZoom">
+            <a
+              class="nav-link text-black"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+              routerLinkActive="active"
+              ><img
+                src="../../assets/logout.png"
+                class="icon imgIconos"
+                alt="Logout"
+              />
+              Logout</a
             >
           </li>
         </ul>
