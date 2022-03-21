@@ -15,17 +15,17 @@ export class LoginComponent implements OnInit {
 
   /**
    * INYECTAMOS EN EL CONSTRUCTOR ROUTER Y AUTHSERVICE
-   * @param router 
-   * @param authService 
+   * @param router
+   * @param authService
    */
-    constructor(  private router:Router, 
+    constructor(  private router:Router,
                   private authService: AuthService
                   ) { }
-  
+
     ngOnInit(): void {
     }
-  
-   
+
+
     login(){
       this.authService.login(this.email,this.password)
       .subscribe({
