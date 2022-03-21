@@ -35,7 +35,7 @@ export class emailValidatorService implements AsyncValidator{
 
   //Método para comprobar email en BBDD
   compruebaEmail(email:string){
-    const url = `${this.baseUrl}/user/email/${email}`;
+    const url = `${this.baseUrl}/email?email=${email}`;
     const opcion = new HttpHeaders();
     opcion.append('Access-Control-Allow-Origin','*');
     return this.http.get<User>(url,{headers:opcion});

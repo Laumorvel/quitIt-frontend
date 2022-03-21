@@ -32,7 +32,7 @@ export class RegisterComponent implements OnInit {
           Validators.pattern(this.validatorService.namePattern),
         ],
       ],
-      lastname: [
+      lastName: [
         ,
         [
           Validators.required,
@@ -74,10 +74,10 @@ export class RegisterComponent implements OnInit {
     }
 
     //mensajes para el error del nombre
-    get lastnameError(): string{
-      const errors = this.miFormulario.get('lastname')?.errors!;
+    get lastNameError(): string{
+      const errors = this.miFormulario.get('lastName')?.errors!;
       if(errors['required']){
-        return 'Lastname required';
+        return 'lastName required';
       }else if(errors['pattern']){
         return 'Numbers are not allowed';
       }
@@ -122,7 +122,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     this.miFormulario.reset({
       name: '',
-      lastname: '',
+      lastName: '',
       email: '',
       username: '',
       password: '',
@@ -141,6 +141,9 @@ export class RegisterComponent implements OnInit {
   submitFormulario(objetivos :number[]) {
     const user = this.miFormulario.value
 
+    user.cigarettesBeforePerDay = objetivos[0];
+    user.moneyPerDay = objetivos[1];
+
    this.authService.register(user)
     .subscribe({
       next: (resp => {
@@ -149,13 +152,13 @@ export class RegisterComponent implements OnInit {
  */
         this.miFormulario.reset({
           name: '',
-          lastname:'',
+          lastName:'',
           email: '',
           username: '',
           password: '',
           condiciones: false
         })
-        this.router.navigateByUrl('/'); //va al home
+        this.router.navigateByUrl(`/userArea/${resp}`); //va al home
      }),
       error: resp => {
         Swal.fire({
