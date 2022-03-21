@@ -1,38 +1,45 @@
 <div class="row text-center  gx-0" >
-    <div class="col-md-12 col-lg-6 col-6 offset-md-auto  d-none d-lg-block">
+    
+<section class="get-in-touch">
+    <h1 class="title">Contact Us!</h1>
 
-        <img src="../../../assets/img/youcanwinifyouwant.jpg" class="cup" alt="Mug with message You can win if you want" >
-    </div>
-    <div class="col-md-5 offset-md-1 mt-5 bordeForm m-sm-5">
+    <div class="col-md-12 offset-md-1 text-center">
         <form
-              #miFormulario="ngForm"
-              autocomplete="off">
+                class="contact-form row"
+                autocomplete="off"
+                #miFormulario="ngForm"
+                autocomplete="off">
             
+
+
+              
             <!-- EMAIL -->  
             <div class="mb-3 row">
-                <label class="col-sm-3 col-form-label">Email</label>
                 <div class="col-sm-9">
-                    
                     <input type="email"
-                           class="form-control marginExtra"
+                           class="form-control"
                            [(ngModel)]="email"
                            name="email"
-                           placeholder="Email"
+                           id="email"
+                           class="input-text js-input"
+                           placeholder="*Email"
                            required="required">  
-                </div>
+                </div>  
             </div>
   
   
             <!-- PASSWORD -->
             <div class="mb-3 row">
-              <label class="col-sm-3 col-form-label">Password</label>
+             
               <div class="col-sm-9">
                   
                   <input type="password"
-                         class="form-control marginExtra"
+                         class="form-control"
                          [(ngModel)]="password"
                          name="password"
-                         placeholder="Password"
+                         id="password"
+                         class="input-text js-input"
+                         placeholder="*Password"
                          required="required">
   
 
@@ -69,8 +76,7 @@
                 </div>
             </div>
     </form>
-</div>
 
-        <div class="col-md-12 col-lg-6 offset-md-auto d-lg-none ">
-            <img src="../../../assets/img/youcanwinifyouwant.jpg" class="cup" alt="Mug with message You can win if you want" >
-        </div>
+    
+</div>
+</section>
