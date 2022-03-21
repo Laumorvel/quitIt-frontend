@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-.icon {
-  max-width: 30px;
-=======
 /*FUENTE*/
 @import url("https://fonts.googleapis.com/css2?family=Cinzel&family=Federo&family=Quicksand:wght@300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Dancing+Script&family=Roboto+Serif:wght@100&family=Satisfy&family=Yellowtail&display=swap");
@@ -25,7 +21,6 @@
 
 .icon {
   max-width: 40px;
->>>>>>> adela
   height: auto;
 }
 
@@ -34,20 +29,6 @@
   cursor: pointer;
 }
 
-<<<<<<< HEAD
-.active {
-  text-shadow: 4px 4px 2px #f2f2f2;
-  font-weight: bold;
-  font-size: 25px;
-}
-
-.logo{
-  max-width: 70%;
-}
-
-
-
-=======
 .img {
   width: 30%;
 }
@@ -59,6 +40,10 @@
 .navbar-toggler-icon {
   background-color: black;
   border-radius: 15px;
+}
+
+.logo{
+  max-width: 70%;
 }
 
 
@@ -75,7 +60,6 @@
   width: 22%;
   padding-bottom: 0.3em;
 }
->>>>>>> adela
 
 /*Móvil*/
 @media screen and (max-width: 575px) {
@@ -88,8 +72,6 @@
   .settings a {
     text-decoration: none;
   }
-<<<<<<< HEAD
-=======
 
    .login{
     width: 10%;
@@ -101,7 +83,6 @@
     margin-right: 0.5rem;
    }
 
->>>>>>> adela
 }
 
 
@@ -123,12 +104,9 @@
 }
 
 
-<<<<<<< HEAD
-=======
 .active {
   text-shadow: 4px 4px 2px #fef9c7;
   font-family: "Satisfy", cursive;
   font-weight: bold;
   font-size: 30px;
 }
->>>>>>> adela
