@@ -1,1 +1,124 @@
-<p>register works!</p>
+<div class="row">
+    <section class="get-in-touch">
+        <h1 class="title">Register!</h1>
+
+
+        <form class="contact-form row"
+            autocomplete="off"
+            [formGroup]="miFormulario"
+            (ngSubmit)="submitFormulario($event)"
+            class="m-4"
+            >
+            <div class="row">
+                <!-- Name -->
+                <div class="form-group col-md-6">
+                <input
+                    type="text"
+                    placeholder="*Name"
+                    class="form-control"
+                    id="name"
+                    class="input-text js-input"
+                    formControlName="name"
+                    name="mame"
+                />
+                <span class="form-text text-danger" *ngIf="campoNoValido('name')">
+                    {{ nameError }}
+                </span>
+                </div>
+
+                <!--Lastname-->
+                <div class="form-group col-md-6">
+                <input 
+                    type="text"
+                    placeholder="*Last Name" 
+                    class="form-control" 
+                    formControlName="lastname"
+                    id="lastname"
+                    class="input-text js-input"
+                    />
+                <span class="form-text text-danger" *ngIf="campoNoValido('lastname')">
+                    {{ lastnameError }}
+                </span>
+                </div>
+            </div>
+
+            <!-- Email -->
+            <div class="row">
+                <div class="form-group col-md-6">
+                <input
+                    type="email"
+                    placeholder="*Email"
+                    class="form-control"
+                    debounce="3000"
+                    formControlName="email"
+                    id="email"
+                    class="input-text js-input"
+                />
+                <span class="form-text text-danger" *ngIf="campoNoValido('email')">
+                    {{ emailErrorMsg }}
+                </span>
+                </div>
+
+                <!-- Username -->
+                <div class="form-group col-md-6">
+                <input 
+                    type="text" 
+                    placeholder="*Username"
+                    class="form-control" 
+                    formControlName="username"
+                    id="username"
+                    class="input-text js-input"
+                    />
+                <span class="form-text text-danger" *ngIf="campoNoValido('username')">
+                    {{ usernameError }}
+                </span>
+                </div>
+            </div>
+
+            <!-- Password -->
+            <div class="row">
+                <div class="form-group col-md-6">
+                <input 
+                    type="password" 
+                    placeholder="*Password"
+                    class="form-control" 
+                    formControlName="password" 
+                    id="password"
+                    class="input-text js-input"
+                />
+                <span class="form-text text-danger" *ngIf="campoNoValido('password')">
+                    {{passwordError}}
+                </span>
+                </div>
+
+                <!-- Password2 -->
+                <div class="form-group col-md-6">
+                <input 
+                type="password" 
+                placeholder="*Confirm password"
+                class="form-control" 
+                formControlName="password2" 
+                class="input-text js-input"/>
+                <span class="form-text text-danger" *ngIf="campoNoValido('password2')">
+                    Both passwords must be equal.
+                </span>
+                </div>
+            </div>
+
+            <!--OBJETIVOS-->
+            <!--Solo se activa cuando el formulario es válido-->
+            <div *ngIf="miFormulario.valid">
+                <app-quiz
+                [nombre]="miFormulario.value.name"
+                (sendObjetivos)="submitFormulario($event)"
+                ></app-quiz>
+            </div>
+            <!--Fin del div de objetivos (oculto)-->
+            </form>
+
+
+
+
+        
+    </section>
+</div>
