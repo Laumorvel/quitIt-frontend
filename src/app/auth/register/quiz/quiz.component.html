@@ -1,0 +1,70 @@
+<h2 class="text-center my-5">
+    Hi, {{ nombre }}! Set your weekly goals to complete your profile
+  </h2>
+  
+  <form>
+    <div class="row">
+      <div class="form-group text-center col-md-6">
+        <!--Ranges-->
+        <div class="ranges">
+          <label for="formControlRange" class="mb-3"
+            >Cigarettes per day</label
+          >
+  
+          <!--RANGE - FOOD-->
+          <div class="rangeFood">
+            <div class="number mb-3">
+              {{ cigarettesBeforePerDay }}
+            </div>
+            <input
+              type="range"
+              [(ngModel)]="cigarettesBeforePerDay"
+              name="cigarettesBeforePerDay"
+              class="form-control-range"
+              id="cigarettesBeforePerDay"
+              min="1"
+              max="7"
+              step="1"
+              value="1"
+            />
+          </div>
+        </div>
+      </div>
+        <!--RANGE - SPORT-->
+        <div class="form-group text-center col-md-6">
+          <label for="formControlRange" class="my-3">Money per day</label>
+          <div class="rangeSport">
+            <div class="number mb-3">
+              {{ moneyPerDay }}
+            </div>
+            <input
+              type="range"
+              [(ngModel)]="moneyPerDay"
+              name="moneyPerDay"
+              class="form-control-range"
+              id="moneyPerDay"
+              min="1"
+              max="7"
+              step="1"
+              value="1"
+            />
+          </div>
+        </div>
+  
+  
+    </div>
+    <!--BOTÓN SUBMIT - SIGNUP-->
+    <div class="row">
+      <div class="form-group text-center">
+        <div class="col">
+          <button
+            class="btn btn-primary float-center my-5"
+            type="submit"
+            (click)="enviaObjetivos()"
+          >
+            Signup
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>

@@ -1,1 +1,63 @@
-<p>contact-us works!</p>
+
+<section class="get-in-touch">
+    <h1 class="title">Contact Us!</h1>
+  
+    <form
+      class="contact-form row"
+      autocomplete="off"
+      [formGroup]="miFormulario"
+      (ngSubmit)="submitFormulario()"
+    >
+  
+      <!--EMAIL-->
+      <div class="form-field col-lg-6">
+        <input
+          placeholder="*Email"
+          id="fromUser"
+          class="input-text js-input"
+          formControlName="fromUser"
+          type="fromUser"
+          required
+        />
+        <span class="form-text text-danger" *ngIf="campoNoValido('fromUser')">
+        </span>
+      </div>
+
+      <!--SUBJECT-->
+      <div class="form-field col-lg-6">
+        <input
+          placeholder="*Subject"
+          id="subject"
+          class="input-text js-input"
+          formControlName="subject"
+          type="subject"
+          required
+        />
+        <span class="form-text text-danger" *ngIf="campoNoValido('subject')">
+        </span>
+      </div>
+
+      <!--BODY MESSAGE-->
+      <div class="form-field col-lg-12">
+        <input
+          placeholder="*Message"
+          id="text"
+          class="input-text js-input"
+          type="text"
+          required
+          formControlName="text"
+        />
+        <span class="form-text text-danger" *ngIf="campoNoValido('mssg')">
+          {{ mssgError }}
+        </span>
+      </div>
+      <div class="form-field col-lg-12 text-center">
+        <input
+          class="submit-btn"
+          type="submit"
+          value="Submit"
+          [disabled]="miFormulario.invalid"
+        />
+      </div>
+    </form>
+  </section>
