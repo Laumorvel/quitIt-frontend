@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Message } from 'src/app/public/interfaces/message';
 import { environment } from 'src/environments/environment';
 import { AuthResponse } from '../interfaces/auth-response';
@@ -11,15 +12,15 @@ import { User } from '../interfaces/user';
 export class AuthService {
 
 
-  private baseUrl: string = environment.baseUrl; 
-  
+  private baseUrl: string = environment.baseUrl;
+
   constructor(private http: HttpClient) { }
 
 
   login(email:string, password: string){
     const url = `${this.baseUrl}/auth/login`;
     const body =  {
-      "email":email, 
+      "email":email,
       "password":password
                   };
     const opcion = new HttpHeaders();
@@ -50,6 +51,15 @@ export class AuthService {
     const opcionHeader = new HttpHeaders();
     opcionHeader.append('Access-Control-Allow-Origin','*');
     return this.http.post<AuthResponse>(url, body, {headers:opcionHeader});
+  }
+
+  validarToken():Observable<AuthResponse>{
+    const url = `${ this.baseUrl }/login`;
+    let token = JSON.parse(<string>localStorage.getItem('token'));
+    const headers = new HttpHeaders()
+      .set('Authorization', `Bearer ${token}`);
+    return this.http.get<AuthResponse>( url, { headers } )
+
   }
 
 }
