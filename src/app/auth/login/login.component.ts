@@ -48,14 +48,14 @@ export class LoginComponent implements OnInit {
 
   getIdUser() {
     this.authService.loginGetIdUser().subscribe((resp) => {
-      localStorage.setItem('userId', JSON.stringify(resp));
+      localStorage.setItem('user', JSON.stringify(resp));
       localStorage.setItem('rol',resp.rol)
       
       if(resp.rol=="USER"){
-        this.router.navigateByUrl(`/userArea/${resp}`);
+        this.router.navigateByUrl(`/userArea`);
       }
       else{
-        this.router.navigateByUrl(`/administratorDashboard/${resp}`);
+        this.router.navigateByUrl(`/administratorDashboard`);
       }
 
     });

@@ -35,7 +35,7 @@ export class AuthService {
     console.log(token);
     const headers = new HttpHeaders()
       .set('Authorization', `Bearer ${token}`);
-    return this.http.get<AuthResponse>(url, {headers});
+    return this.http.get<User>(url, {headers});
   }
 
   newMensaje(message: Message){
