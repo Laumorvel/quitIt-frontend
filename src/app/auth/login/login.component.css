@@ -37,6 +37,7 @@
   line-height: 26px;
   font-weight: 400;
 }
+
 .contact-form .input-text:focus {
   outline: none;
 }

@@ -24,14 +24,6 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'administratorDashboard/:id',
-    canActivate: [AuthGuardGuard],
-    loadChildren: () =>
-      import('./administrator-dashboard/administrator-dashboard.module').then(
-        (m) => m.AdministratorDashboardModule
-      ),
-  },
-  {
     path: '',
     loadChildren: () =>
       import('./public/home/home.module').then((m) => m.HomeModule),
@@ -52,12 +44,6 @@ const routes: Routes = [
   {
     path: 'userArea',
     canActivate: [AuthGuardGuard, UserGuardGuard],
-    loadChildren: () =>
-      import('./user/user-area/user-area.module').then((m) => m.UserAreaModule),
-  },
-  {
-    path: 'userArea/:id',
-    canActivate: [AuthGuardGuard],
     loadChildren: () =>
       import('./user/user-area/user-area.module').then((m) => m.UserAreaModule),
   },
