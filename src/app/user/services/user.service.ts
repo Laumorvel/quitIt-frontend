@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { User } from 'src/app/auth/interfaces/user';
 import { Observable } from 'rxjs';
+import { Commentario, User } from 'src/app/public/interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 export class UserService {
 
   private baseUrl: string = environment.baseUrl;
-  
+
   constructor(private http:HttpClient) { }
 
   updateUser(){
@@ -25,12 +25,12 @@ export class UserService {
 
 
   buscarComentariosComunidad(){
-    const url = `${ this.baseUrl }/commentsCommunity`; 
+    const url = `${ this.baseUrl }/commentsCommunity`;
 
     const opcion = new HttpHeaders();
     opcion.append('Access-Control-Allow-Origin','*');
-  
-    return this.http.get<Comment[]>(url,{headers:opcion})   
+
+    return this.http.get<Commentario[]>(url,{headers:opcion})
   }
 
 
@@ -44,6 +44,6 @@ export class UserService {
     const opcion = new HttpHeaders()
     .set('Authorization', `Bearer ${token}`);
     opcion.append('Access-Control-Allow-Origin','*');
-    return this.http.post<Comment[]>(url, body,{headers:opcion});
+    return this.http.post<Commentario>(url, body,{headers:opcion});
   }
 }

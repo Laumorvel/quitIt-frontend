@@ -7,7 +7,7 @@ import {
 import { catchError, map, Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { User } from '../interfaces/user';
+import { User } from 'src/app/public/interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root'

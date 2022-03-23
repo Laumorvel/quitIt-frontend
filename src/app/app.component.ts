@@ -34,6 +34,7 @@ export class AppComponent {
     'incidences',
   ];
   menuIndicator: string = ''; //atributo usado como @Input para mostrar un menú u otro. Los valores serán 'administrator', 'registeredUser', 'userNotRegistered'
+  routerAux: boolean = false; //atributo para mostrar el router auxiliar en un div estructurado en dos columnas, dejando el lado izquierdo para el submenú
   /**
    * Comprueba todos los cambios que se producen en la ruta-
    * De esta manera podemos mostrar un menú y otro enviando el valor indicado del atributo "registrado".
@@ -65,6 +66,12 @@ export class AppComponent {
       } else {
         this.menuIndicator = 'registeredUser';
       }
+    }
+
+    if(route?.includes("settings")){
+      this.routerAux = true;
+    }else{
+      this.routerAux = false;
     }
   }
 }

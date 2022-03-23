@@ -18,6 +18,8 @@ import { ChangePassComponent } from './change-pass/change-pass.component';
   imports: [
     CommonModule,
     SettingsRoutingModule
-  ]
+  ],
+  exports:[
+    SettingsComponent]
 })
 export class SettingsModule { }

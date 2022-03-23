@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { ValidatorService } from 'src/app/auth/services/validator.service';
 import Swal from 'sweetalert2';
-import { Message } from '../interfaces/message';
+import { Message } from '../interfaces/interfaces';
 
 @Component({
   selector: 'app-contact-us',

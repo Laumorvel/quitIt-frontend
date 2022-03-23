@@ -7,9 +7,9 @@ import { GeneralDataComponent } from './general-data/general-data.component';
 
 const routes: Routes = [
   { path: '', component: SettingsComponent },
-  { path: 'changePass', component: ChangePassComponent },
-  { path: 'exSmokerData', component: ExsmokerDataComponent },
-  { path: 'generalData', component: GeneralDataComponent }];
+  { path: 'changePass', component: ChangePassComponent, outlet: 'settings' },
+  { path: 'exSmokerData', component: ExsmokerDataComponent , outlet: 'settings'},
+  { path: 'generalData', component: GeneralDataComponent , outlet: 'settings'}];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

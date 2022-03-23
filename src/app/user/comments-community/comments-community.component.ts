@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Commentario } from 'src/app/public/interfaces/interfaces';
 import Swal from 'sweetalert2';
 import { UserService } from '../services/user.service';
 
@@ -11,7 +12,7 @@ export class CommentsCommunityComponent implements OnInit {
 
   constructor(private userService: UserService) { }
 
-  comentarios:Comment[]=[]
+  comentarios:Commentario[]=[];
 
   text!:String;
 
@@ -23,9 +24,13 @@ export class CommentsCommunityComponent implements OnInit {
 
   mostrarComentariosComunidad(){
     this.userService.buscarComentariosComunidad().subscribe({
-      next: (resp:Comment[]) => {
-        this.comentarios=resp;
-        console.log(resp)
+      next: (resp) => {
+        this.comentarios = resp;
+        console.log(resp);
+        // this.comentarios.forEach(element => {
+        //   console.log(element['id'])
+
+        // });
       },
       error: (e) => {
         Swal.fire({
@@ -37,6 +42,7 @@ export class CommentsCommunityComponent implements OnInit {
       }
     }
   )
+
 }
 
 
@@ -45,7 +51,7 @@ crearComentario(){
   this.userService.crearComentario(this.text)
   .subscribe({
     next: (resp => {
-      this.comentarios=resp;
+      this.comentarios.push(resp);
       Swal.fire({
         title:'Appointment is available',
         icon: 'success',
