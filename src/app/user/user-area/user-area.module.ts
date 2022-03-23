@@ -3,15 +3,19 @@ import { CommonModule } from '@angular/common';
 
 import { UserAreaRoutingModule } from './user-area-routing.module';
 import { UserAreaComponent } from './user-area.component';
+import { ClockComponent } from './clock/clock.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
   declarations: [
-    UserAreaComponent
+    UserAreaComponent,
+    ClockComponent
   ],
   imports: [
     CommonModule,
-    UserAreaRoutingModule
+    UserAreaRoutingModule,
+    HttpClientModule
   ]
 })
 export class UserAreaModule { }

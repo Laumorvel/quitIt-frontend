@@ -1,11 +1,18 @@
 // To parse this data:
 //
-//   import { Convert, User } from "./file";
+//   import { Convert } from "./file";
 //
-//   const user = Convert.toUser(json);
+//   const comment = Convert.toComment(json);
 //
 // These functions will throw an error if the JSON doesn't
 // match the expected interface, even if the JSON is valid.
+
+export interface Comment {
+    id:   number;
+    text: string;
+    user: User;
+    date: Date;
+}
 
 export interface User {
     id:                       number;
@@ -15,13 +22,13 @@ export interface User {
     password:                 string;
     rol:                      string;
     daysInARowWithoutSmoking: number;
-    cigarettesAvoided:        number;
+    cigarettesAvoided:        null;
     totalTimeWithoutSmoking:  number;
-    startDate:                Date;
+    startDate:                null;
     cigarettesBeforePerDay:   number;
     moneyPerDay:              number;
     smokingDays:              number;
-    cigarettesSmoked:         number;
+    cigarettesSmoked:         null;
     moneySaved:               number;
     username:                 string;
     timeWithoutSmoking:       number;
@@ -31,12 +38,12 @@ export interface User {
 // Converts JSON strings to/from your types
 // and asserts the results of JSON.parse at runtime
 export class Convert {
-    public static toUser(json: string): User {
-        return cast(JSON.parse(json), r("User"));
+    public static toComment(json: string): Comment[] {
+        return cast(JSON.parse(json), a(r("Comment")));
     }
 
-    public static userToJson(value: User): string {
-        return JSON.stringify(uncast(value, r("User")), null, 2);
+    public static commentToJson(value: Comment[]): string {
+        return JSON.stringify(uncast(value, a(r("Comment"))), null, 2);
     }
 }
 
@@ -173,6 +180,12 @@ function r(name: string) {
 }
 
 const typeMap: any = {
+    "Comment": o([
+        { json: "id", js: "id", typ: 0 },
+        { json: "text", js: "text", typ: "" },
+        { json: "user", js: "user", typ: r("User") },
+        { json: "date", js: "date", typ: Date },
+    ], false),
     "User": o([
         { json: "id", js: "id", typ: 0 },
         { json: "name", js: "name", typ: "" },

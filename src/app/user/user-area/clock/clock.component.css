@@ -1,0 +1,40 @@
+/**.clock{
+    width: 100%;
+    background-image: url("../../../../assets/img/clock.jpg");
+    background-attachment: fixed;
+    background-size: 100% 60%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.contenedor {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    background-attachment: fixed;
+    background-size: 90% 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 100%;
+  }
+
+  .tituloOficial {
+    font-family: "Satisfy", cursive;
+    font-weight: bold;
+    font-size: 110px;
+    position: absolute;
+    top: 23%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ffffff;
+    text-shadow: 4px 4px 2px #fef9c7;
+  }
+  .subtitulo {
+    font-size: 40px;
+    position: absolute;
+    top: 40%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+  }
+  **/
