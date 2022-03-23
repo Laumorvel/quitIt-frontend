@@ -158,7 +158,8 @@ export class RegisterComponent implements OnInit {
           password: '',
           condiciones: false
         })
-        this.router.navigateByUrl(`/userArea/${resp}`); //va al home
+
+        this.router.navigateByUrl(`/login`); 
      }),
       error: resp => {
         Swal.fire({
