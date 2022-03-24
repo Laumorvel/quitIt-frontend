@@ -1,40 +1,45 @@
-/**.clock{
-    width: 100%;
-    background-image: url("../../../../assets/img/clock.jpg");
-    background-attachment: fixed;
-    background-size: 100% 60%;
-    height: 100%;
-    background-repeat: no-repeat;
-    background-position: center center;
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,500&display=swap');
+
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,500&family=Titan+One&display=swap');
+
+*{
+  font-family: 'Playfair Display', serif;
 }
 
-.contenedor {
-    position: relative;
-    display: inline-block;
-    text-align: center;
-    background-attachment: fixed;
-    background-size: 90% 100%;
-    background-repeat: no-repeat;
-    background-position: center center;
-    height: 100%;
-  }
+.tituloOficial{
+  font-family: 'Playfair Display', serif;
+  font-family: 'Titan One', cursive;
+  font-size: 40px;
+}
 
-  .tituloOficial {
-    font-family: "Satisfy", cursive;
-    font-weight: bold;
-    font-size: 110px;
-    position: absolute;
-    top: 23%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #ffffff;
-    text-shadow: 4px 4px 2px #fef9c7;
-  }
-  .subtitulo {
-    font-size: 40px;
-    position: absolute;
-    top: 40%;
-    left: 80%;
-    transform: translate(-50%, -50%);
-  }
-  **/
+.progressFont{
+  font-family: 'Playfair Display', serif;
+  font-family: 'Titan One', cursive;
+  font-size: 20px;
+}
+
+.imgClock{
+  width: 20%;
+}
+
+label{
+  margin-left: 4em;
+  margin-right: 1em;
+  
+}
+
+.progreso{
+  display: flex;
+  justify-content: center;
+}
+
+.miniImg{
+  width: 30px;
+  margin: 0 !important;
+  margin-right: 2em !important;
+}
+
+p{
+  font-size: 28px;
+}

@@ -1,1 +1,59 @@
-<p>incidence works!</p>
+<h1 class="text-center">Create yout incidence</h1>
+
+<div class="col-md-12 offset-md-1">
+    <form
+            class="contact-form row text-center"
+            autocomplete="off"
+            #miFormulario="ngForm"
+            autocomplete="off">
+        
+
+
+          
+        <!-- SUBJECT -->  
+        <div class="mb-3 row">
+            <div class="col-sm-9 ">
+                <input type="text"
+                       class="form-control"
+                       [(ngModel)]="subject"
+                       name="subject"
+                       id="subject"
+                       class="input-text js-input"
+                       placeholder="*Subject"
+                       required="required">  
+            </div>  
+        </div>
+
+
+        <!-- TEXT -->
+        <div class="mb-3 row">
+         
+          <div class="col-sm-9">
+              
+              <input type="textarea"
+                     class="form-control"
+                     [(ngModel)]="text"
+                     name="text"
+                     id="text"
+                     class="input-text js-input"
+                     placeholder="*text"
+                     required="required">
+
+
+          </div>
+      </div>
+
+
+      <!--LOGIN BUTTON-->
+        <div class="row ">
+            <div class="col">
+                <button type="submit"
+                        [disabled]="miFormulario.invalid"
+                        class="custom-btn btn"
+                        (click)="sendIncidence()"> 
+                    Enter
+                </button>
+            </div>
+        </div>
+
+</form>

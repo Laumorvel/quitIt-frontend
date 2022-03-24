@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Message } from 'src/app/public/interfaces/message';
+import { Message } from 'src/app/public/interfaces/interfaces';
 import { environment } from 'src/environments/environment';
 import { AuthResponse } from '../interfaces/auth-response';
 import { User } from '../interfaces/user';
