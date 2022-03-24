@@ -13,11 +13,15 @@ export class ClockComponent implements OnInit {
 
   user: User = JSON.parse(<string>localStorage.getItem('user'));
   diasSinFumar!:number;
+  dineroAhorrado!:number;
+  cigarrosNoFumados!:number;
 
   constructor(private userService:UserService) { }
 
   ngOnInit(): void {
     this.updateUserDAta();
+    this.calcularDineroAhorrado();
+    this.calcularCigarrosNoFumados();
   }
 
  updateUserDAta(){
@@ -41,6 +45,14 @@ export class ClockComponent implements OnInit {
   }
 
 
+  calcularDineroAhorrado(){
+    this.dineroAhorrado=this.user.moneyPerDay * this.user.daysInARowWithoutSmoking
+    console.log(this.dineroAhorrado)
+  }
+
+  calcularCigarrosNoFumados(){
+    this.cigarrosNoFumados=this.user.daysInARowWithoutSmoking*this.user.cigarettesAvoided
+  }
 
 
 }
