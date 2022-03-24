@@ -27,7 +27,7 @@
             role="tab"
             aria-controls="v-pills-profile"
             aria-selected="false"
-            [routerLink]="[{ outlets: { settings: ['generalData'] } }]"
+            [routerLink]="[{ outlets: { setting: ['generalData'] } }, ]"
             >General data</a
           >
           <a
@@ -38,7 +38,7 @@
             routerLinkActive="active"
             aria-controls="v-pills-messages"
             aria-selected="false"
-            [routerLink]="[{ outlets: { settings: ['exSmokerData'] } }]"
+            [routerLink]="[{ outlets: { setting: ['exSmokerData'] } }]"
             >Exsmoker data</a
           >
           <a
@@ -50,7 +50,7 @@
             role="tab"
             aria-controls="v-pills-settings"
             aria-selected="false"
-            [routerLink]="[{ outlets: { settings: ['changePass'] } }]"
+            [routerLink]="[{ outlets: { setting: ['changePass'] } }]"
             >Change password</a
           >
         </div>
@@ -58,7 +58,7 @@
 
       <!--Router outlet auxiliar-->
       <div class="col-10">
-        <router-outlet name="settings"></router-outlet>
+        <router-outlet name="setting"></router-outlet>
       </div>
     </div>
   </div>

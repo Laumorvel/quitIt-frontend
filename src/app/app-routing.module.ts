@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminGuardGuard } from './admin-guard.guard';
 import { AuthGuardGuard } from './auth-guard.guard';
+import { CloseAuxRoutingGuard } from './close-aux-routing.guard';
 import { UserGuardGuard } from './user-guard.guard';
 
 const routes: Routes = [
@@ -49,6 +50,7 @@ const routes: Routes = [
   },
   {
     path: 'settings',
+  //  canDeactivate: [CloseAuxRoutingGuard],
     canActivate: [AuthGuardGuard, UserGuardGuard],
     loadChildren: () =>
       import('./user/settings/settings.module').then((m) => m.SettingsModule),
@@ -97,7 +99,7 @@ const routes: Routes = [
         (m) => m.CommentsCommunityModule
       ),
   },
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({
