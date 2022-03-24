@@ -1,0 +1,28 @@
+.bloqueComentario{
+  margin: 2em;
+  display: flex;
+  justify-content: center;
+  background-color: #f2f2f2;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  border-radius: 10px;
+}
+
+.marginElement{
+    margin-left: 3em !important;
+}
+
+.imgReport{
+    width: 40px;
+}
+
+.form-control{
+  margin-left: 2em !important;
+}
+
+button{
+  background-color: #52ab98;
+  color: white;
+  width: 200px;
+  margin-left: 2em;
+}

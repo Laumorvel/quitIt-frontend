@@ -33,3 +33,11 @@ export interface User {
   timeWithoutSmoking:       number;
   moneySmoker:              number;
 }
+
+export interface Incidence {
+  id:      number;
+  subject: string;
+  text:    null;
+  user:    User;
+  state:   string;
+}

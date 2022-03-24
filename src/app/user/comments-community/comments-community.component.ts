@@ -12,7 +12,11 @@ export class CommentsCommunityComponent implements OnInit {
 
   constructor(private userService: UserService) { }
 
+<<<<<<< HEAD
   comentarios:Commentario[]=[];
+=======
+  comentarios:Commentario[]=[]
+>>>>>>> b859b0989c707dc95d7ed6d6251046eeddcd6125
 
   text!:String;
 
@@ -42,9 +46,13 @@ export class CommentsCommunityComponent implements OnInit {
       }
     }
   )
+<<<<<<< HEAD
 
 }
+=======
+>>>>>>> b859b0989c707dc95d7ed6d6251046eeddcd6125
 
+}
 
 
 crearComentario(){

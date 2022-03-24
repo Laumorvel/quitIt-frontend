@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
-import { Commentario, User } from 'src/app/public/interfaces/interfaces';
+import { Commentario, Incidence, User } from 'src/app/public/interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,7 @@ export class UserService {
     let token = JSON.parse(<string>localStorage.getItem('token'));
     const headers = new HttpHeaders()
       .set('Authorization', `Bearer ${token}`);
-    return this.http.get<User[]>(url, {headers});
+    return this.http.get<User>(url, {headers});
   }
 
 
@@ -45,5 +45,14 @@ export class UserService {
     .set('Authorization', `Bearer ${token}`);
     opcion.append('Access-Control-Allow-Origin','*');
     return this.http.post<Commentario>(url, body,{headers:opcion});
+  }
+
+
+  sendIncidence(subject:String,text:String){
+    const url = `${ this.baseUrl }/incidence`;
+    let token = JSON.parse(<string>localStorage.getItem('token'));
+    const headers = new HttpHeaders()
+      .set('Authorization', `Bearer ${token}`);
+    return this.http.post<Incidence>( url, { headers } )
   }
 }
