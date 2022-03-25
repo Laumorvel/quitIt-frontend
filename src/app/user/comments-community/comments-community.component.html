@@ -7,7 +7,13 @@
             <label class="marginElement">{{i.text}}</label></div>
             <div  class=" col-1 mt-0 text-center">
            <img src="../../../assets/report.png" class=" marginElement imgReport" 
-           routerLink="/commentsCommunity/incidence" ></div>
+           routerLink="/commentsCommunity/incidence" (click)="verHijo()"></div>
+           <div *ngIf="hijoVisible">
+            <app-incidence
+            [ComentarioAHijo]="i.id"
+            ></app-incidence>
+           </div>
+           
        
 </div>
 
@@ -32,14 +38,14 @@
 
                 </div>
                 <div class="col-3">
-                    <button  class="custom-btn btn"  (click)="crearComentario()"> Send</button>
+                    <button  class="custom-btn btn"  (click)="crearComentario()" > Send</button>
                 </div>
                 
             </div>
 
             
 
-
+            
 
       
 </div>

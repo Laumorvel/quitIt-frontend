@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MeetUP } from 'src/app/public/interfaces/interfaces';
+import Swal from 'sweetalert2';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-meet-ups',
@@ -7,9 +10,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MeetUpsComponent implements OnInit {
 
-  constructor() { }
+  meetUps:MeetUP[]=[];
+
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    this.cargarMeetUps();
   }
 
+  cargarMeetUps(){
+    this.userService.buscarMeetUps().subscribe({
+      next: (resp) => {
+        this.meetUps = resp;
+        console.log(resp);
+      },
+      error: (e) => {
+        Swal.fire({
+          title:'Error',
+          icon: 'error',
+          text:'There are no services available at this time',
+          confirmButtonColor:'#be8f8c'
+        });
+      }
+    }
+  )
+  }
+
+
+  
 }
