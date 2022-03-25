@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
+import { User } from 'src/app/public/interfaces/interfaces';
+import Swal from 'sweetalert2';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-ranking-community',
@@ -7,9 +11,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RankingCommunityComponent implements OnInit {
 
-  constructor() { }
+  users:User[]=[]
+
+
+  dtOptions: DataTables.Settings = {};  
+  dtTrigger= new Subject<any>();
+
+
+  
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    this.mostrarUsuarios();
+
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 5
+    };
+
   }
 
+  ngOnDestroy(): void {
+    // Do not forget to unsubscribe the event
+    this.dtTrigger.unsubscribe();
+  }
+
+
+  mostrarUsuarios(){
+    this.userService.mostrarUsuarios().subscribe(resp =>{
+      this.users = resp;
+      console.log(resp)
+    })
+  }
+  
 }
