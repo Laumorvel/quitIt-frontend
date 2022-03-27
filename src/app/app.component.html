@@ -11,7 +11,7 @@
     </div>
 
     <!--SUBMENÚ DE SETTINGS-->
-    <div *ngIf="routerAux" class="row">
+    <!-- <div *ngIf="routerAux" class="row">
       <div class="col-2">
         <div
           class="nav flex-column nav-pills"
@@ -27,7 +27,7 @@
             role="tab"
             aria-controls="v-pills-profile"
             aria-selected="false"
-            [routerLink]="[{ outlets: { setting: ['generalData'] } }, ]"
+            [routerLink]="[{ outlets: { setting: ['generalData'] }, relativeTo:'' } ]"
             >General data</a
           >
           <a
@@ -57,10 +57,10 @@
       </div>
 
       <!--Router outlet auxiliar-->
-      <div class="col-10">
+     <!-- <div class="col-10">
         <router-outlet name="setting"></router-outlet>
       </div>
-    </div>
+    </div> -->
   </div>
 
   <!--FOOTER-->

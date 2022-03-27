@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Observable } from 'rxjs';
 import { Commentario, Incidence, User } from 'src/app/public/interfaces/interfaces';
 
 @Injectable({

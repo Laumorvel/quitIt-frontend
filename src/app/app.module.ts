@@ -10,16 +10,11 @@ import { AuthGuardGuard } from './auth-guard.guard';
 import { AdminGuardGuard } from './admin-guard.guard';
 import { UserGuardGuard } from './user-guard.guard';
 import { SettingsModule } from './user/settings/settings.module';
-import { CloseAuxRoutingGuard } from './close-aux-routing.guard';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-    FooterComponent
-  ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, SettingsModule],
-  providers: [AuthGuardGuard, AdminGuardGuard, UserGuardGuard, CloseAuxRoutingGuard],
+  declarations: [AppComponent, NavbarComponent, FooterComponent],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  providers: [AuthGuardGuard, AdminGuardGuard, UserGuardGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
