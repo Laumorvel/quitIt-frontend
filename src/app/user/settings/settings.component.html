@@ -7,7 +7,7 @@
       aria-orientation="vertical"
     >
       <a
-        class="nav-link"
+        class="nav-link text-dark"
         id="v-pills-profile-tab"
         data-toggle="pill"
         routerLinkActive="active"
@@ -18,7 +18,7 @@
         >General data</a
       >
       <a
-        class="nav-link"
+        class="nav-link text-dark"
         id="v-pills-messages-tab"
         data-toggle="pill"
         role="tab"
@@ -26,10 +26,10 @@
         aria-controls="v-pills-messages"
         aria-selected="false"
         [routerLink]="[{ outlets: { setting: ['exSmokerData'] } }]"
-        >Exsmoker data</a
+        >Smoking data</a
       >
       <a
-        class="nav-link"
+        class="nav-link text-dark"
         id="v-pills-settings-tab"
         data-toggle="pill"
         routerLinkActive="active"
@@ -45,6 +45,10 @@
 
   <!--Router outlet auxiliar-->
   <div class="col-10">
+    <!--Texto auxiliar-->
+    <div class="text-center">
+      <h4 class="my-4">Change and manage your personal data</h4>
+    </div>
     <router-outlet name="setting"></router-outlet>
   </div>
 </div>
