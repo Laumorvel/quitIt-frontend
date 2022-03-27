@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Commentario, Incidence, User } from 'src/app/public/interfaces/interfaces';
+import { Achievement, Commentario, Incidence, MeetUP, User } from 'src/app/public/interfaces/interfaces';
+import { } from '../../public/interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -54,4 +55,54 @@ export class UserService {
       .set('Authorization', `Bearer ${token}`);
     return this.http.post<Incidence>( url, { headers } )
   }
+
+
+  mostrarUsuarios(){
+    const url = `${ this.baseUrl }/users`;
+
+    let token = JSON.parse(<string>localStorage.getItem('token'));
+    const opcion = new HttpHeaders()
+    .set('Authorization', `Bearer ${token}`);
+    opcion.append('Access-Control-Allow-Origin','*');
+
+    return this.http.get<User[]>(url,{headers:opcion})
+  }
+
+
+  buscarLogros(){
+    const url = `${ this.baseUrl }/achievement`;
+
+    let token = JSON.parse(<string>localStorage.getItem('token'));
+    const opcion = new HttpHeaders()
+    .set('Authorization', `Bearer ${token}`);
+    opcion.append('Access-Control-Allow-Origin','*');
+
+    return this.http.get<Achievement[]>(url,{headers:opcion})
+  }
+
+
+  buscarPenalizaciones(){
+    const url = `${ this.baseUrl }/penalty`;
+
+    let token = JSON.parse(<string>localStorage.getItem('token'));
+    const opcion = new HttpHeaders()
+    .set('Authorization', `Bearer ${token}`);
+    opcion.append('Access-Control-Allow-Origin','*');
+
+    return this.http.get<Achievement[]>(url,{headers:opcion})
+  }
+
+
+  buscarMeetUps(){
+    const url = `${ this.baseUrl }/meetUp`;
+
+    let token = JSON.parse(<string>localStorage.getItem('token'));
+    const opcion = new HttpHeaders()
+    .set('Authorization', `Bearer ${token}`);
+    opcion.append('Access-Control-Allow-Origin','*');
+
+    return this.http.get<MeetUP[]>(url,{headers:opcion})
+  }
+
+
 }

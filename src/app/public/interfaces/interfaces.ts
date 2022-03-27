@@ -47,4 +47,28 @@ export interface FileDB {
   name: string;
   data: number;
   type: string;
+  text:    null;
+  user:    User;
+  state:   string;
+}
+
+export interface Achievement {
+  id:   number;
+  name: string;
+  text: string;
+}
+
+
+export interface Penalty {
+  id:   number;
+  name: string;
+  text: string;
+}
+
+export interface MeetUP {
+  id:          number;
+  title:       string;
+  description: string;
+  date:        Date;
+  place:       string;
 }

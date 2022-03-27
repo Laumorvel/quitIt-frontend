@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Commentario } from 'src/app/public/interfaces/interfaces';
 import Swal from 'sweetalert2';
 import { UserService } from '../services/user.service';
@@ -15,14 +15,21 @@ export class CommentsCommunityComponent implements OnInit {
 
   text!: String;
 
+  hijoVisible: boolean = false;
+
   ngOnInit(): void {
     this.mostrarComentariosComunidad();
+  }
+
+  verHijo() {
+    this.hijoVisible = true;
   }
 
   mostrarComentariosComunidad() {
     this.userService.buscarComentariosComunidad().subscribe({
       next: (resp) => {
         this.comentarios = resp;
+        console.log(resp);
       },
       error: (e) => {
         Swal.fire({

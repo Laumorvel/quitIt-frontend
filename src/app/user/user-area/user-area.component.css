@@ -93,9 +93,11 @@ body{
     }
 
     .imgEarth{
-        width: 15%;
+        width: 180px;
+    
     }
 
     .imgAchievement{
-        width: 30%;
+        width: 180px;
     }
+

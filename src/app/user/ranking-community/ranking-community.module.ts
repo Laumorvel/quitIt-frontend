@@ -4,6 +4,10 @@ import { CommonModule } from '@angular/common';
 import { RankingCommunityRoutingModule } from './ranking-community-routing.module';
 import { RankingCommunityComponent } from './ranking-community.component';
 
+import { DataTablesModule } from "angular-datatables";
+
+
+
 
 @NgModule({
   declarations: [
@@ -11,7 +15,8 @@ import { RankingCommunityComponent } from './ranking-community.component';
   ],
   imports: [
     CommonModule,
-    RankingCommunityRoutingModule
+    RankingCommunityRoutingModule,
+    DataTablesModule
   ]
 })
 export class RankingCommunityModule { }
