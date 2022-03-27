@@ -1,8 +1,12 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminGuardGuard } from './admin-guard.guard';
 import { AuthGuardGuard } from './auth-guard.guard';
 import { UserGuardGuard } from './user-guard.guard';
+import { SettingsComponent } from './user/settings/settings.component';
+import { GeneralDataComponent } from './user/settings/general-data/general-data.component';
+import { ExsmokerDataComponent } from './user/settings/exsmoker-data/exsmoker-data.component';
+import { ChangePassComponent } from './user/settings/change-pass/change-pass.component';
 
 const routes: Routes = [
   {
@@ -49,9 +53,26 @@ const routes: Routes = [
   },
   {
     path: 'settings',
+    //  canDeactivate: [CloseAuxRoutingGuard],
     canActivate: [AuthGuardGuard, UserGuardGuard],
-    loadChildren: () =>
-      import('./user/settings/settings.module').then((m) => m.SettingsModule),
+    component: SettingsComponent,
+    children:[
+      {
+        path: 'generalData',
+        component: GeneralDataComponent,
+        outlet: 'setting'
+      },
+      {
+        path: 'exSmokerData',
+        component: ExsmokerDataComponent,
+        outlet: 'setting'
+      },
+      {
+        path: 'changePass',
+        component: ChangePassComponent,
+        outlet: 'setting'
+      }
+    ]
   },
   {
     path: 'friends',
@@ -97,7 +118,7 @@ const routes: Routes = [
         (m) => m.CommentsCommunityModule
       ),
   },
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({

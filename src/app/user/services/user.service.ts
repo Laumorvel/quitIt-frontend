@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { User } from 'src/app/auth/interfaces/user';
-import { Observable } from 'rxjs';
-import { Commentario, Incidence, MeetUP } from 'src/app/public/interfaces/interfaces';
-import { Achievement } from '../../public/interfaces/interfaces';
+import { Achievement, Commentario, Incidence, MeetUP, User } from 'src/app/public/interfaces/interfaces';
+import { } from '../../public/interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +10,7 @@ import { Achievement } from '../../public/interfaces/interfaces';
 export class UserService {
 
   private baseUrl: string = environment.baseUrl;
-  
+
   constructor(private http:HttpClient) { }
 
   updateUser(){
@@ -27,12 +25,12 @@ export class UserService {
 
 
   buscarComentariosComunidad(){
-    const url = `${ this.baseUrl }/commentsCommunity`; 
+    const url = `${ this.baseUrl }/commentsCommunity`;
 
     const opcion = new HttpHeaders();
     opcion.append('Access-Control-Allow-Origin','*');
-  
-    return this.http.get<Commentario[]>(url,{headers:opcion})   
+
+    return this.http.get<Commentario[]>(url,{headers:opcion})
   }
 
 
@@ -46,7 +44,7 @@ export class UserService {
     const opcion = new HttpHeaders()
     .set('Authorization', `Bearer ${token}`);
     opcion.append('Access-Control-Allow-Origin','*');
-    return this.http.post<Commentario[]>(url, body,{headers:opcion});
+    return this.http.post<Commentario>(url, body,{headers:opcion});
   }
 
 
@@ -60,50 +58,50 @@ export class UserService {
 
 
   mostrarUsuarios(){
-    const url = `${ this.baseUrl }/users`; 
+    const url = `${ this.baseUrl }/users`;
 
     let token = JSON.parse(<string>localStorage.getItem('token'));
     const opcion = new HttpHeaders()
     .set('Authorization', `Bearer ${token}`);
     opcion.append('Access-Control-Allow-Origin','*');
-  
-    return this.http.get<User[]>(url,{headers:opcion})   
+
+    return this.http.get<User[]>(url,{headers:opcion})
   }
 
 
   buscarLogros(){
-    const url = `${ this.baseUrl }/achievement`; 
+    const url = `${ this.baseUrl }/achievement`;
 
     let token = JSON.parse(<string>localStorage.getItem('token'));
     const opcion = new HttpHeaders()
     .set('Authorization', `Bearer ${token}`);
     opcion.append('Access-Control-Allow-Origin','*');
-  
-    return this.http.get<Achievement[]>(url,{headers:opcion})  
+
+    return this.http.get<Achievement[]>(url,{headers:opcion})
   }
 
 
   buscarPenalizaciones(){
-    const url = `${ this.baseUrl }/penalty`; 
+    const url = `${ this.baseUrl }/penalty`;
 
     let token = JSON.parse(<string>localStorage.getItem('token'));
     const opcion = new HttpHeaders()
     .set('Authorization', `Bearer ${token}`);
     opcion.append('Access-Control-Allow-Origin','*');
-  
-    return this.http.get<Achievement[]>(url,{headers:opcion})  
+
+    return this.http.get<Achievement[]>(url,{headers:opcion})
   }
 
 
   buscarMeetUps(){
-    const url = `${ this.baseUrl }/meetUp`; 
+    const url = `${ this.baseUrl }/meetUp`;
 
     let token = JSON.parse(<string>localStorage.getItem('token'));
     const opcion = new HttpHeaders()
     .set('Authorization', `Bearer ${token}`);
     opcion.append('Access-Control-Allow-Origin','*');
-  
-    return this.http.get<MeetUP[]>(url,{headers:opcion})  
+
+    return this.http.get<MeetUP[]>(url,{headers:opcion})
   }
 
 

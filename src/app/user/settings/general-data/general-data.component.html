@@ -1,1 +1,47 @@
-<p>general-data works!</p>
+<h1 class="text-center title mb-3">General Data</h1>
+<!--FOTO + name-->
+<div class="row text-center card">
+  <div class="card-body">
+    <div class="foto">
+      <div>
+        <img
+          class="rounded-circle photo img-responsive"
+          src={{img}}
+        />
+      </div>
+      <div class="h3 mt-3 name">{{ user.name }} {{ user.lastName }}</div>
+    </div>
+  </div>
+
+  <!--Data-->
+  <div class="row text-center">
+    <div class="data mb-3">
+      <!--email-->
+      <div>
+        <img
+          src="../../../../assets/correo-electronico-vacio.png"
+          alt="User email"
+          class="icon"
+        />
+        {{ user.email }}
+      </div>
+      <!--start date-->
+      <div>
+        <img
+          src="../../../../assets/calendar(1).png"
+          alt="User email"
+          class="icon"
+        />
+        {{user.startDate}}
+      </div>
+      <!--username-->
+      <img
+      src="../../../../assets/account.png"
+      alt="User email"
+      class="icon"
+    />
+    {{user.username}}
+    </div>
+
+  </div>
+</div>

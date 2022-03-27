@@ -6,15 +6,15 @@
         <div  class=" col-7 mt-0 text-center">
             <label class="marginElement">{{i.text}}</label></div>
             <div  class=" col-1 mt-0 text-center">
-           <img src="../../../assets/report.png" class=" marginElement imgReport" 
+           <img src="../../../assets/report.png" class=" marginElement imgReport"
            routerLink="/commentsCommunity/incidence" (click)="verHijo()"></div>
            <div *ngIf="hijoVisible">
             <app-incidence
             [ComentarioAHijo]="i.id"
             ></app-incidence>
            </div>
-           
-       
+
+
 </div>
 
 
@@ -24,12 +24,12 @@
 <!--CREATE COMMENT-->
 <div class="row text-center  gx-0" >
     <div class="col-md-12 col-12 offset-md-1 mt-5 bordeForm m-0">
-        
-            
+
+
             <!-- FECHA Y HORA CITA -->
             <div class="mb-3 row  gx-0">
                 <div class="col-sm-9">
-                    
+
                     <input type="textarea"
                            class="form-control hora"
                            [(ngModel)]="text"
@@ -40,15 +40,12 @@
                 <div class="col-3">
                     <button  class="custom-btn btn"  (click)="crearComentario()" > Send</button>
                 </div>
-                
+
             </div>
 
-            
 
-            
 
-      
+
+
+
 </div>
-</div>
-
-

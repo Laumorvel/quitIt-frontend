@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Martel:wght@200&family=Source+Sans+Pro&display=swap');
+.title{
+  font-family: 'Martel', serif;
+}
+
+.subtitulo{
+  font-style: italic;
+}
+
+.photo {
+  width: 10%;
+  background-color: white;
+}
+
+.icon {
+  max-width: 2%;
+  height: auto;
+}
+
+.card{
+  margin: auto 12rem;
+  background-color: #f2f2f2;
+}

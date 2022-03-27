@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter, Subscription } from 'rxjs';
 
 @Component({
@@ -34,12 +34,14 @@ export class AppComponent {
     'incidences',
   ];
   menuIndicator: string = ''; //atributo usado como @Input para mostrar un menú u otro. Los valores serán 'administrator', 'registeredUser', 'userNotRegistered'
+  routerAux: boolean = false; //atributo para mostrar el router auxiliar en un div estructurado en dos columnas, dejando el lado izquierdo para el submenú
+  routeRef = this.route;
   /**
    * Comprueba todos los cambios que se producen en la ruta-
    * De esta manera podemos mostrar un menú y otro enviando el valor indicado del atributo "registrado".
    * @param router
    */
-  constructor(private router: Router) {
+  constructor(private router: Router, private route: ActivatedRoute) {
     this.subscriber = this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((event) => {
@@ -56,6 +58,8 @@ export class AppComponent {
    */
   checkRoute() {
     let route = this.router.url.split('?')[0].split('/').pop(); //consigo la última parte de la url
+    //route = this.checkAUxRouter(route);
+    //console.log(route);
     if (route != undefined) {
       //es necesario hacer esta comprobación para que no nos diga que puede ser undefined
       if (this.administratorRoutes.includes(route)) {
@@ -66,5 +70,29 @@ export class AppComponent {
         this.menuIndicator = 'registeredUser';
       }
     }
+
+    if (route?.includes('settings')) {
+      this.routerAux = true;
+    } else {
+      this.routerAux = false;
+    }
+  }
+
+  /**
+   * Método temporal para arreglar las rutas tras pasar por el router outlet auxiliar
+   * @param route
+   * @returns route corregida sin el añadido del router auxiliar --> (router:ruta)
+   */
+  checkAUxRouter(route: string | undefined) {
+    let routeResult = '';
+    if (route != undefined) {
+      if (
+        !route.includes('/settings(setting:') &&
+        route.includes('(setting:')
+      ) {
+        routeResult = route.split('(')[0];
+      }
+    }
+    return routeResult;
   }
 }
