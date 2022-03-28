@@ -43,7 +43,7 @@ export class GeneralDataComponent implements OnInit {
   // si la suscripción es correcta, nos devuelve el fichero asociado a la receta que coincide con el id que le pasamos
   // si no es correcta nos devuelve error
   getFileByRecipe(id: number) {
-    this.fileService.getFileByUserID(id).subscribe({
+    this.fileService.getFileByFileIdFromUser().subscribe({
       next: (data) => {
         this.img = this.userImgService.obtenerImagen(data);
       },
