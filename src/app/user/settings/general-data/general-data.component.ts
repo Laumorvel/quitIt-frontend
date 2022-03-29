@@ -36,18 +36,6 @@ export class GeneralDataComponent implements OnInit {
     });
   }
 
-<<<<<<< HEAD
-  //MÉTODO que se suscribe al getFileByRecipe() del servicio
-  // si la suscripción es correcta, nos devuelve el fichero asociado a la receta que coincide con el id que le pasamos
-  // si no es correcta nos devuelve error
-  getFileByRecipe(id: number) {
-    this.fileService.getFileByFileIdFromUser().subscribe({
-      next: (data) => {
-        this.img = this.userImgService.obtenerImagen(data);
-      },
-      error: (e) => {
-        Swal.fire('Error', e.error.message, 'error');
-=======
   /**
    * Consigue la imagen asociada al usuario.
    * si la suscripción es correcta, nos devuelve el fichero asociado a la receta que coincide con el id que le pasamos
@@ -57,8 +45,7 @@ export class GeneralDataComponent implements OnInit {
       next: (resp) => {
         this.img = this.fileService.obtenerImagen(resp);
         Swal.fire('Success', 'Success!', 'success');
->>>>>>> 505f000f16fe1761b2535f4a84b4ee194303ff97
-      },
+      }
     });
   }
 
