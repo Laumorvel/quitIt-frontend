@@ -9,7 +9,7 @@
 }
 
 .marginElement{
-    margin-left: 3em !important;
+   
 }
 
 .imgReport{
@@ -23,6 +23,7 @@
 button{
   background-color: #52ab98;
   color: white;
-  width: 200px;
+  width: 58px;
   margin-left: 2em;
 }
+

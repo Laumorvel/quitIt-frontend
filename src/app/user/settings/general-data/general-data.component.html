@@ -10,7 +10,9 @@
       <div>
         <input type="file" class="mt-2" (change)="selectFile($event)" />
         <button
+
           class="btn btn-dark"
+
           [disabled]="!selectedFiles"
           (click)="checkImage()"
         >Upload</button>

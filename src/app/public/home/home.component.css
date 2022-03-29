@@ -1,4 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,500&display=swap');
 
-.blueBackground{
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,500&family=Titan+One&display=swap');
+
+*{
+  font-family: 'Playfair Display', serif;
+}
+
+.tituloOficial{
+  font-family: 'Playfair Display', serif;
+  font-family: 'Titan One', cursive;
+  font-size: 80px;
+  margin-right: 3em;
+  margin-bottom: 0px !important;
+  color:#ffffff;
+  text-shadow: black 0.1em 0.1em 0.2em
+}
+
+.derecha{
+  margin-left: 4em;
+  font-size: 30px;
+  padding-bottom: 1em;
+  color: #ffffff;
+  text-shadow: black 0.1em 0.1em 0.2em
+}
+
+.contenedor{
   background-color: #2b6777;
 }

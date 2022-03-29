@@ -17,3 +17,10 @@ h1{
     text-align: center  ;
 }
 
+
+.custom-btn{
+    background-color: #52ab98;
+    width: 150px;
+    color:#fff;
+    text-shadow: rgb(105, 105, 105) 0.1em 0.1em 0.1em
+}

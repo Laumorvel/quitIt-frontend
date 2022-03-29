@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { Commentario } from 'src/app/public/interfaces/interfaces';
 import Swal from 'sweetalert2';
 import { UserService } from '../services/user.service';
@@ -9,21 +10,23 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./comments-community.component.css'],
 })
 export class CommentsCommunityComponent implements OnInit {
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private router:Router) {}
 
   comentarios: Commentario[] = [];
 
   text!: String;
 
-  hijoVisible: boolean = false;
+
 
   ngOnInit(): void {
     this.mostrarComentariosComunidad();
   }
 
-  verHijo() {
-    this.hijoVisible = true;
+  enviarIncidencia(id:number){
+    this.router.navigateByUrl(`/commentsCommunity/${id}/incidence`);
   }
+
+
 
   mostrarComentariosComunidad() {
     this.userService.buscarComentariosComunidad().subscribe({

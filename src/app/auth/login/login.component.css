@@ -1,13 +1,13 @@
 
 
 
+@import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Dancing+Script&family=Roboto+Serif:wght@100&family=Satisfy&family=Yellowtail&display=swap");
+
+
 .form-control {
   width: 80% !important;
   margin: auto !important;
 }
-
-
-@import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Dancing+Script&family=Roboto+Serif:wght@100&family=Satisfy&family=Yellowtail&display=swap");
 
 .get-in-touch {
   max-width: 800px;
@@ -67,4 +67,13 @@
   border: none;
   width: 200px;
   cursor: pointer;
+}
+
+.btn{
+  background-color: #52ab98;
+  color: #fff;
+}
+
+.formulario{
+  
 }

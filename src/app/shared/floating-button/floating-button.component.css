@@ -1,0 +1,31 @@
+
+.scroll-to-top {
+    position: fixed;
+    bottom: 50px;
+    right: 15px;
+    opacity: 0;
+    transition: all 0.4s ease-in-out;
+  
+    margin-right: 20px;
+  }
+  .show-scrollTop {
+    opacity: 1;
+    transition: all 0.1s ease-in-out;
+    border-radius: 10%;
+    background-color:  #52ab98;
+    
+  }
+
+  p{
+    font-size: 18px;
+    padding-left: auto;
+    padding-right: auto;
+    margin-bottom: 0 !important;
+    color:#fff;
+    text-shadow: rgb(105, 105, 105) 0.1em 0.1em 0.1em
+  }
+  
+  .iconQuitSmoking{
+    width: 30px;
+    color:#fff;
+  }
