@@ -32,6 +32,16 @@ export class GeneralDataComponent implements OnInit {
     this.userService.updateUser().subscribe({
       next: (resp) => {
         this.user = resp;
+        console.log(resp);
+      },
+      error: (resp) => {
+        Swal.fire({
+          title: 'Error',
+          icon: 'error',
+          text: resp.error.mensaje,
+          confirmButtonColor: '#52ab98',
+        });
+
       },
     });
   }

@@ -1,22 +1,13 @@
 <!--COMMENTS-->
 <div class="row" *ngFor="let i of comentarios" class="bloqueComentario">
-  <div class="col-3 mt-0 text-center">
-    <label class="marginElement">{{ i.user.username }}</label>
-  </div>
-  <div class="col-7 mt-0 text-center">
-    <label class="marginElement">{{ i.text }}</label>
-  </div>
-  <div class="col-1 mt-0 text-center">
-    <img
-      src="../../../assets/report.png"
-      class="marginElement imgReport"
-      routerLink="/commentsCommunity/incidence"
-      (click)="verHijo()"
-    />
-  </div>
-  <div *ngIf="hijoVisible">
-    <app-incidence [ComentarioAHijo]="i.id"></app-incidence>
-  </div>
+
+        <div  class=" col-3 mt-0 text-center">
+            <label class="marginElement">{{i.user.username}}</label>
+        </div>
+        <div  class=" col-7 mt-0 text-center">
+            <label class="marginElement">{{i.text}}</label></div>
+            <div  class=" col-1 mt-0 text-center">
+          <img (click)="enviarIncidencia(i.id)" src="../../../assets/report.png" class=" marginElement imgReport"></div>
 </div>
 
 <!--CREATE COMMENT-->

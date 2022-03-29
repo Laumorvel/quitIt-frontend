@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Commentario } from 'src/app/public/interfaces/interfaces';
 import Swal from 'sweetalert2';
 import { UserService } from '../../services/user.service';
@@ -15,17 +16,59 @@ export class IncidenceComponent implements OnInit {
   text !: string;
 
 
-  @Input()
-  ComentarioAHijo!:number;
+  idComentario=this.route.snapshot.paramMap.get('id');
 
-  constructor(private userService:UserService) { }
+  comentario!:Commentario;
+
+  constructor(private userService:UserService, private route:ActivatedRoute) { }
 
   ngOnInit(): void {
-    console.log(this.ComentarioAHijo)
+this.getComentario();
+
   }
+
+
+  getComentario(){
+    this.userService.buscarComentariosPorId(this.idComentario!).subscribe({
+      next: (resp) => {
+        this.comentario = resp;
+        console.log(resp);
+      },
+      error: (e) => {
+        Swal.fire({
+          title: 'Error',
+          icon: 'error',
+          text: 'There are no services available at this time',
+          confirmButtonColor: '#be8f8c',
+        });
+      },
+    });
+  }
+
 
   sendIncidence(){
     this.userService.sendIncidence(this.subject,this.text)
+    .subscribe({
+      next: (resp => {
+        this.addComentario(resp.id);
+        Swal.fire('Success', 'Sorry, there was an error with your ticket. Please try again later.', 'success');
+       
+     }),
+      error: resp => {
+        console.log(resp.message);
+        Swal.fire({
+          title:'Error',
+          icon: 'error',
+          text:'Sorry, there was an error with your ticket. Please try again later.',
+          confirmButtonColor:'#52ab98'
+        });
+      }
+   });
+  }
+
+
+  addComentario(idIncidencia:number){
+    this.userService.addComentario(idIncidencia, this.comentario)
     .subscribe({
       next: (resp => {
         

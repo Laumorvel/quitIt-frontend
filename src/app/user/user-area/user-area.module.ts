@@ -5,6 +5,7 @@ import { UserAreaRoutingModule } from './user-area-routing.module';
 import { UserAreaComponent } from './user-area.component';
 import { ClockComponent } from './clock/clock.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FloatingButtonModule } from '../../shared/floating-button/floating-button.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     CommonModule,
     UserAreaRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FloatingButtonModule
   ]
 })
 export class UserAreaModule { }
