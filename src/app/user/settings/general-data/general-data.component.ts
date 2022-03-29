@@ -21,6 +21,7 @@ export class GeneralDataComponent implements OnInit {
   currentFile?: File;
   selectedFiles?: FileList;
   msg: string = '';
+  idFileUser: string = ''; //almacena la id de la foto del usuario
 
   ngOnInit(): void {
     this.getUserData();
@@ -53,8 +54,8 @@ export class GeneralDataComponent implements OnInit {
   getFileByidFileFromUser() {
     this.fileService.getFileByFileIdFromUser().subscribe({
       next: (resp) => {
+        resp.id = this.idFileUser;
         this.img = this.fileService.obtenerImagen(resp);
-        Swal.fire('Success', 'Success!', 'success');
       }
     });
   }
@@ -74,43 +75,86 @@ export class GeneralDataComponent implements OnInit {
   checkImage() {
     if (this.img == '') {
       this.upload();
+      this.setFileToUser();
     } else {
-      //this.modifyFile();
+      this.modifyFile();
     }
   }
 
+  /**
+   * Añade la imagen a la base de datos
+   */
   upload() {
     //Consigo el obejto seleccionado
     if (this.selectedFiles) {
       const file: File | null = this.selectedFiles.item(0);
       if (file) {
         this.currentFile = file;
-        this.selectFile
+        //this.selectFile;
         this.fileService.addFile(this.currentFile).subscribe({
-          next: (event: any) => {
-            if (event instanceof HttpResponse) {
-              this.msg = event.body.message;
-            }
+          next: (resp) => {
+            Swal.fire(
+              'Success!',
+              'The file was successfully uploaded.',
+              'success'
+            );
           },
           error: (err) => {
-            Swal.fire('Error', err.error.message, 'error');
-
-            if (err.error && err.error.message) {
-              this.msg = err.error.message;
-            } else {
-              this.msg = 'The file encountered an error while uploading it.';
-            }
+            Swal.fire(
+              'Error',
+              'The file encountered an error while uploading it.',
+              'error'
+            );
             this.currentFile = undefined;
           },
         });
       }
+    }
+  }
 
-      // modifyFile(){
-      //   if(this.file != undefined)
-      //   this.fileService.modifyFile(this.file, this.file.id).subscribe({
+  /**
+   * Añade la imagen al usuario y la muestra
+   */
+  setFileToUser() {
+    if (this.currentFile)
+      this.fileService.setFileToUser(this.currentFile.name).subscribe({
+        next: (resp) => {
+          this.idFileUser = resp.id;
+          this.img = this.fileService.obtenerImagen(resp);
+        },
+        error: (e) => {
+          Swal.fire('Error', e.error.message, 'error');
+        },
+      });
+  }
 
-      //   })
-      // }
+  /**
+   * Sustituye el archivo original por el nuevo
+   */
+  modifyFile() {
+    if (this.selectedFiles) {
+      const file: File | null = this.selectedFiles.item(0);
+      if (file) {
+        this.currentFile = file;
+        this.fileService.modifyFile(this.currentFile, this.idFileUser).subscribe({
+          next: (resp) => {
+            Swal.fire(
+              'Success!',
+              'The file was successfully uploaded.',
+              'success'
+            );
+          },
+          error: (err) => {
+            Swal.fire(
+              'Error',
+              'The file encountered an error while uploading it.',
+              'error'
+            );
+
+            this.currentFile = undefined;
+          },
+        });
+      }
     }
   }
 }

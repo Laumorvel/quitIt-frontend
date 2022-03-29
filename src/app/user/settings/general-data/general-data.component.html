@@ -10,13 +10,12 @@
       <div>
         <input type="file" class="mt-2" (change)="selectFile($event)" />
         <button
-          class="btn btn-light"
+
+          class="btn btn-dark"
+
           [disabled]="!selectedFiles"
           (click)="checkImage()"
         >Upload</button>
-        <div *ngIf="msg" class="alert alert-secondary" role="alert">
-          {{ msg }}
-        </div>
       </div>
       <div class="h3 mt-3 name">{{ user.name }} {{ user.lastName }}</div>
     </div>
