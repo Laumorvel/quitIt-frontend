@@ -118,6 +118,15 @@ const routes: Routes = [
         (m) => m.CommentsCommunityModule
       ),
   },
+  {
+    path: 'commentsCommunity/:id',
+    canActivate: [AuthGuardGuard, UserGuardGuard],
+    loadChildren: () =>
+      import('./user/comments-community/comments-community.module').then(
+        (m) => m.CommentsCommunityModule
+      ),
+  },
+  { path: 'floatingButton', loadChildren: () => import('./shared/floating-button/floating-button.module').then(m => m.FloatingButtonModule) },
   { path: '**', redirectTo: '' },
 ];
 

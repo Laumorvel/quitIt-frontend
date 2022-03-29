@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subject } from 'rxjs';
 import { User } from 'src/app/public/interfaces/interfaces';
 import Swal from 'sweetalert2';
@@ -9,10 +9,9 @@ import { UserService } from '../services/user.service';
   templateUrl: './ranking-community.component.html',
   styleUrls: ['./ranking-community.component.css']
 })
-export class RankingCommunityComponent implements OnInit {
+export class RankingCommunityComponent implements  OnDestroy, OnInit {
 
   users:User[]=[]
-
 
   dtOptions: DataTables.Settings = {};  
   dtTrigger= new Subject<any>();
@@ -32,7 +31,6 @@ export class RankingCommunityComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-    // Do not forget to unsubscribe the event
     this.dtTrigger.unsubscribe();
   }
 

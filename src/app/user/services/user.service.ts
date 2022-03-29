@@ -50,12 +50,35 @@ export class UserService {
 
   sendIncidence(subject:String,text:String){
     const url = `${ this.baseUrl }/incidence`;
+    const body =  {
+      "text":text,
+      "subject":subject
+                  };
     let token = JSON.parse(<string>localStorage.getItem('token'));
-    const headers = new HttpHeaders()
-      .set('Authorization', `Bearer ${token}`);
-    return this.http.post<Incidence>( url, { headers } )
+    const opcion = new HttpHeaders()
+    .set('Authorization', `Bearer ${token}`);
+    opcion.append('Access-Control-Allow-Origin','*');
+    return this.http.post<Incidence>( url, body, { headers:opcion } )
   }
 
+  addComentario(idIncidencia:number, comentario:Commentario){
+    const url = `${ this.baseUrl }/incidence/${idIncidencia}`;
+
+    let token = JSON.parse(<string>localStorage.getItem('token'));
+    const opcion = new HttpHeaders()
+    .set('Authorization', `Bearer ${token}`);
+    opcion.append('Access-Control-Allow-Origin','*');
+    return this.http.put<Commentario>( url, comentario, { headers:opcion } )
+  }
+
+  buscarComentariosPorId(idC:string){
+    const url = `${this.baseUrl}/commentsCommunity/${idC}`;
+
+    const opcion = new HttpHeaders();
+    opcion.append('Access-Control-Allow-Origin','*');
+
+    return this.http.get<Commentario>(url,{headers:opcion})
+  }
 
   mostrarUsuarios(){
     const url = `${ this.baseUrl }/users`;
