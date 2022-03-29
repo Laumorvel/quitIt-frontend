@@ -44,12 +44,10 @@ export interface Incidence {
 }
 
 export interface FileDB {
+  id: string;
   name: string;
   data: number;
   type: string;
-  text:    null;
-  user:    User;
-  state:   string;
 }
 
 export interface Achievement {
