@@ -121,12 +121,12 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.miFormulario.reset({
-      name: '',
-      lastName: '',
-      email: '',
-      username: '',
-      password: '',
-      password2: ''
+      name: 'aa',
+      lastName: 'aa',
+      email: 'aa@aa.aa',
+      username: 'aa',
+      password: 'aa',
+      password2: 'aa'
     });
   }
 

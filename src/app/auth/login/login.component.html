@@ -1,89 +1,79 @@
-<div class="row text-center  gx-0" >
-    
-<section class="get-in-touch">
+<div class="row text-center gx-0">
+  <section class="get-in-touch">
     <h1 class="title">Login!</h1>
 
-    <div class="col-md-12 offset-md-1">
-        <form
-                class="contact-form row text-center"
-                autocomplete="off"
-                #miFormulario="ngForm"
-                autocomplete="off">
-            
-
-
-            <div class="formulario">
-            <!-- EMAIL -->  
-            <div class="mb-3 row">
-                <div class="col-sm-9 ">
-                    <input type="email"
-                           class="form-control"
-                           [(ngModel)]="email"
-                           name="email"
-                           id="email"
-                           class="input-text js-input"
-                           placeholder="*Email"
-                           required="required">  
-                </div>  
+    <div class="col-md-12 offset-md-1 box-content">
+      <form
+        class="contact-form row text-center"
+        autocomplete="off"
+        #miFormulario="ngForm"
+        autocomplete="off"
+      >
+        <div>
+          <!-- EMAIL -->
+          <div class="mb-3 row justify-content-center">
+            <div class="col-sm-9">
+              <input
+                type="email"
+                class="form-control"
+                [(ngModel)]="email"
+                name="email"
+                id="email"
+                class="input-text js-input"
+                placeholder="*Email"
+                required="required"
+              />
             </div>
-  
-  
-            <!-- PASSWORD -->
-            <div class="mb-3 row">
-             
-              <div class="col-sm-9">
-                  
-                  <input type="password"
-                         class="form-control"
-                         [(ngModel)]="password"
-                         name="password"
-                         id="password"
-                         class="input-text js-input"
-                         placeholder="*Password"
-                         required="required">
-  
-
-              </div>
-
-
-                <!--LOGIN BUTTON-->
-            <div class="row ">
-                <div class="col">
-                    <button type="submit"
-                            [disabled]="miFormulario.invalid"
-                            class="custom-btn btn"
-                            (click)="login()"> 
-                        Enter
-                    </button>
-                </div>
-            </div>
-
-            <div class="row ">
-                <div class="col mt-5">
-                    <span>You do not have an account?</span>
-                    
-            
-                </div>
-            </div>
-            <!--REGISTER BUTTON-->
-            <div class="row ">
-                <div class="col">
-                    <button class="col-md-4 offset-md-1  mt-3 btn m-2 register" 
-                    routerLink="/register" >Register </button>   
-                    
-            
-                </div>
-            </div>
-
-            
           </div>
 
-          
-        </div>
-  
-        
-    </form>
+          <!-- PASSWORD -->
+          <div class="mb-3 row justify-content-center">
+            <div class="col-sm-9">
+              <input
+                type="password"
+                class="form-control"
+                [(ngModel)]="password"
+                name="password"
+                id="password"
+                class="input-text js-input"
+                placeholder="*Password"
+                required="required"
+              />
+            </div>
 
-    
+            <!--LOGIN BUTTON-->
+            <div class="row mt-4">
+              <div class="col">
+                <button
+                  type="submit"
+                  [disabled]="miFormulario.invalid"
+                  class="custom-btn btn"
+                  (click)="login()"
+                >
+                  Enter
+                </button>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col mt-5">
+                <span>Don't you have an account yet?</span>
+              </div>
+            </div>
+            <!--REGISTER BUTTON-->
+            <div class="row">
+              <div class="col">
+                <button
+                  class="col-md-4 offset-md-1 mt-3 btn m-2 register"
+                  routerLink="/register"
+                >
+                  Register
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
 </div>
-</section>

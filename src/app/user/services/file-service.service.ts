@@ -18,8 +18,6 @@ export class FileServiceService {
    * @returns mensage de éxito o error al subir el fichero
    */
   addFile(file: File): Observable<HttpEvent<any>> {
-    let token = JSON.parse(<string>localStorage.getItem('token'));
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     const formData: FormData = new FormData();
     formData.append('file', file);
     const req = new HttpRequest('POST', `${this.urlBase}/file`, formData, {
@@ -38,7 +36,6 @@ export class FileServiceService {
     const formData: FormData = new FormData();
     formData.append('file', file);
     const req = new HttpRequest('PUT', `${this.urlBase}/file/${id}`, formData, {
-
       responseType: 'json',
     });
     return this.http.request(req);

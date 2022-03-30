@@ -1,63 +1,55 @@
 <h2 class="text-center my-5">
-    Hi, {{ nombre }}! Set your ex-smoker information to complete your profile
-  </h2>
-  
-  <form>
-    <div class="row">
-      <div class="form-group text-center col-md-6">
-        <!--Ranges-->
-        <div class="ranges">
-          <label for="formControlRange" class="mb-3"
-            >Cigarettes per day</label
-          >
-  
-          <!--RANGE - FOOD-->
-          <div class="rangeFood">
-            <div class="number mb-3">
-              {{ cigarettesBeforePerDay }}
-            </div>
-            <input
-              type="number"
-              [(ngModel)]="cigarettesBeforePerDay"
-              name="cigarettesBeforePerDay"
-              class="form-control-range"
-              id="cigarettesBeforePerDay"
-              
-            />
-          </div>
+  Hi, {{ nombre }}! Set your ex-smoker information to complete your profile
+</h2>
+
+<form>
+  <!--Ranges-->
+  <div class="row">
+    <!--CIGARETTES PER DAY-->
+    <div class="form-group text-center col-md-6">
+      <label for="formControlRange" class="">Cigarettes per day</label>
+      <div class="cigDay">
+        <div class="number mb-3">
+          {{ cigarettesBeforePerDay }}
         </div>
-      </div>
-        <!--RANGE - SPORT-->
-        <div class="form-group text-center col-md-6">
-          <label for="formControlRange" class="my-3">Money per day</label>
-          <div class="rangeSport">
-            <div class="number mb-3">
-              {{ moneyPerDay }}
-            </div>
-            <input
-              type="number"
-              [(ngModel)]="moneyPerDay"
-              name="moneyPerDay"
-              class="form-control-range"
-              id="moneyPerDay"
-            />
-          </div>
-        </div>
-  
-  
-    </div>
-    <!--BOTÓN SUBMIT - SIGNUP-->
-    <div class="row">
-      <div class="form-group text-center">
-        <div class="col">
-          <button
-            class="btn btn-primary float-center my-5"
-            type="submit"
-            (click)="enviaObjetivos()"
-          >
-            Signup
-          </button>
-        </div>
+        <input
+          type="number"
+          [(ngModel)]="cigarettesBeforePerDay"
+          name="cigarettesBeforePerDay"
+          class="form-control-range"
+          id="cigarettesBeforePerDay"
+        />
       </div>
     </div>
-  </form>
+    <!--MONEY PER DAY-->
+    <div class="form-group text-center col-md-6">
+      <label for="formControlRange" class="">Money per day</label>
+      <div class="mony">
+        <div class="number mb-3">
+          {{ moneyPerDay }}
+        </div>
+        <input
+          type="number"
+          [(ngModel)]="moneyPerDay"
+          name="moneyPerDay"
+          class="form-control-range"
+          id="moneyPerDay"
+        />
+      </div>
+    </div>
+  </div>
+  <!--BOTÓN SUBMIT - SIGNUP-->
+  <div class="row">
+    <div class="form-group text-center">
+      <div class="col">
+        <button
+          class="btn btn-primary float-center my-5 boton"
+          type="submit"
+          (click)="enviaObjetivos()"
+        >
+          Signup
+        </button>
+      </div>
+    </div>
+  </div>
+</form>
