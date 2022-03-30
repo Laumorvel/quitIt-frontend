@@ -1,4 +1,4 @@
-import { HttpResponse } from '@angular/common/http';
+
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/public/interfaces/interfaces';
 import Swal from 'sweetalert2';
@@ -21,7 +21,7 @@ export class GeneralDataComponent implements OnInit {
   currentFile?: File;
   selectedFiles?: FileList;
   msg: string = '';
-  idFileUser: string = ''; //almacena la id de la foto del usuario
+  idFileUser: string = ""; //almacena la id de la foto del usuario
 
   ngOnInit(): void {
     this.getUserData();
@@ -33,7 +33,6 @@ export class GeneralDataComponent implements OnInit {
     this.userService.updateUser().subscribe({
       next: (resp) => {
         this.user = resp;
-        console.log(resp);
       },
       error: (resp) => {
         Swal.fire({
@@ -66,18 +65,18 @@ export class GeneralDataComponent implements OnInit {
    */
   selectFile(event: any): void {
     this.selectedFiles = event.target.files;
-    console.log(this.selectedFiles);
   }
 
   /**
    * Comprueba si se ha subido ya una imagen o no para hacer POST o PUT
    */
   checkImage() {
-    if (this.img == '') {
+    if (this.idFileUser == '' || this.idFileUser == null) {
       this.upload();
       this.setFileToUser();
     } else {
       this.modifyFile();
+      this.setFileToUser();
     }
   }
 
@@ -90,14 +89,10 @@ export class GeneralDataComponent implements OnInit {
       const file: File | null = this.selectedFiles.item(0);
       if (file) {
         this.currentFile = file;
-        //this.selectFile;
         this.fileService.addFile(this.currentFile).subscribe({
           next: (resp) => {
-            Swal.fire(
-              'Success!',
-              'The file was successfully uploaded.',
-              'success'
-            );
+           //Solo debe dar un mensaje de éxito cuando se suba la imagen, que será cuando haga la siguiente petición para buscarla en la bbd
+           //No debe darla aquí, que solo se sube a la bbdd o el usuario recibirá dos avisos
           },
           error: (err) => {
             Swal.fire(
@@ -132,17 +127,14 @@ export class GeneralDataComponent implements OnInit {
    * Sustituye el archivo original por el nuevo
    */
   modifyFile() {
+    console.log("id del arichivo:" + this.idFileUser)
     if (this.selectedFiles) {
       const file: File | null = this.selectedFiles.item(0);
       if (file) {
         this.currentFile = file;
         this.fileService.modifyFile(this.currentFile, this.idFileUser).subscribe({
           next: (resp) => {
-            Swal.fire(
-              'Success!',
-              'The file was successfully uploaded.',
-              'success'
-            );
+
           },
           error: (err) => {
             Swal.fire(

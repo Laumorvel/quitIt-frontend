@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Martel:wght@200&family=Source+Sans+Pro&display=swap');
-*{
-  font-family: 'Martel', serif;
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,500&family=Titan+One&display=swap');
+.title{
+  font-family: 'Titan One', cursive;
 }
 
 .subtitulo{
@@ -8,7 +8,7 @@
 }
 
 .photo {
-  width: 10%;
+  width: 150px;
   background-color: white;
 }
 
