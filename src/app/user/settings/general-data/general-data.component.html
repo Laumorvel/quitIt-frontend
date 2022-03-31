@@ -8,14 +8,15 @@
       </div>
       <!--Subida de imagen-->
       <div>
-        <input type="file" class="mt-2" (change)="selectFile($event)" />
+        <label for="files" class="btn mt-2">Select an image</label><!--Se ha colocado esta label para que no se muestre el texto en castellano-->
+        <input type="file" id="files" class="mt-2" (change)="selectFile($event)" style="display: none;" />
         <button
-
           class="btn btn-dark"
-
           [disabled]="!selectedFiles"
           (click)="checkImage()"
-        >Upload</button>
+        >
+          Upload
+        </button>
       </div>
       <div class="h3 mt-3 name">{{ user.name }} {{ user.lastName }}</div>
     </div>

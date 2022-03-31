@@ -21,3 +21,9 @@
   margin: auto 12rem;
   background-color: #f2f2f2;
 }
+
+label{
+  background-color: #52ab98;
+  margin-right: 2rem;
+  color: white;
+}
