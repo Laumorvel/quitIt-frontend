@@ -121,12 +121,12 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.miFormulario.reset({
-      name: 'aa',
-      lastName: 'aa',
-      email: 'aa@aa.aa',
-      username: 'aa',
-      password: 'aa',
-      password2: 'aa'
+      name: '',
+      lastName: '',
+      email: '',
+      username: '',
+      password: '',
+      password2: ''
     });
   }
 
@@ -159,7 +159,7 @@ export class RegisterComponent implements OnInit {
           condiciones: false
         })
 
-        this.router.navigateByUrl(`/login`); 
+        this.router.navigateByUrl(`/login`);
      }),
       error: resp => {
         Swal.fire({

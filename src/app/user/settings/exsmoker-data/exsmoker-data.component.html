@@ -1,1 +1,46 @@
-<p>exsmoker-data works!</p>
+<div class="row content mt-5" *ngIf="!modificando">
+  <!--NON-SMOKING DATA-->
+  <div class="col-md-4 card card1">
+    <div class="card-body">
+      <h5 class="card-title titulo-card">Smokeless data</h5>
+      <h6 class="card-subtitle mb-2 text-muted">
+        Check your non-smoking tracking
+      </h6>
+      <hr>
+      <div class="card-text">
+        <p>Days without smoking: {{user.daysInARowWithoutSmoking}}</p>
+        <p>Cigarettes avoided: {{user.cigarettesAvoided}}</p>
+        <p>Total time without smoking: {{user.totalTimeWithoutSmoking}}</p>
+        <p>Money saved: {{user.moneySaved}}</p>
+      </div>
+    </div>
+  </div>
+  <!--FAILED DAYS-->
+  <div class="col-md-4 card card2">
+    <div class="card-body">
+      <h5 class="card-title titulo-card">Smoky data</h5>
+      <h6 class="card-subtitle mb-2 text-muted">
+        Check your failures
+      </h6>
+      <hr>
+      <div class="card-text">
+        <p>Days you failed: {{user.smokingDays}}</p>
+        <p>Cigarettes you smoked: {{user.cigarettesSmoked}}</p>
+      </div>
+    </div>
+  </div>
+  <!--FORMER SMOKER DATA-->
+  <div class="col-md-3 card card3">
+    <div class="card-body">
+      <h5 class="card-title titulo-card">Former smoker data</h5>
+      <h6 class="card-subtitle mb-2 text-muted">
+        Check your previous data as a smoker
+      </h6>
+      <hr>
+      <div class="card-text">
+        <p>Money spent per day: {{user.moneyPerDay}}</p>
+        <p>Cigarettes per day: {{user.cigarettesBeforePerDay}}</p>
+      </div>
+    </div>
+  </div>
+</div>
