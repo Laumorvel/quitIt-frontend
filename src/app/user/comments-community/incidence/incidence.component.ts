@@ -81,7 +81,7 @@ this.getComentario();
           title:'Error',
           icon: 'error',
           text:resp.error.mensaje,
-          confirmButtonColor:'#be8f8c'
+          confirmButtonColor:'##52ab98'
         });
       }
    });

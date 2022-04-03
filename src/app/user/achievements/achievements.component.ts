@@ -33,7 +33,7 @@ export class AchievementsComponent implements OnInit {
           title:'Error',
           icon: 'error',
           text:'There are no services available at this time',
-          confirmButtonColor:'#be8f8c'
+          confirmButtonColor:'##52ab98'
         });
       }
     }

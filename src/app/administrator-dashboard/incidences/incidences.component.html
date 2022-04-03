@@ -1,1 +1,27 @@
-<p>incidences works!</p>
+
+ 
+<div class="container">
+                <div class="col-md-12 mb-4 white-text text-center wow fadeIn">
+                    <div class="card">
+                        <div class="card-header text-black-50"><h1>Incidences</h1></div>
+                        <div class="card-body"> 
+
+                            <table class="text-black-50" >
+                                <tr *ngFor="let i of incidencias">
+                                 
+                                  <th>{{i.user.username}}</th>
+                                  <th>{{i.subject}}</th>
+                                  <th>{{i.comment}}</th>
+                                  <th>{{i.state}}</th>
+                                </tr>
+                              
+                            </table>
+                          
+                            
+                        </div> 
+
+                 
+                </div>
+  
+            </div>
+

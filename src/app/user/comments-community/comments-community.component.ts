@@ -39,7 +39,7 @@ export class CommentsCommunityComponent implements OnInit {
           title: 'Error',
           icon: 'error',
           text: 'There are no services available at this time',
-          confirmButtonColor: '#be8f8c',
+          confirmButtonColor: '##52ab98',
         });
       },
     });
@@ -52,7 +52,7 @@ export class CommentsCommunityComponent implements OnInit {
         Swal.fire({
           title: 'Appointment is available',
           icon: 'success',
-          confirmButtonColor: '#be8f8c',
+          confirmButtonColor: '##52ab98',
         });
       },
       error: (resp) => {
@@ -60,7 +60,7 @@ export class CommentsCommunityComponent implements OnInit {
           title: 'Error',
           icon: 'error',
           text: resp.error.mensaje,
-          confirmButtonColor: '#be8f8c',
+          confirmButtonColor: '#52ab98',
         });
       },
     });

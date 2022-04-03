@@ -51,10 +51,22 @@ export class ContactUsComponent implements OnInit {
 
       this.authService.newMensaje(mensaje).subscribe({
         next: resp => {
-          Swal.fire('Success', 'Your message was successfully sent', 'success');
+          Swal.fire(
+            {
+              title:'Success',
+              icon: 'success',
+              text:'Your message was successfully sent',
+              confirmButtonColor:'##52ab98'
+            });
         },
         error: err => {
-          Swal.fire('Error', err.error.message, 'error');
+          Swal.fire(
+            {
+              title:'Error',
+              icon: 'error',
+              text:err.error.message,
+              confirmButtonColor:'##52ab98'
+            });
         }
       })
       this.miFormulario.reset();

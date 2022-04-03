@@ -1,1 +1,13 @@
-<p>administrator-dashboard works!</p>
+
+<div>
+    <div *ngIf="incidencias.length==0" class="text-center">
+        <h1 class="title">Welcome {{user.name}}.</h1>
+        <p>At this time we have not received any incidence from the users of the community. WE ARE DOING A GREAT JOB!</p>
+        <img src="../../assets/working.png" class="imgIncidencia">
+    </div>
+    <div *ngIf="incidencias.length>0" class="text-center">
+        <h1 class="title">Welcome {{user.name}}.</h1>
+        <p>Currently we have a total of {{incidencias.length}} incidents by users of the community. IT'S TIME TO GET DOWN TO WORK!</p>
+        <img src="../../assets/burden.png" class="imgIncidencia">
+    </div>
+</div>

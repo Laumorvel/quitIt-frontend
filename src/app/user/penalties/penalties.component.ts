@@ -17,7 +17,7 @@ export class PenaltiesComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    this. cargarPenalizaciones();
+    this.cargarPenalizaciones();
   }
 
   cargarPenalizaciones(){
@@ -31,7 +31,7 @@ export class PenaltiesComponent implements OnInit {
           title:'Error',
           icon: 'error',
           text:'There are no services available at this time',
-          confirmButtonColor:'#be8f8c'
+          confirmButtonColor:'##52ab98'
         });
       }
     }
