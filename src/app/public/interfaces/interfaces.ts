@@ -70,3 +70,11 @@ export interface MeetUP {
   date:        Date;
   place:       string;
 }
+export interface Incidence {
+  id:      number;
+  subject: string;
+  text:    null;
+  user:    User;
+  comment: null;
+  state:   string;
+}

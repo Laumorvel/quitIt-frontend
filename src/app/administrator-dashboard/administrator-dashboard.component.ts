@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
+import { Incidence, User } from '../public/interfaces/interfaces';
+import { AdminService } from './services/admin.service';
 
 @Component({
   selector: 'app-administrator-dashboard',
@@ -7,9 +10,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdministratorDashboardComponent implements OnInit {
 
-  constructor() { }
+  incidencias:Incidence[]=[];
+  user: User = JSON.parse(<string>localStorage.getItem('user'));
+
+  constructor( private adminService:AdminService) { }
 
   ngOnInit(): void {
+    this.cargarIncidencias();
   }
 
+
+  cargarIncidencias(){
+    this.adminService.buscarIncidencias().subscribe({
+      next: (resp) => {
+        this.incidencias = resp;
+        console.log(resp);
+      },
+      error: (e) => {
+        Swal.fire({
+          title:'Error',
+          icon: 'error',
+          text:'There are no services available at this time',
+          confirmButtonColor:'##52ab98'
+        });
+      }
+    }
+  )
+  }
 }
