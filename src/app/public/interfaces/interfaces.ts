@@ -23,6 +23,10 @@ export interface User {
   daysInARowWithoutSmoking: number;
   cigarettesAvoided: number;
   totalTimeWithoutSmoking: number;
+  groupList: Group[],
+  userList: User[],
+  achievementList: Achievement[],
+  penalties: Penalty[],
   startDate: Date;
   cigarettesBeforePerDay: number;
   moneyPerDay: number;
@@ -30,9 +34,13 @@ export interface User {
   cigarettesSmoked: number;
   moneySaved: number;
   username: string;
-  timeWithoutSmoking: number;
-  moneySmoker: number;
   file: FileDB;
+  lastDateSmoking: Date;
+}
+
+export interface Group{
+  id: number,
+  name: string
 }
 
 export interface Incidence {

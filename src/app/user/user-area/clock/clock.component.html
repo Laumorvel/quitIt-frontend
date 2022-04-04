@@ -1,31 +1,87 @@
-<div class="clock">
-    <div class="contenedor text-center">
-        <div class="tituloOficial">Your progress!</div>
-        <div>
-            <img src="../../../../assets/clock.png" class="imgClock mt-3 mb-3">
-            <p>{{user.daysInARowWithoutSmoking}} days without smoking</p>
-        </div>
+<div class="card mx-5 mt-4">
+  <div class="clock">
+    <div class="contenedor text-center mt-3">
+      <div class="tituloOficial">Your progress!</div>
+      <div>
+        <img src="../../../../assets/clock.png" class="imgClock mt-3 mb-3" />
+        <p>{{ user.daysInARowWithoutSmoking }} days in a row without smoking</p>
       </div>
-</div>
+    </div>
+  </div>
 
-
-<div class="row text-center mt-5">
+  <div class="row text-center mt-5">
     <div class="col-12 progreso">
-        <div class="subtitulo">
-            <label class="progressFont">Smoke free days</label> <img src="../../../../assets/calendar.png" class="miniImg">
-            <p>{{user.daysInARowWithoutSmoking}}    
-        </div>
-
-        <div class="subtitulo">
-            <label class="progressFont">Cigarettes avoided</label><img src="../../../../assets/no-smoking.png" class="miniImg">
-            <p>{{dineroAhorrado}}
-        </div>
-        
-        <div class="subtitulo">
-             <label class="progressFont">Money Saved</label><img src="../../../../assets/piggy-bank.png" class="miniImg">
-            <p>{{cigarrosNoFumados}}
-        </div>
-
+      <div class="subtitulo">
+        <label class="progressFont">Smoke free days</label>
+        <img src="../../../../assets/calendar.png" class="miniImg" />
+        <p>{{ user.totalTimeWithoutSmoking }}</p>
       </div>
-</div>
 
+      <div class="subtitulo">
+        <label class="progressFont">Cigarettes avoided</label
+        ><img src="../../../../assets/no-smoking.png" class="miniImg" />
+        <p>{{ user.cigarettesAvoided }}</p>
+      </div>
+
+      <div class="subtitulo">
+        <label class="progressFont">Money Saved</label
+        ><img src="../../../../assets/piggy-bank.png" class="miniImg" />
+        <p>{{ user.moneySaved }}€</p>
+      </div>
+    </div>
+  </div>
+  <div class="text-center">
+    <button
+      class="btn fail mb-4"
+      data-bs-toggle="modal"
+      data-bs-target="#cigarettesModal"
+      routerLinkActive="active"
+    >
+      I failed!
+    </button>
+
+    <div
+      class="modal fade"
+      id="cigarettesModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content text-center">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              We're sorry to hear that :( ...
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">How many cigarettes did you smoke?</div>
+          <div class="mb-2">
+            <input
+              type="number"
+              [(ngModel)]="cigarettes"
+              min="1"
+              name="cigarettes"
+              id="cigarettes"
+            />
+          </div>
+          <div class="modal-footer justify-content-center">
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+              (click)="userSmoked()"
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

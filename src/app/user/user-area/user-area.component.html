@@ -1,43 +1,60 @@
 <app-clock></app-clock>
-
-<div class="row">
+<div class="content mt-3">
+  <div class="row justify-content-around">
     <!--COMMUNITY-->
-    <div class="card__container m-lg-auto m-md-auto separacion" routerLink="/commentsCommunity">
-        <div class="card__description">Community</div><br>
-        <img src="../../../assets/earth.png"  alt="imagen de un minicarro de la compra y un ordenador portatil" class="card__photo imgEarth">
-       
+    <div class="card col-md-3" routerLink="/commentsCommunity">
+      <div class="title">Community</div>
+      <br />
+      <img
+        src="../../../assets/earth.png"
+        alt="imagen de un minicarro de la compra y un ordenador portatil"
+        class="img"
+      />
     </div>
-</div>
+    <!--MEET UPS-->
+    <div class="card col-md-3" routerLink="/meetUps">
+      <div class="title">Meet ups</div>
+      <img
+        src="../../../assets/evento.png"
+        alt="imagen de un minicarro de la compra y un ordenador portatil"
+        class="img"
+      />
+    </div>
 
-
-
-<div class="row paddingCards " >
-  
-    <div class="card__container2 m-lg-auto m-md-auto separacion" routerLink="/achievements">
-        <div class="card__description">Achievements</div>
-            <img src="../../../assets/badge.png"   alt="imagen de un minicarro de la compra y un ordenador portatil" class="card__photo imgAchievement">
-        </div>
-  
-        <div class="card__container2 m-lg-auto m-md-auto separacion" routerLink="/penalties">
-            <div class="card__description">Penalties</div>
-            <img src="../../../assets/red-card.png"  alt="imagen constituida con fragmentos de diferentes elementos como un ordenador, un minicarro de la compra, dinero y un cartel luminoso" class="card__photo imgAchievement">
-        </div>
-  
-        
+    <!--RANKING-->
+    <div class="card col-md-3" routerLink="/rankingCommunity">
+      <div class="title">Ranking</div>
+      <br />
+      <img
+        src="../../../assets/ranking.png"
+        alt="imagen de un minicarro de la compra y un ordenador portatil"
+        class="img"
+      />
+    </div>
   </div>
 
+  <div class="row justify-content-around">
+    <!--ACHIEVEMENTS-->
+    <div class="card col-md-3" routerLink="/achievements">
+      <div class="title">Achievements</div>
+      <img
+        src="../../../assets/badge.png"
+        alt="imagen de un minicarro de la compra y un ordenador portatil"
+        class="img"
+      />
+    </div>
 
-
-<!--RANKING-->
-<div class="card__container m-lg-auto m-md-auto separacion"  routerLink="/rankingCommunity" >
-    <div class="card__description">Ranking</div><br>
-    <img src="../../../assets/ranking.png"  alt="imagen de un minicarro de la compra y un ordenador portatil" class="card__photo imgEarth">
+    <!--PENALTIES-->
+    <div class="card col-md-3" routerLink="/penalties">
+      <div class="title">Penalties</div>
+      <img
+        src="../../../assets/red-card.png"
+        alt="imagen constituida con fragmentos de diferentes elementos como un ordenador, un minicarro de la compra, dinero y un cartel luminoso"
+        class="img"
+      />
+    </div>
+  </div>
 </div>
 
-<!--MEET UPS-->
-<div class="card__container m-lg-auto m-md-auto separacion" routerLink="/meetUps">
-    <div class="card__description">Meet ups</div>
-    <img src="../../../assets/evento.png"  alt="imagen de un minicarro de la compra y un ordenador portatil" class="card__photo imgEarth"> 
-</div>
 
 <app-floating-button ubicacion="User area"></app-floating-button>
