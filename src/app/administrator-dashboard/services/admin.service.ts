@@ -34,6 +34,13 @@ export class AdminService {
   }
 
 
+  cambiarEstadoIncidencia(id:number, estado:String ){
+    const url = `${this.baseUrl}/incidence/${id}`;
+    const body =  estado;
+    const opcion = new HttpHeaders();
+    opcion.append('Access-Control-Allow-Origin','*');
+    return this.http.put<Incidence[]>(url, body,{headers:opcion});
+  }
 
 
 

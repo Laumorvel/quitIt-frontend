@@ -60,7 +60,26 @@ export class IncidencesComponent implements OnInit {
   }
 
 
-
+  cambiarEstadoIncidencia(incidencia:number, estado:String ){
+    this.adminService.cambiarEstadoIncidencia(incidencia,estado)
+    .subscribe({
+      next: (resp => {
+        Swal.fire({
+          title:'Your appointment has been requested successfully',
+          icon: 'success',
+          confirmButtonColor:'#be8f8c'
+        });
+     }),
+      error: resp => {
+        Swal.fire({
+          title:'Error',
+          icon: 'error',
+          text:resp.error.mensaje,
+          confirmButtonColor:'#be8f8c'
+        });
+      }
+   });
+  }
 
 
 }
