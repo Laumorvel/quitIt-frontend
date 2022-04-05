@@ -20,7 +20,9 @@
                                     <th>{{i.comment.text}}</th>                                    
                                     <th>State:{{i.state}}
                                         <select >
-                                            
+                                            <option (click)="cambiarEstadoIncidencia(i.id, 'PENDING')">PENDING</option>
+                                            <option (click)="cambiarEstadoIncidencia(i.id, 'IN_PROCESS')">IN PROCESS</option>
+                                            <option (click)="cambiarEstadoIncidencia(i.id, 'RESULT')">RESULT</option>
                                         </select>
                                     </th>
                                     <th><button (click)="deleteComment(i.comment.id)">Delete</button></th>
