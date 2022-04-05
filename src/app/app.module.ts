@@ -13,7 +13,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent, NavbarComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, NoopAnimationsModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, NoopAnimationsModule, SettingsModule],
   providers: [AuthGuardGuard, AdminGuardGuard, UserGuardGuard],
   bootstrap: [AppComponent]
 })

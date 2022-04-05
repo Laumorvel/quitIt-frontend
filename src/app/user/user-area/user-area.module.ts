@@ -6,6 +6,7 @@ import { UserAreaComponent } from './user-area.component';
 import { ClockComponent } from './clock/clock.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FloatingButtonModule } from '../../shared/floating-button/floating-button.module';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { FloatingButtonModule } from '../../shared/floating-button/floating-butt
     CommonModule,
     UserAreaRoutingModule,
     HttpClientModule,
-    FloatingButtonModule
+    FloatingButtonModule,
+    FormsModule
   ]
 })
 export class UserAreaModule { }

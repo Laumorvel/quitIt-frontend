@@ -21,3 +21,7 @@ p{
 .titulo-card{
   font-weight: bold;
 }
+
+.card{
+  background-color: #f2f2f2  ;
+}

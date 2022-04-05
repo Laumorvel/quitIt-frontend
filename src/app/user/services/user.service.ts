@@ -117,4 +117,17 @@ export class UserService {
 
     return this.http.get<MeetUP[]>(url, { headers: opcion });
   }
+
+  /**
+   * Actualiza la información del usuario cuando este fuma.
+   * @param cigarettes
+   * @returns ususario con su info actualizada
+   */
+  userSmoked(cigarettes: number, user:User){
+    const url = `${this.baseUrl}/user?cigarettes=${cigarettes}`;
+    let token = JSON.parse(<string>localStorage.getItem('token'));
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    let body = user;
+    return this.http.put<User>(url, body, { headers });
+  }
 }
