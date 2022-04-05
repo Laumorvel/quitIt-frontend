@@ -1,4 +1,3 @@
-
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,500&family=Titan+One&display=swap");
 
 
@@ -39,11 +38,12 @@ p {
 }
 
 .fail {
-  background-color: #ffffff ;
+  background-color: #52ab98;
 }
 
 .fail:hover {
-  background-color: #52ab98  ;
+  background-color: #2b6777;
+
 }
 
 

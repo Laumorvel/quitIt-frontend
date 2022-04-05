@@ -3,27 +3,28 @@
 
 .title {
   font-family: "Titan One", cursive;
-}
-
-.imgAchievement {
-  width: 180px;
+  margin-top: 1.5rem;
 }
 
 .img {
-  width: 150%;
+  width: 40%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .content {
-  margin-right: 3.7rem;
-  margin-left: 3.5rem;
+  margin-right: 2.3rem;
+  margin-left: 2.3rem;
 }
 
 .card {
   margin-bottom: 1rem;
-  padding: 8rem;
+  height: 12rem;
 }
 
 .card:hover{
   background-color: #c8d8e4;
   cursor: pointer;
 }
+
