@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Incidence } from 'src/app/public/interfaces/interfaces';
 import { environment } from 'src/environments/environment';
+import { Commentario } from '../../public/interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -22,4 +23,20 @@ export class AdminService {
 
     return this.http.get<Incidence[]>(url, { headers: opcion });
   }
+
+
+  deleteComment(id:number){
+    const url = `${this.baseUrl}/commentsCommunity/${id}`;
+    let token = JSON.parse(<string>localStorage.getItem('token'));
+    const headers = new HttpHeaders()
+      .set('Authorization', `Bearer ${token}`);
+    return this.http.delete<Commentario[]>(url, {headers});
+  }
+
+
+
+
+
+
+
 }

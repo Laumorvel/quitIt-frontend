@@ -7,12 +7,23 @@
                         <div class="card-body"> 
 
                             <table class="text-black-50" >
+                                <tr >
+                                    <th>Complainant </th>
+                                    <th>Subject</th>   
+                                    <th>Comment</th>                                    
+                                    <th>State</th>
+                                    <th>Delete comment</th>
+                                </tr>
                                 <tr *ngFor="let i of incidencias">
-                                 
-                                  <th>{{i.user.username}}</th>
-                                  <th>{{i.subject}}</th>
-                                  <th>{{i.comment}}</th>
-                                  <th>{{i.state}}</th>
+                                    <th>{{i.user.username}}</th>
+                                    <th>{{i.subject}}</th>   
+                                    <th>{{i.comment.text}}</th>                                    
+                                    <th>State:{{i.state}}
+                                        <select >
+                                            
+                                        </select>
+                                    </th>
+                                    <th><button (click)="deleteComment(i.comment.id)">Delete</button></th>
                                 </tr>
                               
                             </table>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Incidence } from 'src/app/public/interfaces/interfaces';
 import Swal from 'sweetalert2';
 import { AdminService } from '../services/admin.service';
+import { Commentario } from '../../public/interfaces/interfaces';
 
 @Component({
   selector: 'app-incidences',
@@ -11,6 +12,7 @@ import { AdminService } from '../services/admin.service';
 export class IncidencesComponent implements OnInit {
 
   incidencias:Incidence[]=[];
+
   constructor(private adminService:AdminService) { }
 
   ngOnInit(): void {
@@ -21,7 +23,6 @@ export class IncidencesComponent implements OnInit {
     this.adminService.buscarIncidencias().subscribe({
       next: (resp) => {
         this.incidencias = resp;
-        console.log(resp);
       },
       error: (e) => {
         Swal.fire({
@@ -34,5 +35,32 @@ export class IncidencesComponent implements OnInit {
     }
   )
   }
+
+  deleteComment(id:number){
+    this.adminService.deleteComment(id)
+    .subscribe({
+      next: (resp => {
+        this.cargarIncidencias();
+     }),
+      error: resp => {
+        if(resp.message==null){
+          this.cargarIncidencias();
+        }
+        else{
+          Swal.fire({
+            title:'Error',
+            icon: 'error',
+            text:'The selected appointment could not be deleted',
+            confirmButtonColor:'##52ab98'
+          });
+        }
+       
+      }
+   });
+  }
+
+
+
+
 
 }

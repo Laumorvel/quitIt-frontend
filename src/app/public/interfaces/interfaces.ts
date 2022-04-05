@@ -75,6 +75,6 @@ export interface Incidence {
   subject: string;
   text:    null;
   user:    User;
-  comment: null;
+  comment: Commentario;
   state:   string;
 }
