@@ -6,54 +6,61 @@ import { UserService } from '../../services/user.service';
 @Component({
   selector: 'app-clock',
   templateUrl: './clock.component.html',
-  styleUrls: ['./clock.component.css']
+  styleUrls: ['./clock.component.css'],
 })
 export class ClockComponent implements OnInit {
-
-
   user: User = JSON.parse(<string>localStorage.getItem('user'));
-  diasSinFumar!:number;
-  dineroAhorrado!:number;
-  cigarrosNoFumados!:number;
+  cigarettes: number = 0;
 
-  constructor(private userService:UserService) { }
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {
     this.updateUserDAta();
-    this.calcularDineroAhorrado();
-    this.calcularCigarrosNoFumados();
+    console.log(this.user);
+    // this.calcularDineroAhorrado();
+    //this.calcularCigarrosNoFumados();
   }
 
- updateUserDAta(){
-   this.userService.updateUser()
-    .subscribe({
-      next: (resp => {
-        //this.user=resp;
-
+  updateUserDAta() {
+    this.userService.updateUser().subscribe({
+      next: (resp) => {
+        this.user = resp;
         localStorage.setItem('user', JSON.stringify(resp));
-        console.log(this.user)
-     }),
-      error: resp => {
+      },
+      error: (resp) => {
         Swal.fire({
-          title:'Error',
+          title: 'Error',
           icon: 'error',
-          text:resp.error.mensaje,
-          confirmButtonColor:'#52ab98'
+          text: resp.error.mensaje,
+          confirmButtonColor: '#52ab98',
         });
-      }
-   });
+      },
+    });
   }
 
-
-  calcularDineroAhorrado(){
-    this.dineroAhorrado=this.user.moneyPerDay * this.user.daysInARowWithoutSmoking
-    console.log(this.dineroAhorrado)
+  userSmoked() {
+    this.userService.userSmoked(this.cigarettes, this.user).subscribe({
+      next: resp => {
+        this.user = resp;
+        localStorage.setItem('user', JSON.stringify(resp));
+      },
+      error: (resp) => {
+        Swal.fire({
+          title: 'Error',
+          icon: 'error',
+          text: resp.error.mensaje,
+          confirmButtonColor: '#52ab98',
+        });
+      },
+    });
   }
 
-  calcularCigarrosNoFumados(){
-    this.cigarrosNoFumados=this.user.daysInARowWithoutSmoking*this.user.cigarettesAvoided
-  }
+  // calcularDineroAhorrado(){
+  //   this.dineroAhorrado=this.user.moneyPerDay * this.user.daysInARowWithoutSmoking
+  //   console.log(this.dineroAhorrado)
+  // }
 
-
+  // calcularCigarrosNoFumados(){
+  //   this.cigarrosNoFumados=this.user.daysInARowWithoutSmoking*this.user.cigarettesAvoided
+  // }
 }
-
