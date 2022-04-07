@@ -46,41 +46,38 @@ export class UserService {
     return this.http.post<Commentario>(url, body, { headers: opcion });
   }
 
-
-  sendIncidence(subject:String,text:String){
-    const url = `${ this.baseUrl }/incidence`;
-    const body =  {
-      "text":text,
-      "subject":subject
-                  };
+  sendIncidence(subject: String, text: String) {
+    const url = `${this.baseUrl}/incidence`;
+    const body = {
+      text: text,
+      subject: subject,
+    };
     let token = JSON.parse(<string>localStorage.getItem('token'));
-    const opcion = new HttpHeaders()
-    .set('Authorization', `Bearer ${token}`);
-    opcion.append('Access-Control-Allow-Origin','*');
-    return this.http.post<Incidence>( url, body, { headers:opcion } )
+    const opcion = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    opcion.append('Access-Control-Allow-Origin', '*');
+    return this.http.post<Incidence>(url, body, { headers: opcion });
   }
 
-  addComentario(idIncidencia:number, comentario:Commentario){
-    const url = `${ this.baseUrl }/incidence/${idIncidencia}`;
+  addComentario(idIncidencia: number, comentario: Commentario) {
+    const url = `${this.baseUrl}/incidence/${idIncidencia}`;
 
     let token = JSON.parse(<string>localStorage.getItem('token'));
-    const opcion = new HttpHeaders()
-    .set('Authorization', `Bearer ${token}`);
-    opcion.append('Access-Control-Allow-Origin','*');
-    return this.http.put<Commentario>( url, comentario, { headers:opcion } )
+    const opcion = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    opcion.append('Access-Control-Allow-Origin', '*');
+    return this.http.put<Commentario>(url, comentario, { headers: opcion });
   }
 
-  buscarComentariosPorId(idC:string){
+  buscarComentariosPorId(idC: string) {
     const url = `${this.baseUrl}/commentsCommunity/${idC}`;
 
     const opcion = new HttpHeaders();
-    opcion.append('Access-Control-Allow-Origin','*');
+    opcion.append('Access-Control-Allow-Origin', '*');
 
-    return this.http.get<Commentario>(url,{headers:opcion})
+    return this.http.get<Commentario>(url, { headers: opcion });
   }
 
-  mostrarUsuarios(){
-    const url = `${ this.baseUrl }/users`;
+  mostrarUsuarios() {
+    const url = `${this.baseUrl}/users`;
     let token = JSON.parse(<string>localStorage.getItem('token'));
     const opcion = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     opcion.append('Access-Control-Allow-Origin', '*');
@@ -123,8 +120,36 @@ export class UserService {
    * @param cigarettes
    * @returns ususario con su info actualizada
    */
-  userSmoked(cigarettes: number, user:User){
+  userSmoked(cigarettes: number, user: User) {
     const url = `${this.baseUrl}/user?cigarettes=${cigarettes}`;
+    let token = JSON.parse(<string>localStorage.getItem('token'));
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    let body = user;
+    return this.http.put<User>(url, body, { headers });
+  }
+
+  /**
+   * Modifica los datos iniciales del usuario (dinero que gastaba como fumador y cigarros que fumaba al día)
+   * @param user
+   * @param cigarettes
+   * @param money
+   * @returns usuario con los datos modificados
+   */
+  changeExSmokerData(user: User, cigarettes: number, money: number) {
+    const url = `${this.baseUrl}/user?money=${money}&cigarettes=${cigarettes}`;
+    let token = JSON.parse(<string>localStorage.getItem('token'));
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    let body = user;
+    return this.http.put<User>(url, body, { headers });
+  }
+
+  /**
+   * Resetea los valores del usuario para que pueda volver a empezar con su tracking para dejar de fumar
+   * @param user
+   * @returns user con valores a 0 excepto los iniciales de registro
+   */
+  reset(user: User){
+    const url = `${this.baseUrl}/user?reset=${true}`;
     let token = JSON.parse(<string>localStorage.getItem('token'));
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     let body = user;

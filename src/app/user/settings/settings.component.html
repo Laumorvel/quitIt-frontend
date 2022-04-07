@@ -15,6 +15,7 @@
         aria-controls="v-pills-profile"
         aria-selected="false"
         [routerLink]="[{ outlets: { setting: ['generalData'] } }]"
+        (click)="clicked = true"
         >General data</a
       >
       <a
@@ -26,6 +27,7 @@
         aria-controls="v-pills-messages"
         aria-selected="false"
         [routerLink]="[{ outlets: { setting: ['exSmokerData'] } }]"
+        (click)="clicked = true"
         >Smoking data</a
       >
       <a
@@ -38,6 +40,7 @@
         aria-controls="v-pills-settings"
         aria-selected="false"
         [routerLink]="[{ outlets: { setting: ['changePass'] } }]"
+        (click)="clicked = true"
         >Change password</a
       >
 
@@ -53,8 +56,8 @@
   <!--Router outlet auxiliar-->
   <div class="col-10">
     <!--Texto auxiliar-->
-    <div class="text-center">
-      <h4 class="my-4 title">Change and manage your personal data</h4>
+    <div *ngIf="clicked">
+      <app-show-image></app-show-image>
     </div>
     <router-outlet name="setting"></router-outlet>
   </div>
