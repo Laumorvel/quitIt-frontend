@@ -1,4 +1,4 @@
-<div class="row content mt-5" *ngIf="!modificando">
+<div class="row content mt-5">
   <!--NON-SMOKING DATA-->
   <div class="col-md-4 card card1">
     <div class="card-body">
@@ -6,12 +6,16 @@
       <h6 class="card-subtitle mb-2 text-muted">
         Check your non-smoking tracking
       </h6>
-      <hr>
+      <hr />
       <div class="card-text">
-        <p>Days in a row without smoking: {{user.daysInARowWithoutSmoking}}</p>
-        <p>Cigarettes avoided: {{user.cigarettesAvoided}}</p>
-        <p>Total time without smoking: {{user.totalTimeWithoutSmoking}}</p>
-        <p>Money saved: {{user.moneySaved}}€</p>
+        <p>
+          Days in a row without smoking: {{ user.daysInARowWithoutSmoking }}
+        </p>
+        <p>Cigarettes avoided: {{ user.cigarettesAvoided }}</p>
+        <p>
+          Total time without smoking: {{ user.totalTimeWithoutSmoking }} days
+        </p>
+        <p>Money saved: {{ user.moneySaved }}€</p>
       </div>
     </div>
   </div>
@@ -19,13 +23,11 @@
   <div class="col-md-4 card card2">
     <div class="card-body">
       <h5 class="card-title titulo-card">Smoky data</h5>
-      <h6 class="card-subtitle mb-2 text-muted">
-        Check your failures
-      </h6>
-      <hr>
+      <h6 class="card-subtitle mb-2 text-muted">Check your failures</h6>
+      <hr />
       <div class="card-text">
-        <p>Days you failed: {{user.smokingDays}}</p>
-        <p>Cigarettes you smoked: {{user.cigarettesSmoked}}</p>
+        <p>Days you failed: {{ user.smokingDays }}</p>
+        <p>Cigarettes you smoked: {{ user.cigarettesSmoked }}</p>
       </div>
     </div>
   </div>
@@ -36,10 +38,84 @@
       <h6 class="card-subtitle mb-2 text-muted">
         Check your previous data as a smoker
       </h6>
-      <hr>
-      <div class="card-text">
-        <p>Money spent per day: {{user.moneyPerDay}}€</p>
-        <p>Cigarettes per day: {{user.cigarettesBeforePerDay}}</p>
+      <hr />
+      <div *ngIf="!modificando; else elseBlock">
+        <div class="card-text">
+          <p>Money spent per day: {{ user.moneyPerDay }}€</p>
+          <p>Cigarettes per day: {{ user.cigarettesBeforePerDay }}</p>
+        </div>
+        <!--Botón para modificar datos iniciales-->
+        <div class="text-center">
+          <button class="btn boton" (click)="showInputs()">EDIT</button>
+        </div>
+      </div>
+      <ng-template #elseBlock>
+        <div class="card-text">
+          <label for="money">Money spent per day:</label
+          ><input [(ngModel)]="money" type="number" name="money" min="1" />
+          <label for="cigarettes">Cigarettes per day:</label
+          ><input
+            [(ngModel)]="cigarettes"
+            type="number"
+            name="cigarettes"
+            min="1"
+          />
+        </div>
+        <div class="text-center mt-2">
+          <button class="btn boton" (click)="changeExSmokerData()">OK</button>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>
+
+<!--Botón para resetear datos recogidos-->
+<div class="text-center mt-3">
+  <button
+    class="btn boton"
+    data-bs-toggle="modal"
+    data-bs-target="#exampleModalReset"
+  >
+    RESET
+  </button>
+  <!--MODAL-->
+  <div
+    class="modal fade"
+    id="exampleModalReset"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content text-center">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">
+            Are you sure you want to reset all your collected data until now?
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          It means that you'll set all these data to zero so you can start all
+          over again
+        </div>
+        <div class="modal-footer justify-content-center">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+            No
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-dismiss="modal"
+            (click)="reset()"
+          >
+            Yes
+          </button>
+        </div>
       </div>
     </div>
   </div>

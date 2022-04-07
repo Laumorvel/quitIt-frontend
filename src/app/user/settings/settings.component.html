@@ -15,6 +15,7 @@
         aria-controls="v-pills-profile"
         aria-selected="false"
         [routerLink]="[{ outlets: { setting: ['generalData'] } }]"
+        (click)="clicked = true"
         >General data</a
       >
       <a
@@ -26,6 +27,7 @@
         aria-controls="v-pills-messages"
         aria-selected="false"
         [routerLink]="[{ outlets: { setting: ['exSmokerData'] } }]"
+        (click)="clicked = true"
         >Smoking data</a
       >
       <a
@@ -38,19 +40,14 @@
         aria-controls="v-pills-settings"
         aria-selected="false"
         [routerLink]="[{ outlets: { setting: ['changePass'] } }]"
+        (click)="clicked = true"
         >Change password</a
       >
 
       <a
         class="nav-link text-dark"
-        id="v-pills-settings-tab"
-        data-toggle="pill"
-        routerLinkActive="active"
-        href="#v-pills-settings"
-        role="tab"
-        aria-controls="v-pills-settings"
-        aria-selected="false"
         href="https://www.amazon.es/s?k=stop+smoking+books&__mk_es_ES=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=P0L10B3DDN7L&sprefix=stop+smoking+books%2Caps%2C87&ref=nb_sb_noss"
+        target="_blank"
         >Stop smoking books</a
       >
     </div>
@@ -59,8 +56,8 @@
   <!--Router outlet auxiliar-->
   <div class="col-10">
     <!--Texto auxiliar-->
-    <div class="text-center">
-      <h4 class="my-4 title">Change and manage your personal data</h4>
+    <div *ngIf="clicked">
+      <app-show-image></app-show-image>
     </div>
     <router-outlet name="setting"></router-outlet>
   </div>
