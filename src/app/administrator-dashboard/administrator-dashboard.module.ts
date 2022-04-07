@@ -5,6 +5,7 @@ import { AdministratorDashboardRoutingModule } from './administrator-dashboard-r
 import { AdministratorDashboardComponent } from './administrator-dashboard.component';
 import { IncidencesComponent } from './incidences/incidences.component';
 import { ShowUsersComponent } from './show-users/show-users.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { ShowUsersComponent } from './show-users/show-users.component';
   ],
   imports: [
     CommonModule,
-    AdministratorDashboardRoutingModule
+    AdministratorDashboardRoutingModule,
+    FormsModule
   ],
   exports:[
   ]

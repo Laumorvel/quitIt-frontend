@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Incidence } from 'src/app/public/interfaces/interfaces';
+import { Incidence, User } from 'src/app/public/interfaces/interfaces';
 import { environment } from 'src/environments/environment';
 import { Commentario } from '../../public/interfaces/interfaces';
 
@@ -43,7 +43,15 @@ export class AdminService {
   }
 
 
+  buscarUsuariosCoincidentes(busqueda:String){
+    const url = `${this.baseUrl}/user?username=${busqueda}`;
 
+    let token = JSON.parse(<string>localStorage.getItem('token'));
+    const opcion = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    opcion.append('Access-Control-Allow-Origin', '*');
+
+    return this.http.get<User>(url, { headers: opcion });
+  }
 
 
 }
