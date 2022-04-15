@@ -35,23 +35,27 @@ export class AdminService {
 
 
   cambiarEstadoIncidencia(id:number, estado:String ){
-    const url = `${this.baseUrl}/incidence/${id}`;
-    const body =  estado;
-    const opcion = new HttpHeaders();
-    opcion.append('Access-Control-Allow-Origin','*');
-    return this.http.put<Incidence[]>(url, body,{headers:opcion});
-  }
-
-
-  buscarUsuariosCoincidentes(busqueda:String){
-    const url = `${this.baseUrl}/user?username=${busqueda}`;
-
+    const url = `${this.baseUrl}/incidence/${id}?state=${estado}`;
     let token = JSON.parse(<string>localStorage.getItem('token'));
     const opcion = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     opcion.append('Access-Control-Allow-Origin', '*');
+    return this.http.put<Incidence>(url, { headers: opcion });
+  }
 
+  buscarUsuariosCoincidentes(busqueda:String){
+    const url = `${this.baseUrl}/user?username=${busqueda}`;
+    let token = JSON.parse(<string>localStorage.getItem('token'));
+    const opcion = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    opcion.append('Access-Control-Allow-Origin', '*');
     return this.http.get<User>(url, { headers: opcion });
   }
 
+  deleteUser(id:number){
+     const url = `${this.baseUrl}/user/${id}`;
+    let token = JSON.parse(<string>localStorage.getItem('token'));
+    const opcion = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    opcion.append('Access-Control-Allow-Origin', '*');
+    return this.http.delete<User[]>(url, { headers: opcion });
+  }
 
 }

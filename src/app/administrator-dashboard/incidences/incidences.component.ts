@@ -23,6 +23,7 @@ export class IncidencesComponent implements OnInit {
     this.adminService.buscarIncidencias().subscribe({
       next: (resp) => {
         this.incidencias = resp;
+        console.log(resp)
       },
       error: (e) => {
         Swal.fire({
@@ -64,10 +65,11 @@ export class IncidencesComponent implements OnInit {
     this.adminService.cambiarEstadoIncidencia(incidencia,estado)
     .subscribe({
       next: (resp => {
+        this.cargarIncidencias();
         Swal.fire({
           title:'Your appointment has been requested successfully',
           icon: 'success',
-          confirmButtonColor:'#be8f8c'
+          confirmButtonColor:'##52ab98'
         });
      }),
       error: resp => {
@@ -75,7 +77,7 @@ export class IncidencesComponent implements OnInit {
           title:'Error',
           icon: 'error',
           text:resp.error.mensaje,
-          confirmButtonColor:'#be8f8c'
+          confirmButtonColor:'##52ab98'
         });
       }
    });
