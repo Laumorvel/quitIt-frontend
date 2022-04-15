@@ -1,4 +1,6 @@
 /*SEARCH*/
+
+
 * {
     outline: none;
   }
@@ -155,161 +157,177 @@
   
 
 /*CARD*/
-/*Global styles*/
-body{
-  font-family: "Titillium Web", serif;
-}
-*{
-  text-decoration: none;
-  list-style-type: none;
+* {
+  box-sizing: border-box;
 }
 
-.profile-card{
-  position: relative;
-  /*margin: 0 auto;*/
-  border: 1px solid gray;
-  width: 320px;
-  transition: all 150ms ease-in-out;
-}
-.profile-card:hover{
-  border: 1px solid blue;
-  box-shadow: 0 0 10px 1px;
+body,
+html {
+  font-family: "Assistant", sans-serif;
+  overflow-x: hidden;
 }
 
-/*position of header content*/
-.card-header{
-  width: 320px;
-  padding:10px 0 100px 0;
-  margin: 0 auto;
-  text-align: center;
-  background: #2196F3;
-  color: #fff;
-}
-.card-header:hover{
-  background: #0960a5;
-}
-
-/*profile info*/
-.card-info{
-  padding: 1em;
-  margin: 50px 5px 0 5px;
-}
-/*Image position*/
-.image1{
-  position:absolute;
-  top:234px;
-  margin-left: 5.35rem;
-  margin-right: 5.35rem;
-  width: 150px;
-  height: 150px;
-  border-radius:50%;
-  transition: all 150ms ease-in-out;
-}
-.image1:hover{
-  border-radius: 10%;
-}
-/*card footer*/
-.card-footer{
-  border-top: 1px solid gray;
-  width: 310px;
-  margin: 0 auto;
-}
-.card-footer ul li{
-  display: inline-block;
-}
-.card-footer ul li:first-child{
-  margin-right: 116px;
-}
-.bottom h2{
-  text-align: center;
-  margin-bottom: 0;
-}
-/*========================================================
-END OF NORMAL CSS STYLES FOR PROFILE CARD
-=========================================================*/
-/*========================================================
-START OF PROFILE CARD FLEXBOX VERSION
-=========================================================*/
-.profile-card2{
-  width:320px;
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  border: 1px solid gray;
-  transition: all 150ms ease-in-out;
-}
-.profile-card2:hover{
-  border: 1px solid blue;
-  box-shadow: 0 0 10px 1px;
-}
-.card-header2{
-  align-self: center;
-  text-align: center;
-  background: #2196F3;
-  color: #FAFAFA;
-  border-left: 66px solid #2196F3;
-  border-right: 65px solid #2196F3;
-  padding-bottom: 115px;
-  transition: all 150ms ease-in-out;
-}
-.card-header2:hover{
-  background: #0960a5;
-  border-left: 66px solid #0960a5;
-  border-right: 65px solid #0960a5;
-}
-.image2{
-  margin-top: -90px;
-  height: 150px;
-  width: 150px;
-  align-self: center;
-  border-radius: 50%;
-  transition: all 150ms ease-in-out;
-  z-index: 100;
-}
-.image2:hover{
-  border-radius: 10%;
-}
-.card-info2{
-  padding: 1em;
-}
-.bottom2 h2{
-  text-align:center;
-}
-.card-footer2{
-  width: 310px;
-  border-top: 1px solid gray;
-  align-self: center;
-}
-.card-footer2 ul{
-  display:flex;
-  justify-content: flex-start;;
-}
-.card-footer2 ul li:last-child{
-  margin-left: 85px;
-}
-
-/*COMPARE CSS VS FLEXBOX*/
-.compare{
-  display:flex;
+  align-items: center;
   justify-content: center;
-  padding-bottom: 2rem;
-  margin-left: -6%;
+  background: gray;
 }
 
-/*Align cards so normal css an flexbox display above cards*/
-.profile-card, .profile-card2{
-  margin-top: 100px;
+.grid {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
 }
-/*.profile-card{
-  margin-left: -10%;
+
+.cardcontainer {
+  max-width: 350px;
+  min-width: 290px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  margin: 30px;
+  border: 1px solid rgba(64, 64, 64, 0.7);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  transition: all 0.4s ease-in-out;
+}
+/*
+.cardcontainer:hover {
+  border: 1px solid rgba(255, 255, 255, 1);
+  background: dodgerblue;
+  color: white;
+  transition: all 0.4s ease-in-out;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 74px 75px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  transform: translateY(-15px);
 }*/
-.version1, .version2{
-  position:relative;
-  left: 14rem;
-  color: #BDBDBD;
-  transition: color 0.4s ease-in-out;
+
+.cardcontainer img {
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
+    rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  margin-bottom: 15px;
+  border: 1px solid rgba(255, 255, 255, 1);
+  filter: grayscale(100%);
+  transition: all 0.4s ease-in-out;
 }
-/*Misc hover animations for titles*/
-.version1:hover, .version2:hover{
-  color: #37474F;
-  max-height:100px;
+
+.cardcontainer:hover img {
+  filter: grayscale(0%);
+  border: 1px solid rgba(255, 255, 255, 0);
+  transition: all 0.4s ease-in-out;
+}
+
+.cardcontainer h1 {
+  line-height: 50%;
+  font-size: 150%;
+}
+
+.bottomline {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: auto;
+  width: 120px;
+  position: relative;
+  top: 7px;
+}
+
+.links::before {
+  content: "SHARE";
+  position: absolute;
+  top: -25px;
+  left: 0;
+  opacity: 0.5;
+}
+
+.cardcontainer svg {
+  transition: all 0.4s ease-in-out;
+  fill: dodgerblue;
+}
+/*
+.cardcontainer:hover svg {
+  color: white;
+  transition: all 0.4s ease-in-out;
+  fill: white;
+}*/
+
+.cardbutton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  width: 100px;
+  height: 30px;
+  background: dodgerblue;
+  color: white;
+  transition: all 0.6s ease-in-out;
+}
+/*
+.cardbutton:hover {
+  transform: translateY(-4px) scale(1.05);
+  transition: all 0.3s ease-in-out;
+}
+
+.cardcontainer:hover .cardbutton {
+  background: white;
+  color: dodgerblue;
+  transition: all 0.4s ease-in-out;
+}
+*/
+.cardcontainer p {
+  position: relative;
+  bottom: 10px;
+  line-height: 130%;
+  font-size: 11pt;
+}
+/*
+.cardcontainer svg:hover {
+  transform: translateY(5px);
+  transition: all 0.3s ease-in-out;
+}
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Cinzel&family=Federo&family=Quicksand:wght@300&display=swap");
+
+
+.btnDelete{
+  width: 230px;
+  height: 50px;
+  color: black;
+  text-align: center;
+  margin: auto;
+  background-color:#52ab98;
+  font-family: "Quicksand", sans-serif;
+  font-size: 25px;
+  border-radius: 10px;
+
 }

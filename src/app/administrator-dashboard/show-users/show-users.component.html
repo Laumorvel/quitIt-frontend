@@ -14,16 +14,15 @@
 </div>
 
   <div *ngIf="usuarioRecibido">
-    <div class="compare">
-      <div class="profile-card">
-        <div class="card-header">
-          <h3>Username: {{usuarioEncontrados.username}}</h3>
-          <h3>Name: {{usuarioEncontrados.name}}</h3>
-          <h3>Lastname: {{usuarioEncontrados.lastName}}</h3>
-        </div>
-      <img class="image1" src="http://vignette2.wikia.nocookie.net/fairytail/images/7/77/Natsu_prof.jpg/revision/latest?cb=20110731042906" alt="profile Image">
-      <div class="card-info">
+    <div class="grid">
+
+      <div class="cardcontainer">
+        <img src="https://picsum.photos/300/150" width="300" height="150" alt="placeholder">
+        <h1 class="text-center mt-1">{{usuarioEncontrados.username}}</h1><br>
+        <p class="mt-4">Name: {{usuarioEncontrados.name}}</p>
+        <p>Lastname: {{usuarioEncontrados.lastName}}</p>
         <p>Email: {{usuarioEncontrados.email}}</p>
-      </div>
-    </div>
+        <p>Start date: {{usuarioEncontrados.startDate}}</p>
+        <button (click)="deleteUser()" class="btnDelete">Delete user</button>
+      </div>    
   </div>

@@ -13,33 +13,65 @@ export class RankingCommunityComponent implements  OnDestroy, OnInit {
 
   users:User[]=[]
 
-  dtOptions: DataTables.Settings = {};  
-  dtTrigger= new Subject<any>();
+  dtOptions: DataTables.Settings = {};
 
+  // We use this trigger because fetching the list of persons can be quite long,
+  // thus we ensure the data is fetched before rendering
+  dtTrigger: Subject<any> = new Subject<any>();
 
-  
   constructor(private userService: UserService) { }
-
   ngOnInit(): void {
-    this.mostrarUsuarios();
-
+   
     this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 5
+      pageLength: 10
     };
 
-  }
-
-  ngOnDestroy(): void {
-    this.dtTrigger.unsubscribe();
+    
+    this.mostrarUsuarios();
   }
 
 
   mostrarUsuarios(){
-    this.userService.mostrarUsuarios().subscribe(resp =>{
-      this.users = resp;
-      console.log(resp)
-    })
+    this.userService.mostrarUsuarios().subscribe({
+      next: (resp:any) => {
+     //   console.log("ok");
+     //   console.log(resp); 
+        this.users=resp;
+       //this.ordenarUsuarios();
+       console.log(this.users);
+        this.dtTrigger.next(null);
+      },
+      error: (e) => {
+        Swal.fire({
+          title:'Error',
+          icon: 'error',
+          text:'There are no services available at this time',
+          confirmButtonColor:'#52ab98'
+        });
+      }
+    }
+  )}
+
+/*
+  ordenarUsuarios(){
+    this.users.sort(function (a, b) {
+      if (a.daysInARowWithoutSmoking > b.daysInARowWithoutSmoking) {
+        return -1;
+      }
+      if (a.daysInARowWithoutSmoking < b.daysInARowWithoutSmoking) {
+        return 1;
+      }
+      return 0;
+    });
+    
+  }
+*/
+
+
+  ngOnDestroy(): void {
+    // Do not forget to unsubscribe the event
+    this.dtTrigger.unsubscribe();
   }
   
 }

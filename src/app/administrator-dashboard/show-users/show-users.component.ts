@@ -39,4 +39,38 @@ export class ShowUsersComponent implements OnInit {
     }
   )
   }
+
+  deleteUser(){
+    this.adminService.deleteUser(this.usuarioEncontrados.id)
+    .subscribe({
+      next: (resp => {
+        Swal.fire({
+          title:'Error',
+          icon: 'error',
+          text:'TThe user has been deleted',
+          confirmButtonColor:'#52ab98'
+        });
+        this.buscarUser();
+       
+     }),
+      error: resp => {
+        if(resp.message==null){
+          this.buscarUser();
+        }
+        else{
+          Swal.fire({
+            title:'Error',
+            icon: 'error',
+            text:'The user could not be deleted',
+            confirmButtonColor:'#52ab98'
+          });
+        }
+       
+      }
+   });
+  }
+
+
+
 }
+
