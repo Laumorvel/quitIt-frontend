@@ -59,9 +59,10 @@ export interface FileDB {
 }
 
 export interface Achievement {
-  id:   number;
-  name: string;
-  text: string;
+  id:   number,
+  name: string,
+  text: string,
+  img: string;
 }
 
 
