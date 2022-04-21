@@ -62,7 +62,9 @@ export interface Achievement {
   id:   number,
   name: string,
   text: string,
-  img: string;
+  img: string,
+  objective: number,
+  type: string;
 }
 
 

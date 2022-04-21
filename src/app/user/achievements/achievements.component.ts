@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { UserService } from '../services/user.service';
-import { Achievement } from '../../public/interfaces/interfaces';
+import { Achievement, User } from '../../public/interfaces/interfaces';
 
 @Component({
   selector: 'app-achievements',
@@ -10,7 +10,9 @@ import { Achievement } from '../../public/interfaces/interfaces';
 })
 export class AchievementsComponent implements OnInit {
   logros: Achievement[] = [];
-  ruta: string = "../../../assets/logros/";
+  ruta: string = '../../../assets/logros/';
+  user: User = JSON.parse(<string>localStorage.getItem('user'));
+  blur: boolean = false;
 
   constructor(private userService: UserService) {}
 
@@ -33,5 +35,26 @@ export class AchievementsComponent implements OnInit {
         });
       },
     });
+  }
+
+  /**
+   * Set the percentage of progress for every achievement.
+   * @param objective
+   * @param type
+   * @returns percentage to show
+   */
+  cargaPorcentaje(objective: number, type: string) {
+    let percentage: number;
+    if (type == 'days') {
+      percentage = (100 * this.user.totalTimeWithoutSmoking) / objective;
+    } else if (type == 'daysInARow') {
+      percentage = (100 * this.user.daysInARowWithoutSmoking) / objective;
+    } else if (type == 'cigarettes') {
+      percentage = (100 * this.user.cigarettesAvoided) / objective;
+    } else {
+      percentage = (100 * this.user.moneySaved) / objective;
+    }
+    this.blur = percentage >= 100 ? false : true;
+    return percentage.toString();
   }
 }
