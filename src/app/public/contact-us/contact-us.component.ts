@@ -45,7 +45,9 @@ export class ContactUsComponent implements OnInit {
     });
 
 
-    //SUBMIT
+    /**
+     * Envia todos los datos introducidos para enviar un email
+     */
     submitFormulario(){
       let mensaje: Message = this.miFormulario.value;
 

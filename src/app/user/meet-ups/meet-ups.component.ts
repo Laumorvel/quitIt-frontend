@@ -18,6 +18,9 @@ export class MeetUpsComponent implements OnInit {
     this.cargarMeetUps();
   }
 
+  /**
+   * Recupera todos los meet ups disponibles
+   */
   cargarMeetUps(){
     this.userService.buscarMeetUps().subscribe({
       next: (resp) => {

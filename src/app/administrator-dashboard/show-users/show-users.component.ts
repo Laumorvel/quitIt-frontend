@@ -15,17 +15,26 @@ export class ShowUsersComponent implements OnInit {
   busqueda!:String;
 
   usuarioRecibido:boolean=false;
+  error:boolean=false;
 
   constructor(private adminService: AdminService) { }
 
   ngOnInit(): void {
   }
 
+  /**
+   * Busca un usuario por su username
+   */
   buscarUser(){
     this.adminService.buscarUsuariosCoincidentes(this.busqueda).subscribe({
       next: (resp) => {
         this.usuarioEncontrados = resp;
-        this.usuarioRecibido=true;
+        if(resp!=null){
+           this.usuarioRecibido=true;
+        }
+        if(resp===null){
+           this.error=true;
+        }
         console.log(resp);
       },
       error: (e) => {
@@ -40,6 +49,9 @@ export class ShowUsersComponent implements OnInit {
   )
   }
 
+  /**
+   * Borra un usuario por su id
+   */
   deleteUser(){
     this.adminService.deleteUser(this.usuarioEncontrados.id)
     .subscribe({

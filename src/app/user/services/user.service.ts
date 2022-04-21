@@ -18,6 +18,10 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
+  /**
+   * Actualiza los datos del usuario
+   * @returns datos del usuario
+   */
   updateUser() {
     const url = `${this.baseUrl}/user`;
     let token = JSON.parse(<string>localStorage.getItem('token'));
@@ -25,6 +29,10 @@ export class UserService {
     return this.http.get<User>(url, { headers });
   }
 
+  /**
+   * Recupera los comentarios de la comunidad
+   * @returns lista de comentarios de la comunidad
+   */
   buscarComentariosComunidad() {
     const url = `${this.baseUrl}/commentsCommunity`;
 
@@ -34,6 +42,11 @@ export class UserService {
     return this.http.get<Commentario[]>(url, { headers: opcion });
   }
 
+  /**
+   * Crea un nuevo comentario
+   * @param text 
+   * @returns 
+   */
   crearComentario(text: String) {
     let id = localStorage.getItem('user');
     const url = `${this.baseUrl}/commentsCommunity`; //CAMBIAR
@@ -46,6 +59,12 @@ export class UserService {
     return this.http.post<Commentario>(url, body, { headers: opcion });
   }
 
+  /**
+   * Crea una incidencia de un comentario
+   * @param subject 
+   * @param text 
+   * @returns 
+   */
   sendIncidence(subject: String, text: String) {
     const url = `${this.baseUrl}/incidence`;
     const body = {
@@ -58,6 +77,12 @@ export class UserService {
     return this.http.post<Incidence>(url, body, { headers: opcion });
   }
 
+  /**
+   * Asocia un comentario a una incidencia
+   * @param idIncidencia 
+   * @param comentario 
+   * @returns 
+   */
   addComentario(idIncidencia: number, comentario: Commentario) {
     const url = `${this.baseUrl}/incidence/${idIncidencia}`;
 
@@ -67,6 +92,11 @@ export class UserService {
     return this.http.put<Commentario>(url, comentario, { headers: opcion });
   }
 
+  /**
+   * Recupera un comentario por su id
+   * @param idC 
+   * @returns Un comentario
+   */
   buscarComentariosPorId(idC: string) {
     const url = `${this.baseUrl}/commentsCommunity/${idC}`;
 
@@ -76,6 +106,10 @@ export class UserService {
     return this.http.get<Commentario>(url, { headers: opcion });
   }
 
+  /**
+   * Recupera todos los usuarios registrados
+   * @returns lista de todos los usuarios
+   */
   mostrarUsuarios() {
     const url = `${this.baseUrl}/users`;
     let token = JSON.parse(<string>localStorage.getItem('token'));
@@ -85,6 +119,10 @@ export class UserService {
     return this.http.get<User[]>(url, { headers: opcion });
   }
 
+  /**
+   * Recupera todos los logros existentes
+   * @returns lista de logros
+   */
   buscarLogros() {
     const url = `${this.baseUrl}/achievement`;
 
@@ -95,6 +133,10 @@ export class UserService {
     return this.http.get<Achievement[]>(url, { headers: opcion });
   }
 
+  /**
+   * Recupera todas las penalizaciones existentes
+   * @returns lista de penalizaciones
+   */
   buscarPenalizaciones() {
     const url = `${this.baseUrl}/penalty`;
 
@@ -105,6 +147,10 @@ export class UserService {
     return this.http.get<Achievement[]>(url, { headers: opcion });
   }
 
+  /**
+   * Recupera todos los meet ups existentes a partir de la fecha de hoy
+   * @returns lista de meet ups
+   */
   buscarMeetUps() {
     const url = `${this.baseUrl}/meetUp`;
 
@@ -155,4 +201,17 @@ export class UserService {
     let body = user;
     return this.http.put<User>(url, body, { headers });
   }
+
+    /**
+   * 
+   * @param busqueda
+   * @returns el usuario que hemos indicado si existiese en la base de datos
+   */
+     buscarUsuariosCoincidentes(busqueda:String){
+      const url = `${this.baseUrl}/user?username=${busqueda}`;
+      let token = JSON.parse(<string>localStorage.getItem('token'));
+      const opcion = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+      opcion.append('Access-Control-Allow-Origin', '*');
+      return this.http.get<User>(url, { headers: opcion });
+    }
 }

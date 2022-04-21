@@ -62,7 +62,9 @@ export class RegisterComponent implements OnInit {
   );
 
 
-  //mensajes para el error del nombre
+  /**
+   * mensajes para el error del nombre
+   */
     get nameError(): string{
       const errors = this.miFormulario.get('name')?.errors!;
       if(errors['required']){
@@ -73,7 +75,9 @@ export class RegisterComponent implements OnInit {
       return '';
     }
 
-    //mensajes para el error del nombre
+    /**
+     * mensajes para el error del nombre
+     */
     get lastNameError(): string{
       const errors = this.miFormulario.get('lastName')?.errors!;
       if(errors['required']){
@@ -85,7 +89,10 @@ export class RegisterComponent implements OnInit {
     }
 
 
-  //Mensajes para el error del email
+
+  /**
+   * Mensajes para el error del email
+   */
   get emailErrorMsg(): string {
     const errors = this.miFormulario.get('email')?.errors!;
     if (errors['required']) {
@@ -98,7 +105,10 @@ export class RegisterComponent implements OnInit {
     return '';
   }
 
-  //Mensajes para el username
+
+  /**
+   * Mensajes para el username
+   */
   get usernameError(): string{
     const errors = this.miFormulario.get('username')?.errors!;
     if(errors['required']){
@@ -109,7 +119,10 @@ export class RegisterComponent implements OnInit {
     return '';
   }
 
-  //Mensajes para la contraseña
+
+  /**
+   * Mensajes para la contraseña
+   */
   get passwordError(): string{
     const errors = this.miFormulario.get('password')?.errors!;
     if(errors['required']){
@@ -130,6 +143,11 @@ export class RegisterComponent implements OnInit {
     });
   }
 
+  /**
+   * 
+   * @param campo 
+   * @returns Comprueba si la información introducida en un campo es valida
+   */
   campoNoValido(campo: string) {
     return (
       this.miFormulario.get(campo)?.invalid &&
@@ -138,6 +156,10 @@ export class RegisterComponent implements OnInit {
   }
 
 
+  /**
+   * Registra el usuario en la base de datos
+   * @param objetivos 
+   */
   submitFormulario(objetivos :number[]) {
     const user = this.miFormulario.value
 

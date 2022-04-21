@@ -19,6 +19,9 @@ export class IncidencesComponent implements OnInit {
     this.cargarIncidencias();
   }
 
+  /**
+   * Carga todas las incidencias que hay registradas
+   */
   cargarIncidencias(){
     this.adminService.buscarIncidencias().subscribe({
       next: (resp) => {
@@ -37,6 +40,10 @@ export class IncidencesComponent implements OnInit {
   )
   }
 
+  /**
+   * Borra un comentario indicando su id
+   * @param id 
+   */
   deleteComment(id:number){
     this.adminService.deleteComment(id)
     .subscribe({
@@ -60,7 +67,11 @@ export class IncidencesComponent implements OnInit {
    });
   }
 
-
+  /**
+   * Cambia el estado de la incidencia 
+   * @param incidencia 
+   * @param estado 
+   */
   cambiarEstadoIncidencia(incidencia:number, estado:String ){
     this.adminService.cambiarEstadoIncidencia(incidencia,estado)
     .subscribe({
