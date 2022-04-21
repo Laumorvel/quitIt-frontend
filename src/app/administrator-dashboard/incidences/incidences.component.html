@@ -1,39 +1,40 @@
 <div class="container">
-                <div class="col-md-12 mb-4 white-text text-center wow fadeIn">
-                    <div class="card">
-                        <div class="card-header text-black-50"><h1>Incidences</h1></div>
-                        <div class="card-body"> 
-
-                            <table class="text-black-50" >
-                                <tr >
-                                    <th>Complainant </th>
-                                    <th>Subject</th>   
-                                    <th>Comment</th>                                    
-                                    <th>State</th>
-                                    <th>Delete comment</th>
-                                </tr>
-                                <tr *ngFor="let i of incidencias">
-                                    <th>{{i.user.username}}</th>
-                                    <th>{{i.subject}}</th>   
-                                    <th>{{i.comment.text}}</th>                                    
-                                    <th>State:{{i.state}}
-                                        <select >
-                                            <option (click)="cambiarEstadoIncidencia(i.id, 'PENDING')">PENDING</option>
-                                            <option (click)="cambiarEstadoIncidencia(i.id, 'IN_PROCESS')">IN PROCESS</option>
-                                            <option (click)="cambiarEstadoIncidencia(i.id, 'RESULT')">RESULT</option>
-                                        </select>
-                                    </th>
-                                    <th><button (click)="deleteComment(i.comment.id)">Delete</button></th>
-                                </tr>
-                              
-                            </table>
-                          
-                            
-                        </div> 
-
-                 
-                </div>
-  
-            </div>
+  <div class="col-md-12 mb-4 white-text text-center wow fadeIn">
+    <div class="card">
+      <div class="card-header text-black-50"><h1>Incidences</h1></div>
+      <div class="card-body">
+        <table class="text-black-50">
+          <tr>
+            <th>Complainant</th>
+            <th>Subject</th>
+            <th>Comment</th>
+            <th>State</th>
+            <th>Delete comment</th>
+          </tr>
+          <tr *ngFor="let i of incidencias">
+            <th>{{ i.user.username }}</th>
+            <th>{{ i.subject }}</th>
+            <th>{{ i.comment.text }}</th>
+            <th>
+              State:{{ i.state }}
+              <select>
+                <option (click)="cambiarEstadoIncidencia(i.id, 'PENDING')">
+                  PENDING
+                </option>
+                <option (click)="cambiarEstadoIncidencia(i.id, 'IN_PROCESS')">
+                  IN PROCESS
+                </option>
+                <option (click)="cambiarEstadoIncidencia(i.id, 'RESULT')">
+                  RESULT
+                </option>
+              </select>
+            </th>
+            <th>
+              <button (click)="deleteComment(i.comment.id)">Delete</button>
+            </th>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
-
