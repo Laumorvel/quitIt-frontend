@@ -8,6 +8,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class QuizComponent implements OnInit {
 
   
+  
   @Input()nombre:string ="";
   @Output()sendObjetivos = new EventEmitter<number[]>();
   objetivos:number[] = [];

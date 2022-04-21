@@ -1,1 +1,17 @@
-<p>friends works!</p>
+<div class="row">
+    <div class="col-lg-12 col-xs-6">
+        <h1 class="text-center titulo"> WELCOME {{user.name | uppercase}} TO THE USER AREA!</h1>
+        <div class="frame text-center">
+            <button class="custom-btn btn"  (click)="checkmyfriends()"><span>Check my data</span></button>
+            <button class="custom-btn btn"  (click)="newfriends()"><span>Ask for a date</span></button>
+          </div>
+    </div>
+  </div>
+
+  <div *ngIf="checkmyfriendsVisible">
+    <app-show-friends></app-show-friends>
+</div>
+
+<div *ngIf="newfriendsVisible">
+    <app-add-friends></app-add-friends>
+</div>

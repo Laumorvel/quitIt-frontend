@@ -21,7 +21,9 @@ export class AchievementsComponent implements OnInit {
 
   }
 
-
+  /**
+   * Muestra los logros que existen en la base de datos
+   */
   cargarLogros(){
     this.userService.buscarLogros().subscribe({
       next: (resp) => {

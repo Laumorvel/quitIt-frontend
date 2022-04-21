@@ -5,6 +5,7 @@ import { FriendsRoutingModule } from './friends-routing.module';
 import { FriendsComponent } from './friends.component';
 import { AddFriendsComponent } from './add-friends/add-friends.component';
 import { ShowFriendsComponent } from './show-friends/show-friends.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { ShowFriendsComponent } from './show-friends/show-friends.component';
   ],
   imports: [
     CommonModule,
-    FriendsRoutingModule
+    FriendsRoutingModule,
+    FormsModule
   ]
 })
 export class FriendsModule { }

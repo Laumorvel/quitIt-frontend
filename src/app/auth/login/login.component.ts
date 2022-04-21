@@ -25,7 +25,9 @@ export class LoginComponent implements OnInit {
     ngOnInit(): void {
     }
 
-
+    /**
+     * Busca que el usuario y contraseña introducidos esten ya registrados. Si existen esos datos nos devovlera un token que guardaremos en el localStorage
+     */
     login(){
       this.authService.login(this.email,this.password)
       .subscribe({
@@ -46,6 +48,9 @@ export class LoginComponent implements OnInit {
   }
 
 
+  /**
+   * Comprueba cual es el rol del usuario, y dependiendo de su rol se le redirigira a una ruta u otra
+   */
   getIdUser() {
     this.authService.loginGetIdUser().subscribe((resp) => {
       localStorage.setItem('user', JSON.stringify(resp));

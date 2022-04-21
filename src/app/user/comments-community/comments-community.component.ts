@@ -22,12 +22,17 @@ export class CommentsCommunityComponent implements OnInit {
     this.mostrarComentariosComunidad();
   }
 
+  /**
+   * Nos envia al compoenente de incidencias
+   * @param id 
+   */
   enviarIncidencia(id:number){
     this.router.navigateByUrl(`/commentsCommunity/${id}/incidence`);
   }
 
-
-
+  /**
+   * Muestra todos los comentarios de la comunidad
+   */
   mostrarComentariosComunidad() {
     this.userService.buscarComentariosComunidad().subscribe({
       next: (resp) => {
@@ -45,6 +50,9 @@ export class CommentsCommunityComponent implements OnInit {
     });
   }
 
+  /**
+   * Crea un comentario en el chat de la comunidad
+   */
   crearComentario() {
     this.userService.crearComentario(this.text).subscribe({
       next: (resp) => {

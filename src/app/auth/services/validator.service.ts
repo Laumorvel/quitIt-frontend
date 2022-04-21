@@ -11,7 +11,12 @@ export class ValidatorService {
 
   constructor() {}
 
-  //Método para comprobar que ambas contraseñas son iguales
+  /**
+   * Método para comprobar que ambas contraseñas son iguales
+   * @param campo1 
+   * @param campo2 
+   * @returns si la contraseña no es valida o no son iguales se notificara
+   */
   camposIguales(campo1: string, campo2: string) {
     return (formGroup: AbstractControl): ValidationErrors | null => {
       const pass1 = formGroup.get(campo1)?.value;

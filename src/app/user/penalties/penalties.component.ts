@@ -20,6 +20,9 @@ export class PenaltiesComponent implements OnInit {
     this.cargarPenalizaciones();
   }
 
+  /**
+   * Recupera todas las penalizaciones que existen en la base de datos
+   */
   cargarPenalizaciones(){
     this.userService.buscarPenalizaciones().subscribe({
       next: (resp) => {

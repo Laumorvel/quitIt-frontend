@@ -28,6 +28,9 @@ this.getComentario();
   }
 
 
+  /**
+   * Recupera el comentario del que se hace la incidencia
+   */
   getComentario(){
     this.userService.buscarComentariosPorId(this.idComentario!).subscribe({
       next: (resp) => {
@@ -46,6 +49,9 @@ this.getComentario();
   }
 
 
+  /**
+   * Crea una nueva incidencia
+   */
   sendIncidence(){
     this.userService.sendIncidence(this.subject,this.text)
     .subscribe({
@@ -66,7 +72,10 @@ this.getComentario();
    });
   }
 
-
+  /**
+   * Acosia a la incidencia el comentario del que hereda
+   * @param idIncidencia 
+   */
   addComentario(idIncidencia:number){
     this.userService.addComentario(idIncidencia, this.comentario)
     .subscribe({
