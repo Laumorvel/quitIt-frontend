@@ -19,7 +19,9 @@ export class AdministratorDashboardComponent implements OnInit {
     this.cargarIncidencias();
   }
 
-
+  /**
+   * Busca todas las incidencias existentes en la base de datos
+   */
   cargarIncidencias(){
     this.adminService.buscarIncidencias().subscribe({
       next: (resp) => {

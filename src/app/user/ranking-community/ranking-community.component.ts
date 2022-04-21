@@ -32,13 +32,16 @@ export class RankingCommunityComponent implements  OnDestroy, OnInit {
   }
 
 
+  /**
+   * Recupera a todos los usarios de la base de datos
+   */
   mostrarUsuarios(){
     this.userService.mostrarUsuarios().subscribe({
       next: (resp:any) => {
      //   console.log("ok");
      //   console.log(resp); 
         this.users=resp;
-       //this.ordenarUsuarios();
+       // this.ordenarUsuarios();
        console.log(this.users);
         this.dtTrigger.next(null);
       },

@@ -34,7 +34,11 @@ export class UsernameValidatorService implements AsyncValidator {
     )
   }
 
-  //Método para comprobar username en BBDD
+  /**
+   * Método para comprobar username en BBDD
+   * @param username 
+   * @returns 
+   */
   compruebaUsername(username: string) {
     const url = `${this.baseUrl}/email?username=${username}`;
     return this.http.get<User>(url);

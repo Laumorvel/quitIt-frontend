@@ -33,7 +33,11 @@ export class emailValidatorService implements AsyncValidator{
    );
   }
 
-  //Método para comprobar email en BBDD
+  /**
+   * Método para comprobar email en BBDD
+   * @param email 
+   * @returns 
+   */
   compruebaEmail(email:string){
     const url = `${this.baseUrl}/email?email=${email}`;
     const opcion = new HttpHeaders();
