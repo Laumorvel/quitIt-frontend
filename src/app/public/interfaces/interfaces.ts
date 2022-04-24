@@ -72,6 +72,9 @@ export interface Penalty {
   id:   number;
   name: string;
   text: string;
+  img: string,
+  objective: number,
+  type: string;
 }
 
 export interface MeetUP {
