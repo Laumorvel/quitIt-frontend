@@ -54,23 +54,34 @@ export class CommentsCommunityComponent implements OnInit {
    * Crea un comentario en el chat de la comunidad
    */
   crearComentario() {
-    this.userService.crearComentario(this.text).subscribe({
-      next: (resp) => {
-        this.comentarios.push(resp);
-        Swal.fire({
-          title: 'Appointment is available',
-          icon: 'success',
-          confirmButtonColor: '##52ab98',
-        });
-      },
-      error: (resp) => {
-        Swal.fire({
-          title: 'Error',
-          icon: 'error',
-          text: resp.error.mensaje,
-          confirmButtonColor: '#52ab98',
-        });
-      },
-    });
+    if(this.text==null){
+      Swal.fire({
+        title: 'Error',
+        icon: 'error',
+        text: 'You must enter the comment before submitting it',
+        confirmButtonColor: '#52ab98',
+      });
+    }
+    else{
+      this.userService.crearComentario(this.text).subscribe({
+        next: (resp) => {
+          this.comentarios.push(resp);
+          Swal.fire({
+            title: 'Appointment is available',
+            icon: 'success',
+            confirmButtonColor: '##52ab98',
+          });
+        },
+        error: (resp) => {
+          Swal.fire({
+            title: 'Error',
+            icon: 'error',
+            text: resp.error.mensaje,
+            confirmButtonColor: '#52ab98',
+          });
+        },
+      });
+    }
+    
   }
 }

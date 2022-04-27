@@ -1,1 +1,29 @@
-<p>add-friends works!</p>
+<div class="row ml-auto" id="cover">
+    <div class="col "></div>
+      <form method="get" action="">
+        <div class="tb">
+          <div class="td"><input type="text" name="busqueda" [(ngModel)]="busqueda" placeholder="Search user" required></div>
+          <div class="td" id="s-cover">
+            <button type="submit" (click)="buscarUser()">
+              <div id="s-circle"></div>
+              <span></span>
+            </button>
+          </div>
+        </div>
+      </form>
+  </div>
+  
+    <div *ngIf="usuarioRecibido">
+      <div class="grid">
+  
+        <div class="cardcontainer">
+          <img src="https://picsum.photos/300/150" width="300" height="150" alt="placeholder">
+          <h1 class="text-center mt-1">{{usuarioEncontrados.username}}</h1><br>
+          <p class="mt-4">Name: {{usuarioEncontrados.name}}</p>
+          <p>Lastname: {{usuarioEncontrados.lastName}}</p>
+          <p>Email: {{usuarioEncontrados.email}}</p>
+          <p>Start date: {{usuarioEncontrados.startDate}}</p>
+          <button (click)="addFriend()" class="btnDelete">Add friend</button>
+      </div>    
+        </div>    
+    </div>

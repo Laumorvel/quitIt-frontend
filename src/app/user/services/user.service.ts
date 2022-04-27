@@ -214,4 +214,14 @@ export class UserService {
       opcion.append('Access-Control-Allow-Origin', '*');
       return this.http.get<User>(url, { headers: opcion });
     }
+
+
+    addFriend(user: User){
+      const url = `${this.baseUrl}/user`;
+      let body = user;
+      let token = JSON.parse(<string>localStorage.getItem('token'));
+      const opcion = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+      opcion.append('Access-Control-Allow-Origin', '*');
+      return this.http.post<User>(url, body, { headers: opcion });
+    }
 }
