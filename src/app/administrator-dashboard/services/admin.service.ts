@@ -46,14 +46,15 @@ export class AdminService {
    */
   cambiarEstadoIncidencia(id:number, estado:String ){
     const url = `${this.baseUrl}/incidence/${id}?state=${estado}`;
+    let envioVacio = null;
     let token = JSON.parse(<string>localStorage.getItem('token'));
     const opcion = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     opcion.append('Access-Control-Allow-Origin', '*');
-    return this.http.put<Incidence>(url, { headers: opcion });
+    return this.http.put<Incidence>(url, envioVacio, { headers: opcion });
   }
 
   /**
-   * 
+   *  
    * @param busqueda
    * @returns el usuario que hemos indicado si existiese en la base de datos
    */
