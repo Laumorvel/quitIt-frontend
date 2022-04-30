@@ -18,18 +18,19 @@
     <!--Imagen e info-->
     <div
       class="card__img"
-      style="background-image: url('{{ ruta }}{{ i.img }}'); background-size: auto"
+      style="background-image: url('{{ ruta }}{{   i.img      }}'); background-size: auto"
     ></div>
 
-    <div *ngIf="!blur; else elseBlock"
+    <div
+      *ngIf="!blur; else elseBlock"
       class="card__img--hover"
       style="background-image: url('{{ ruta }}{{ i.img }}');"
     ></div>
     <ng-template #elseBlock>
       <div
-      class="card__img--hover"
-      style="background-image: url('{{ ruta }}{{ i.img }}');  filter: blur(8px);"
-    ></div>
+        class="card__img--hover"
+        style="background-image: url('{{ ruta }}{{  i.img        }}');  filter: blur(8px);"
+      ></div>
     </ng-template>
 
     <div class="card__info">

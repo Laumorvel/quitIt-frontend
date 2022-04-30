@@ -36,6 +36,7 @@ export interface User {
   username: string;
   file: FileDB;
   lastDateSmoking: Date;
+  message: boolean;
 }
 
 export interface Group{

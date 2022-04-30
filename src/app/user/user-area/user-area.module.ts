@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { UserAreaRoutingModule } from './user-area-routing.module';
 import { UserAreaComponent } from './user-area.component';
 import { ClockComponent } from './clock/clock.component';

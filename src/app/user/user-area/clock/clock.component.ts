@@ -11,14 +11,12 @@ import { UserService } from '../../services/user.service';
 export class ClockComponent implements OnInit {
   user: User = JSON.parse(<string>localStorage.getItem('user'));
   cigarettes: number = 0;
+  msg: boolean = false;
 
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {
     this.updateUserDAta();
-    console.log(this.user);
-    // this.calcularDineroAhorrado();
-    //this.calcularCigarrosNoFumados();
   }
 
   updateUserDAta() {

@@ -20,16 +20,13 @@ export class AchievementsComponent implements OnInit {
     this.cargarLogros();
   }
 
-
   /**
    * Muestra los logros que existen en la base de datos
    */
-  cargarLogros(){
-
+  cargarLogros() {
     this.userService.buscarLogros().subscribe({
       next: (resp) => {
         this.logros = resp;
-        console.log(resp);
       },
       error: (e) => {
         Swal.fire({
@@ -63,3 +60,4 @@ export class AchievementsComponent implements OnInit {
     return percentage.toString();
   }
 }
+
