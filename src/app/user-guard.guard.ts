@@ -15,7 +15,6 @@ import Swal from 'sweetalert2';
 })
 export class UserGuardGuard implements CanActivate {
   constructor(private router: Router) {}
-  private rol = JSON.parse(<string>localStorage.getItem('user')).rol;
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -24,7 +23,7 @@ export class UserGuardGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    if (this.rol == 'USER') {
+    if (JSON.parse(<string>localStorage.getItem('user')) != null && JSON.parse(<string>localStorage.getItem('user')).rol == 'USER') {
       return true;
     } else {
       Swal.fire({

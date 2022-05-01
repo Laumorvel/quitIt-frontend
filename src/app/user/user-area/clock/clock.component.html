@@ -1,3 +1,15 @@
+<!--Div que muestra mensaje en caso de haberlo-->
+<div class="msg text-center" *ngIf="msg">
+  <button
+    class="btn boton"
+    data-bs-toggle="modal"
+    data-bs-target="#messageModal"
+    routerLinkActive="active"
+  >
+    You have a message
+  </button>
+</div>
+
 <div class="card mx-5 mt-4">
   <div class="clock">
     <div class="contenedor text-center mt-3">
@@ -36,8 +48,8 @@
       data-bs-toggle="modal"
       data-bs-target="#cigarettesModal"
       routerLinkActive="active"
-    ><strong>
-      I failed! </strong>
+    >
+      <strong> I failed! </strong>
     </button>
 
     <div
@@ -81,6 +93,35 @@
             </button>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--MODAL DE MENSAJE-->
+<div
+  class="modal fade"
+  id="messageModal"
+  tabindex="-1"
+  aria-labelledby="messageModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content text-center">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">YOUR MESSAGE FROM OUR TEAM</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">{{scheduledMessage}}</div>
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn button" data-bs-dismiss="modal" (click)="changeUserPropertyMessage()">
+          OK
+        </button>
       </div>
     </div>
   </div>

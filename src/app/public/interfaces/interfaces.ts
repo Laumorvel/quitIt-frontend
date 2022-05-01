@@ -36,6 +36,7 @@ export interface User {
   username: string;
   file: FileDB;
   lastDateSmoking: Date;
+  message: boolean;
 }
 
 export interface Group{
@@ -91,4 +92,10 @@ export interface Incidence {
   user:    User;
   comment: Commentario;
   state:   string;
+}
+
+export interface ScheduledMessage{
+  id: number,
+  text: string,
+  sent: boolean;
 }

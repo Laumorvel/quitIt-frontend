@@ -10,6 +10,7 @@ export class UserAreaComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }

@@ -17,9 +17,9 @@ export class AuthService {
 
 
   /**
-   * 
-   * @param email 
-   * @param password 
+   *
+   * @param email
+   * @param password
    * @returns Si los datos son correctos devuelve el token. Si los datos no son correctos devuelve una excepción.
    */
   login(email:string, password: string){
@@ -35,13 +35,12 @@ export class AuthService {
   }
 
   /**
-   * 
+   *
    * @returns usuario completo
    */
   loginGetIdUser(){
       const url = `${this.baseUrl}/user`;
       let token = JSON.parse(<string>localStorage.getItem('token'));
-      console.log(token);
       const headers = new HttpHeaders()
         .set('Authorization', `Bearer ${token}`);
       return this.http.get<User>(url, {headers});
@@ -49,7 +48,7 @@ export class AuthService {
 
   /**
    * Envia un mail con la información introducida
-   * @param message 
+   * @param message
    * @returns un mail
    */
   newMensaje(message: Message){
@@ -61,20 +60,19 @@ export class AuthService {
 
   /**
    * Registra un usuario
-   * @param user 
+   * @param user
    * @returns el token del usuario que se ha registrado
    */
   register(user: User){
     const url = `${this.baseUrl}/auth/register`;
     const body = user;//user con los campos a rellenos
-    console.log(user);
     const opcionHeader = new HttpHeaders();
     opcionHeader.append('Access-Control-Allow-Origin','*');
     return this.http.post<AuthResponse>(url, body, {headers:opcionHeader});
   }
 
   /**
-   * 
+   *
    * @returns si el token es correcto seguira adelante, sino devolvera un error.
    */
   validarToken():Observable<AuthResponse>{
