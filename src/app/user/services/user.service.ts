@@ -6,6 +6,7 @@ import {
   Commentario,
   Incidence,
   MeetUP,
+  ScheduledMessage,
   User,
 } from 'src/app/public/interfaces/interfaces';
 import {} from '../../public/interfaces/interfaces';
@@ -227,5 +228,16 @@ export class UserService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     let body = user;
     return this.http.put<User>(url, body, { headers });
+  }
+
+  /**
+   * Consigue el mensaje programado para el usuario.
+   * @returns mensaje programado
+   */
+  loadScheduledMessage(){
+    const url = `${this.baseUrl}/scheduledMessage`;
+    let token = JSON.parse(<string>localStorage.getItem('token'));
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<ScheduledMessage>(url, { headers });
   }
 }

@@ -93,3 +93,9 @@ export interface Incidence {
   comment: Commentario;
   state:   string;
 }
+
+export interface ScheduledMessage{
+  id: number,
+  text: string,
+  sent: boolean;
+}
