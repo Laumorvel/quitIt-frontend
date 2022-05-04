@@ -208,6 +208,7 @@ export class UserService {
    * @param busqueda
    * @returns el usuario que hemos indicado si existiese en la base de datos
    */
+
   buscarUsuariosCoincidentes(busqueda: String) {
     const url = `${this.baseUrl}/user?username=${busqueda}`;
     let token = JSON.parse(<string>localStorage.getItem('token'));
@@ -240,4 +241,14 @@ export class UserService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.get<ScheduledMessage>(url, { headers });
   }
+
+    addFriend(user: User){
+      const url = `${this.baseUrl}/user`;
+      let body = user;
+      let token = JSON.parse(<string>localStorage.getItem('token'));
+      const opcion = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+      opcion.append('Access-Control-Allow-Origin', '*');
+      return this.http.post<User>(url, body, { headers: opcion });
+    }
+
 }
