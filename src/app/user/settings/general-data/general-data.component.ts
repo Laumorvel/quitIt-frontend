@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/public/interfaces/interfaces';
 import Swal from 'sweetalert2';
@@ -21,7 +20,7 @@ export class GeneralDataComponent implements OnInit {
   currentFile?: File;
   selectedFiles?: FileList;
   msg: string = '';
-  idFileUser: string = ""; //almacena la id de la foto del usuario
+  idFileUser: string = ''; //almacena la id de la foto del usuario
 
   ngOnInit(): void {
     this.getUserData();
@@ -41,7 +40,6 @@ export class GeneralDataComponent implements OnInit {
           text: resp.error.mensaje,
           confirmButtonColor: '#52ab98',
         });
-
       },
     });
   }
@@ -55,7 +53,7 @@ export class GeneralDataComponent implements OnInit {
       next: (resp) => {
         resp.id = this.idFileUser;
         this.img = this.fileService.obtenerImagen(resp);
-      }
+      },
     });
   }
 
@@ -91,8 +89,8 @@ export class GeneralDataComponent implements OnInit {
         this.currentFile = file;
         this.fileService.addFile(this.currentFile).subscribe({
           next: (resp) => {
-           //Solo debe dar un mensaje de éxito cuando se suba la imagen, que será cuando haga la siguiente petición para buscarla en la bbd
-           //No debe darla aquí, que solo se sube a la bbdd o el usuario recibirá dos avisos
+            //Solo debe dar un mensaje de éxito cuando se suba la imagen, que será cuando haga la siguiente petición para buscarla en la bbd
+            //No debe darla aquí, que solo se sube a la bbdd o el usuario recibirá dos avisos
           },
           error: (err) => {
             Swal.fire(
@@ -127,26 +125,47 @@ export class GeneralDataComponent implements OnInit {
    * Sustituye el archivo original por el nuevo
    */
   modifyFile() {
-    console.log("id del arichivo:" + this.idFileUser)
+    console.log('id del arichivo:' + this.idFileUser);
     if (this.selectedFiles) {
       const file: File | null = this.selectedFiles.item(0);
       if (file) {
         this.currentFile = file;
-        this.fileService.modifyFile(this.currentFile, this.idFileUser).subscribe({
-          next: (resp) => {
+        this.fileService
+          .modifyFile(this.currentFile, this.idFileUser)
+          .subscribe({
+            next: (resp) => {},
+            error: (err) => {
+              Swal.fire(
+                'Error',
+                'The file encountered an error while uploading it.',
+                'error'
+              );
 
-          },
-          error: (err) => {
-            Swal.fire(
-              'Error',
-              'The file encountered an error while uploading it.',
-              'error'
-            );
-
-            this.currentFile = undefined;
-          },
-        });
+              this.currentFile = undefined;
+            },
+          });
       }
     }
+  }
+
+  // in app.component.ts
+  files: File[] = [];
+
+  onSelect(event: { addedFiles: any }) {
+    console.log(event);
+    this.files.push(...event.addedFiles);
+    if (this.files.length > 1) {
+      // checking if files array has more than one content
+      this.replaceFile(); // replace file
+    }
+  }
+
+  replaceFile() {
+    this.files.splice(0, 1); // index =0 , remove_count = 1
+  }
+
+  onRemove(event: File) {
+    console.log(event);
+    this.files.splice(this.files.indexOf(event), 1);
   }
 }

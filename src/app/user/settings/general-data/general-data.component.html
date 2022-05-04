@@ -8,8 +8,15 @@
       </div>
       <!--Subida de imagen-->
       <div>
-        <label for="files" class="btn mt-2">Select an image</label><!--Se ha colocado esta label para que no se muestre el texto en castellano-->
-        <input type="file" id="files" class="mt-2" (change)="selectFile($event)" style="display: none;" />
+        <label for="files" class="btn mt-2">Select an image</label
+        ><!--Se ha colocado esta label para que no se muestre el texto en castellano-->
+        <input
+          type="file"
+          id="files"
+          class="mt-2"
+          (change)="selectFile($event)"
+          style="display: none"
+        />
         <button
           class="btn btn-dark"
           [disabled]="!selectedFiles"
@@ -17,6 +24,16 @@
         >
           Upload
         </button>
+        <ngx-dropzone [multiple]="false" (change)="onSelect($event)">
+          <ngx-dropzone-label>Select a profile picture</ngx-dropzone-label>
+          <ngx-dropzone-preview
+            *ngFor="let f of files"
+            [removable]="true"
+            (removed)="onRemove(f)"
+          >
+            <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+          </ngx-dropzone-preview>
+        </ngx-dropzone>
       </div>
       <div class="h3 mt-3 name">{{ user.name }} {{ user.lastName }}</div>
     </div>

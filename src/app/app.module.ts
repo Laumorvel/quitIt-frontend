@@ -10,11 +10,13 @@ import { AdminGuardGuard } from './admin-guard.guard';
 import { UserGuardGuard } from './user-guard.guard';
 import { SettingsModule } from './user/settings/settings.module';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { CloudinaryModule } from '@cloudinary/ng';
+
 
 
 @NgModule({
   declarations: [AppComponent, NavbarComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, NoopAnimationsModule, SettingsModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, NoopAnimationsModule, SettingsModule, CloudinaryModule],
   providers: [AuthGuardGuard, AdminGuardGuard, UserGuardGuard],
   bootstrap: [AppComponent]
 })
