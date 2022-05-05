@@ -23,10 +23,10 @@ export interface User {
   daysInARowWithoutSmoking: number;
   cigarettesAvoided: number;
   totalTimeWithoutSmoking: number;
-  groupList: Group[],
-  userList: User[],
-  achievementList: Achievement[],
-  penalties: Penalty[],
+  groupList: Group[];
+  userList: User[];
+  achievementList: Achievement[];
+  penalties: Penalty[];
   startDate: Date;
   cigarettesBeforePerDay: number;
   moneyPerDay: number;
@@ -37,11 +37,12 @@ export interface User {
   file: FileDB;
   lastDateSmoking: Date;
   message: boolean;
+  imageUrl: string;
 }
 
-export interface Group{
-  id: number,
-  name: string
+export interface Group {
+  id: number;
+  name: string;
 }
 
 export interface Incidence {
@@ -60,42 +61,46 @@ export interface FileDB {
 }
 
 export interface Achievement {
-  id:   number,
-  name: string,
-  text: string,
-  img: string,
-  objective: number,
+  id: number;
+  name: string;
+  text: string;
+  img: string;
+  objective: number;
   type: string;
 }
 
-
 export interface Penalty {
-  id:   number;
+  id: number;
   name: string;
   text: string;
-  img: string,
-  objective: number,
+  img: string;
+  objective: number;
   type: string;
 }
 
 export interface MeetUP {
-  id:          number;
-  title:       string;
+  id: number;
+  title: string;
   description: string;
-  date:        Date;
-  place:       string;
+  date: Date;
+  place: string;
 }
 export interface Incidence {
-  id:      number;
+  id: number;
   subject: string;
-  text:    null;
-  user:    User;
+  text: null;
+  user: User;
   comment: Commentario;
-  state:   string;
+  state: string;
 }
 
-export interface ScheduledMessage{
-  id: number,
-  text: string,
+export interface ScheduledMessage {
+  id: number;
+  text: string;
   sent: boolean;
+}
+
+export interface urlImg{
+  url: string,
+  secure_url: string;
 }

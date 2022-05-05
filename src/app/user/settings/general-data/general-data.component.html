@@ -4,36 +4,32 @@
   <div class="card-body">
     <div class="foto">
       <div>
-        <img class="photo img-responsive" src="{{ img }}" />
+        <img class="photo img-responsive" src="{{ user.imageUrl }}" />
       </div>
-      <!--Subida de imagen-->
+      <!--Subida de imagen - drag and drop-->
       <div>
-        <label for="files" class="btn mt-2">Select an image</label
-        ><!--Se ha colocado esta label para que no se muestre el texto en castellano-->
-        <input
-          type="file"
-          id="files"
-          class="mt-2"
-          (change)="selectFile($event)"
-          style="display: none"
-        />
-        <button
-          class="btn btn-dark"
-          [disabled]="!selectedFiles"
-          (click)="checkImage()"
+        <button class="btn btn-primary boton" (click)="changeImg()">Change Profile Image</button>
+      </div>
+      <div *ngIf="change">
+        <ngx-dropzone
+          [multiple]="false"
+          (change)="onSelect($event)"
+          class="dropzone justify-content-center"
         >
-          Upload
-        </button>
-        <ngx-dropzone [multiple]="false" (change)="onSelect($event)">
           <ngx-dropzone-label>Select a profile picture</ngx-dropzone-label>
-          <ngx-dropzone-preview
+          <ngx-dropzone-image-preview
+            ngProjectAs="ngx-dropzone-preview"
+            class="dropSelect"
             *ngFor="let f of files"
+            [file]="f"
             [removable]="true"
             (removed)="onRemove(f)"
           >
-            <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
-          </ngx-dropzone-preview>
+          </ngx-dropzone-image-preview>
         </ngx-dropzone>
+        <div>
+          <button class="btn btn-dark" (click)="onUpload()">Upload</button>
+        </div>
       </div>
       <div class="h3 mt-3 name">{{ user.name }} {{ user.lastName }}</div>
     </div>
