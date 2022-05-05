@@ -27,3 +27,17 @@ label{
   margin-right: 2rem;
   color: white;
 }
+
+.dropzone{
+  margin: 1rem 12rem;
+}
+
+.boton{
+  margin-top: 1rem;
+  background-color: #52ab98;
+  border: #52ab98;
+}
+
+.boton:hover{
+  background-color: #226456;
+}

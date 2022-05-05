@@ -191,6 +191,20 @@ export class UserService {
   }
 
   /**
+   * Modifica la imagen de usuario pasándole la url que genera Cloudinary
+   * @param user
+   * @param urlImage
+   * @returns usuario con la imagen guardada
+   */
+  modifyUserProfileImage(user: User, urlImage: string) {
+    const url = `${this.baseUrl}/user?urlImage=${urlImage}`;
+    let token = JSON.parse(<string>localStorage.getItem('token'));
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    let body = user;
+    return this.http.put<User>(url, body, { headers });
+  }
+
+  /**
    * Resetea los valores del usuario para que pueda volver a empezar con su tracking para dejar de fumar
    * @param user
    * @returns user con valores a 0 excepto los iniciales de registro
