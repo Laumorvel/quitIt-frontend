@@ -28,7 +28,6 @@ label{
   color: white;
 }
 
-<<<<<<< HEAD
 
 /*IPAD*/
 @media screen and (min-width: 769px) and (max-width: 1279px) {
@@ -44,7 +43,7 @@ label{
     
   }
 }
-=======
+
 .dropzone{
   margin: 1rem 12rem;
 }
@@ -58,4 +57,3 @@ label{
 .boton:hover{
   background-color: #226456;
 }
->>>>>>> 48c30655d98cdba884799f6677000ca922edb078
