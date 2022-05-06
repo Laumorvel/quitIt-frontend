@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Dancing+Script&family=Roboto+Serif:wght@100&family=Satisfy&family=Yellowtail&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,500&family=Titan+One&display=swap");
+
+
+.img{
+    width: 40px;
+    margin-left: 10px;
+}
+
+.newGroup{
+    float: right;
+    margin-right: 3em;
+}
+
+
+.get-in-touch {
+    max-width: 800px;
+    margin: 50px auto;
+    position: relative;
+  }
+  .get-in-touch .title {
+    text-align: center;
+    letter-spacing: 3px;
+    font-size: 2em;
+    font-family: "Titan One", cursive;
+    font-weight: bold;
+    text-shadow: 4px 4px 2px #c8d8e4;
+    margin-top: 3em;
+  }

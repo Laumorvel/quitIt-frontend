@@ -33,6 +33,7 @@
   font-size: 18px;
   line-height: 26px;
   font-weight: 400;
+  border-radius: 5px;
 }
 
 .contact-form .input-text:focus {
@@ -73,4 +74,20 @@
 
 .box-content {
   margin-left: 0 !important;
+}
+
+
+
+
+/*MOVILES*/
+@media screen and (max-width: 769px) {
+ .register{
+   width: 250px;
+ }
+
+ .contact-form .input-text{
+   width: 300px;
+   margin: auto;
+   border-radius: 5px;
+ }
 }

@@ -208,11 +208,11 @@ export class UserService {
    * @returns el usuario que hemos indicado si existiese en la base de datos
    */
      buscarUsuariosCoincidentes(busqueda:String){
-      const url = `${this.baseUrl}/user?username=${busqueda}`;
+      const url = `${this.baseUrl}/users?username=${busqueda}`;
       let token = JSON.parse(<string>localStorage.getItem('token'));
       const opcion = new HttpHeaders().set('Authorization', `Bearer ${token}`);
       opcion.append('Access-Control-Allow-Origin', '*');
-      return this.http.get<User>(url, { headers: opcion });
+      return this.http.get<User[]>(url, { headers: opcion });
     }
 
 
@@ -224,4 +224,13 @@ export class UserService {
       opcion.append('Access-Control-Allow-Origin', '*');
       return this.http.post<User>(url, body, { headers: opcion });
     }
+
+    getAllFriends(){
+      const url = `${this.baseUrl}/friend`;
+      let token = JSON.parse(<string>localStorage.getItem('token'));
+      const opcion = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+      opcion.append('Access-Control-Allow-Origin', '*');
+      return this.http.get<User[]>(url, { headers: opcion });
+    }
+
 }

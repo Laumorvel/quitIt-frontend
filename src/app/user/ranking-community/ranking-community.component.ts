@@ -14,9 +14,6 @@ export class RankingCommunityComponent implements  OnDestroy, OnInit {
   users:User[]=[]
 
   dtOptions: DataTables.Settings = {};
-
-  // We use this trigger because fetching the list of persons can be quite long,
-  // thus we ensure the data is fetched before rendering
   dtTrigger: Subject<any> = new Subject<any>();
 
   constructor(private userService: UserService) { }
@@ -24,10 +21,11 @@ export class RankingCommunityComponent implements  OnDestroy, OnInit {
    
     this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 10
+      pageLength: 10,
+      ordering: true,
+      order: [[2, 'asc']]
+      
     };
-
-    
     this.mostrarUsuarios();
   }
 
@@ -41,7 +39,6 @@ export class RankingCommunityComponent implements  OnDestroy, OnInit {
      //   console.log("ok");
      //   console.log(resp); 
         this.users=resp;
-       // this.ordenarUsuarios();
        console.log(this.users);
         this.dtTrigger.next(null);
       },
@@ -56,24 +53,7 @@ export class RankingCommunityComponent implements  OnDestroy, OnInit {
     }
   )}
 
-/*
-  ordenarUsuarios(){
-    this.users.sort(function (a, b) {
-      if (a.daysInARowWithoutSmoking > b.daysInARowWithoutSmoking) {
-        return -1;
-      }
-      if (a.daysInARowWithoutSmoking < b.daysInARowWithoutSmoking) {
-        return 1;
-      }
-      return 0;
-    });
-    
-  }
-*/
-
-
   ngOnDestroy(): void {
-    // Do not forget to unsubscribe the event
     this.dtTrigger.unsubscribe();
   }
   

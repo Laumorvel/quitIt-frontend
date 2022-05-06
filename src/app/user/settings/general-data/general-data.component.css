@@ -27,3 +27,19 @@ label{
   margin-right: 2rem;
   color: white;
 }
+
+
+/*IPAD*/
+@media screen and (min-width: 769px) and (max-width: 1279px) {
+  .card {
+    margin: auto 5rem !important;
+    background-color: #f2f2f2;
+    text-align: center;
+  }
+
+  .divInferior{
+    margin-left:  0px !important;
+
+    
+  }
+}

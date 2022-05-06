@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-sm navbar-dark py-2 topnav">
-  <div class="container-fluid">
+  <div class="container-fluid ">
     <!--LOGO-->
     <a
       class="navbar-brand hoverZoom"
@@ -147,12 +147,10 @@
               Friends area</a
             >
           </li>
-        </ul>
-
-        <!--Settings. Necesaria la condición extra para que no aparezca en el menú del administrador-->
-        <li
+          <!--Settings. Necesaria la condición extra para que no aparezca en el menú del administrador-->
+          <li
           *ngIf="menuIndicator == 'registeredUser'"
-          class="nav-item settings hoverZoom"
+          class="nav-link text-black nav-item settings hoverZoom"
         >
           <a
             class="text-black"
@@ -163,6 +161,9 @@
             Settings
           </a>
         </li>
+        </ul>
+
+        
       </ng-template>
       <!--MODAL-->
       <div

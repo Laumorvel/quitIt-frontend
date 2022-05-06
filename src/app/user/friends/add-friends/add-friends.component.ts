@@ -10,7 +10,7 @@ import { UserService } from '../../services/user.service';
 })
 export class AddFriendsComponent implements OnInit {
 
-  usuarioEncontrados!:User;
+  usuariosEncontrados!:User[];
   busqueda!:String;
 
   usuarioRecibido:boolean=false;
@@ -26,8 +26,9 @@ export class AddFriendsComponent implements OnInit {
   buscarUser(){
     this.userService.buscarUsuariosCoincidentes(this.busqueda).subscribe({
       next: (resp) => {
-        this.usuarioEncontrados = resp;
+        this.usuariosEncontrados = resp;
         this.usuarioRecibido=true;
+        console.log(this.usuariosEncontrados)
         console.log(resp);
       },
       error: (e) => {
@@ -43,11 +44,16 @@ export class AddFriendsComponent implements OnInit {
   }
 
 
-  addFriend(){
-    this.userService.addFriend(this.usuarioEncontrados)
+  addFriend(usuario:User){
+    this.userService.addFriend(usuario)
     .subscribe({
       next: (resp => {
-       
+        Swal.fire({
+          title:'Error',
+          icon: 'error',
+          text:'The user has been added to your friends list',
+          confirmButtonColor:'#52ab98'
+        });
      }),
       error: resp => {
         if(resp.message==null){

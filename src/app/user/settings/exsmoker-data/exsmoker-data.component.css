@@ -29,3 +29,33 @@ p{
 .boton{
 background-color: #52ab98 ;
 }
+
+
+/*IPAD*/
+@media screen and (min-width: 769px) and (max-width: 1279px) {
+  .card2{
+  margin-left: 0rem;
+  margin-right: 1rem;
+  margin-top: 2em;
+  }
+
+  .card3{
+    margin-left:0rem;
+    margin-top: 2em;
+  }
+}
+
+
+/*MOVILES*/
+@media screen and (max-width: 769px) {
+  .card2{
+    margin-left: 0rem;
+    margin-right: 1rem;
+    margin-top: 2em;
+  }
+  
+  .card3{
+    margin-left:0rem;
+    margin-top: 2em;
+  }
+}
