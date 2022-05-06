@@ -222,14 +222,14 @@ export class UserService {
    * @param busqueda
    * @returns el usuario que hemos indicado si existiese en la base de datos
    */
+     buscarUsuariosCoincidentes(busqueda:String){
+      const url = `${this.baseUrl}/users?username=${busqueda}`;
+      let token = JSON.parse(<string>localStorage.getItem('token'));
+      const opcion = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+      opcion.append('Access-Control-Allow-Origin', '*');
+      return this.http.get<User[]>(url, { headers: opcion });
+    }
 
-  buscarUsuariosCoincidentes(busqueda: String) {
-    const url = `${this.baseUrl}/user?username=${busqueda}`;
-    let token = JSON.parse(<string>localStorage.getItem('token'));
-    const opcion = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    opcion.append('Access-Control-Allow-Origin', '*');
-    return this.http.get<User>(url, { headers: opcion });
-  }
 
   /**
    * Cambia la propiedad de message del usuario a false una vez que este ya ha leído el mensaje mandado el lunes
@@ -256,6 +256,11 @@ export class UserService {
     return this.http.get<ScheduledMessage>(url, { headers });
   }
 
+  /**
+   * Agrega el usuario seleccionado a los amigos del usuario que lo selecciona
+   * @param user 
+   * @returns 
+   */
     addFriend(user: User){
       const url = `${this.baseUrl}/user`;
       let body = user;
@@ -263,6 +268,18 @@ export class UserService {
       const opcion = new HttpHeaders().set('Authorization', `Bearer ${token}`);
       opcion.append('Access-Control-Allow-Origin', '*');
       return this.http.post<User>(url, body, { headers: opcion });
+    }
+
+    /**
+     * 
+     * @returns devuelve una lsita con todos los amigos del usuario
+     */
+    getAllFriends(){
+      const url = `${this.baseUrl}/friend`;
+      let token = JSON.parse(<string>localStorage.getItem('token'));
+      const opcion = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+      opcion.append('Access-Control-Allow-Origin', '*');
+      return this.http.get<User[]>(url, { headers: opcion });
     }
 
 }

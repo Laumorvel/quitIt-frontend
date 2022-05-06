@@ -1,0 +1,29 @@
+
+*{
+    font-size: 25px;
+    margin: auto;
+}
+
+/*IPAD*/
+@media screen and (min-width: 769px) and (max-width: 1279px) {
+    .img{
+        width: 200px;
+        margin-top: 2em;
+    }
+  }
+  
+  /*PANTALLAS*/
+  @media screen and (min-width: 1279px){
+    .img{
+        width: 300px;
+        margin-top: 2em;
+    }
+  }
+  
+  /*MOVILES*/
+  @media screen and (max-width: 769px) {
+    .img{
+        width: 130px;
+        margin-top: 1em;
+    }
+  }

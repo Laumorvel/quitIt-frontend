@@ -10,14 +10,24 @@ import { UserService } from '../../services/user.service';
 })
 export class ShowFriendsComponent implements OnInit {
 
-  usuarioEncontrados!:User;
+  usuariosEncontrados!:User[];
   busqueda!:String;
 
+  amigosEncontrados!:User[];
+
+
+  user!: User;
   usuarioRecibido:boolean=false;
+  existeUsuario:boolean=false;
 
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+   
+    this.updateUserDAta();
+    this.buscarUser();
+    this.searchMyFriends();
+   
   }
 
   /**
@@ -26,7 +36,25 @@ export class ShowFriendsComponent implements OnInit {
   buscarUser(){
     this.userService.buscarUsuariosCoincidentes(this.busqueda).subscribe({
       next: (resp) => {
-        this.usuarioEncontrados = resp;
+        this.usuariosEncontrados = resp;
+        console.log(resp);
+      },
+      error: (e) => {
+        Swal.fire({
+          title:'Error',
+          icon: 'error',
+          text:'There are no results that match your search',
+          confirmButtonColor:'##52ab98'
+        });
+      }
+    }
+  )
+  }
+
+  searchMyFriends(){
+    this.userService.getAllFriends().subscribe({
+      next: (resp) => {
+        this.amigosEncontrados = resp;
         this.usuarioRecibido=true;
         console.log(resp);
       },
@@ -40,6 +68,26 @@ export class ShowFriendsComponent implements OnInit {
       }
     }
   )
+  }
+
+
+  updateUserDAta() {
+    this.userService.updateUser().subscribe({
+      next: (resp) => {
+        this.user = resp;
+        console.log(resp)
+        this.existeUsuario=true;
+        localStorage.setItem('user', JSON.stringify(resp));
+      },
+      error: (resp) => {
+        Swal.fire({
+          title: 'Error',
+          icon: 'error',
+          text: resp.error.mensaje,
+          confirmButtonColor: '#52ab98',
+        });
+      },
+    });
   }
 
 

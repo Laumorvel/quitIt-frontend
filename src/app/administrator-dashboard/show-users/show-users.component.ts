@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
 export class ShowUsersComponent implements OnInit {
 
 
-  usuarioEncontrados!:User;
+  usuariosEncontrados!:User[];
   busqueda!:String;
 
   usuarioRecibido:boolean=false;
@@ -28,7 +28,7 @@ export class ShowUsersComponent implements OnInit {
   buscarUser(){
     this.adminService.buscarUsuariosCoincidentes(this.busqueda).subscribe({
       next: (resp) => {
-        this.usuarioEncontrados = resp;
+        this.usuariosEncontrados = resp;
         if(resp!=null){
            this.usuarioRecibido=true;
         }
@@ -52,8 +52,8 @@ export class ShowUsersComponent implements OnInit {
   /**
    * Borra un usuario por su id
    */
-  deleteUser(){
-    this.adminService.deleteUser(this.usuarioEncontrados.id)
+  deleteUser(id:number){
+    this.adminService.deleteUser(id)
     .subscribe({
       next: (resp => {
         Swal.fire({

@@ -2,9 +2,24 @@
 
 * {
   font-family: "Quicksand", sans-serif;
-  font-size: 30px;
+  font-size: 20px;
 }
 
 .boton{
   background-color: #52ab98;
 }
+
+.form-control-file, .form-control-range {
+  display: block;
+  width: 90%;
+}
+
+
+
+/*MOVILES*/
+@media screen and (max-width: 769px) {
+  .text-center {
+    text-align: center !important;
+    margin: 1em;
+  }
+ }

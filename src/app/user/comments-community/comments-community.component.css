@@ -8,22 +8,35 @@
   border-radius: 10px;
 }
 
-.marginElement{
-   
-}
-
 .imgReport{
     width: 40px;
 }
 
 .form-control{
-  margin-left: 2em !important;
+  margin-left: 4em !important;
+  width: 1100px;
 }
 
 button{
   background-color: #52ab98;
   color: white;
-  width: 58px;
-  margin-left: 2em;
+  width: 150px;
+  
 }
 
+
+/*IPAD*/
+@media screen and (min-width: 769px) and (max-width: 1279px) {
+  .form-control{
+    margin-left: 2em !important;
+    width: 600px;
+  }
+  
+  button{
+    background-color: #52ab98;
+    color: white;
+    width: 150px;
+    margin-right: 2em;
+    
+  }
+}

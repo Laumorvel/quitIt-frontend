@@ -8,7 +8,7 @@
   font-size: 20px;
 }
 .fondoAzulClaro {
-  background-color: #fce181;
+  background-color: #c8d8e4;
 }
 
 .h100 {
@@ -21,7 +21,7 @@
 }
 
 .icon {
-  max-width: 40px;
+  max-width: 17px;
   height: auto;
 }
 
@@ -31,7 +31,7 @@
 }
 
 .img {
-  width: 30%;
+  width: 20%;
 }
 
 .imgIconos {
@@ -86,9 +86,9 @@
 
 /*TÁBLET EN ADELANTE*/
 @media screen and (min-width: 576px) {
-  .settings {
-    right: 0;
-    position: absolute;
+ .settings {
+     /*right: 0;
+    position: absolute;*/
     list-style: none;
   }
 
@@ -99,14 +99,26 @@
   .nav-item {
     margin-left: 2rem;
   }
+
+  li{
+    margin-left: 0px !important;
+  }
+
+
 }
 
 .active {
-  text-shadow: 4px 4px 2px #fef9c7;
-  font-family: "Titan One", cursive;
+  text-shadow: 4px 4px 2px #c8d8e4;
+  font-family: 'Titan One', cursive;
   font-weight: bold;
-  font-size: 30px;
+  font-size: 21px;
 }
+
+/*PANTALLAS*/
+@media screen and (min-width: 1279px){
+  li{
+    margin-left: 0px !important;
+  }
 
 .botonYes {
   background-color: #52ab98;

@@ -59,3 +59,34 @@
   width: 200px;
   cursor: pointer;
 }
+
+
+/*IPAD*/
+@media screen and (min-width: 769px) and (max-width: 1279px) {
+  .contact-form .input-text {
+    display: block;
+    width: 90%;
+    height: 36px;
+    border-width: 0 0 2px 0;
+    border-color: #2b6777;
+    font-size: 18px;
+    line-height: 26px;
+    font-weight: 400;
+    margin: auto;
+  }
+}
+
+/*MOVILES*/
+@media screen and (max-width: 769px) {
+  .contact-form .input-text {
+    display: block;
+    width: 80%;
+    height: 36px;
+    border-width: 0 0 2px 0;
+    border-color: #2b6777;
+    font-size: 18px;
+    line-height: 26px;
+    font-weight: 400;
+    margin: auto;
+  }
+}

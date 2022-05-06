@@ -28,3 +28,52 @@
 .contenedor{
   background-color: #2b6777;
 }
+
+.pulmonesdiv{
+  width: 80%;
+  margin: auto;
+}
+
+.pulmones{
+  width: 250px;
+  margin: auto;
+  display: flex;
+  align-content: center;
+}
+
+/*IPAD*/
+@media screen and (min-width: 769px) and (max-width: 1279px) {
+  .pulmones{
+    width: 200px;
+    margin: auto;
+  }
+}
+
+/*PANTALLAS*/
+@media screen and (min-width: 1279px){
+  .frase{
+    font-size: 30px;
+    margin-top: 1.8em;
+  }
+}
+
+/*MOVILES*/
+@media screen and (max-width: 769px) {
+  .tituloOficial{
+    font-family: 'Playfair Display', serif;
+    font-family: 'Titan One', cursive;
+    font-size: 60px;
+    margin-right: 1em;
+    margin-bottom: 0px !important;
+    color:#ffffff;
+    text-shadow: black 0.1em 0.1em 0.2em
+  }
+  
+  .derecha{
+    margin-left: 3em;
+    font-size: 20px;
+    padding-bottom: 1em;
+    color: #ffffff;
+    text-shadow: black 0.1em 0.1em 0.2em
+  }
+}
