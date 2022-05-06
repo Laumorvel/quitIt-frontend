@@ -7,15 +7,18 @@ import { ExsmokerDataComponent } from './exsmoker-data/exsmoker-data.component';
 import { ChangePassComponent } from './change-pass/change-pass.component';
 import { ShowImageComponent } from './show-image/show-image.component';
 import { FormsModule } from '@angular/forms';
+import { NgxDropzoneModule } from 'ngx-dropzone';
+import { UploadService } from '../services/upload.service';
 @NgModule({
   declarations: [
     SettingsComponent,
     GeneralDataComponent,
     ExsmokerDataComponent,
     ChangePassComponent,
-    ShowImageComponent,
+    ShowImageComponent
   ],
-  imports: [CommonModule, SettingsRoutingModule, FormsModule],
+  imports: [CommonModule, SettingsRoutingModule, FormsModule, NgxDropzoneModule],
   exports: [],
+  providers: [UploadService]
 })
 export class SettingsModule {}

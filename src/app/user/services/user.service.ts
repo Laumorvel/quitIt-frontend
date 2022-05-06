@@ -6,6 +6,7 @@ import {
   Commentario,
   Incidence,
   MeetUP,
+  ScheduledMessage,
   User,
 } from 'src/app/public/interfaces/interfaces';
 import {} from '../../public/interfaces/interfaces';
@@ -44,8 +45,8 @@ export class UserService {
 
   /**
    * Crea un nuevo comentario
-   * @param text 
-   * @returns 
+   * @param text
+   * @returns
    */
   crearComentario(text: String) {
     let id = localStorage.getItem('user');
@@ -61,9 +62,9 @@ export class UserService {
 
   /**
    * Crea una incidencia de un comentario
-   * @param subject 
-   * @param text 
-   * @returns 
+   * @param subject
+   * @param text
+   * @returns
    */
   sendIncidence(subject: String, text: String) {
     const url = `${this.baseUrl}/incidence`;
@@ -79,9 +80,9 @@ export class UserService {
 
   /**
    * Asocia un comentario a una incidencia
-   * @param idIncidencia 
-   * @param comentario 
-   * @returns 
+   * @param idIncidencia
+   * @param comentario
+   * @returns
    */
   addComentario(idIncidencia: number, comentario: Commentario) {
     const url = `${this.baseUrl}/incidence/${idIncidencia}`;
@@ -94,7 +95,7 @@ export class UserService {
 
   /**
    * Recupera un comentario por su id
-   * @param idC 
+   * @param idC
    * @returns Un comentario
    */
   buscarComentariosPorId(idC: string) {
@@ -190,11 +191,25 @@ export class UserService {
   }
 
   /**
+   * Modifica la imagen de usuario pasándole la url que genera Cloudinary
+   * @param user
+   * @param urlImage
+   * @returns usuario con la imagen guardada
+   */
+  modifyUserProfileImage(user: User, urlImage: string) {
+    const url = `${this.baseUrl}/user?urlImage=${urlImage}`;
+    let token = JSON.parse(<string>localStorage.getItem('token'));
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    let body = user;
+    return this.http.put<User>(url, body, { headers });
+  }
+
+  /**
    * Resetea los valores del usuario para que pueda volver a empezar con su tracking para dejar de fumar
    * @param user
    * @returns user con valores a 0 excepto los iniciales de registro
    */
-  reset(user: User){
+  reset(user: User) {
     const url = `${this.baseUrl}/user?reset=${true}`;
     let token = JSON.parse(<string>localStorage.getItem('token'));
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
@@ -202,8 +217,8 @@ export class UserService {
     return this.http.put<User>(url, body, { headers });
   }
 
-    /**
-   * 
+  /**
+   *
    * @param busqueda
    * @returns el usuario que hemos indicado si existiese en la base de datos
    */
@@ -216,6 +231,36 @@ export class UserService {
     }
 
 
+  /**
+   * Cambia la propiedad de message del usuario a false una vez que este ya ha leído el mensaje mandado el lunes
+   * @param user
+   * @param message
+   * @returns usuario seteado
+   */
+  changeMessageProperty(user: User, message: Boolean) {
+    const url = `${this.baseUrl}/user?message=${message}`;
+    let token = JSON.parse(<string>localStorage.getItem('token'));
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    let body = user;
+    return this.http.put<User>(url, body, { headers });
+  }
+
+  /**
+   * Consigue el mensaje programado para el usuario.
+   * @returns mensaje programado
+   */
+  loadScheduledMessage(){
+    const url = `${this.baseUrl}/scheduledMessage`;
+    let token = JSON.parse(<string>localStorage.getItem('token'));
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<ScheduledMessage>(url, { headers });
+  }
+
+  /**
+   * Agrega el usuario seleccionado a los amigos del usuario que lo selecciona
+   * @param user 
+   * @returns 
+   */
     addFriend(user: User){
       const url = `${this.baseUrl}/user`;
       let body = user;
@@ -225,6 +270,10 @@ export class UserService {
       return this.http.post<User>(url, body, { headers: opcion });
     }
 
+    /**
+     * 
+     * @returns devuelve una lsita con todos los amigos del usuario
+     */
     getAllFriends(){
       const url = `${this.baseUrl}/friend`;
       let token = JSON.parse(<string>localStorage.getItem('token'));
