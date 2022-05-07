@@ -1,31 +1,32 @@
 /*SEARCH*/
+@import url("https://fonts.googleapis.com/css2?family=Cinzel&family=Federo&family=Quicksand:wght@300&display=swap");
 
 
 * {
     outline: none;
   }
-  
+
   html,
   body {
     height: 100%;
     min-height: 100%;
   }
-  
+
   body {
     margin: 0;
     background-color: #ffd8d8;
   }
-  
+
   .tb {
     display: table;
     width: 100%;
   }
-  
+
   .td {
     display: table-cell;
     vertical-align: middle;
   }
-  
+
   input,
   button {
     color: #fff;
@@ -35,43 +36,43 @@
     border: 0;
     background-color: transparent;
   }
-  
+
   #cover {
     /*position: absolute;*/
-  
+
    /* top: 25%;
     left: 40px;
     right: 0;*/
-    width: 500px;
+   /* width: 500px;*/
     padding: 35px;
     /*margin: -83px auto 0 auto;*/
     margin-right: 2em;
-    background-color: #2b6777;
+    background-color: #929090 ;
     border-radius: 20px;
-    box-shadow: 0 10px 40px #2b6777, 0 0 0 20px #ffffffeb;
+    /*box-shadow: 0 10px 40px #2b6777, 0 0 0 20px #ffffffeb;*/
     transform: scale(0.6);
   }
-  
+
   form {
     height: 90px;
   }
-  
+
   input[type="text"] {
     width: 100%;
     height: 96px;
     font-size: 40px;
     line-height: 1;
   }
-  
+
   input[type="text"]::placeholder {
     color: #fff;
   }
-  
+
   #s-cover {
     width: 1px;
     padding-left: 35px;
   }
-  
+
   button {
     position: relative;
     display: block;
@@ -80,7 +81,7 @@
     cursor: pointer;
     padding: 0 !important;
   }
-  
+
   #s-circle {
     position: relative;
     top: -8px;
@@ -94,7 +95,7 @@
     border-radius: 50%;
     transition: 0.5s ease all;
   }
-  
+
   button span {
     position: absolute;
     top: 61px;
@@ -107,7 +108,7 @@
     transform: rotateZ(52deg);
     transition: 0.5s ease all;
   }
-  
+
   button span:before,
   button span:after {
     content: "";
@@ -121,7 +122,7 @@
     transform: rotateZ(0);
     transition: 0.5s ease all;
   }
-  
+
   #s-cover:hover #s-circle {
     top: -1px;
     width: 67px;
@@ -130,7 +131,7 @@
     background-color: #fff;
     border-radius: 20px;
   }
-  
+
   #s-cover:hover span {
     top: 50%;
     left: 56px;
@@ -138,12 +139,12 @@
     margin-top: -9px;
     transform: rotateZ(0);
   }
-  
+
   #s-cover:hover button span:before {
     bottom: 11px;
     transform: rotateZ(52deg);
   }
-  
+
   #s-cover:hover button span:after {
     bottom: -11px;
     transform: rotateZ(-52deg);
@@ -154,7 +155,7 @@
     width: 40px;
     background-color: #fff;
   }
-  
+
 
 /*CARD*/
 * {
@@ -205,18 +206,6 @@ body {
     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   transition: all 0.4s ease-in-out;
 }
-/*
-.cardcontainer:hover {
-  border: 1px solid rgba(255, 255, 255, 1);
-  background: dodgerblue;
-  color: white;
-  transition: all 0.4s ease-in-out;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 74px 75px,
-    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
-    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-  transform: translateY(-15px);
-}*/
-
 .cardcontainer img {
   width: 100%;
   border-radius: 15px;
@@ -272,12 +261,6 @@ body {
   transition: all 0.4s ease-in-out;
   fill: dodgerblue;
 }
-/*
-.cardcontainer:hover svg {
-  color: white;
-  transition: all 0.4s ease-in-out;
-  fill: white;
-}*/
 
 .cardbutton {
   display: flex;
@@ -291,33 +274,13 @@ body {
   color: white;
   transition: all 0.6s ease-in-out;
 }
-/*
-.cardbutton:hover {
-  transform: translateY(-4px) scale(1.05);
-  transition: all 0.3s ease-in-out;
-}
 
-.cardcontainer:hover .cardbutton {
-  background: white;
-  color: dodgerblue;
-  transition: all 0.4s ease-in-out;
-}
-*/
 .cardcontainer p {
   position: relative;
   bottom: 10px;
   line-height: 130%;
   font-size: 11pt;
 }
-/*
-.cardcontainer svg:hover {
-  transform: translateY(5px);
-  transition: all 0.3s ease-in-out;
-}
-*/
-
-@import url("https://fonts.googleapis.com/css2?family=Cinzel&family=Federo&family=Quicksand:wght@300&display=swap");
-
 
 .btnDelete{
   width: 230px;
@@ -330,4 +293,11 @@ body {
   font-size: 25px;
   border-radius: 10px;
 
+}
+
+.title{
+  font-size: 2.8em;
+  font-family: "Titan One", cursive;
+  font-weight: bold;
+  letter-spacing: 3px;
 }
