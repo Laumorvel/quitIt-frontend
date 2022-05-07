@@ -24,7 +24,7 @@ export interface User {
   cigarettesAvoided: number;
   totalTimeWithoutSmoking: number;
   groupList: Group[];
-  userList: User[];
+  friends: User[];
   achievementList: Achievement[];
   penalties: Penalty[];
   startDate: Date;
