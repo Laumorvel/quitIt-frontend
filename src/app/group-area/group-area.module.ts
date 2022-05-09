@@ -6,6 +6,7 @@ import { GroupAreaComponent } from './group-area.component';
 import { RankingGroupComponent } from './ranking-group/ranking-group.component';
 import { AddUserGroupComponent } from './add-user-group/add-user-group.component';
 import { CommentsGroupComponent } from './comments-group/comments-group.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { CommentsGroupComponent } from './comments-group/comments-group.componen
   ],
   imports: [
     CommonModule,
-    GroupAreaRoutingModule
+    GroupAreaRoutingModule,
+    FormsModule
   ]
 })
 export class GroupAreaModule { }

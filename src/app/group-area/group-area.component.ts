@@ -9,7 +9,13 @@ export class GroupAreaComponent implements OnInit {
 
   constructor() { }
 
+  crear: boolean = false;
+
   ngOnInit(): void {
+  }
+
+  crearGroup(){
+    this.crear = true;
   }
 
 }

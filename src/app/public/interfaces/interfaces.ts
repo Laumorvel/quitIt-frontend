@@ -40,6 +40,13 @@ export interface User {
   imageUrl: string;
 }
 
+export interface GroupMember{
+  id: number,
+  user: User,
+  cargo: string,
+  group: Group;
+}
+
 export interface Group {
   id: number;
   name: string;

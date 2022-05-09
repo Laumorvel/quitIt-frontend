@@ -1,12 +1,13 @@
-<!--Create group-->
-<div class="newGroup">
-    <p>Create group</p>
-    <input type="text" placeholder=" *Group name">
-    <img src="../../assets/aprobado.png" class="img" alt="check image">
-</div>
-
-
 <!--List group-->
 <div class="get-in-touch">
-    <h3 class="title">My groups</h3>
+  <h3 class="title">My groups</h3>
+</div>
+
+<!--Create group-->
+<div class="newGroup">
+  <button class="btn boton" (click)="crearGroup()">Create group</button>
+  <div *ngIf="crear">
+    <input type="text" placeholder=" *Group name" />
+    <img src="../../assets/aprobado.png" class="img" alt="check image" />
+  </div>
 </div>
