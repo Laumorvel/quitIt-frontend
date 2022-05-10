@@ -1,13 +1,83 @@
-<!--List group-->
-<div class="get-in-touch">
+<div>
   <h3 class="title">My groups</h3>
-</div>
+  <!--Create group-->
+  <div>
+    <button
+      class="btn boton text-center justify-content-center newGroup"
+      (click)="crearGroup()"
+    >
+      Create group
+    </button>
+  </div>
+  <div *ngIf="crear" class="mt-5">
+    <!--Formulario de creación de grupos-->
+    <form class="form">
+      <div class="form-group">
+        <label for="groupName">Group name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="groupName"
+          placeholder="Enter a group name"
+          [(ngModel)]="groupName"
+        />
+        <span
+            class="form-text text-danger"
+            *ngIf="campoNoValido('groupName')"
+          >
+            {{ groupNameError }}
+          </span>
+      </div>
+      <!--Añade miembros a los grupos-->
+      <div *ngIf="newMemberForm">
+        <div class="form-group">
+          <label for="memberName">Member name</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="memberName"
+            id="memberName"
+            placeholder="Enter the username of your friend"
+          />
+          <span
+            class="form-text text-danger"
+            *ngIf="campoNoValido('memberName')"
+          >
+            {{ memberNameError }}
+          </span>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="admin" />
+          <label class="form-check-label" for="admin">Make admin</label>
+        </div>
+      </div>
+      <button class="addMember mt-3" (click)="showNewMemberForm()">
+        <img
+          src="../../assets/plus.png"
+          class="icon"
+          alt="Add new group member"
+        />
+      </button>
+      Add new member
 
-<!--Create group-->
-<div class="newGroup">
-  <button class="btn boton" (click)="crearGroup()">Create group</button>
-  <div *ngIf="crear">
-    <input type="text" placeholder=" *Group name" />
-    <img src="../../assets/aprobado.png" class="img" alt="check image" />
+      <div class="text-center">
+        <button type="submit" class="btn boton">Submit</button>
+      </div>
+    </form>
+  </div>
+
+  <!--List group-->
+  <div>
+    <div
+      class="row justify-content-around mt-5"
+      *ngIf="groups != null || groups != undefined; else elseBlock"
+    >
+      <div class="card col-md-2 text-center" *ngFor="let group of groups">
+        <div class="title">{{ group.name }}</div>
+      </div>
+    </div>
+    <ng-template #elseBlock>
+      <div class="noGroups">You don't have any group yet.</div>
+    </ng-template>
   </div>
 </div>
