@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
-import { Group, User } from '../public/interfaces/interfaces';
+import { Group, GroupMember, User } from '../public/interfaces/interfaces';
 import { UserService } from '../user/services/user.service';
 import { FriendUsernameValidatorService } from './services/friend-username-validator.service';
 
@@ -17,16 +17,27 @@ export class GroupAreaComponent implements OnInit {
     private usernameFriendService: FriendUsernameValidatorService
   ) {}
 
-  myForm: FormGroup = this.fb.group({
-    memberName: [, [Validators.required], [this.usernameFriendService]],
-    groupName:[,[Validators.required]]
-  });
-
+  //ATRIBUTOS
   crear: boolean = false;
-  groupName: string = '';
   user: User = JSON.parse(<string>localStorage.getItem('user'));
   groups: Group[] = this.user.groupList;
   newMemberForm: boolean = false;
+  searchUsername: string = '';
+  friendsFound: User[] = [];
+  cont: number = 0;
+  friendSelected: boolean = false;
+  groupmembers: GroupMember[] = [];
+  noFriendsFound:boolean = false;
+  save: boolean = false;
+  newUser: boolean = false;
+  showTable: boolean = true;
+  userSelected!: User;
+
+  //FORMULARIO
+  myForm: FormGroup = this.fb.group({
+    memberName: [, [Validators.required]],
+    groupName: [, [Validators.required]]
+  });
 
   ngOnInit(): void {
     this.getUserData();
@@ -54,13 +65,16 @@ export class GroupAreaComponent implements OnInit {
 
   showNewMemberForm() {
     this.newMemberForm = true;
+    //this.cont += 1; //para comprobar que se están escogiendo bien los usenames
+    this.friendSelected = false;
   }
 
   get memberNameError(): string {
     const errors = this.myForm.get('memberName')?.errors!;
     if (errors['required']) {
-      return 'Name required';
-    } else if (errors['']) {//servicio de validación de username de amigos
+      return 'Username required';
+    } else if (errors['']) {
+      //servicio de validación de username de amigos
       return '';
     }
     return '';
@@ -76,5 +90,48 @@ export class GroupAreaComponent implements OnInit {
 
   campoNoValido(campo: string) {
     return this.myForm.get(campo)?.invalid && this.myForm.get(campo)?.touched;
+  }
+
+  /**
+   * Busca los usuarios que coincidan con el término introducido y ya sean amigos del usuario.
+   */
+  searchFriend() {
+    this.userService.searchFriends(this.myForm.get('memberName')?.value).subscribe({
+      next: (resp) => {
+        this.friendsFound = resp;
+        this.showTable = true;
+        if(resp.length == 0){
+          this.noFriendsFound = true;
+        }
+      },
+      error: (e) => {
+
+       console.log(e)
+        Swal.fire({
+          title: 'Error',
+          icon: 'error',
+          text: 'There are no results that match your search',
+          confirmButtonColor: '##52ab98',
+        });
+      },
+    });
+  }
+
+  submitForm(){
+
+  }
+
+  selectFriend(event:any){
+    this.noFriendsFound = false;
+    this.friendSelected = true;
+    this.showTable= false;
+    let friend = event.target;
+    this.myForm.controls['memberName'].setValue(friend.innerText);//se setea el valor del atributo del formulario "memberName" al clicado
+    this.userSelected = this.friendsFound.filter(f => f.username==friend.innerText)[0];//conseguimos el user seleccionado
+  }
+
+  addMember(){
+    this.newUser = true;
+    this.showTable = false;
   }
 }

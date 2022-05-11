@@ -34,11 +34,20 @@ form{
 }
 
 .icon {
-  max-width: 35px;
+  max-width: 30px;
   height: auto;
   border-radius: 50%;
 }
 
+.icon2{
+  max-width: 35px;
+  height: auto;
+}
+
 .addMember{
-  border-radius: 50%;
+  border-radius: 5%;
+}
+
+.username:hover{
+  cursor: pointer;
 }

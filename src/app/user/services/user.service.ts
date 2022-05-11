@@ -230,6 +230,19 @@ export class UserService {
       return this.http.get<User[]>(url, { headers: opcion });
     }
 
+    /**
+     * Busca usuarios por por username que sean amigos del usuario logueado
+     * @param busqueda
+     * @returns array de usuarios
+     */
+    searchFriends(busqueda:String){
+      const url = `${this.baseUrl}/users?friend=${busqueda}`;
+      let token = JSON.parse(<string>localStorage.getItem('token'));
+      const opcion = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+      opcion.append('Access-Control-Allow-Origin', '*');
+      return this.http.get<User[]>(url, { headers: opcion });
+    }
+
 
   /**
    * Cambia la propiedad de message del usuario a false una vez que este ya ha leído el mensaje mandado el lunes
@@ -258,8 +271,8 @@ export class UserService {
 
   /**
    * Agrega el usuario seleccionado a los amigos del usuario que lo selecciona
-   * @param user 
-   * @returns 
+   * @param user
+   * @returns
    */
     addFriend(user: User){
       const url = `${this.baseUrl}/user`;
@@ -271,7 +284,7 @@ export class UserService {
     }
 
     /**
-     * 
+     *
      * @returns devuelve una lsita con todos los amigos del usuario
      */
     getAllFriends(){

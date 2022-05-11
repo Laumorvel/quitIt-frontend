@@ -1,3 +1,4 @@
+
 export interface Message {
   id: number;
   fecha: string;
@@ -39,17 +40,15 @@ export interface User {
   message: boolean;
   imageUrl: string;
 }
-
 export interface GroupMember{
   id: number,
   user: User,
-  cargo: string,
-  group: Group;
+  cargo: string;
 }
-
 export interface Group {
   id: number;
   name: string;
+  groupMembers: GroupMember[];
 }
 
 export interface Incidence {
