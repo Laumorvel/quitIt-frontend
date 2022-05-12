@@ -17,6 +17,7 @@
       [formGroup]="myForm"
       (ngSubmit)="submitForm()"
     >
+      <!--GROUP NAME-->
       <div class="form-group">
         <label for="groupName">Group name</label>
         <input
@@ -32,75 +33,111 @@
         </span>
       </div>
       <!--Añade miembros a los grupos-->
-      <div *ngIf="!this.myForm.get('groupName')?.invalid && this.myForm.get('groupName')?.value!=null">
-        <div class="form-group">
-          <label for="memberName">Member name</label>
-          <input
-            type="text"
-            class="form-control"
-            formControlName="memberName"
-            id="memberName"
-            name="memberName"
-            placeholder="Enter the username of your friend"
-            value="{{ myForm.get('memberName')?.value }}"
-            (change)="searchFriend()"
-          />
+      <div
+        *ngIf="
+          !this.myForm.get('groupName')?.invalid &&
+          this.myForm.get('groupName')?.value != null
+        "
+      >
+        <div class="row mt-4 p-0 m-0">
+          <!--MEMBER NAME-->
+          <div class="form-group">
+            <label for="memberName">Member name</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="memberName"
+              name="memberName"
+              placeholder="Enter the username of your friend"
+              [value]="myForm.get('memberName')?.value"
+              (keyup)="searchFriend()"
+            />
 
-          <span
-            class="form-text text-danger"
-            *ngIf="campoNoValido('memberName')"
-          >
-            {{ memberNameError }}
-          </span>
-          <table class="table table-hover" *ngIf="friendsFound.length > 0 && showTable">
-            <tbody>
-              <tr *ngFor="let friend of friendsFound">
-                <td>
-                  <div *ngIf="friend.imageUrl != null; else elseBlock">
-                    <img
-                      src="{{ friend.imageUrl }}"
-                      alt="friend profile picture"
-                    />
-                  </div>
-                  <ng-template #elseBlock>
-                    <img
-                      src="../../assets/account.png"
-                      alt="friend profile picture"
-                      class="icon2"
-                    />
-                  </ng-template>
-                </td>
-                <td (click)="selectFriend($event)" class="username">{{ friend.username }}</td>
-              </tr>
-            </tbody>
-          </table>
-          <div *ngIf="noFriendsFound">
-            <p>No friends found with that username</p>
+            <span
+              class="form-text text-danger"
+              *ngIf="campoNoValido('memberName')"
+            >
+              {{ memberNameError }}
+            </span>
+            <!--TABLA DE AMIGOS COINCIDENTES -->
+            <table
+              class="table table-hover"
+              *ngIf="
+                friendsFound.length > 0 &&
+                showTable &&
+                myForm.get('memberName')?.value != ''
+              "
+            >
+              <tbody>
+                <tr *ngFor="let friend of friendsFound">
+                  <td>
+                    <div *ngIf="friend.imageUrl != null; else elseBlock">
+                      <img
+                        src="{{ friend.imageUrl }}"
+                        alt="friend profile picture"
+                      />
+                    </div>
+                    <ng-template #elseBlock>
+                      <img
+                        src="../../assets/account.png"
+                        alt="friend profile picture"
+                        class="icon2"
+                      />
+                    </ng-template>
+                  </td>
+                  <td (click)="selectFriend($event)" class="username">
+                    {{ friend.username }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div *ngIf="noFriendsFound">
+              <p>No friends found with that username</p>
+            </div>
+          </div>
+          <!--MAKE ADMIN - CHECKBOX-->
+          <div>
+            <input
+              type="checkbox"
+              class="form-check-input"
+              formControlName="admin"
+            />
+            <label class="form-check-label" for="admin">Make admin</label>
           </div>
         </div>
-        <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="admin" />
-          <label class="form-check-label" for="admin">Make admin</label>
-        </div>
-        <div *ngIf="showTable">
-          <button class="btn boton" [disabled]="!friendSelected || this.myForm.get('memberName')?.invalid" (click)="addMember()">
-            Save
+        <!--ADD MEMBER-->
+        <div>
+          <button [disabled]="myForm.invalid" class="btn boton mt-4" (click)="pushMember()">
+            ADD MEMBER
           </button>
         </div>
       </div>
-      <button class="addMember mt-3" (click)="showNewMemberForm()">
-        <img
-          src="../../assets/plus.png"
-          class="icon"
-          alt="Add new group member"
-        /> Add member
-      </button>
 
-
+      <!--SUBMIT-->
       <div class="text-center">
-        <button type="submit" class="btn boton">Submit</button>
+        <button type="submit" class="btn boton">CREATE GROUP</button>
       </div>
     </form>
+
+    <!--MEMBERS SELECTED-->
+    <div class="justify-content-center">
+      <div
+        class="card"
+        style="width: 18rem"
+        *ngFor="let member of groupMembers"
+      >
+        <img
+          *ngIf="member.user.imageUrl != null"
+          src="{{ member.user.imageUrl }}"
+          alt="friend profile picture"
+          class="card-img-top"
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{member.user.username}} - {{member.cargo}}</h5>
+          <button class="btn boton" (click)="deleteMember()">DELETE</button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!--List group-->
