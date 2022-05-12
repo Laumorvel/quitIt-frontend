@@ -1,6 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel&family=Federo&family=Quicksand:wght@300&display=swap");
+
+
+
 /*SEARCH*/
-
-
 * {
     outline: none;
   }
@@ -315,8 +317,6 @@ body {
   transition: all 0.3s ease-in-out;
 }
 */
-
-@import url("https://fonts.googleapis.com/css2?family=Cinzel&family=Federo&family=Quicksand:wght@300&display=swap");
 
 
 .btnDelete{

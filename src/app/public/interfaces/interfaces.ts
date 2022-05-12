@@ -84,6 +84,9 @@ export interface MeetUP {
   description: string;
   date: Date;
   place: string;
+  type:string;
+  choise: boolean;
+  assistantsList:User[];
 }
 export interface Incidence {
   id: number;

@@ -1,1 +1,24 @@
-<p>meet-ups works!</p>
+<!--Título y botones de acceso-->
+<div class="row">
+    <div class="col-lg-12 col-xs-6">
+        <div class="get-in-touch">
+            <h3 class="title">Meet ups</h3>
+        </div>
+        <div class="frame text-center">
+            <button class="custom-btn btn"  (click)="showMeetUps()"><span>Meet ups</span></button>
+            <button class="custom-btn btn"  (click)="createMeetUps()"><span>Create meet ups</span></button>
+          </div>
+    </div>
+  </div>
+
+<!--Ver todos los meetups-->
+<div *ngIf="showMeetUpsVisible">
+    <app-show-meet-ups></app-show-meet-ups>
+</div>
+
+
+<!--Crear meet ups-->
+<div *ngIf="createMeetUpsVisible">
+    <app-create-meet-ups></app-create-meet-ups>
+</div>
+

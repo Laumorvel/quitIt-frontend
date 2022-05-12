@@ -1,32 +1,20 @@
-<!--COMMENTS-->
-<div class="row" *ngFor="let i of comentarios" class="bloqueComentario">
-
-        <div  class=" col-3 mt-0 text-center">
-            <label class="marginElement">{{i.user.username}}</label>
+<!--EH AQUI EL CHAT!-->
+<div class="card text-center cardContainer">
+  <div class="card-header">
+    Chat
+  </div>
+  <div class="card-body" >
+    <div id="contenedorDeMensajes" class="contenedorDeMensajes">
+        <div *ngFor="let i of comentarios" class="enviado p-2 msj" [ngClass]="(user.username==i.user.username)? 'enviado' : 'recibido'">
+        <label class="username">{{i.user.username}}:</label> <br>
+        <label class="comentarioUser">{{i.text}}</label>
         </div>
-        <div  class=" col-7 mt-0 text-center">
-            <label class="marginElement">{{i.text}}</label></div>
-            <div  class=" col-1 mt-0 text-center">
-          <img (click)="enviarIncidencia(i.id)" src="../../../assets/report.png" class=" marginElement imgReport"></div>
-</div>
-
-<!--CREATE COMMENT-->
-<div class="row text-center gx-0">
-  <div class="col-md-12 col-12 offset-md-1 mt-5 bordeForm m-0">
-    <!-- FECHA Y HORA CITA -->
-    <div class="mb-3 row gx-0">
-      <div class="col-sm-9">
-        <input
-          type="textarea"
-          class="form-control hora"
-          [(ngModel)]="text"
-          name="text"
-          placeholder="*Your Comment"
-        />
       </div>
-      <div class="col-3">
-        <button class="custom-btn btn" (click)="crearComentario()">Send</button>
+  </div>
+  <div class="card-footer text-muted input-group" (ngSubmit)="crearComentario()">
+      <input type="text" class="form-control" value="" placeholder=" *Your Comment" [(ngModel)]="text">
+      <div class="input-group-append" (click)="crearComentario()">
+        <button class="input-group-text " id="basic-addon2">Send</button>
       </div>
     </div>
-  </div>
 </div>
