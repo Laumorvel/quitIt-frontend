@@ -5,6 +5,8 @@ import { MeetUpsRoutingModule } from './meet-ups-routing.module';
 import { MeetUpsComponent } from './meet-ups.component';
 import { ShowMeetUpsComponent } from './show-meet-ups/show-meet-ups.component';
 import { CreateMeetUpsComponent } from './create-meet-ups/create-meet-ups.component';
+import { DataTablesModule } from 'angular-datatables';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import { CreateMeetUpsComponent } from './create-meet-ups/create-meet-ups.compon
   ],
   imports: [
     CommonModule,
-    MeetUpsRoutingModule
+    MeetUpsRoutingModule,
+    DataTablesModule,
+    FormsModule
   ]
 })
 export class MeetUpsModule { }

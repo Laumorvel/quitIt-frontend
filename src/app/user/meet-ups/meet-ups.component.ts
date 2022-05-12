@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
 import { MeetUP } from 'src/app/public/interfaces/interfaces';
 import Swal from 'sweetalert2';
 import { UserService } from '../services/user.service';
@@ -8,37 +9,24 @@ import { UserService } from '../services/user.service';
   templateUrl: './meet-ups.component.html',
   styleUrls: ['./meet-ups.component.css']
 })
-export class MeetUpsComponent implements OnInit {
+export class MeetUpsComponent implements  OnInit {
 
-  meetUps:MeetUP[]=[];
+  constructor() { }
 
-  constructor(private userService: UserService) { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
-    this.cargarMeetUps();
+ 
+  showMeetUpsVisible:boolean=true;
+  createMeetUpsVisible:boolean=false;
+
+  showMeetUps(){
+    this.showMeetUpsVisible=true;
+    this.createMeetUpsVisible=false;
   }
 
-  /**
-   * Recupera todos los meet ups disponibles
-   */
-  cargarMeetUps(){
-    this.userService.buscarMeetUps().subscribe({
-      next: (resp) => {
-        this.meetUps = resp;
-        console.log(resp);
-      },
-      error: (e) => {
-        Swal.fire({
-          title:'Error',
-          icon: 'error',
-          text:'There are no services available at this time',
-          confirmButtonColor:'#52ab98'
-        });
-      }
-    }
-  )
+  createMeetUps(){
+    this.showMeetUpsVisible=false;
+    this.createMeetUpsVisible=true;
   }
-
-
   
 }

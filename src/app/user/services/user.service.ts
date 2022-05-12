@@ -282,4 +282,41 @@ export class UserService {
       return this.http.get<User[]>(url, { headers: opcion });
     }
 
+    asistenciaMeetUp(id:number){
+      let verdadero = true;
+      const url = `${this.baseUrl}/meetUp/${id}?choice=${verdadero}`;
+      let token = JSON.parse(<string>localStorage.getItem('token'));
+      const opcion = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+      opcion.append('Access-Control-Allow-Origin', '*');
+      console.log(token)
+      return this.http.post<MeetUP>(url, { headers: opcion });
+    }
+
+    noAsistenciaMeetUp(id:number){
+      let falso = false;
+      const url = `${this.baseUrl}/meetUp/${id}?choice=${falso}`;
+      let token = JSON.parse(<string>localStorage.getItem('token'));
+      const opcion = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+      opcion.append('Access-Control-Allow-Origin', '*');
+      return this.http.post<MeetUP>(url, { headers: opcion });
+    }
+
+    createMeetUp(title:string, description:string, date:string, type:string, place:string){
+      const url = `${this.baseUrl}/meetUp`;
+     
+      let body = {
+        title:title,
+        description:description,
+        date:date,
+        type:type,
+        place:place
+      }
+
+      let token = JSON.parse(<string>localStorage.getItem('token'));
+      const opcion = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+      opcion.append('Access-Control-Allow-Origin', '*');
+      return this.http.post<MeetUP>(url, body, { headers: opcion });
+    }
+
 }
+

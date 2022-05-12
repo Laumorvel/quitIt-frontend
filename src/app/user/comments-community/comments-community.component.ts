@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { Commentario } from 'src/app/public/interfaces/interfaces';
+import { Commentario, User } from 'src/app/public/interfaces/interfaces';
 import Swal from 'sweetalert2';
+import { tsParticles } from 'tsparticles-engine';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -12,6 +13,10 @@ import { UserService } from '../services/user.service';
 export class CommentsCommunityComponent implements OnInit {
   constructor(private userService: UserService, private router:Router) {}
 
+  
+  user: User = JSON.parse(<string>localStorage.getItem('user'));
+
+
   comentarios: Commentario[] = [];
 
   text!: String;
@@ -20,8 +25,10 @@ export class CommentsCommunityComponent implements OnInit {
 
   ngOnInit(): void {
     this.mostrarComentariosComunidad();
+    setInterval(() => this.mostrarComentariosComunidad(), 10000);
   }
 
+  
   /**
    * Nos envia al compoenente de incidencias
    * @param id 
@@ -66,11 +73,7 @@ export class CommentsCommunityComponent implements OnInit {
       this.userService.crearComentario(this.text).subscribe({
         next: (resp) => {
           this.comentarios.push(resp);
-          Swal.fire({
-            title: 'Appointment is available',
-            icon: 'success',
-            confirmButtonColor: '##52ab98',
-          });
+          this.text=="";
         },
         error: (resp) => {
           Swal.fire({
@@ -84,4 +87,20 @@ export class CommentsCommunityComponent implements OnInit {
     }
     
   }
+
+
+
+  /*Scroll*/
+  scrollToTheLastElementByClassName(){
+    let elements = document.getElementsByClassName('msj');
+    let ultimo:any = elements[(elements.length-1)];
+    let toppos =ultimo.offsetTop;
+
+    //@ts-ignore
+    document.getElementById('contenedorDeMensajes')?.scrollTop=toppos;
+  }
+
+  
+
+
 }
