@@ -1,1 +1,107 @@
-<p>create-meet-ups works!</p>
+<div class="row text-center gx-0">
+    <section class="get-in-touch">
+      <h1 class="title">Create meet ups</h1>
+  
+      <div class="col-md-12 offset-md-1 box-content">
+        <form
+          class="contact-form row text-center"
+          autocomplete="off"
+          #miFormulario="ngForm"
+          autocomplete="off"
+        >
+          <div>
+            <!-- TITLE -->
+            <div class="mb-3 row justify-content-center">
+              <div class="col-sm-9">
+                <input
+                  type="text"
+                  class="form-control"
+                  [(ngModel)]="title"
+                  name="title"
+                  id="title"
+                  class="input-text js-input"
+                  placeholder="*Title"
+                  required="required"
+                />
+              </div>
+            </div>
+
+            <div>
+                <!-- DESCRIPTION -->
+                <div class="mb-3 row justify-content-center">
+                  <div class="col-sm-9">
+                    <input
+                      type="text"
+                      class="form-control"
+                      [(ngModel)]="description"
+                      name="description"
+                      id="description"
+                      class="input-text js-input"
+                      placeholder="*Description"
+                      required="required"
+                    />
+                  </div>
+                </div>
+
+  
+            <!-- DATE -->
+            <div class="mb-3 row justify-content-center">
+              <div class="col-sm-9">
+                <input
+                  type="datetime-local"
+                  class="form-control"
+                  [(ngModel)]="date"
+                  name="date"
+                  id="date"
+                  class="input-text js-input"
+                  placeholder="*Date"
+                  required="required"
+                />
+              </div>
+            </div>
+
+
+            <select name="select"  >
+                <option value="online" selected (click)="guardarType('Online')">online</option>
+                <option value="presential" (click)="guardarType('Presential')">presential</option>
+            </select>
+
+               <!-- PLACE -->
+               <div class="mb-3 row justify-content-center">
+                <div class="col-sm-9">
+                  <input
+                    type="text"
+                    class="form-control"
+                    [(ngModel)]="place"
+                    name="place"
+                    id="place"
+                    class="input-text js-input"
+                    placeholder="*Place"
+                    required="required"
+                  />
+                </div>
+            </div>
+  
+              <!--ENTER BUTTON-->
+              <div class="row mt-4">
+                <div class="col">
+                  <button
+                    type="submit"
+                    [disabled]="miFormulario.invalid"
+                    class="custom-btn btn"
+                    (click)="creeateMeetUp()"
+                  >
+                    Enter
+                  </button>
+                </div>
+              </div>
+  
+
+            </div>
+
+          </div>
+        </form>
+      </div>
+    </section>
+  </div>
+  

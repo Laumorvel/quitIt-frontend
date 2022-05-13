@@ -1,1 +1,26 @@
-<p>show-meet-ups works!</p>
+<div class="contenedor">
+    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Date</th>
+          <th>Attendace</th>
+          <th>Place</th>
+          <th>Choise</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let i of meetUps">
+          <td>{{ i.title }}</td>
+          <td>{{ i.type }}</td>
+          <td>{{ i.date | date: 'dd-MM-yyyy' }} {{ i.date | date: 'HH:mm' }}</td>
+          <td>{{ i.assistantsList }}</td>
+          <td>{{ i.place }}</td>
+          <td class="text-center"><img src="../../../../assets/meetups/cheque.png" class="img1" (click)="asistenciaMeetUp(i.id)"><img src="../../../../assets/meetups/cancelar.png" class="img2" (click)="noAsistenciaMeetUp(i.id)"></td>
+         
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    
