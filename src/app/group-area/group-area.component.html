@@ -1,12 +1,157 @@
-<!--Create group-->
-<div class="newGroup">
-    <p>Create group</p>
-    <input type="text" placeholder=" *Group name">
-    <img src="../../assets/aprobado.png" class="img" alt="check image">
-</div>
+<div>
+  <h3 class="title">My groups</h3>
+  <!--Create group-->
+  <div>
+    <button
+      class="btn boton text-center justify-content-center newGroup"
+      (click)="crearGroup()"
+    >
+      Create group
+    </button>
+  </div>
+  <div *ngIf="crear" class="mt-5">
+    <!--Formulario de creación de grupos-->
+    <form
+      class="form"
+      autocomplete="off"
+      [formGroup]="myForm"
+      (ngSubmit)="submitForm()"
+    >
+      <!--GROUP NAME-->
+      <div class="form-group">
+        <label for="groupName">Group name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="groupName"
+          formControlName="groupName"
+          name="groupName"
+          placeholder="Enter a group name"
+        />
+        <span class="form-text text-danger" *ngIf="campoNoValido('groupName')">
+          {{ groupNameError }}
+        </span>
+      </div>
+      <!--Añade miembros a los grupos-->
+      <div
+        *ngIf="
+          !this.myForm.get('groupName')?.invalid &&
+          this.myForm.get('groupName')?.value != null
+        "
+      >
+        <div class="row mt-4 p-0 m-0">
+          <!--MEMBER NAME-->
+          <div class="form-group">
+            <label for="memberName">Member name</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="memberName"
+              name="memberName"
+              placeholder="Enter the username of your friend"
+              [value]="myForm.get('memberName')?.value"
+              (keyup)="searchFriend()"
+            />
 
+            <span
+              class="form-text text-danger"
+              *ngIf="campoNoValido('memberName')"
+            >
+              {{ memberNameError }}
+            </span>
+            <!--TABLA DE AMIGOS COINCIDENTES -->
+            <table
+              class="table table-hover"
+              *ngIf="
+                friendsFound.length > 0 &&
+                showTable &&
+                myForm.get('memberName')?.value != ''
+              "
+            >
+              <tbody>
+                <tr *ngFor="let friend of friendsFound">
+                  <td>
+                    <div *ngIf="friend.imageUrl != null; else elseBlock">
+                      <img
+                        src="{{ friend.imageUrl }}"
+                        alt="friend profile picture"
+                      />
+                    </div>
+                    <ng-template #elseBlock>
+                      <img
+                        src="../../assets/account.png"
+                        alt="friend profile picture"
+                        class="icon2"
+                      />
+                    </ng-template>
+                  </td>
+                  <td (click)="selectFriend($event)" class="username">
+                    {{ friend.username }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div *ngIf="noFriendsFound">
+              <p>No friends found with that username</p>
+            </div>
+          </div>
+          <!--MAKE ADMIN - CHECKBOX-->
+          <div>
+            <input
+              type="checkbox"
+              class="form-check-input"
+              formControlName="admin"
+            />
+            <label class="form-check-label" for="admin">Make admin</label>
+          </div>
+        </div>
+        <!--ADD MEMBER-->
+        <div>
+          <button [disabled]="myForm.invalid" class="btn boton mt-4" (click)="pushMember()">
+            ADD MEMBER
+          </button>
+        </div>
+      </div>
 
-<!--List group-->
-<div class="get-in-touch">
-    <h3 class="title">My groups</h3>
+      <!--SUBMIT-->
+      <div class="text-center">
+        <button type="submit" class="btn boton">CREATE GROUP</button>
+      </div>
+    </form>
+
+    <!--MEMBERS SELECTED-->
+    <div class="justify-content-center">
+      <div
+        class="card"
+        style="width: 18rem"
+        *ngFor="let member of groupMembers"
+      >
+        <img
+          *ngIf="member.user.imageUrl != null"
+          src="{{ member.user.imageUrl }}"
+          alt="friend profile picture"
+          class="card-img-top"
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{member.user.username}} - {{member.cargo}}</h5>
+          <button class="btn boton" (click)="deleteMember()">DELETE</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--List group-->
+  <div>
+    <div
+      class="row justify-content-around mt-5"
+      *ngIf="groups != null || groups != undefined; else elseBlock"
+    >
+      <div class="card col-md-2 text-center" *ngFor="let group of groups">
+        <div class="title">{{ group.name }}</div>
+      </div>
+    </div>
+    <ng-template #elseBlock>
+      <div class="noGroups">You don't have any group yet.</div>
+    </ng-template>
+  </div>
 </div>
