@@ -243,6 +243,20 @@ export class UserService {
       return this.http.get<User[]>(url, { headers: opcion });
     }
 
+    /**
+     * Busca entre los amigos del usuario a aquellos que coincidan con la búsqueda
+     * introducida y no se hayan incluido ya en el grupo.
+     * @param busqueda
+     * @param group
+     * @returns array de usuarios
+     */
+    searchFriendsForGroup(busqueda:String, group:User[]){
+      const url = `${this.baseUrl}/users?friend=${busqueda}&groupMembers=${group}`;
+      let token = JSON.parse(<string>localStorage.getItem('token'));
+      const opcion = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+      opcion.append('Access-Control-Allow-Origin', '*');
+      return this.http.get<User[]>(url, { headers: opcion });
+    }
 
   /**
    * Cambia la propiedad de message del usuario a false una vez que este ya ha leído el mensaje mandado el lunes
@@ -316,7 +330,7 @@ export class UserService {
 
     createMeetUp(title:string, description:string, date:string, type:string, place:string){
       const url = `${this.baseUrl}/meetUp`;
-     
+
       let body = {
         title:title,
         description:description,

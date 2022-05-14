@@ -144,8 +144,8 @@ export class RegisterComponent implements OnInit {
   }
 
   /**
-   * 
-   * @param campo 
+   *
+   * @param campo
    * @returns Comprueba si la información introducida en un campo es valida
    */
   campoNoValido(campo: string) {
@@ -158,7 +158,7 @@ export class RegisterComponent implements OnInit {
 
   /**
    * Registra el usuario en la base de datos
-   * @param objetivos 
+   * @param objetivos
    */
   submitFormulario(objetivos :number[]) {
     const user = this.miFormulario.value

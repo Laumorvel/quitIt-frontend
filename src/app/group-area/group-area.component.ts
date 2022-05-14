@@ -30,6 +30,7 @@ export class GroupAreaComponent implements OnInit {
   newMemberForm: boolean = false;
   searchUsername: string = '';
   friendsFound: User[] = [];
+  friendsSelected: User[]=[];
   friendSelected: boolean = false;
   groupMembers: GroupMember[] = [];
   noFriendsFound: boolean = false;
@@ -45,12 +46,16 @@ export class GroupAreaComponent implements OnInit {
   //FORMULARIO
   myForm: FormGroup = this.fb.group({
     groupName: [, [Validators.required]],
-    memberName: [, [Validators.required]],
+    memberName: [, [Validators.required], [this.usernameFriendService]],
     admin: [,],
   });
 
+  /**
+   * Se añade el usuario seleccionado a la lista de amigos temporal del grupo.
+   */
   pushMember() {
     this.friendSelected = false;
+    this.friendsSelected.push(this.userSelected);
     this.groupMembers.push(this.crearMember());
   }
 
@@ -59,7 +64,6 @@ export class GroupAreaComponent implements OnInit {
   }
 
   crearMember(): GroupMember {
-    console.log(this.myForm.get('admin')?.value)
     let carg = this.myForm.get('admin')?.value ==true ? 'AMDIN' : 'NO_ADMIN';
     const groupMember: GroupMember = {
       id: 0,
@@ -85,11 +89,6 @@ export class GroupAreaComponent implements OnInit {
     });
   }
 
-  // showNewMemberForm() {
-  //   this.newMemberForm = true;
-  //   this.cont += 1; //para comprobar que se están escogiendo bien los usenames
-  //   this.friendSelected = false;
-  // }
 
   get memberNameError(): string {
     const errors = this.myForm.get('memberName')?.errors!;
@@ -114,21 +113,16 @@ export class GroupAreaComponent implements OnInit {
     return this.myForm.get(campo)?.invalid && this.myForm.get(campo)?.touched;
   }
 
-  // //CONTROL DE CAMPOS DEL ARRAY DE MIEMBROS
-  // campoNoValidoArray(campo: string, i: number) {
-  //   let cadena = `members.${i}.${campo}`;
-  //   return this.myForm.get(cadena)?.invalid && this.myForm.get(cadena)?.touched;
-  // }
 
   /**
    * Busca los usuarios que coincidan con el término introducido y ya sean amigos del usuario.
+   * Descarta a aquellos que ya se haya seleccionado para formar parte del grupo.
    */
   searchFriend() {
     this.userService
-      .searchFriends(this.myForm.get('memberName')?.value)
+      .searchFriendsForGroup(this.myForm.get('memberName')?.value, this.friendsSelected)
       .subscribe({
         next: (resp) => {
-          console.log(resp)
           this.friendsFound = resp;
           this.showTable = true;
           if (resp.length == 0) {
@@ -154,6 +148,7 @@ export class GroupAreaComponent implements OnInit {
     this.showTable = false;
     let friend = event.target;
     this.myForm.controls[`memberName`].setValue(friend.innerText); //se setea el valor del atributo del formulario "memberName" al clicado
+    this.myForm.get(`memberName`)?.setValue(friend.innerText); //setea el atributo en sí
     this.userSelected = this.friendsFound.filter(
       (f) => f.username == friend.innerText
     )[0]; //conseguimos el user seleccionado
@@ -164,7 +159,13 @@ export class GroupAreaComponent implements OnInit {
     this.showTable = false;
   }
 
+  /**
+   * Elimina a un usuario de la lista temporal de amigos añadidos al grupo.
+   */
   deleteMember(){
-
+    const index: number = this.friendsSelected.indexOf(this.userSelected);
+    if (index !== -1) {
+        this.friendsSelected.splice(index, 1);
+    }
   }
 }

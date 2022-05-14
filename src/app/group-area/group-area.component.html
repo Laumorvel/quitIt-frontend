@@ -33,13 +33,11 @@
         </span>
       </div>
       <!--Añade miembros a los grupos-->
-      <div
-        *ngIf="
-          !this.myForm.get('groupName')?.invalid &&
-          this.myForm.get('groupName')?.value != null
-        "
-      >
-        <div class="row mt-4 p-0 m-0">
+
+        <div class="row mt-4 p-0 m-0" *ngIf="
+        !this.myForm.get('groupName')?.invalid &&
+        this.myForm.get('groupName')?.value != null
+      ">
           <!--MEMBER NAME-->
           <div class="form-group">
             <label for="memberName">Member name</label>
@@ -111,7 +109,7 @@
             ADD MEMBER
           </button>
         </div>
-      </div>
+
 
       <!--SUBMIT-->
       <div class="text-center">
