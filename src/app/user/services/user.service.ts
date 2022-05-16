@@ -251,11 +251,12 @@ export class UserService {
      * @returns array de usuarios
      */
     searchFriendsForGroup(busqueda:String, group:User[]){
-      const url = `${this.baseUrl}/users?friend=${busqueda}&groupMembers=${group}`;
+      const url = `${this.baseUrl}/users?friend=${busqueda}`;
       let token = JSON.parse(<string>localStorage.getItem('token'));
       const opcion = new HttpHeaders().set('Authorization', `Bearer ${token}`);
       opcion.append('Access-Control-Allow-Origin', '*');
-      return this.http.get<User[]>(url, { headers: opcion });
+      console.log(group)
+      return this.http.post<User[]>(url, group, { headers: opcion });
     }
 
   /**

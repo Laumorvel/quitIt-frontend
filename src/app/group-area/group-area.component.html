@@ -34,82 +34,88 @@
       </div>
       <!--Añade miembros a los grupos-->
 
-        <div class="row mt-4 p-0 m-0" *ngIf="
-        !this.myForm.get('groupName')?.invalid &&
-        this.myForm.get('groupName')?.value != null
-      ">
-          <!--MEMBER NAME-->
-          <div class="form-group">
-            <label for="memberName">Member name</label>
-            <input
-              type="text"
-              class="form-control"
-              formControlName="memberName"
-              name="memberName"
-              placeholder="Enter the username of your friend"
-              [value]="myForm.get('memberName')?.value"
-              (keyup)="searchFriend()"
-            />
+      <div
+        class="row mt-4 p-0 m-0"
+        *ngIf="
+          !this.myForm.get('groupName')?.invalid &&
+          this.myForm.get('groupName')?.value != null
+        "
+      >
+        <!--MEMBER NAME-->
+        <div class="form-group">
+          <label for="memberName">Member name</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="memberName"
+            name="memberName"
+            placeholder="Enter the username of your friend"
+            [value]="myForm.get('memberName')?.value"
+            (keyup)="searchFriend()"
+          />
 
-            <span
-              class="form-text text-danger"
-              *ngIf="campoNoValido('memberName')"
-            >
-              {{ memberNameError }}
-            </span>
-            <!--TABLA DE AMIGOS COINCIDENTES -->
-            <table
-              class="table table-hover"
-              *ngIf="
-                friendsFound.length > 0 &&
-                showTable &&
-                myForm.get('memberName')?.value != ''
-              "
-            >
-              <tbody>
-                <tr *ngFor="let friend of friendsFound">
-                  <td>
-                    <div *ngIf="friend.imageUrl != null; else elseBlock">
-                      <img
-                        src="{{ friend.imageUrl }}"
-                        alt="friend profile picture"
-                      />
-                    </div>
-                    <ng-template #elseBlock>
-                      <img
-                        src="../../assets/account.png"
-                        alt="friend profile picture"
-                        class="icon2"
-                      />
-                    </ng-template>
-                  </td>
-                  <td (click)="selectFriend($event)" class="username">
-                    {{ friend.username }}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <div *ngIf="noFriendsFound">
-              <p>No friends found with that username</p>
-            </div>
-          </div>
-          <!--MAKE ADMIN - CHECKBOX-->
-          <div>
-            <input
-              type="checkbox"
-              class="form-check-input"
-              formControlName="admin"
-            />
-            <label class="form-check-label" for="admin">Make admin</label>
-          </div>
+          <span
+            class="form-text text-danger"
+            *ngIf="campoNoValido('memberName')"
+          >
+            {{ memberNameError }}
+          </span>
+          <span class="form-text text-danger" *ngIf="!checkFieldOfFriend()">
+            {{ memberAlreadyAdded }}
+          </span>
+          <!--TABLA DE AMIGOS COINCIDENTES -->
+          <table
+            class="table table-hover"
+            *ngIf="
+              friendsFound.length > 0 &&
+              showTable &&
+              myForm.get('memberName')?.value != ''
+            "
+          >
+            <tbody>
+              <tr *ngFor="let friend of friendsFound">
+                <td>
+                  <div *ngIf="friend.imageUrl != null; else elseBlock">
+                    <img
+                      src="{{ friend.imageUrl }}"
+                      alt="friend profile picture"
+                    />
+                  </div>
+                  <ng-template #elseBlock>
+                    <img
+                      src="../../assets/account.png"
+                      alt="friend profile picture"
+                      class="icon2"
+                    />
+                  </ng-template>
+                </td>
+                <td (click)="selectFriend($event)" class="username">
+                  {{ friend.username }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <!--ADD MEMBER-->
+        <!--MAKE ADMIN - CHECKBOX-->
         <div>
-          <button [disabled]="myForm.invalid" class="btn boton mt-4" (click)="pushMember()">
-            ADD MEMBER
-          </button>
+          <input
+            type="checkbox"
+            class="form-check-input"
+            formControlName="admin"
+          />
+          <label class="form-check-label" for="admin">Make admin</label>
         </div>
-
+      </div>
+      <!--ADD MEMBER-->
+      <div>
+        <button
+          [disabled]="myForm.invalid"
+          class="btn boton mt-4"
+          (click)="pushMember()"
+        >
+          ADD MEMBER
+        </button>
+      </div>
 
       <!--SUBMIT-->
       <div class="text-center">
@@ -131,7 +137,9 @@
           class="card-img-top"
         />
         <div class="card-body">
-          <h5 class="card-title">{{member.user.username}} - {{member.cargo}}</h5>
+          <h5 class="card-title">
+            {{ member.user.username }} - {{ member.cargo }}
+          </h5>
           <button class="btn boton" (click)="deleteMember()">DELETE</button>
         </div>
       </div>
