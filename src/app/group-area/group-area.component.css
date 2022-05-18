@@ -58,3 +58,16 @@ form{
   margin-right: 0!important;
   padding-right: 0!important;
 }
+
+.vistaGrupo{
+  background-color: #c8d8e4;
+  padding: 3rem 3rem;
+}
+
+.cardMember{
+  background-color: #f2f2f2;
+}
+
+.conjuntoGrupo{
+  margin: auto 7rem;
+}

@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 import { Group, GroupMember, User } from '../public/interfaces/interfaces';
 import { UserService } from '../user/services/user.service';
 import { FriendUsernameValidatorService } from './services/friend-username-validator.service';
-import { GroupMemberServiceService } from './services/group-member-service.service';
+import { GroupServiceService } from './services/group-service.service';
 
 @Component({
   selector: 'app-group-area',
@@ -16,7 +16,7 @@ export class GroupAreaComponent implements OnInit {
     private fb: FormBuilder,
     private userService: UserService,
     private usernameFriendService: FriendUsernameValidatorService,
-    private groupMemberValidator: GroupMemberServiceService
+    private groupService: GroupServiceService
   ) {}
 
   //ATRIBUTOS
@@ -39,6 +39,10 @@ export class GroupAreaComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUserData();
+    this.myForm.reset({
+      groupName: '',
+      memberName: '',
+    });
   }
 
   //FORMULARIO
@@ -53,11 +57,10 @@ export class GroupAreaComponent implements OnInit {
    * Si no está ya en la lista de miembros temporales, se añade
    */
   pushMember() {
-      this.friendSelected = false;
-      this.friendsSelected.push(this.userSelected);
-      this.groupMembers.push(this.crearMember());
-      this.memberAlreadyAddedMistake = false;
-
+    this.friendSelected = false;
+    this.friendsSelected.push(this.userSelected);
+    this.groupMembers.push(this.crearMember());
+    this.memberAlreadyAddedMistake = false;
   }
 
   crearGroup() {
@@ -156,7 +159,24 @@ export class GroupAreaComponent implements OnInit {
       });
   }
 
-  submitForm() {}
+  /**
+   * Creamos el grupo que vamos a enviar al back
+   * y añadir a todos los usuarios seleccionados.
+   */
+  submitForm() {
+    const group: Group = {
+      id: 0,
+      name: this.myForm.get('groupName')?.value,
+      groupMembers: this.groupMembers,
+    };
+
+    this.groupService.createGroup(group).subscribe({});
+
+    this.myForm.reset({
+      groupName: '',
+      memberName: '',
+    });
+  }
 
   selectFriend(event: any) {
     this.noFriendsFound = false;
@@ -188,15 +208,22 @@ export class GroupAreaComponent implements OnInit {
   /**
    * Comprueba que el username introducido en el miembro del equipo no se haya
    * agregado ya como amigo.
+   *
+   * setTimeout() :
+   * Función creada para que no aparezca el error "NG0100: Expression has changed after it was checked".
+   * Como angular no lo puede procesar suficientemente rápido y procesar su nuevo valor,
+   * esta función hace que lo analice en el siguiente
+   * macroTask del buscador y le de tiempo a cambiar el valor.
    * @returns boolean
    */
   checkFieldOfFriend() {
     let search = this.myForm.get('memberName')?.value;
-    let canBeAdded = this.friendsSelected.filter((f) => f.username == search).length == 0
-      ? true
-      : false;
+    let canBeAdded =
+      this.friendsSelected.filter((f) => f.username == search).length == 0
+        ? true
+        : false;
+    this.memberAlreadyAddedMistake = canBeAdded ? false : true;
 
-      this.memberAlreadyAddedMistake = canBeAdded ? false : true;
-      return canBeAdded;
+    return canBeAdded;
   }
 }

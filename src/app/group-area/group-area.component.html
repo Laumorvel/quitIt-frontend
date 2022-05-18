@@ -35,7 +35,7 @@
       <!--Añade miembros a los grupos-->
 
       <div
-        class="row mt-4 p-0 m-0 "
+        class="row mt-4 p-0 m-0"
         *ngIf="
           !this.myForm.get('groupName')?.invalid &&
           this.myForm.get('groupName')?.value != null
@@ -119,14 +119,26 @@
 
       <!--SUBMIT-->
       <div class="text-center">
-        <button type="submit" class="btn boton" [disabled]="myForm.invalid || groupMembers.length < 1">CREATE GROUP</button>
+        <button
+          type="submit"
+          class="btn boton"
+          [disabled]="myForm.invalid || groupMembers.length < 1"
+        >
+          CREATE
+        </button>
       </div>
     </form>
+  </div>
 
-    <!--MEMBERS SELECTED-->
-    <div class="justify-content-center">
+  <!--MEMBERS SELECTED-->
+  <div class="conjuntoGrupo">
+    <div
+      class="row vistaGrupo justify-content-evenly"
+      *ngIf="groupMembers.length > 0"
+    >
+      <div class="title mb-5">{{ myForm.get("groupName")?.value }}</div>
       <div
-        class="card"
+        class="card cardMember text-center"
         style="width: 18rem"
         *ngFor="let member of groupMembers"
       >
@@ -137,7 +149,7 @@
           class="card-img-top"
         />
         <div class="card-body">
-          <h5 class="card-title">
+          <h5 class="card-title h1">
             {{ member.user.username }} - {{ member.cargo }}
           </h5>
           <button class="btn boton" (click)="deleteMember()">DELETE</button>
