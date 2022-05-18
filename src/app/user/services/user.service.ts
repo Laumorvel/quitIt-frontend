@@ -255,7 +255,6 @@ export class UserService {
       let token = JSON.parse(<string>localStorage.getItem('token'));
       const opcion = new HttpHeaders().set('Authorization', `Bearer ${token}`);
       opcion.append('Access-Control-Allow-Origin', '*');
-      console.log(group)
       return this.http.post<User[]>(url, group, { headers: opcion });
     }
 
@@ -316,7 +315,6 @@ export class UserService {
       let token = JSON.parse(<string>localStorage.getItem('token'));
       const opcion = new HttpHeaders().set('Authorization', `Bearer ${token}`);
       opcion.append('Access-Control-Allow-Origin', '*');
-      console.log(token)
       return this.http.post<MeetUP>(url, { headers: opcion });
     }
 

@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { Group, GroupMember, User } from '../public/interfaces/interfaces';
 import { UserService } from '../user/services/user.service';
@@ -38,7 +34,8 @@ export class GroupAreaComponent implements OnInit {
   newUser: boolean = false;
   showTable: boolean = true;
   userSelected!: User;
-  search: string = "";
+  search: string = '';
+  memberAlreadyAddedMistake: boolean = false;
 
   ngOnInit(): void {
     this.getUserData();
@@ -47,11 +44,7 @@ export class GroupAreaComponent implements OnInit {
   //FORMULARIO
   myForm: FormGroup = this.fb.group({
     groupName: [, [Validators.required]],
-    memberName: [
-      ,
-      [Validators.required],
-      [this.usernameFriendService],
-    ],
+    memberName: [, [Validators.required], [this.usernameFriendService]],
     admin: [,],
   });
 
@@ -60,11 +53,11 @@ export class GroupAreaComponent implements OnInit {
    * Si no está ya en la lista de miembros temporales, se añade
    */
   pushMember() {
-    if(this.checkFieldOfFriend()){
-    this.friendSelected = false;
+      this.friendSelected = false;
       this.friendsSelected.push(this.userSelected);
       this.groupMembers.push(this.crearMember());
-    }
+      this.memberAlreadyAddedMistake = false;
+
   }
 
   crearGroup() {
@@ -127,8 +120,8 @@ export class GroupAreaComponent implements OnInit {
   /**
    * Si nungún miembro coincide con el buscado
    */
-  get memberAlreadyAdded(): string{
-    if(this.checkFieldOfFriend() == false){
+  get memberAlreadyAdded(): string {
+    if (this.memberAlreadyAddedMistake) {
       return 'Member already added to the group';
     }
     return '';
@@ -152,17 +145,14 @@ export class GroupAreaComponent implements OnInit {
       )
       .subscribe({
         next: (resp) => {
-          console.log(resp)
           this.friendsFound = resp;
           this.showTable = true;
           if (resp.length == 0) {
             this.noFriendsFound = true;
           }
+          this.checkFieldOfFriend();
         },
-        error: (e) => {
-
-
-        },
+        error: (e) => {},
       });
   }
 
@@ -200,16 +190,13 @@ export class GroupAreaComponent implements OnInit {
    * agregado ya como amigo.
    * @returns boolean
    */
-  checkFieldOfFriend(){
+  checkFieldOfFriend() {
     let search = this.myForm.get('memberName')?.value;
-    console.log(search)
-    console.log(this.friendsSelected.filter(f => f.username == search).length == 0 )
-    console.log(this.friendsSelected.filter(f => f.username == search))
+    let canBeAdded = this.friendsSelected.filter((f) => f.username == search).length == 0
+      ? true
+      : false;
 
-  return this.friendsSelected.filter(f => f.username == search).length == 0 ? true : false;
+      this.memberAlreadyAddedMistake = canBeAdded ? false : true;
+      return canBeAdded;
   }
-
-
-
-
 }

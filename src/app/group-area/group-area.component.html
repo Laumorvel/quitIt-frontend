@@ -35,14 +35,14 @@
       <!--Añade miembros a los grupos-->
 
       <div
-        class="row mt-4 p-0 m-0"
+        class="row mt-4 p-0 m-0 "
         *ngIf="
           !this.myForm.get('groupName')?.invalid &&
           this.myForm.get('groupName')?.value != null
         "
       >
         <!--MEMBER NAME-->
-        <div class="form-group">
+        <div class="form-group grupo">
           <label for="memberName">Member name</label>
           <input
             type="text"
@@ -109,7 +109,7 @@
       <!--ADD MEMBER-->
       <div>
         <button
-          [disabled]="myForm.invalid"
+          [disabled]="myForm.invalid || memberAlreadyAddedMistake == true"
           class="btn boton mt-4"
           (click)="pushMember()"
         >
@@ -119,7 +119,7 @@
 
       <!--SUBMIT-->
       <div class="text-center">
-        <button type="submit" class="btn boton">CREATE GROUP</button>
+        <button type="submit" class="btn boton" [disabled]="myForm.invalid || groupMembers.length < 1">CREATE GROUP</button>
       </div>
     </form>
 
