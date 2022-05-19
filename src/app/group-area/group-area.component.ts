@@ -27,7 +27,6 @@ export class GroupAreaComponent implements OnInit {
   searchUsername: string = '';
   friendsFound: User[] = [];
   friendsSelected: User[] = [];
-  friendSelected: boolean = false;
   groupMembers: GroupMember[] = [];
   noFriendsFound: boolean = false;
   save: boolean = false;
@@ -57,7 +56,6 @@ export class GroupAreaComponent implements OnInit {
    * Si no está ya en la lista de miembros temporales, se añade
    */
   pushMember() {
-    this.friendSelected = false;
     this.friendsSelected.push(this.userSelected);
     this.groupMembers.push(this.crearMember());
     this.memberAlreadyAddedMistake = false;
@@ -70,7 +68,6 @@ export class GroupAreaComponent implements OnInit {
   crearMember(): GroupMember {
     let carg = this.myForm.get('admin')?.value == true ? 'AMDIN' : 'NO_ADMIN';
     const groupMember: GroupMember = {
-      id: 0,
       user: this.userSelected,
       cargo: carg,
     };
@@ -140,7 +137,6 @@ export class GroupAreaComponent implements OnInit {
    * Descarta a aquellos que ya se haya seleccionado para formar parte del grupo.
    */
   searchFriend() {
-    this.search = this.myForm.get('groupName')?.value;
     this.userService
       .searchFriendsForGroup(
         this.myForm.get('memberName')?.value,
@@ -165,22 +161,22 @@ export class GroupAreaComponent implements OnInit {
    */
   submitForm() {
     const group: Group = {
-      id: 0,
       name: this.myForm.get('groupName')?.value,
       groupMembers: this.groupMembers,
     };
 
-    this.groupService.createGroup(group).subscribe({});
+    //this.groupService.createGroup(group).subscribe({});
 
     this.myForm.reset({
       groupName: '',
       memberName: '',
     });
+
+    this.groupMembers = this.groupMembers.filter(f => f.id != 0);//elimina contenido del grupo
   }
 
   selectFriend(event: any) {
     this.noFriendsFound = false;
-    this.friendSelected = true;
     this.showTable = false;
     let friend = event.target;
     this.myForm.controls[`memberName`].setValue(friend.innerText); //se setea el valor del atributo del formulario "memberName" al clicado

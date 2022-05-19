@@ -41,12 +41,12 @@ export interface User {
   imageUrl: string;
 }
 export interface GroupMember{
-  id: number,
+  id?: number,
   user: User,
   cargo: string;
 }
 export interface Group {
-  id: number;
+  id?: number;
   name: string;
   groupMembers: GroupMember[];
 }
