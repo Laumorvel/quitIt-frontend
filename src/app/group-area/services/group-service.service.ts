@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Group, User, GroupMember } from '../../public/interfaces/interfaces';
+import { Group, GroupMember } from '../../public/interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -24,6 +24,19 @@ export class GroupServiceService {
     const opcion = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     opcion.append('Access-Control-Allow-Origin', '*');
     return this.http.post<Group>(url, group, { headers: opcion });
+  }
+
+  /**
+   * Consigue todos los grupos de un usuario
+   * @param user
+   * @returns lista de grupos de un usuario
+   */
+  getGroupsFromUser() {
+    const url = `${this.baseUrl}/groups`;
+    let token = JSON.parse(<string>localStorage.getItem('token'));
+    const opcion = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    opcion.append('Access-Control-Allow-Origin', '*');
+    return this.http.get<Group[]>(url, { headers: opcion });
   }
 
   /**
@@ -65,4 +78,18 @@ export class GroupServiceService {
     opcion.append('Access-Control-Allow-Origin', '*');
     return this.http.put<GroupMember>(url, member, { headers: opcion });
   }
+
+  /**
+   * Consigue un grupo concreto
+   * @param group
+   * @returns grupo
+   */
+  getGroup(group: number) {
+    const url = `${this.baseUrl}/group/${group}`;
+    let token = JSON.parse(<string>localStorage.getItem('token'));
+    const opcion = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    opcion.append('Access-Control-Allow-Origin', '*');
+    return this.http.get<Group>(url, { headers: opcion });
+  }
+
 }

@@ -10,6 +10,7 @@
 .newGroup{
     float: right;
     margin-right: 3em;
+    position: relative;
 }
 .title {
     text-align: center;
@@ -61,7 +62,7 @@ form{
 
 .vistaGrupo{
   background-color: #c8d8e4;
-  padding: 3rem 3rem;
+  padding: 3rem ;
 }
 
 .cardMember{
@@ -70,4 +71,13 @@ form{
 
 .conjuntoGrupo{
   margin: auto 7rem;
+}
+
+.group{
+  padding: 2rem;
+  background-color: #2b6777;
+}
+
+.group:hover{
+  background-color: #c8d8e4;
 }

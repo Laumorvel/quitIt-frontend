@@ -22,7 +22,7 @@ export class GroupAreaComponent implements OnInit {
   //ATRIBUTOS
   crear: boolean = false;
   user: User = JSON.parse(<string>localStorage.getItem('user'));
-  groups: Group[] = this.user.groupList;
+  groups: Group[] = [];
   newMemberForm: boolean = false;
   searchUsername: string = '';
   friendsFound: User[] = [];
@@ -42,6 +42,7 @@ export class GroupAreaComponent implements OnInit {
       groupName: '',
       memberName: '',
     });
+    this.getGroupsFromUser();
   }
 
   //FORMULARIO
@@ -65,6 +66,10 @@ export class GroupAreaComponent implements OnInit {
     this.crear = true;
   }
 
+  /**
+   * Crea un miembro de grupo con la info proporcionada.
+   * @returns miembro del grupo
+   */
   crearMember(): GroupMember {
     let carg = this.myForm.get('admin')?.value == true ? 'AMDIN' : 'NO_ADMIN';
     const groupMember: GroupMember = {
@@ -74,6 +79,9 @@ export class GroupAreaComponent implements OnInit {
     return groupMember;
   }
 
+  /**
+   * Adquiere la info del usuario y la de sus grupos si los tuviera.
+   */
   getUserData() {
     this.userService.updateUser().subscribe({
       next: (resp) => {
@@ -88,6 +96,25 @@ export class GroupAreaComponent implements OnInit {
         });
       },
     });
+  }
+
+  /**
+   * Consigue todos los grupos de un usuario
+   */
+  getGroupsFromUser(){
+    this.groupService.getGroupsFromUser().subscribe({
+      next: (resp) => {
+        this.groups = resp;
+      },
+      error: (resp) => {
+        Swal.fire({
+          title: 'Error',
+          icon: 'error',
+          text: resp.error.mensaje,
+          confirmButtonColor: '#52ab98',
+        });
+      },
+    })
   }
 
   /**
@@ -158,23 +185,53 @@ export class GroupAreaComponent implements OnInit {
   /**
    * Creamos el grupo que vamos a enviar al back
    * y añadir a todos los usuarios seleccionados.
+   * Se añade al propio usuario que crea el grupo como admin.
    */
   submitForm() {
+    const selfUser: GroupMember = {
+      user: this.user,
+      cargo: "ADMIN",
+    };
+    this.groupMembers.push(selfUser);
     const group: Group = {
       name: this.myForm.get('groupName')?.value,
       groupMembers: this.groupMembers,
     };
 
-    //this.groupService.createGroup(group).subscribe({});
+    this.groupService.createGroup(group).subscribe({
+      next: (resp) => {
+        Swal.fire({
+          title: 'Success',
+          icon: 'success',
+          text: 'Group created!',
+          confirmButtonColor: '#52ab98',
+        });
+          this.groups.push(resp);
+        localStorage.setItem('user', JSON.stringify(this.user));
+      },
+      error: (e) => {
+        Swal.fire({
+          title: 'Error',
+          icon: 'error',
+          text: 'Errors occurred whilst creating the group :(',
+          confirmButtonColor: '#52ab98',
+        });
+      },
+    });
 
     this.myForm.reset({
       groupName: '',
       memberName: '',
     });
 
-    this.groupMembers = this.groupMembers.filter(f => f.id != 0);//elimina contenido del grupo
+    this.groupMembers = this.groupMembers.filter(f => f.id == 0);//elimina contenido del grupo
+    this.friendsSelected = this.friendsSelected.filter(f => f.id == 0);
   }
 
+  /**
+   * Consigue al usuario que se corresponde con el username seleccionado.
+   * @param event
+   */
   selectFriend(event: any) {
     this.noFriendsFound = false;
     this.showTable = false;

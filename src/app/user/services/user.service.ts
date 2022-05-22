@@ -86,7 +86,6 @@ export class UserService {
    */
   addComentario(idIncidencia: number, comentario: Commentario) {
     const url = `${this.baseUrl}/incidence/${idIncidencia}`;
-
     let token = JSON.parse(<string>localStorage.getItem('token'));
     const opcion = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     opcion.append('Access-Control-Allow-Origin', '*');

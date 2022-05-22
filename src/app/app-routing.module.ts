@@ -53,7 +53,6 @@ const routes: Routes = [
   },
   {
     path: 'settings',
-    //  canDeactivate: [CloseAuxRoutingGuard],
     canActivate: [AuthGuardGuard, UserGuardGuard],
     component: SettingsComponent,
     children:[

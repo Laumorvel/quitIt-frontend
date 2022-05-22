@@ -7,6 +7,7 @@ import { RankingGroupComponent } from './ranking-group/ranking-group.component';
 import { AddUserGroupComponent } from './add-user-group/add-user-group.component';
 import { CommentsGroupComponent } from './comments-group/comments-group.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { GroupComponent } from './group/group.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     GroupAreaComponent,
     RankingGroupComponent,
     AddUserGroupComponent,
-    CommentsGroupComponent
+    CommentsGroupComponent,
+    GroupComponent
   ],
   imports: [
     CommonModule,

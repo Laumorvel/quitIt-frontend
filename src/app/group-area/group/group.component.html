@@ -1,42 +1,30 @@
-<div>
-  <div class="row">
-    <h3 class="title">My groups</h3>
-    <!--Create group-->
-    <div class="mt-5">
-      <button class="btn boton text-center newGroup" (click)="crearGroup()">
-        Create group
-      </button>
+<div class="row clase justify-content-around">
+  <p class="title mt-2 mb-5">{{group.name}}</p>
+  <div class="col-4 members">
+    <p class="titleMembers mb-4">Members</p>
+    <div class="text-center">
+      <p *ngFor="let member of group.groupMembers">{{member.user.username}} - {{member.cargo}}</p>
     </div>
-    <div *ngIf="crear">
+  </div>
+  <div class="col-7 ranking">
+    <p class="titleMembers">Ranking</p>
+  </div>
+</div>
+<div class="row justify-content-center chat">
+  <div class="col-9 chat">
+    <p class="titleMembers">CHAT</p>
+  </div>
+</div>
+<div class="row">
+  <div class="mt-5">
+    <button class="btn boton text-center" (click)="addMember()">
+      Add member
+    </button>
+
+    <!--FORMULARIO PARA AÑADIR UN AMIGO-->
+    <div *ngIf="newUser">
       <!--Formulario de creación de grupos-->
       <form class="form" autocomplete="off" [formGroup]="myForm">
-        <!--GROUP NAME-->
-        <div class="form-group">
-          <label for="groupName">Group name</label>
-          <input
-            type="text"
-            class="form-control"
-            id="groupName"
-            formControlName="groupName"
-            name="groupName"
-            placeholder="Enter a group name"
-          />
-          <span
-            class="form-text text-danger"
-            *ngIf="campoNoValido('groupName')"
-          >
-            {{ groupNameError }}
-          </span>
-        </div>
-        <!--Añade miembros a los grupos-->
-
-        <div
-          class="row mt-4 p-0 m-0"
-          *ngIf="
-            !this.myForm.get('groupName')?.invalid &&
-            this.myForm.get('groupName')?.value != null
-          "
-        >
           <!--MEMBER NAME-->
           <div class="form-group grupo">
             <label for="memberName">Member name</label>
@@ -101,7 +89,6 @@
             />
             <label class="form-check-label" for="admin">Make admin</label>
           </div>
-        </div>
         <!--ADD MEMBER-->
         <div>
           <button
@@ -118,7 +105,7 @@
           <button
             type="submit"
             class="btn boton"
-            [disabled]="groupMembers.length < 1"
+            [disabled]="myForm.invalid"
             (click)="submitForm()"
           >
             CREATE
@@ -127,51 +114,4 @@
       </form>
     </div>
 
-    <!--MEMBERS SELECTED-->
-    <div>
-      <div class="conjuntoGrupo">
-        <div
-          class="row vistaGrupo justify-content-evenly"
-          *ngIf="groupMembers.length > 0"
-        >
-          <div class="title mb-5">{{ myForm.get("groupName")?.value }}</div>
-          <div
-            class="card cardMember text-center"
-            style="width: 18rem"
-            *ngFor="let member of groupMembers"
-          >
-            <img
-              *ngIf="member.user.imageUrl != null"
-              src="{{ member.user.imageUrl }}"
-              alt="friend profile picture"
-              class="card-img-top"
-            />
-            <div class="card-body">
-              <h5 class="">{{ member.user.username }} - {{ member.cargo }}</h5>
-              <button class="btn boton" (click)="deleteMember()">DELETE</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!--List group-->
-  <div class="mt-4 row">
-    <div
-      class="row justify-content-around mt-5"
-      *ngIf="groups.length > 0; else elseBlock"
-    >
-      <div
-        class="card col-md-2 text-center group"
-        *ngFor="let group of groups"
-        routerLink="/groupArea/group/{{ group.id }}"
-      >
-        <div class="title">{{ group.name }}</div>
-      </div>
-    </div>
-    <ng-template #elseBlock>
-      <div class="noGroups">You don't have any group yet.</div>
-    </ng-template>
-  </div>
 </div>
