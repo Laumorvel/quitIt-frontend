@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {
   AbstractControl,
@@ -18,8 +17,8 @@ export class FriendUsernameValidatorService implements AsyncValidator {
     const username = control.value;
     return this.compruebaUsername(username).pipe(
       map((resp) => {
-        console.log(resp)
-        if (resp.filter((f) => f.username == username)) {
+        let user = resp.filter((f) => f.username == username);
+        if (user.length == 0) {
           return { usernameAmigo: true };
         } else {
           return null;

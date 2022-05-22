@@ -10,6 +10,7 @@
 .newGroup{
     float: right;
     margin-right: 3em;
+    position: relative;
 }
 .title {
     text-align: center;
@@ -50,4 +51,33 @@ form{
 
 .username:hover{
   cursor: pointer;
+}
+
+.grupo{
+  margin-left: 0!important;
+  padding-left: 0!important;
+  margin-right: 0!important;
+  padding-right: 0!important;
+}
+
+.vistaGrupo{
+  background-color: #c8d8e4;
+  padding: 3rem ;
+}
+
+.cardMember{
+  background-color: #f2f2f2;
+}
+
+.conjuntoGrupo{
+  margin: auto 7rem;
+}
+
+.group{
+  padding: 2rem;
+  background-color: #2b6777;
+}
+
+.group:hover{
+  background-color: #c8d8e4;
 }
