@@ -43,3 +43,12 @@
   margin-right: 3em;
   position: relative;
 }
+
+.addMemberForm{
+  margin: 1rem 5rem;
+}
+
+.icon2{
+  max-width: 35px;
+  height: auto;
+}

@@ -1,8 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Commentario, User } from 'src/app/public/interfaces/interfaces';
 import Swal from 'sweetalert2';
-import { tsParticles } from 'tsparticles-engine';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -44,7 +43,6 @@ export class CommentsCommunityComponent implements OnInit {
     this.userService.buscarComentariosComunidad().subscribe({
       next: (resp) => {
         this.comentarios = resp;
-        console.log(resp);
       },
       error: (e) => {
         Swal.fire({

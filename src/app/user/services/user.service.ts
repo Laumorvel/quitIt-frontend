@@ -49,8 +49,7 @@ export class UserService {
    * @returns
    */
   crearComentario(text: String) {
-    let id = localStorage.getItem('user');
-    const url = `${this.baseUrl}/commentsCommunity`; //CAMBIAR
+    const url = `${this.baseUrl}/commentsCommunity`;
     const body = {
       text: text,
     };
@@ -255,6 +254,21 @@ export class UserService {
       const opcion = new HttpHeaders().set('Authorization', `Bearer ${token}`);
       opcion.append('Access-Control-Allow-Origin', '*');
       return this.http.post<User[]>(url, group, { headers: opcion });
+    }
+
+    /**
+     * Busca a los amigos del usuario que no se hayan incluido en el grupo
+     * Se usa para añadir un miembro más a un grupo
+     * @param busqueda
+     * @param idGroup
+     * @returns lista de users
+     */
+    searchFriendsNotInGroup(busqueda:string, idGroup: number){
+      const url = `${this.baseUrl}/users?friend=${busqueda}?group=${idGroup}`;
+      let token = JSON.parse(<string>localStorage.getItem('token'));
+      const opcion = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+      opcion.append('Access-Control-Allow-Origin', '*');
+      return this.http.get<User[]>(url, { headers: opcion });
     }
 
   /**

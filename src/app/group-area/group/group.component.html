@@ -8,11 +8,13 @@
   </div>
   <div class="col-7 ranking">
     <p class="titleMembers">Ranking</p>
+    <app-ranking-group></app-ranking-group>
   </div>
 </div>
 <div class="row justify-content-center chat">
   <div class="col-9 chat">
     <p class="titleMembers">CHAT</p>
+    <app-comments-group></app-comments-group>
   </div>
 </div>
 <div class="row">
@@ -21,97 +23,92 @@
       Add member
     </button>
 
-    <!--FORMULARIO PARA AÑADIR UN AMIGO-->
-    <div *ngIf="newUser">
-      <!--Formulario de creación de grupos-->
-      <form class="form" autocomplete="off" [formGroup]="myForm">
-          <!--MEMBER NAME-->
-          <div class="form-group grupo">
-            <label for="memberName">Member name</label>
-            <input
-              type="text"
-              class="form-control"
-              formControlName="memberName"
-              name="memberName"
-              placeholder="Enter the username of your friend"
-              [value]="myForm.get('memberName')?.value"
-              (keyup)="searchFriend()"
-            />
 
-            <span
-              class="form-text text-danger"
-              *ngIf="campoNoValido('memberName')"
-            >
-              {{ memberNameError }}
-            </span>
-            <span class="form-text text-danger" *ngIf="!checkFieldOfFriend()">
-              {{ memberAlreadyAdded }}
-            </span>
-            <!--TABLA DE AMIGOS COINCIDENTES -->
-            <table
-              class="table table-hover"
-              *ngIf="
-                friendsFound.length > 0 &&
-                showTable &&
-                myForm.get('memberName')?.value != ''
-              "
-            >
-              <tbody>
-                <tr *ngFor="let friend of friendsFound">
-                  <td>
-                    <div *ngIf="friend.imageUrl != null; else elseBlock">
-                      <img
-                        src="{{ friend.imageUrl }}"
-                        alt="friend profile picture"
-                      />
-                    </div>
-                    <ng-template #elseBlock>
-                      <img
-                        src="../../assets/account.png"
-                        alt="friend profile picture"
-                        class="icon2"
-                      />
-                    </ng-template>
-                  </td>
-                  <td (click)="selectFriend($event)" class="username">
-                    {{ friend.username }}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <!--MAKE ADMIN - CHECKBOX-->
-          <div>
-            <input
-              type="checkbox"
-              class="form-check-input"
-              formControlName="admin"
-            />
-            <label class="form-check-label" for="admin">Make admin</label>
-          </div>
-        <!--ADD MEMBER-->
-        <div>
-          <button
-            [disabled]="myForm.invalid || memberAlreadyAddedMistake == true"
-            class="btn boton mt-4"
-            (click)="pushMember()"
-          >
-            ADD MEMBER
-          </button>
-        </div>
 
-        <!--SUBMIT-->
-        <div class="text-center">
-          <button
-            type="submit"
-            class="btn boton"
-            [disabled]="myForm.invalid"
-            (click)="submitForm()"
-          >
-            CREATE
-          </button>
-        </div>
-      </form>
+</div>
+
+ <!--FORMULARIO PARA AÑADIR UN AMIGO-->
+ <div>
+ <div *ngIf="newUser" class="row addMemberForm">
+  <!--Formulario de creación de grupos-->
+  <form class="form" autocomplete="off" [formGroup]="myForm">
+      <!--MEMBER NAME-->
+      <div class="form-group grupo">
+        <label for="memberName">Username</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="memberName"
+          name="memberName"
+          placeholder="Enter the username of your friend"
+          [value]="myForm.get('memberName')?.value"
+          (keyup)="searchFriend()"
+        />
+
+        <span
+          class="form-text text-danger"
+          *ngIf="campoNoValido('memberName')"
+        >
+          {{ memberNameError }}
+        </span>
+        <span class="form-text text-danger" *ngIf="!checkFieldOfFriend()">
+          {{ memberAlreadyAdded }}
+        </span>
+        <!--TABLA DE AMIGOS COINCIDENTES -->
+        <table
+          class="table table-hover"
+          *ngIf="
+            friendsFound.length > 0 &&
+            showTable &&
+            myForm.get('memberName')?.value != ''
+          "
+        >
+          <tbody>
+            <tr *ngFor="let friend of friendsFound">
+              <td>
+                <div *ngIf="friend.imageUrl != null; else elseBlock">
+                  <img
+                    src="{{ friend.imageUrl }}"
+                    alt="friend profile picture"
+                  />
+                </div>
+                <ng-template #elseBlock>
+                  <img
+                    src="../../assets/account.png"
+                    alt="friend profile picture"
+                    class="icon2"
+                  />
+                </ng-template>
+              </td>
+              <td (click)="selectFriend($event)" class="username">
+                {{ friend.username }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!--MAKE ADMIN - CHECKBOX-->
+      <div>
+        <input
+          type="checkbox"
+          class="form-check-input"
+          formControlName="admin"
+        />
+        <label class="form-check-label" for="admin">Make admin</label>
+      </div>
+    <!--ADD MEMBER-->
+
+    <!--SUBMIT-->
+    <div class="text-center">
+      <button
+        type="submit"
+        class="btn boton"
+        [disabled]="myForm.invalid || memberAlreadyAddedMistake"
+        (click)="submitForm()"
+      >
+        ADD
+      </button>
     </div>
-
+  </form>
+</div>
 </div>

@@ -1,0 +1,108 @@
+.bloqueComentario {
+  margin: 2em;
+  display: flex;
+  justify-content: center;
+  background-color: #f2f2f2;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  border-radius: 10px;
+}
+
+.imgReport {
+  width: 40px;
+}
+
+.form-control {
+  margin-left: 4em !important;
+  width: 1100px;
+}
+
+button {
+  background-color: #52ab98;
+  color: white;
+  width: 150px;
+}
+
+/*IPAD*/
+@media screen and (min-width: 769px) and (max-width: 1279px) {
+  .form-control {
+    margin-left: 2em !important;
+    width: 600px;
+  }
+
+  button {
+    background-color: #52ab98;
+    color: white;
+    width: 150px;
+    margin-right: 2em;
+  }
+}
+
+/*EH AQUI EL CHAT!*/
+.cardContainer {
+  height: 500px;
+}
+
+.card-header {
+  background-color: #52ab98;
+  color: white;
+  font-weight: bold;
+}
+
+.input-group-text {
+  background-color: #52ab98;
+  color: white;
+}
+
+.card-body {
+  background-image: url(../../../assets/chat/fondoChat2.png);
+  height: 100% !important;
+}
+
+.enviado {
+  display: block;
+  float: right;
+  background-color: #2b6777;
+  color: white;
+  min-width: 50.01%;
+  border-radius: 10px;
+  margin-bottom: 1em;
+}
+
+.recibido {
+  display: block;
+  float: left;
+  background-color: #c8d8e4;
+  color: black;
+  min-width: 50.01%;
+  border-radius: 10px;
+  margin-bottom: 1em;
+}
+
+.contenedorDeMensajes {
+  /*overflow: scroll;*/
+  height: 50vh;
+  overflow: auto;
+  scroll-snap-type: y mandatory;
+}
+
+.contenedorDeMensajes::-webkit-scrollbar {
+  display: none; /*ESTO ES PARA QUE LA BARRA DE SCROLL NO SE VEA*/
+}
+
+.msj {
+  /*Para que haga scroll solo  cuandollegue un mensaje*/
+}
+
+.username {
+  display: block;
+  float: left;
+  padding-left: 1em;
+}
+
+.comentarioUser {
+  display: block;
+  float: left;
+  padding-left: 0.2em;
+  text-align: left !important;
+}
