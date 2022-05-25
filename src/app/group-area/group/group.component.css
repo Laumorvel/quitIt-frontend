@@ -1,0 +1,45 @@
+.clase {
+  margin: 2rem;
+}
+
+.chat {
+  margin: 1rem 5rem;
+}
+
+.title {
+  text-align: center;
+  letter-spacing: 3px;
+  font-size: 2em;
+  font-family: "Titan One", cursive;
+  font-weight: bold;
+  text-shadow: 4px 4px 2px #c8d8e4;
+}
+
+.titleMembers {
+  text-align: center;
+  font-size: 1.5em;
+  font-family: "Titan One", cursive;
+  font-weight: bold;
+}
+
+.chat {
+  background-color: #ffffff;
+  padding: 1rem;
+}
+
+.ranking {
+  background-color: #f2f2f2;
+  padding: 1rem;
+}
+
+.members {
+  background-color: #c8d8e4;
+  padding: 1rem;
+}
+
+.boton {
+  background-color: #52ab98;
+  float: right;
+  margin-right: 3em;
+  position: relative;
+}

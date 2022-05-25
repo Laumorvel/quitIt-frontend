@@ -10,8 +10,8 @@ import { UserService } from '../../services/user.service';
 })
 export class ShowFriendsComponent implements OnInit {
   usuariosEncontrados!: User[];
-  busqueda!: String;
-  amigosEncontrados!: User[];
+  busqueda: String = "";
+  amigosEncontrados: User[] = [];
 
   user!: User;
   usuarioRecibido: boolean = false;

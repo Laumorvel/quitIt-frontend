@@ -1,3 +1,4 @@
+
 export interface Message {
   id: number;
   fecha: string;
@@ -23,7 +24,6 @@ export interface User {
   daysInARowWithoutSmoking: number;
   cigarettesAvoided: number;
   totalTimeWithoutSmoking: number;
-  groupList: Group[];
   friends: User[];
   achievementList: Achievement[];
   penalties: Penalty[];
@@ -39,10 +39,15 @@ export interface User {
   message: boolean;
   imageUrl: string;
 }
-
+export interface GroupMember{
+  id?: number,
+  user: User,
+  cargo: string;
+}
 export interface Group {
-  id: number;
+  id?: number;
   name: string;
+  groupMembers: GroupMember[];
 }
 
 export interface Incidence {

@@ -96,9 +96,6 @@ button{
   display: none; /*ESTO ES PARA QUE LA BARRA DE SCROLL NO SE VEA*/
 }
 
-.msj{ /*Para que haga scroll solo  cuandollegue un mensaje*/
-
-}
 
 .username{
   display: block;

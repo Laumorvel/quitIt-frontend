@@ -27,7 +27,6 @@ export class PenaltiesComponent implements OnInit {
     this.userService.buscarPenalizaciones().subscribe({
       next: (resp) => {
         this.penalties = resp;
-        console.log(resp);
       },
       error: (e) => {
         Swal.fire({
