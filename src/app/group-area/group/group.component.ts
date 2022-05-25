@@ -7,6 +7,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FriendUsernameValidatorService } from '../services/friend-username-validator.service';
 import { UserService } from 'src/app/user/services/user.service';
 import { GroupMemberService } from '../services/group-member.service';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-group',
@@ -48,6 +49,7 @@ export class GroupComponent implements OnInit {
   memberAlreadyAddedMistake: boolean = false;
   userSelected!: User;
   newUser: boolean = false;
+  reload: boolean = false;
 
   /**
    * Consigue el grupo en el que se ha clicado por el parámetro de la ruta
@@ -73,6 +75,26 @@ export class GroupComponent implements OnInit {
     });
   }
 
+/**
+ * Consigue al miembro del grupo del usuario.
+ * Si lo encuentra, devuelve true
+ */
+  checkUsersRole(): boolean{
+    const userMember: GroupMember = this.group.groupMembers.filter(f => f.user.username == this.user.username)[0];
+    return userMember.cargo == 'ADMIN';
+  }
+
+  /**
+   * Si el usuario se va a salir del grupo entonces el método contendrá un parámetro.
+   * @param oneSelf
+   */
+  deleteMember(oneSelf? : string){
+
+  }
+
+  deleteGroup(){
+
+  }
 
   /**
    * Comprueba si el usuario es o no administrador
@@ -222,6 +244,7 @@ export class GroupComponent implements OnInit {
         });
         this.getGroupFromUser();
         localStorage.setItem('user', JSON.stringify(this.user));
+        this.reload = true;
       },
       error: (e) => {
         Swal.fire({
