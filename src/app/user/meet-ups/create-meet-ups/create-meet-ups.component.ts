@@ -33,7 +33,7 @@ export class CreateMeetUpsComponent implements OnInit {
       next: (resp => {
         Swal.fire({
           title:'Error',
-          icon: 'error',
+          icon: 'success',
           text:"The meet up has been created successfully",
           confirmButtonColor:'#52ab98'
         });

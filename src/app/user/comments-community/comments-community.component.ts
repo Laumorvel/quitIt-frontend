@@ -19,7 +19,7 @@ export class CommentsCommunityComponent implements OnInit {
 
   comentarios: Commentario[] = [];
 
-  text!: String;
+  text: string="";
 
 
 
@@ -61,7 +61,8 @@ export class CommentsCommunityComponent implements OnInit {
    * Crea un comentario en el chat de la comunidad
    */
   crearComentario() {
-    if(this.text==null){
+    console.log(this.text)
+    if(this.text==""){
       Swal.fire({
         title: 'Error',
         icon: 'error',

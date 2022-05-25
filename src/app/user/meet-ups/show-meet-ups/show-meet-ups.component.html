@@ -15,9 +15,35 @@
           <td>{{ i.title }}</td>
           <td>{{ i.type }}</td>
           <td>{{ i.date | date: 'dd-MM-yyyy' }} {{ i.date | date: 'HH:mm' }}</td>
-          <td>{{ i.assistantsList }}</td>
+          <td>{{ i.assistantsList.length }}</td>
           <td>{{ i.place }}</td>
-          <td class="text-center"><img src="../../../../assets/meetups/cheque.png" class="img1" (click)="asistenciaMeetUp(i.id)"><img src="../../../../assets/meetups/cancelar.png" class="img2" (click)="noAsistenciaMeetUp(i.id)"></td>
+          <td class="text-center">
+            <div *ngFor="let j of i.assistantsList">
+             <!-- <div *ngIf="j.username===user.username">
+                <img  src="../../../../assets/meetups/cheque.png" class="img1" (click)="asistenciaMeetUp(i.id)">
+              </div>
+              <div>
+                <img src="../../../../assets/meetups/cancelar.png" class="img2" (click)="noAsistenciaMeetUp(i.id)">
+              </div>-->
+
+              <ng-container
+              *ngIf="j.username===user.username; then userYes; else userNo">
+            </ng-container>
+
+            <ng-template #userYes>
+              <div>
+                <img  src="../../../../assets/meetups/cheque.png" class="img1 border" (click)="asistenciaMeetUp(i.id)">  <img src="../../../../assets/meetups/cancelar.png" class="img2" (click)="noAsistenciaMeetUp(i.id)">
+              </div>
+            </ng-template>
+            <ng-template #userNo>
+              <div>
+                <img  src="../../../../assets/meetups/cheque.png" class="img1" (click)="asistenciaMeetUp(i.id)">  <img src="../../../../assets/meetups/cancelar.png" class="img2 border" (click)="noAsistenciaMeetUp(i.id)">
+              </div>
+            </ng-template>
+              </div>
+
+             
+          </td>
          
         </tr>
       </tbody>

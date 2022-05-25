@@ -285,20 +285,22 @@ export class UserService {
     asistenciaMeetUp(id:number){
       let verdadero = true;
       const url = `${this.baseUrl}/meetUp/${id}?choice=${verdadero}`;
+      let envioVacio = null;
       let token = JSON.parse(<string>localStorage.getItem('token'));
       const opcion = new HttpHeaders().set('Authorization', `Bearer ${token}`);
       opcion.append('Access-Control-Allow-Origin', '*');
       console.log(token)
-      return this.http.post<MeetUP>(url, { headers: opcion });
+      return this.http.post<MeetUP>(url, envioVacio, { headers: opcion });
     }
 
     noAsistenciaMeetUp(id:number){
       let falso = false;
       const url = `${this.baseUrl}/meetUp/${id}?choice=${falso}`;
+      let envioVacio = null;
       let token = JSON.parse(<string>localStorage.getItem('token'));
       const opcion = new HttpHeaders().set('Authorization', `Bearer ${token}`);
       opcion.append('Access-Control-Allow-Origin', '*');
-      return this.http.post<MeetUP>(url, { headers: opcion });
+      return this.http.post<MeetUP>(url, envioVacio, { headers: opcion });
     }
 
     createMeetUp(title:string, description:string, date:string, type:string, place:string){

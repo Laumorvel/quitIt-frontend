@@ -115,3 +115,12 @@
  padding-left: 0 !important;
  padding-right: 1.5em !important;
 }
+
+.espacio{
+  margin-bottom: 6em;
+}
+
+
+.card__info{
+  z-index: 0;
+}

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { AchievementsRoutingModule } from './achievements-routing.module';
 import { AchievementsComponent } from './achievements.component';
+import { FloatingButtonModule } from 'src/app/shared/floating-button/floating-button.module';
 
 @NgModule({
   declarations: [
@@ -10,7 +11,8 @@ import { AchievementsComponent } from './achievements.component';
   ],
   imports: [
     CommonModule,
-    AchievementsRoutingModule
+    AchievementsRoutingModule,
+    FloatingButtonModule
   ]
 })
 export class AchievementsModule { }

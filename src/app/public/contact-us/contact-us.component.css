@@ -89,4 +89,21 @@
     font-weight: 400;
     margin: auto;
   }
+
+  .get-in-touch .title {
+    text-align: center;
+    letter-spacing: 3px;
+    font-size: 2.8em;
+    font-family: "Titan One", cursive;
+    font-weight: bold;
+    text-shadow: 4px 4px 2px #c8d8e4;
+  }
+  .form-field{
+    
+  }
+}
+
+.row{
+  margin-left: 0em !important;
+  margin-right: 0em !important;
 }
