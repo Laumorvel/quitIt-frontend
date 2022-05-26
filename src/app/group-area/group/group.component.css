@@ -45,7 +45,15 @@
 }
 
 .addMemberForm{
-  margin: 1rem 5rem;
+  margin-left: 4rem;
+  margin-right: 0.3rem;
+  margin-top: 2rem;
+  border: black 1px solid;
+  border-radius: 8px;
+}
+
+.check{
+  margin-left: 1rem;
 }
 
 .icon2{

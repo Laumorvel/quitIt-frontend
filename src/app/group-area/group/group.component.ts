@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { GroupServiceService } from '../services/group-service.service';
 import { Group, GroupMember, User } from '../../public/interfaces/interfaces';
 import Swal from 'sweetalert2';
@@ -21,7 +21,8 @@ export class GroupComponent implements OnInit {
     private fb: FormBuilder,
     private rutaActiva: ActivatedRoute,
     private groupService: GroupServiceService,
-    private groupMemberService: GroupMemberService
+    private groupMemberService: GroupMemberService,
+    private router:Router
   ) {}
 
   ngOnInit(): void {
@@ -50,6 +51,9 @@ export class GroupComponent implements OnInit {
   userSelected!: User;
   newUser: boolean = false;
   reload: boolean = false;
+  opcion: string = "";
+  membersToDelete: GroupMember[] = [];
+
 
   /**
    * Consigue el grupo en el que se ha clicado por el parámetro de la ruta
@@ -60,6 +64,7 @@ export class GroupComponent implements OnInit {
     this.groupService.getGroup(this.id).subscribe({
       next: (resp) => {
         this.group = resp;
+        this.membersToDelete = resp.groupMembers.filter(f => f.user.username != this.user.username);
         resp.groupMembers.forEach(member => {
           this.friendsSelected.push(member.user);
         });
@@ -89,11 +94,48 @@ export class GroupComponent implements OnInit {
    * @param oneSelf
    */
   deleteMember(oneSelf? : string){
-
+    //Para eliminar a un miembro del grupo
+    if(oneSelf == null && this.opcion != ""){
+      const member = this.membersToDelete.filter(f => f.user.username == this.opcion)[0];
+      this.groupMemberService.deleteMember( member, this.id).subscribe({
+        next: (resp) => {
+          this.group.groupMembers = this.group.groupMembers.filter(f => f != member);
+          this.membersToDelete = this.membersToDelete.filter(f => f != member);
+          this.getGroupFromUser();
+          this.reload = this.reload ? false : true;
+          if(this.group.groupMembers.length <= 1){
+            this.deleteGroup();
+          }
+        },
+        error: (resp) => {
+          Swal.fire({
+            title: 'Error',
+            icon: 'error',
+            text: 'We could not remove the member of the group',
+            confirmButtonColor: '#52ab98',
+          });
+        },
+      })
+    }
   }
 
+  /**
+   * Elimina el grupo en caso de ser admin el usuario
+   */
   deleteGroup(){
-
+    this.groupService.deleteGroup(this.id).subscribe({
+      next: (resp) => {
+        this.router.navigateByUrl(`/groupArea`);
+      },
+      error: (resp) => {
+        Swal.fire({
+          title: 'Error',
+          icon: 'error',
+          text: 'We could not delete the group',
+          confirmButtonColor: '#52ab98',
+        });
+      },
+    })
   }
 
   /**
@@ -201,7 +243,11 @@ export class GroupComponent implements OnInit {
 
 
   addMember() {
-    this.newUser = true;
+    if(this.newUser){
+      this.newUser = false;
+    }else{
+      this.newUser = true;
+    }
     this.showTable = false;
   }
 
@@ -244,7 +290,7 @@ export class GroupComponent implements OnInit {
         });
         this.getGroupFromUser();
         localStorage.setItem('user', JSON.stringify(this.user));
-        this.reload = true;
+        this.reload = this.reload ? false : true;
       },
       error: (e) => {
         Swal.fire({
@@ -260,6 +306,8 @@ export class GroupComponent implements OnInit {
       groupName: '',
       memberName: '',
     });
+
+    this.newUser = false;
   }
 
 }

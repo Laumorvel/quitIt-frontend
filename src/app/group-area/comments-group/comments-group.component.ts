@@ -15,7 +15,7 @@ export class CommentsGroupComponent implements OnInit {
 
   ngOnInit(): void {
     this.mostrarComentariosComunidad();
-    setInterval(() => this.mostrarComentariosComunidad(), 10000);
+   // setInterval(() => this.mostrarComentariosComunidad(), 10000);
   }
 
   user: User = JSON.parse(<string>localStorage.getItem('user'));

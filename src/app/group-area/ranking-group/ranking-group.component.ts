@@ -18,9 +18,7 @@ export class RankingGroupComponent implements OnInit, OnChanges {
  * Esto es cada vez que se añada un nuevo miembro al grupo.
  */
   ngOnChanges() {
-    if(this.reload){
-      this.getGroupFromUser();
-    }
+    this.getGroupFromUser();
     this.reload = false;
   }
 

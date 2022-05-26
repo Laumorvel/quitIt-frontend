@@ -43,8 +43,8 @@ export class GroupServiceService {
    * Elimina un grupo
    * @param group
    */
-  deleteGroup(group: Group) {
-    const url = `${this.baseUrl}/group/${group.id}`;
+  deleteGroup(id: number) {
+    const url = `${this.baseUrl}/group/${id}`;
     let token = JSON.parse(<string>localStorage.getItem('token'));
     const opcion = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     opcion.append('Access-Control-Allow-Origin', '*');

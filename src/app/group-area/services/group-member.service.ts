@@ -40,5 +40,19 @@ export class GroupMemberService {
     return this.http.post<GroupMember>(url, member, { headers: opcion });
   }
 
+  /**
+   * Elimina un miembro del grupo
+   * @param member
+   * @param id
+   * @returns void
+   */
+  deleteMember(member:GroupMember, id:number){
+    const url = `${this.baseUrl}/group/${id}/member/${member.id}`;
+    let token = JSON.parse(<string>localStorage.getItem('token'));
+    const opcion = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    opcion.append('Access-Control-Allow-Origin', '*');
+    return this.http.delete(url, { headers: opcion });
+  }
+
 
 }
