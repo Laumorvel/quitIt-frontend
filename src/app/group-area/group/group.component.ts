@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { GroupServiceService } from '../services/group-service.service';
 import { Group, GroupMember, User } from '../../public/interfaces/interfaces';
 import Swal from 'sweetalert2';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FriendUsernameValidatorService } from '../services/friend-username-validator.service';
 import { UserService } from 'src/app/user/services/user.service';
+import { GroupMemberService } from '../services/group-member.service';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-group',
@@ -18,7 +20,9 @@ export class GroupComponent implements OnInit {
     private usernameFriendService: FriendUsernameValidatorService,
     private fb: FormBuilder,
     private rutaActiva: ActivatedRoute,
-    private groupService: GroupServiceService
+    private groupService: GroupServiceService,
+    private groupMemberService: GroupMemberService,
+    private router:Router
   ) {}
 
   ngOnInit(): void {
@@ -46,14 +50,24 @@ export class GroupComponent implements OnInit {
   memberAlreadyAddedMistake: boolean = false;
   userSelected!: User;
   newUser: boolean = false;
+  reload: boolean = false;
+  opcion: string = "";
+  membersToDelete: GroupMember[] = [];
+
 
   /**
    * Consigue el grupo en el que se ha clicado por el parámetro de la ruta
+   * También saca la lista de usuarios que conforman el grupo para poder hacer las
+   * comprobaciones necesarias a la hora de añadir a un usuario como miembro del grupo.
    */
   getGroupFromUser() {
     this.groupService.getGroup(this.id).subscribe({
       next: (resp) => {
         this.group = resp;
+        this.membersToDelete = resp.groupMembers.filter(f => f.user.username != this.user.username);
+        resp.groupMembers.forEach(member => {
+          this.friendsSelected.push(member.user);
+        });
       },
       error: (resp) => {
         Swal.fire({
@@ -66,6 +80,63 @@ export class GroupComponent implements OnInit {
     });
   }
 
+/**
+ * Consigue al miembro del grupo del usuario.
+ * Si lo encuentra, devuelve true
+ */
+  checkUsersRole(): boolean{
+    const userMember: GroupMember = this.group.groupMembers.filter(f => f.user.username == this.user.username)[0];
+    return userMember.cargo == 'ADMIN';
+  }
+
+  /**
+   * Si el usuario se va a salir del grupo entonces el método contendrá un parámetro.
+   * @param oneSelf
+   */
+  deleteMember(oneSelf? : string){
+    //Para eliminar a un miembro del grupo
+    if(oneSelf == null && this.opcion != ""){
+      const member = this.membersToDelete.filter(f => f.user.username == this.opcion)[0];
+      this.groupMemberService.deleteMember( member, this.id).subscribe({
+        next: (resp) => {
+          this.group.groupMembers = this.group.groupMembers.filter(f => f != member);
+          this.membersToDelete = this.membersToDelete.filter(f => f != member);
+          this.getGroupFromUser();
+          this.reload = this.reload ? false : true;
+          if(this.group.groupMembers.length <= 1){
+            this.deleteGroup();
+          }
+        },
+        error: (resp) => {
+          Swal.fire({
+            title: 'Error',
+            icon: 'error',
+            text: 'We could not remove the member of the group',
+            confirmButtonColor: '#52ab98',
+          });
+        },
+      })
+    }
+  }
+
+  /**
+   * Elimina el grupo en caso de ser admin el usuario
+   */
+  deleteGroup(){
+    this.groupService.deleteGroup(this.id).subscribe({
+      next: (resp) => {
+        this.router.navigateByUrl(`/groupArea`);
+      },
+      error: (resp) => {
+        Swal.fire({
+          title: 'Error',
+          icon: 'error',
+          text: 'We could not delete the group',
+          confirmButtonColor: '#52ab98',
+        });
+      },
+    })
+  }
 
   /**
    * Comprueba si el usuario es o no administrador
@@ -103,8 +174,7 @@ export class GroupComponent implements OnInit {
     }
 
     /**
-   * Busca los usuarios que coincidan con el término introducido y ya sean amigos del usuario.
-   * Descarta a aquellos que ya se haya seleccionado para formar parte del grupo.
+   * Busca los usuarios que coincidan con el término introducido y ya sean amigos del usuario sin formar parte del grupo.
    */
   searchFriend() {
     this.userService
@@ -124,7 +194,6 @@ export class GroupComponent implements OnInit {
         error: (e) => {},
       });
   }
-
 
     /**
    * Comunica los errores del campo memberName
@@ -174,7 +243,11 @@ export class GroupComponent implements OnInit {
 
 
   addMember() {
-    this.newUser = true;
+    if(this.newUser){
+      this.newUser = false;
+    }else{
+      this.newUser = true;
+    }
     this.showTable = false;
   }
 
@@ -206,18 +279,18 @@ export class GroupComponent implements OnInit {
    * Se añade al propio usuario que crea el grupo como admin.
    */
    submitForm() {
-    const newMember = this.myForm; //el nuevo miembro a añadir
-
-    //ESTO SERÍA EL MÉTODO PARA AÑADIR MIEMBRO AL GRUPO
-    /*this.groupService.createGroup(group).subscribe({
+    this.memberAlreadyAddedMistake = false;
+    this.groupMemberService.addNewMemberToGroup(this.crearMember(), +this.id).subscribe({
       next: (resp) => {
         Swal.fire({
           title: 'Success',
           icon: 'success',
-          text: 'Group created!',
+          text: 'Member added!',
           confirmButtonColor: '#52ab98',
         });
+        this.getGroupFromUser();
         localStorage.setItem('user', JSON.stringify(this.user));
+        this.reload = this.reload ? false : true;
       },
       error: (e) => {
         Swal.fire({
@@ -227,12 +300,14 @@ export class GroupComponent implements OnInit {
           confirmButtonColor: '#52ab98',
         });
       },
-    });*/
+    })
 
     this.myForm.reset({
       groupName: '',
       memberName: '',
     });
+
+    this.newUser = false;
   }
 
 }

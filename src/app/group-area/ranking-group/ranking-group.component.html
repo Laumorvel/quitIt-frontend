@@ -1,1 +1,7 @@
-<p>ranking-group works!</p>
+<div class="row clase mt-3">
+
+    <div class="row justify-content-center mb-3" *ngFor="let member of members">
+      <img src="../../../assets/crown(1).png" class="icon2" *ngIf="member == members[0]"/>{{member.user.daysInARowWithoutSmoking}}  -   {{ member.user.username }}
+    </div>
+
+</div>

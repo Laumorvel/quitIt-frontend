@@ -43,3 +43,20 @@
   margin-right: 3em;
   position: relative;
 }
+
+.addMemberForm{
+  margin-left: 4rem;
+  margin-right: 0.3rem;
+  margin-top: 2rem;
+  border: black 1px solid;
+  border-radius: 8px;
+}
+
+.check{
+  margin-left: 1rem;
+}
+
+.icon2{
+  max-width: 35px;
+  height: auto;
+}
