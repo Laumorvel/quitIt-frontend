@@ -53,6 +53,9 @@ export class GroupComponent implements OnInit {
   reload: boolean = false;
   opcion: string = "";
   membersToDelete: GroupMember[] = [];
+  editing: boolean = false;
+  cargoOption: string = "";
+  usernameEditing: string = "";
 
 
   /**
@@ -91,6 +94,8 @@ export class GroupComponent implements OnInit {
 
   /**
    * Si el usuario se va a salir del grupo entonces el método contendrá un parámetro.
+   * Comprueba si el grupo se queda con una sola persona al eliminar a un miembro,
+   * en cuyo caso, se eliminará el grupo.
    * @param oneSelf
    */
   deleteMember(oneSelf? : string){
@@ -116,6 +121,27 @@ export class GroupComponent implements OnInit {
           });
         },
       })
+    }else{
+      if(this.group.groupMembers.length <= 2){
+        this.deleteGroup();
+      }else{
+        const member = this.group.groupMembers.filter(f => f.user.username == this.user.username)[0];
+        this.groupMemberService.deleteMember(member, this.id).subscribe({
+          next: (resp) => {
+            this.group.groupMembers = this.group.groupMembers.filter(f => f != member);
+            this.membersToDelete = this.membersToDelete.filter(f => f != member);
+            this.router.navigateByUrl(`/groupArea`);
+          },
+          error: (resp) => {
+            Swal.fire({
+              title: 'Error',
+              icon: 'error',
+              text: 'We could not remove you from the group',
+              confirmButtonColor: '#52ab98',
+            });
+          },
+        })
+      }
     }
   }
 
@@ -308,6 +334,21 @@ export class GroupComponent implements OnInit {
     });
 
     this.newUser = false;
+  }
+
+  editRoles(event: any){
+    this.editing = true;
+    let username = event.target.id;
+    this.usernameEditing = username;
+    let cargo = event.target.name;
+    console.log(username)
+    console.log(event)
+    console.log(cargo)
+  }
+
+  manageRoles(){
+    this.editing = false;
+
   }
 
 }

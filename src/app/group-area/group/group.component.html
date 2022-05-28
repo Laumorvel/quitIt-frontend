@@ -94,7 +94,7 @@
               class="form-check-input"
               formControlName="admin"
             />
-            <label class="form-check-label " for="admin">Make admin</label>
+            <label class="form-check-label" for="admin">Make admin</label>
           </div>
           <!--ADD MEMBER-->
 
@@ -115,11 +115,56 @@
     <!--INFO DE GRUPO-->
     <div class="row clase justify-content-around">
       <div class="col-4 members">
-        <p class="titleMembers mb-4">Members</p>
+        <p class="titleMembers mb-4">
+          Members
+          <button *ngIf="editing">
+            <img
+              src="../../../assets/close.png"
+              class="iconEdit"
+              (click)="editRoles($event)"
+            />
+          </button>
+        </p>
         <div class="text-center">
-          <p *ngFor="let member of group.groupMembers">
-            {{ member.user.username }} - {{ member.cargo }}
-          </p>
+          <div *ngIf="!editing">
+            <p *ngFor="let member of group.groupMembers">
+              {{ member.user.username }} - {{ member.cargo }}
+              <button>
+                <img
+                  id="{{ member.user.username }}"
+                  name="{{ member.cargo }}"
+                  src="../../../assets/edit.png"
+                  class="iconEdit"
+                  (click)="editRoles($event)"
+                />
+              </button>
+            </p>
+          </div>
+          <div *ngIf="editing">
+            <div *ngFor="let member of group.groupMembers">
+              <label for="{{ member.user.username }}">{{
+                member.user.username
+              }}</label>
+              <select
+                name="{{ member.user.username }}"
+                id="{{ member.user.username }}"
+                [(ngModel)]="member.user.username"
+              >
+                <option
+                  value="{{ member.user.username }}"
+                  id="{{ member.user.username }}"
+                >
+                  ADMIN
+                </option>
+                <option
+                  value="{{ member.user.username }}"
+                  id="{{ member.user.username }}"
+                >
+                  NO_ADMIN
+                </option>
+              </select>
+            </div>
+          </div>
         </div>
       </div>
       <div class="col-7 ranking">
@@ -136,6 +181,7 @@
   </div>
 
   <!--MODAL - ADD MEMBER-->
+
   <div
     class="modal fade"
     id="addMemberModal"
@@ -197,7 +243,8 @@
           <select [(ngModel)]="opcion">
             <option
               *ngFor="let member of membersToDelete"
-              value="{{ member.user.username }}" [selected]="member.user.username == membersToDelete[0].user.username">
+              value="{{ member.user.username }}"
+            >
               {{ member.user.username }}
             </option>
           </select>
@@ -214,6 +261,64 @@
           >
             OK
           </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--MODAL - EDIT MEMBERS ROLE-->
+  <div *ngIf="editing">
+    <div
+      class="modal fade"
+      id="editRoleMemberModal"
+      tabindex="-1"
+      aria-labelledby="editRoleMemberModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content text-center">
+          <div class="modal-header">
+            <h5 class="modal-title" id="editRoleMemberModalLabel">
+              EDIT MEMBERS' ROLE
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+
+          <div *ngFor="let member of group.groupMembers">
+            <label for="{{ member.user.username }}">{{
+              member.user.username
+            }}</label>
+            <select
+              name="{{ member.user.username }}"
+              id="{{ member.user.username }}"
+              [(ngModel)]="member.user.username"
+            >
+              <option
+                value="{{ member.user.username }}"
+                id="{{ member.user.username }}"
+              >
+                {{ member.user.username }}
+              </option>
+            </select>
+          </div>
+          <div class="modal-footer justify-content-center">
+            <button type="button" class="btn botonNo" data-bs-dismiss="modal">
+              Cancel
+            </button>
+            <button
+              type="button"
+              class="btn botonYes"
+              data-bs-dismiss="modal"
+              (click)="deleteMember()"
+            >
+              OK
+            </button>
+          </div>
         </div>
       </div>
     </div>
