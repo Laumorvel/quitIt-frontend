@@ -54,5 +54,13 @@ export class GroupMemberService {
     return this.http.delete(url, { headers: opcion });
   }
 
+  changeRoleOfmember(idMember: number, idGroup: number, member:GroupMember){
+    const url = `${this.baseUrl}/group/${idGroup}/member/${idMember}`;
+    let token = JSON.parse(<string>localStorage.getItem('token'));
+    const opcion = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    opcion.append('Access-Control-Allow-Origin', '*');
+    return this.http.put<GroupMember>(url, member, { headers: opcion });
+  }
+
 
 }

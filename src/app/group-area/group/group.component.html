@@ -117,19 +117,13 @@
       <div class="col-4 members">
         <p class="titleMembers mb-4">
           Members
-          <button *ngIf="editing">
-            <img
-              src="../../../assets/close.png"
-              class="iconEdit"
-              (click)="editRoles($event)"
-            />
-          </button>
+
         </p>
         <div class="text-center">
           <div *ngIf="!editing">
             <p *ngFor="let member of group.groupMembers">
               {{ member.user.username }} - {{ member.cargo }}
-              <button>
+              <button *ngIf="member.user.username != this.user.username">
                 <img
                   id="{{ member.user.username }}"
                   name="{{ member.cargo }}"
@@ -141,29 +135,45 @@
             </p>
           </div>
           <div *ngIf="editing">
-            <div *ngFor="let member of group.groupMembers">
-              <label for="{{ member.user.username }}">{{
-                member.user.username
+            <div>
+              <label for="usernameEditing">{{
+                usernameEditing
               }}</label>
               <select
-                name="{{ member.user.username }}"
-                id="{{ member.user.username }}"
-                [(ngModel)]="member.user.username"
+                name="{{ usernameEditing }}"
+                id="{{ usernameEditing }}"
+                [(ngModel)]="cargoOption"
               >
                 <option
-                  value="{{ member.user.username }}"
-                  id="{{ member.user.username }}"
+                  value="ADMIN"
+                  id="ADMIN"
                 >
                   ADMIN
                 </option>
                 <option
-                  value="{{ member.user.username }}"
-                  id="{{ member.user.username }}"
+                  value="NO_ADMIN"
+                  id="NO_ADMIN"
                 >
                   NO_ADMIN
                 </option>
               </select>
+              <p *ngFor="let member of groupToChangeRole">
+                {{ member.user.username }} - {{ member.cargo }}
             </div>
+            <button *ngIf="editing">
+              <img
+                src="../../../assets/tick.png"
+                class="iconEdit"
+                (click)="manageRoles()"
+              />
+            </button>
+            <button *ngIf="editing">
+              <img
+                src="../../../assets/close.png"
+                class="iconEdit"
+                (click)="close()"
+              />
+            </button>
           </div>
         </div>
       </div>

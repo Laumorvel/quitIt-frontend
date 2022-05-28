@@ -31,6 +31,7 @@ export class GroupComponent implements OnInit {
       groupName: '',
       memberName: '',
     });
+    this.membersToDelete = this.group.groupMembers.filter(f => f.user.username != this.user.username);
   }
 
   //ATRIBUTOS
@@ -56,6 +57,7 @@ export class GroupComponent implements OnInit {
   editing: boolean = false;
   cargoOption: string = "";
   usernameEditing: string = "";
+  groupToChangeRole: GroupMember[] = [];
 
 
   /**
@@ -340,15 +342,41 @@ export class GroupComponent implements OnInit {
     this.editing = true;
     let username = event.target.id;
     this.usernameEditing = username;
-    let cargo = event.target.name;
-    console.log(username)
-    console.log(event)
-    console.log(cargo)
+    this.groupToChangeRole = this.group.groupMembers.filter(f => f.user.username != username);
+
   }
 
   manageRoles(){
     this.editing = false;
+    let member = this.group.groupMembers.filter(f => f.user.username == this.usernameEditing)[0];
+    member.cargo = this.cargoOption;
+    console.log(this.cargoOption)
+    if(member.id != undefined)
+    this.groupMemberService.changeRoleOfmember(member.id, this.id, member).subscribe({
+      next: (resp) => {
+        Swal.fire({
+          title: 'Success',
+          icon: 'success',
+          text: 'Role changed',
+          confirmButtonColor: '#52ab98',
+        });
+        this.getGroupFromUser();
+        localStorage.setItem('user', JSON.stringify(this.user));
+        this.reload = this.reload ? false : true;
+      },
+      error: (e) => {
+        Swal.fire({
+          title: 'Error',
+          icon: 'error',
+          text: 'Errors occurred whilst changing the role of the member :(',
+          confirmButtonColor: '#52ab98',
+        })
+      },
+    })
+  }
 
+  close(){
+    this.editing = false;
   }
 
 }
