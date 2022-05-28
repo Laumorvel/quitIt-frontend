@@ -15,13 +15,20 @@
       >
         Delete member
       </button>
-      <button class="btn boton text-center" (click)="deleteMember('oneSelf')">
+      <button
+        class="btn boton text-center"
+        data-bs-toggle="modal"
+        data-bs-target="#leaveGroupModal"
+        routerLinkActive="active"
+      >
         Leave group
       </button>
       <button
         *ngIf="checkUsersRole()"
         class="btn boton text-center"
-        (click)="deleteGroup()"
+        data-bs-toggle="modal"
+        data-bs-target="#deleteGroupModal"
+        routerLinkActive="active"
       >
         Delete group
       </button>
@@ -115,10 +122,7 @@
     <!--INFO DE GRUPO-->
     <div class="row clase justify-content-around">
       <div class="col-4 members">
-        <p class="titleMembers mb-4">
-          Members
-
-        </p>
+        <p class="titleMembers mb-4">Members</p>
         <div class="text-center">
           <div *ngIf="!editing">
             <p *ngFor="let member of group.groupMembers">
@@ -136,30 +140,20 @@
           </div>
           <div *ngIf="editing">
             <div>
-              <label for="usernameEditing">{{
-                usernameEditing
-              }}</label>
+              <label for="usernameEditing">{{ usernameEditing }}</label>
               <select
                 name="{{ usernameEditing }}"
                 id="{{ usernameEditing }}"
                 [(ngModel)]="cargoOption"
               >
-                <option
-                  value="ADMIN"
-                  id="ADMIN"
-                >
-                  ADMIN
-                </option>
-                <option
-                  value="NO_ADMIN"
-                  id="NO_ADMIN"
-                >
-                  NO_ADMIN
-                </option>
+                <option value="ADMIN" id="ADMIN">ADMIN</option>
+                <option value="NO_ADMIN" id="NO_ADMIN">NO_ADMIN</option>
               </select>
               <p *ngFor="let member of groupToChangeRole">
                 {{ member.user.username }} - {{ member.cargo }}
+              </p>
             </div>
+
             <button *ngIf="editing">
               <img
                 src="../../../assets/tick.png"
@@ -329,6 +323,80 @@
               OK
             </button>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--MODAL DE BORRADO DE GRUPO -->
+  <div
+    class="modal fade"
+    id="deleteGroupModal"
+    tabindex="-1"
+    aria-labelledby="deleteGroupModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content text-center">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteGroupModalLabel">DELETE GROUP</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">Are you sure?</div>
+        <div class="modal-footer justify-content-center">
+          <button type="button" class="btn botonNo" data-bs-dismiss="modal">
+            No
+          </button>
+          <button
+            type="button"
+            class="btn botonYes"
+            data-bs-dismiss="modal"
+            (click)="deleteGroup()"
+          >
+            Yes
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--MODAL DE SALIDA DE GRUPO -->
+  <div
+    class="modal fade"
+    id="leaveGroupModal"
+    tabindex="-1"
+    aria-labelledby="leaveGroupModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content text-center">
+        <div class="modal-header">
+          <h5 class="modal-title" id="leaveGroupModalLabel">LEAVE GROUP</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">Are you sure?</div>
+        <div class="modal-footer justify-content-center">
+          <button type="button" class="btn botonNo" data-bs-dismiss="modal">
+            No
+          </button>
+          <button
+            type="button"
+            class="btn botonYes"
+            data-bs-dismiss="modal"
+            (click)="deleteMember('oneSelf')"
+          >
+            Yes
+          </button>
         </div>
       </div>
     </div>

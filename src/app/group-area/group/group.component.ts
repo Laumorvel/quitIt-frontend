@@ -78,9 +78,10 @@ export class GroupComponent implements OnInit {
         Swal.fire({
           title: 'Error',
           icon: 'error',
-          text: resp.error.mensaje,
+          text: 'You are not a member of this group',
           confirmButtonColor: '#52ab98',
         });
+        this.router.navigateByUrl(`/groupArea`);
       },
     });
   }

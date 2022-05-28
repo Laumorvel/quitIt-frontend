@@ -82,4 +82,5 @@ form{
 
 .group:hover{
   background-color: #c8d8e4;
+  cursor: pointer;
 }
