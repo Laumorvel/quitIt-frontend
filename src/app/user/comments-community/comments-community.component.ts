@@ -12,7 +12,7 @@ import { UserService } from '../services/user.service';
 export class CommentsCommunityComponent implements OnInit {
   constructor(private userService: UserService, private router:Router) {}
 
-  
+
   user: User = JSON.parse(<string>localStorage.getItem('user'));
 
 
@@ -27,10 +27,10 @@ export class CommentsCommunityComponent implements OnInit {
     setInterval(() => this.mostrarComentariosComunidad(), 10000);
   }
 
-  
+
   /**
    * Nos envia al compoenente de incidencias
-   * @param id 
+   * @param id
    */
   enviarIncidencia(id:number){
     this.router.navigateByUrl(`/commentsCommunity/${id}/incidence`);
@@ -59,7 +59,7 @@ export class CommentsCommunityComponent implements OnInit {
    * Crea un comentario en el chat de la comunidad
    */
   crearComentario() {
-    if(this.text==null){
+    if(this.text==null || this.text.trim() == ""){
       Swal.fire({
         title: 'Error',
         icon: 'error',
@@ -71,7 +71,7 @@ export class CommentsCommunityComponent implements OnInit {
       this.userService.crearComentario(this.text).subscribe({
         next: (resp) => {
           this.comentarios.push(resp);
-          this.text=="";
+          this.text="";
         },
         error: (resp) => {
           Swal.fire({
@@ -83,7 +83,7 @@ export class CommentsCommunityComponent implements OnInit {
         },
       });
     }
-    
+
   }
 
 
@@ -98,7 +98,7 @@ export class CommentsCommunityComponent implements OnInit {
     document.getElementById('contenedorDeMensajes')?.scrollTop=toppos;
   }
 
-  
+
 
 
 }

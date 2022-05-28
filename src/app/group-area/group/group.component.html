@@ -72,21 +72,7 @@
             >
               <tbody>
                 <tr *ngFor="let friend of friendsFound">
-                  <td>
-                    <div *ngIf="friend.imageUrl != null; else elseBlock">
-                      <img
-                        src="{{ friend.imageUrl }}"
-                        alt="friend profile picture"
-                      />
-                    </div>
-                    <ng-template #elseBlock>
-                      <img
-                        src="../../assets/account.png"
-                        alt="friend profile picture"
-                        class="icon2"
-                      />
-                    </ng-template>
-                  </td>
+
                   <td (click)="selectFriend($event)" class="username">
                     {{ friend.username }}
                   </td>

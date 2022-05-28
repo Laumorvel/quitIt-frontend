@@ -53,6 +53,13 @@ form{
   cursor: pointer;
 }
 
+.letraAmigo{
+  font-size: 20px;
+}
+.centrar{
+  margin:auto;
+  display:block;
+}
 
 
 .grupo{

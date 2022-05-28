@@ -57,8 +57,8 @@
 }
 
 .icon2{
-  max-width: 35px;
-  height: auto;
+  max-width: 35px!important;
+  height: auto !important;
 }
 
 .iconEdit{

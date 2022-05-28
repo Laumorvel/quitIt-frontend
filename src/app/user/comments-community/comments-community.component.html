@@ -11,10 +11,12 @@
         </div>
       </div>
   </div>
+  <form action="get">
   <div class="card-footer text-muted input-group" (ngSubmit)="crearComentario()">
-      <input type="text" class="form-control" value="" placeholder=" *Your Comment" [(ngModel)]="text">
+      <input type="text" class="form-control" name="text" value="{{text}}" placeholder=" *Your Comment" [(ngModel)]="text">
       <div class="input-group-append" (click)="crearComentario()">
-        <button class="input-group-text " id="basic-addon2">Send</button>
+        <button type="submit" class="input-group-text " id="basic-addon2">Send</button>
       </div>
     </div>
+  </form>
 </div>

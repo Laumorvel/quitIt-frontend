@@ -16,14 +16,15 @@
   <div *ngIf="usuarioRecibido">
     <div class="grid">
       <div class="cardcontainer" *ngFor="let i of usuariosEncontrados">
-        <img src="https://picsum.photos/300/150" width="300" height="150" alt="placeholder">
+        <img *ngIf="i.imageUrl != null; else elseBlock"  src="{{i.imageUrl}}" width="300" height="150" alt="User image"/>
+        <ng-template #elseBlock> <img src="https://picsum.photos/300/150" width="300" height="150" alt="placeholder"></ng-template>
         <h1 class="text-center mt-1">{{i.username}}</h1><br>
         <p class="mt-4">Name: {{i.name}}</p>
         <p>Lastname: {{i.lastName}}</p>
         <p>Email: {{i.email}}</p>
         <p>Start date: {{i.startDate}}</p>
         <button (click)="deleteUser(i.id)" class="btnDelete">Delete user</button>
-      </div>    
+      </div>
   </div>
 
   <div *ngIf="error">
