@@ -41,7 +41,7 @@ export class CommentsGroupComponent implements OnInit {
    * En caso de no escribir nada, no se realizará ninguna acción
    */
   crearComentario() {
-    if (this.text != null) {
+    if (this.text.trim() != "") {
       this.commentsGroupService.addCommentsGroup(this.text, this.id).subscribe({
         next: (resp) => {
           this.comentarios.push(resp);

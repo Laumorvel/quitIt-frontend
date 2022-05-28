@@ -31,6 +31,7 @@ export class GroupComponent implements OnInit {
       groupName: '',
       memberName: '',
     });
+    this.membersToDelete = this.group.groupMembers.filter(f => f.user.username != this.user.username);
   }
 
   //ATRIBUTOS
@@ -53,6 +54,10 @@ export class GroupComponent implements OnInit {
   reload: boolean = false;
   opcion: string = "";
   membersToDelete: GroupMember[] = [];
+  editing: boolean = false;
+  cargoOption: string = "";
+  usernameEditing: string = "";
+  groupToChangeRole: GroupMember[] = [];
 
 
   /**
@@ -73,9 +78,10 @@ export class GroupComponent implements OnInit {
         Swal.fire({
           title: 'Error',
           icon: 'error',
-          text: resp.error.mensaje,
+          text: 'You are not a member of this group',
           confirmButtonColor: '#52ab98',
         });
+        this.router.navigateByUrl(`/groupArea`);
       },
     });
   }
@@ -91,6 +97,8 @@ export class GroupComponent implements OnInit {
 
   /**
    * Si el usuario se va a salir del grupo entonces el método contendrá un parámetro.
+   * Comprueba si el grupo se queda con una sola persona al eliminar a un miembro,
+   * en cuyo caso, se eliminará el grupo.
    * @param oneSelf
    */
   deleteMember(oneSelf? : string){
@@ -116,6 +124,27 @@ export class GroupComponent implements OnInit {
           });
         },
       })
+    }else{
+      if(this.group.groupMembers.length <= 2){
+        this.deleteGroup();
+      }else{
+        const member = this.group.groupMembers.filter(f => f.user.username == this.user.username)[0];
+        this.groupMemberService.deleteMember(member, this.id).subscribe({
+          next: (resp) => {
+            this.group.groupMembers = this.group.groupMembers.filter(f => f != member);
+            this.membersToDelete = this.membersToDelete.filter(f => f != member);
+            this.router.navigateByUrl(`/groupArea`);
+          },
+          error: (resp) => {
+            Swal.fire({
+              title: 'Error',
+              icon: 'error',
+              text: 'We could not remove you from the group',
+              confirmButtonColor: '#52ab98',
+            });
+          },
+        })
+      }
     }
   }
 
@@ -308,6 +337,47 @@ export class GroupComponent implements OnInit {
     });
 
     this.newUser = false;
+  }
+
+  editRoles(event: any){
+    this.editing = true;
+    let username = event.target.id;
+    this.usernameEditing = username;
+    this.groupToChangeRole = this.group.groupMembers.filter(f => f.user.username != username);
+
+  }
+
+  manageRoles(){
+    this.editing = false;
+    let member = this.group.groupMembers.filter(f => f.user.username == this.usernameEditing)[0];
+    member.cargo = this.cargoOption;
+    console.log(this.cargoOption)
+    if(member.id != undefined)
+    this.groupMemberService.changeRoleOfmember(member.id, this.id, member).subscribe({
+      next: (resp) => {
+        Swal.fire({
+          title: 'Success',
+          icon: 'success',
+          text: 'Role changed',
+          confirmButtonColor: '#52ab98',
+        });
+        this.getGroupFromUser();
+        localStorage.setItem('user', JSON.stringify(this.user));
+        this.reload = this.reload ? false : true;
+      },
+      error: (e) => {
+        Swal.fire({
+          title: 'Error',
+          icon: 'error',
+          text: 'Errors occurred whilst changing the role of the member :(',
+          confirmButtonColor: '#52ab98',
+        })
+      },
+    })
+  }
+
+  close(){
+    this.editing = false;
   }
 
 }
