@@ -91,9 +91,7 @@ export class ChangePassComponent implements OnInit {
      * @param objetivos
      */
     submitFormulario(objetivos :number[]) {
-      const user = this.miFormulario.value
-  
-  
+      const user = this.miFormulario.value  
      this.userService.changePass(user)
       .subscribe({
         next: (resp => {
