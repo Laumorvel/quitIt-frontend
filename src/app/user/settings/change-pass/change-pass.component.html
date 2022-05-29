@@ -1,1 +1,68 @@
-<p>change-pass works!</p>
+<div class="row">
+    <section class="get-in-touch">
+        <h1 class="title">Change your password!</h1>
+
+
+        <form class="contact-form row"
+            autocomplete="off"
+            [formGroup]="miFormulario"
+            (ngSubmit)="submitFormulario($event)"
+            class="m-4"
+            >
+
+            <!-- Actually password -->
+            <div class="row">
+                <div class="form-group col-md-6">
+                <input
+                    type="password"
+                    placeholder="*Actually password"
+                    class="form-control"
+                    debounce="3000"
+                    formControlName="password"
+                    id="email"
+                    class="input-text js-input"
+                />
+                <span class="form-text text-danger" *ngIf="campoNoValido('password')">
+                    {{actuallypasswordError}}
+                </span>
+                </div>
+
+            <!--  new password -->
+            <div class="row">
+                <div class="form-group col-md-6">
+                <input 
+                    type="password" 
+                    placeholder="*New password"
+                    class="form-control" 
+                    formControlName="password2" 
+                    id="password2"
+                    class="input-text js-input"
+                />
+                <span class="form-text text-danger" *ngIf="campoNoValido('password2')">
+                    {{passwordError}}
+                </span>
+                </div>
+
+                <!-- Password2 -->
+                <div class="form-group col-md-6">
+                <input 
+                type="password" 
+                placeholder="*Confirm password"
+                class="form-control" 
+                formControlName="password3" 
+                class="input-text js-input"/>
+                <span class="form-text text-danger" *ngIf="campoNoValido('password3')">
+                    Both passwords must be equal.
+                </span>
+                </div>
+            </div>
+
+            <button
+          class="btn btn-primary float-center my-5 boton"
+          type="submit"
+          [disabled]="miFormulario.invalid"> Change </button>
+
+            </div>
+        </form>
+    </section>
+</div>

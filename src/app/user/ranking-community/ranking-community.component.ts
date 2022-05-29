@@ -23,8 +23,7 @@ export class RankingCommunityComponent implements  OnDestroy, OnInit {
       pagingType: 'full_numbers',
       pageLength: 10,
       ordering: true,
-      order: [[2, 'asc']]
-
+      order: [[0, 'desc']]
     };
     this.mostrarUsuarios();
   }

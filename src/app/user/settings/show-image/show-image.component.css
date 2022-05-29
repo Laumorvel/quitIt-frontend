@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,500&family=Titan+One&display=swap');
+
+
+.title{
+  font-family: 'Titan One', cursive;
+  font-size: 20px;
+}
 
 *{
     font-size: 25px;
@@ -7,8 +14,8 @@
 /*IPAD*/
 @media screen and (min-width: 769px) and (max-width: 1279px) {
     .img{
-        width: 200px;
-        margin-top: 2em;
+        width: 220px;
+        margin-top: 1em;
     }
   }
   

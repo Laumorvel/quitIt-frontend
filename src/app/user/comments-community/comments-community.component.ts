@@ -18,7 +18,7 @@ export class CommentsCommunityComponent implements OnInit {
 
   comentarios: Commentario[] = [];
 
-  text!: String;
+  text: string="";
 
 
 
