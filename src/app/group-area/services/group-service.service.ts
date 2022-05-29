@@ -43,27 +43,14 @@ export class GroupServiceService {
    * Elimina un grupo
    * @param group
    */
-  deleteGroup(group: Group) {
-    const url = `${this.baseUrl}/group/${group.id}`;
+  deleteGroup(id: number) {
+    const url = `${this.baseUrl}/group/${id}`;
     let token = JSON.parse(<string>localStorage.getItem('token'));
     const opcion = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     opcion.append('Access-Control-Allow-Origin', '*');
     return this.http.delete<Group>(url, { headers: opcion });
   }
 
-  /**
-   * Añade un nuevo miembro al grupo
-   * @param member
-   * @param group
-   * @returns grupo con miembro añadido
-   */
-  addNewMemberToGroup(member: GroupMember, group: Group) {
-    const url = `${this.baseUrl}/group/${group.id}/member`;
-    let token = JSON.parse(<string>localStorage.getItem('token'));
-    const opcion = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    opcion.append('Access-Control-Allow-Origin', '*');
-    return this.http.post<Group>(url, member, { headers: opcion });
-  }
 
   /**
    * Modifica la categoria del miembro del grupo (admin o miembro normal)

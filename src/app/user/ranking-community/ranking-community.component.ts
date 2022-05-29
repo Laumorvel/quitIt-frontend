@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { User } from 'src/app/public/interfaces/interfaces';
 import Swal from 'sweetalert2';
@@ -18,13 +18,12 @@ export class RankingCommunityComponent implements  OnDestroy, OnInit {
 
   constructor(private userService: UserService) { }
   ngOnInit(): void {
-   
+
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 10,
       ordering: true,
       order: [[0, 'desc']]
-      
     };
     this.mostrarUsuarios();
   }
@@ -37,7 +36,7 @@ export class RankingCommunityComponent implements  OnDestroy, OnInit {
     this.userService.mostrarUsuarios().subscribe({
       next: (resp:any) => {
      //   console.log("ok");
-     //   console.log(resp); 
+     //   console.log(resp);
         this.users=resp;
        console.log(this.users);
         this.dtTrigger.next(null);
@@ -56,5 +55,5 @@ export class RankingCommunityComponent implements  OnDestroy, OnInit {
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
   }
-  
+
 }

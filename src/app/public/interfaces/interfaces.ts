@@ -112,3 +112,11 @@ export interface urlImg{
   url: string,
   secure_url: string;
 }
+
+export interface CommentsGroup{
+  id: number;
+  text: string;
+  user: User;
+  date: Date;
+  idGroup: number;
+}

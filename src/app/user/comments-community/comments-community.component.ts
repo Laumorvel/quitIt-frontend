@@ -1,8 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Commentario, User } from 'src/app/public/interfaces/interfaces';
 import Swal from 'sweetalert2';
-import { tsParticles } from 'tsparticles-engine';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -13,7 +12,7 @@ import { UserService } from '../services/user.service';
 export class CommentsCommunityComponent implements OnInit {
   constructor(private userService: UserService, private router:Router) {}
 
-  
+
   user: User = JSON.parse(<string>localStorage.getItem('user'));
 
 
@@ -28,10 +27,10 @@ export class CommentsCommunityComponent implements OnInit {
     setInterval(() => this.mostrarComentariosComunidad(), 10000);
   }
 
-  
+
   /**
    * Nos envia al compoenente de incidencias
-   * @param id 
+   * @param id
    */
   enviarIncidencia(id:number){
     this.router.navigateByUrl(`/commentsCommunity/${id}/incidence`);
@@ -44,7 +43,6 @@ export class CommentsCommunityComponent implements OnInit {
     this.userService.buscarComentariosComunidad().subscribe({
       next: (resp) => {
         this.comentarios = resp;
-        console.log(resp);
       },
       error: (e) => {
         Swal.fire({
@@ -61,8 +59,7 @@ export class CommentsCommunityComponent implements OnInit {
    * Crea un comentario en el chat de la comunidad
    */
   crearComentario() {
-    console.log(this.text)
-    if(this.text==""){
+    if(this.text==null || this.text.trim() == ""){
       Swal.fire({
         title: 'Error',
         icon: 'error',
@@ -74,7 +71,7 @@ export class CommentsCommunityComponent implements OnInit {
       this.userService.crearComentario(this.text).subscribe({
         next: (resp) => {
           this.comentarios.push(resp);
-          this.text=="";
+          this.text="";
         },
         error: (resp) => {
           Swal.fire({
@@ -86,7 +83,7 @@ export class CommentsCommunityComponent implements OnInit {
         },
       });
     }
-    
+
   }
 
 
@@ -101,7 +98,7 @@ export class CommentsCommunityComponent implements OnInit {
     document.getElementById('contenedorDeMensajes')?.scrollTop=toppos;
   }
 
-  
+
 
 
 }

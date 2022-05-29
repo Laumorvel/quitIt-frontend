@@ -251,10 +251,12 @@ export class GroupAreaComponent implements OnInit {
   /**
    * Elimina a un usuario de la lista temporal de amigos añadidos al grupo.
    */
-  deleteMember() {
-    const index: number = this.friendsSelected.indexOf(this.userSelected);
-    if (index !== -1) {
-      this.friendsSelected.splice(index, 1);
+  deleteMember(member:GroupMember) {
+    const indexUser: number = this.friendsSelected.indexOf(member.user);
+    const indexMember: number = this.groupMembers.indexOf(member);
+    if (indexUser !== -1) {
+    this.friendsSelected.splice(indexUser, 1);
+      this.groupMembers.splice(indexMember, 1);
     }
   }
 

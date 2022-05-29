@@ -70,21 +70,7 @@
             >
               <tbody>
                 <tr *ngFor="let friend of friendsFound">
-                  <td>
-                    <div *ngIf="friend.imageUrl != null; else elseBlock">
-                      <img
-                        src="{{ friend.imageUrl }}"
-                        alt="friend profile picture"
-                      />
-                    </div>
-                    <ng-template #elseBlock>
-                      <img
-                        src="../../assets/account.png"
-                        alt="friend profile picture"
-                        class="icon2"
-                      />
-                    </ng-template>
-                  </td>
+
                   <td (click)="selectFriend($event)" class="username">
                     {{ friend.username }}
                   </td>
@@ -140,15 +126,11 @@
             style="width: 18rem"
             *ngFor="let member of groupMembers"
           >
-            <img
-              *ngIf="member.user.imageUrl != null"
-              src="{{ member.user.imageUrl }}"
-              alt="friend profile picture"
-              class="card-img-top"
-            />
+          <img *ngIf="member.user.imageUrl != null; else elseBlock" class="centrar" src="{{member.user.imageUrl}}" width="300" height="150" alt="User image"/>
+          <ng-template #elseBlock> <img src="https://picsum.photos/300/150" width="300" height="150" alt="placeholder" class="centrar"></ng-template>
             <div class="card-body">
-              <h5 class="">{{ member.user.username }} - {{ member.cargo }}</h5>
-              <button class="btn boton" (click)="deleteMember()">DELETE</button>
+              <h5 class="letraAmigo">{{ member.user.username }} - {{ member.cargo }}</h5>
+              <button class="btn boton" (click)="deleteMember(member)">DELETE</button>
             </div>
           </div>
         </div>

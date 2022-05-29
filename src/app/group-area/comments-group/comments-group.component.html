@@ -1,1 +1,20 @@
-<p>comments-group works!</p>
+<div class="card text-center cardContainer">
+  <div class="card-header">
+  </div>
+  <div class="card-body" >
+    <div id="contenedorDeMensajes" class="contenedorDeMensajes">
+        <div *ngFor="let i of comentarios" class="enviado p-2 msj" [ngClass]="(user.username==i.user.username)? 'enviado' : 'recibido'">
+        <label class="username">{{i.user.username}}:</label> <br>
+        <label class="comentarioUser">{{i.text}}</label>
+        </div>
+      </div>
+  </div>
+  <form action="get">
+  <div class="card-footer text-muted input-group" (ngSubmit)="crearComentario()">
+      <input type="text" class="form-control" value="{{text}}" placeholder=" *Your Comment" [(ngModel)]="text">
+      <div class="input-group-append" (click)="crearComentario()">
+        <button class="input-group-text " id="basic-addon2">Send</button>
+      </div>
+    </div>
+    </form>
+</div>

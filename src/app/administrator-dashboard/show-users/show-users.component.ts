@@ -35,7 +35,6 @@ export class ShowUsersComponent implements OnInit {
         if(resp===null){
            this.error=true;
         }
-        console.log(resp);
       },
       error: (e) => {
         Swal.fire({
@@ -57,13 +56,13 @@ export class ShowUsersComponent implements OnInit {
     .subscribe({
       next: (resp => {
         Swal.fire({
-          title:'Error',
-          icon: 'error',
-          text:'TThe user has been deleted',
+          title:'Success',
+          icon: 'success',
+          text:'The user has been deleted',
           confirmButtonColor:'#52ab98'
         });
-        this.buscarUser();
-       
+       // this.buscarUser();
+
      }),
       error: resp => {
         if(resp.message==null){
@@ -77,7 +76,7 @@ export class ShowUsersComponent implements OnInit {
             confirmButtonColor:'#52ab98'
           });
         }
-       
+
       }
    });
   }

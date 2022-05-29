@@ -14,7 +14,7 @@ export class AdminService {
   constructor(private http: HttpClient) {}
 
   /**
-   * 
+   *
    * @returns las incidencias que haya registrada en la base de datos
    */
   buscarIncidencias(){
@@ -26,8 +26,8 @@ export class AdminService {
   }
 
   /**
-   * 
-   * @param id 
+   *
+   * @param id
    * @returns borra el comentario con la id indicada
    */
   deleteComment(id:number){
@@ -39,9 +39,9 @@ export class AdminService {
   }
 
   /**
-   * 
-   * @param id 
-   * @param estado 
+   *
+   * @param id
+   * @param estado
    * @returns cambia el estado de la incidencia por el que indicamos
    */
   cambiarEstadoIncidencia(id:number, estado:String ){
@@ -54,7 +54,7 @@ export class AdminService {
   }
 
   /**
-   *  
+   *
    * @param busqueda
    * @returns el usuario que hemos indicado si existiese en la base de datos
    */
@@ -67,16 +67,15 @@ export class AdminService {
   }
 
   /**
-   * 
-   * @param id 
-   * @returns borra un usuario de la base de datos indicando su id
+   * borra un usuario de la base de datos indicando su id
+   * @param id
    */
   deleteUser(id:number){
      const url = `${this.baseUrl}/user/${id}`;
     let token = JSON.parse(<string>localStorage.getItem('token'));
     const opcion = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     opcion.append('Access-Control-Allow-Origin', '*');
-    return this.http.delete<User[]>(url, { headers: opcion });
+    return this.http.delete(url, { headers: opcion });
   }
 
 }
