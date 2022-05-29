@@ -4,6 +4,7 @@
 
     <div class="col-md-12 offset-md-1 box-content">
       <form
+        (ngSubmit)="login()"
         class="contact-form row text-center"
         autocomplete="off"
         #miFormulario="ngForm"
@@ -48,7 +49,6 @@
                   type="submit"
                   [disabled]="miFormulario.invalid"
                   class="custom-btn btn"
-                  (click)="login()"
                 >
                   Enter
                 </button>

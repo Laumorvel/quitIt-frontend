@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
-import { MeetUP } from 'src/app/public/interfaces/interfaces';
+import { MeetUP, User } from 'src/app/public/interfaces/interfaces';
 import Swal from 'sweetalert2';
 import { UserService } from '../../services/user.service';
 
@@ -14,7 +14,8 @@ export class ShowMeetUpsComponent implements OnDestroy, OnInit  {
   meetUps:MeetUP[]=[];
   choice!:String;
 
-  
+  user: User = JSON.parse(<string>localStorage.getItem('user'));
+
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
 
@@ -70,7 +71,7 @@ export class ShowMeetUpsComponent implements OnDestroy, OnInit  {
           Swal.fire({
             title:'Error',
             icon: 'error',
-            text:'There are no services available at this time',
+            text:e.error.mensaje,
             confirmButtonColor:'#52ab98'
           });
         }
@@ -90,7 +91,7 @@ export class ShowMeetUpsComponent implements OnDestroy, OnInit  {
         Swal.fire({
           title:'Error',
           icon: 'error',
-          text:'There are no services available at this time',
+          text:e.error.mensaje,
           confirmButtonColor:'#52ab98'
         });
       }

@@ -1,4 +1,5 @@
 <!--EH AQUI EL CHAT!-->
+
 <div class="card text-center cardContainer">
   <div class="card-header">
     Chat
@@ -11,12 +12,32 @@
         </div>
       </div>
   </div>
-  <form action="get">
-  <div class="card-footer text-muted input-group" (ngSubmit)="crearComentario()">
-      <input type="text" class="form-control" name="text" value="{{text}}" placeholder=" *Your Comment" [(ngModel)]="text">
-      <div class="input-group-append" (click)="crearComentario()">
-        <button type="submit" class="input-group-text " id="basic-addon2">Send</button>
-      </div>
-    </div>
-  </form>
+
+<form (ngSubmit)="crearComentario()"
+  class="contact-form row text-center"
+  autocomplete="off"
+  #miFormulario="ngForm"
+  autocomplete="off">
+
+      <div class="mb-3 row justify-content-center card-footer text-muted input-group barra">
+            <div class="col-md-12 barra2">
+              <input
+                type="text"
+                class="form-control "
+                [(ngModel)]="text"
+                name="text"
+                id="text"
+                class="input-text js-input"
+                placeholder=" *Your comment"
+                required="required"
+              />
+              <button
+              type="submit"
+              [disabled]="miFormulario.invalid"
+              class="custom-btn btn">
+              Send
+            </button>
+            </div>
+          </div>
+    </form>
 </div>

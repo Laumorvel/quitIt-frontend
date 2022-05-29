@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { PenaltiesRoutingModule } from './penalties-routing.module';
 import { PenaltiesComponent } from './penalties.component';
+import { FloatingButtonModule } from 'src/app/shared/floating-button/floating-button.module';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { PenaltiesComponent } from './penalties.component';
   ],
   imports: [
     CommonModule,
-    PenaltiesRoutingModule
+    PenaltiesRoutingModule,
+    FloatingButtonModule
   ]
 })
 export class PenaltiesModule { }
