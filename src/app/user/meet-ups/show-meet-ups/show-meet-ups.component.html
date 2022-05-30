@@ -11,20 +11,23 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let i of meetUps">
+        <tr *ngFor="let i of meetUps" if="listaCargada">
           <td>{{ i.title }}</td>
           <td>{{ i.type }}</td>
           <td>{{ i.date | date: 'dd-MM-yyyy' }} {{ i.date | date: 'HH:mm' }}</td>
-          <td>{{ i.assistantsList.length }}</td>
+          <td>{{ i.assistantsList.length}}</td>
           <td>{{ i.place }}</td>
+          <td><img  src="../../../../assets/meetups/cheque.png" class="img1" (click)="asistenciaMeetUp(i.id)"> <img src="../../../../assets/meetups/cancelar.png" class="img2" (click)="noAsistenciaMeetUp(i.id)"></td>
+
+          <!--
           <td class="text-center">
             <div *ngFor="let j of i.assistantsList">
-             <!-- <div *ngIf="j.username===user.username">
-                <img  src="../../../../assets/meetups/cheque.png" class="img1" (click)="asistenciaMeetUp(i.id)">
+              <div *ngIf="j.username===user.username">
+                
               </div>
               <div>
-                <img src="../../../../assets/meetups/cancelar.png" class="img2" (click)="noAsistenciaMeetUp(i.id)">
-              </div>-->
+                
+              </div>
 
               <ng-container
               *ngIf="j.username===user.username; then userYes; else userNo">
@@ -41,9 +44,7 @@
               </div>
             </ng-template>
               </div>
-
-             
-          </td>
+          </td>-->
          
         </tr>
       </tbody>
