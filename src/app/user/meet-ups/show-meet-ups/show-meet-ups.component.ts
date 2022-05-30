@@ -19,6 +19,8 @@ export class ShowMeetUpsComponent implements OnDestroy, OnInit  {
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
 
+  listaCargada:boolean=false;
+
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
@@ -29,7 +31,7 @@ export class ShowMeetUpsComponent implements OnDestroy, OnInit  {
       
     };
 
-
+    this.listaCargada=true;
     this.cargarMeetUps();
   }
 
