@@ -1,0 +1,13 @@
+.boton{
+  background-color: #2b6777;
+}
+
+.title{
+  font-family: 'Titan One', cursive;
+  text-align: center;
+}
+
+form{
+  background-color: rgb(226, 233, 240);
+  padding-top: 2rem;
+}

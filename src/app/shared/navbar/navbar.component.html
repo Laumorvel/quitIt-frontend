@@ -1,96 +1,79 @@
-<nav class="navbar navbar-expand-sm navbar-dark py-2 topnav">
-  <div class="container-fluid ">
-    <!--LOGO-->
-    <a
-      class="navbar-brand hoverZoom"
-      routerLink="/"
-      routerLinkActive="active"
-      [routerLinkActiveOptions]="{ exact: true }"
-    >
-      <img src="./../../../assets/quitItLogo2.png" alt="logo" class="logo" />
-    </a>
-
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#collapsibleNavbar"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <!--MENÚ-->
-    <div class="collapse navbar-collapse justify-content-center">
-      <!--PUBLIC AREA-->
-      <ul
-        *ngIf="menuIndicator == 'userNotRegistered'; else loggedIn"
-        class="navbar-nav align-items-center"
+<div class="row">
+  <nav class="navbar navbar-expand-sm navbar-dark py-2 topnav">
+    <div class="container-fluid">
+      <!--LOGO-->
+      <a
+        class="navbar-brand"
+        routerLink="/"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
       >
-        <!--Login-->
-        <li class="nav-item hoverZoom">
-          <a
-            routerLink="/login"
-            class="nav-link text-black"
-            alt="login"
-            routerLinkActive="active"
-            ><img
-              src="../../assets/login.png"
-              class="icon imgIconos signup"
-              alt="Signup"
-            />
-            Login</a
-          >
-        </li>
+        <img src="./../../../assets/quitItLogo2.png" alt="logo" class="logo" />
+      </a>
 
-        <!--Signup-->
-        <li class="nav-item hoverZoom">
-          <a
-            routerLink="/register"
-            class="nav-link text-black"
-            alt="login"
-            routerLinkActive="active"
-            ><img
-              src="../../assets/account.png"
-              class="icon imgIconos signup"
-              alt="Signup"
-            />
-            Sign up</a
-          >
-        </li>
-
-        <!--Contact us-->
-        <li class="nav-item hoverZoom">
-          <a
-            class="nav-link text-black mx-md-3 mx-sm-3"
-            routerLink="/contactUs"
-            routerLinkActive="active"
-          >
-            <img
-              src="../../assets/email.png"
-              class="icon imgIconos"
-              alt="Contact us"
-            />
-            Contact Us</a
-          >
-        </li>
-
-        <!--User area-->
-        <li class="nav-item hoverZoom">
-          <a
-            class="nav-link text-black hover-zoom"
-            routerLink="/userArea"
-            routerLinkActive="active"
-            ><img src="../../assets/casa.png" class="icon" alt="Dashboard" />
-            User area</a
-          >
-        </li>
-      </ul>
-
-      <!--USER AREA-->
-      <ng-template #loggedIn>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapsibleNavbar"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!--MENÚ-->
+      <div class="collapse navbar-collapse justify-content-center" id="collapsibleNavbar">
+        <!--PUBLIC AREA-->
         <ul
-          *ngIf="menuIndicator == 'registeredUser'; else administrator"
-          class="navbar-nav"
+          *ngIf="menuIndicator == 'userNotRegistered'; else loggedIn"
+          class="navbar-nav align-items-center"
         >
+          <!--Login-->
+          <li class="nav-item hoverZoom">
+            <a
+              routerLink="/login"
+              class="nav-link text-black"
+              alt="login"
+              routerLinkActive="active"
+              ><img
+                src="../../assets/login.png"
+                class="icon imgIconos signup"
+                alt="Signup"
+              />
+              Login</a
+            >
+          </li>
+
+          <!--Signup-->
+          <li class="nav-item hoverZoom">
+            <a
+              routerLink="/register"
+              class="nav-link text-black"
+              alt="login"
+              routerLinkActive="active"
+              ><img
+                src="../../assets/account.png"
+                class="icon imgIconos signup"
+                alt="Signup"
+              />
+              Sign up</a
+            >
+          </li>
+
+          <!--Contact us-->
+          <li class="nav-item hoverZoom">
+            <a
+              class="nav-link text-black mx-md-3 mx-sm-3"
+              routerLink="/contactUs"
+              routerLinkActive="active"
+            >
+              <img
+                src="../../assets/email.png"
+                class="icon imgIconos"
+                alt="Contact us"
+              />
+              Contact Us</a
+            >
+          </li>
+
           <!--User area-->
           <li class="nav-item hoverZoom">
             <a
@@ -101,160 +84,185 @@
               User area</a
             >
           </li>
-
-          <!--logout-->
-          <li class="nav-item hoverZoom">
-            <a
-              class="nav-link text-black"
-              data-bs-toggle="modal"
-              data-bs-target="#exampleModal"
-              routerLinkActive="active"
-              ><img
-                src="../../assets/logout.png"
-                class="icon imgIconos"
-                alt="Logout"
-              />
-              Logout</a
-            >
-          </li>
-
-          <!--group area-->
-          <li class="nav-item hoverZoom">
-            <a
-              class="nav-link text-black hover-zoom"
-              routerLink="/groupArea"
-              routerLinkActive="active"
-              ><img
-                src="../../assets/people.png"
-                class="icon"
-                alt="Group area"
-              />
-              Group area</a
-            >
-          </li>
-
-          <!--friends-->
-          <li class="nav-item hoverZoom">
-            <a
-              class="nav-link text-black hover-zoom"
-              routerLink="/friends"
-              routerLinkActive="active"
-              ><img
-                src="../../assets/friends.png"
-                class="icon"
-                alt="Friends area"
-              />
-              Friends area</a
-            >
-          </li>
-          <!--Settings. Necesaria la condición extra para que no aparezca en el menú del administrador-->
-          <li
-          *ngIf="menuIndicator == 'registeredUser'"
-          class="nav-link text-black nav-item settings hoverZoom"
-        >
-          <a
-            class="text-black"
-            routerLink="/settings"
-            routerLinkActive="active"
-          >
-            <img src="../../assets/settings.png" class="icon" alt="Settings" />
-            Settings
-          </a>
-        </li>
         </ul>
 
-        
-      </ng-template>
-      <!--MODAL-->
-      <div
-        class="modal fade"
-        id="exampleModal"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog">
-          <div class="modal-content text-center">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">LOGOUT</h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div class="modal-body">Are you sure?</div>
-            <div class="modal-footer justify-content-center">
-              <button
-                type="button"
-                class="btn botonNo"
-                data-bs-dismiss="modal"
+        <!--USER AREA-->
+        <ng-template #loggedIn>
+          <ul
+            *ngIf="menuIndicator == 'registeredUser'; else administrator"
+            class="navbar-nav"
+          >
+            <!--User area-->
+            <li class="nav-item hoverZoom">
+              <a
+                class="nav-link text-black hover-zoom"
+                routerLink="/userArea"
+                routerLinkActive="active"
+                ><img
+                  src="../../assets/casa.png"
+                  class="icon"
+                  alt="Dashboard"
+                />
+                User area</a
               >
-                No
-              </button>
-              <button
-                type="button"
-                class="btn botonYes"
-                data-bs-dismiss="modal"
-                (click)="logout()"
+            </li>
+
+            <!--logout-->
+            <li class="nav-item hoverZoom">
+              <a
+                class="nav-link text-black"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+                routerLinkActive="active"
+                ><img
+                  src="../../assets/logout.png"
+                  class="icon imgIconos"
+                  alt="Logout"
+                />
+                Logout</a
               >
-                Yes
-              </button>
+            </li>
+
+            <!--group area-->
+            <li class="nav-item hoverZoom">
+              <a
+                class="nav-link text-black hover-zoom"
+                routerLink="/groupArea"
+                routerLinkActive="active"
+                ><img
+                  src="../../assets/people.png"
+                  class="icon"
+                  alt="Group area"
+                />
+                Group area</a
+              >
+            </li>
+
+            <!--friends-->
+            <li class="nav-item hoverZoom">
+              <a
+                class="nav-link text-black hover-zoom"
+                routerLink="/friends"
+                routerLinkActive="active"
+                ><img
+                  src="../../assets/friends.png"
+                  class="icon"
+                  alt="Friends area"
+                />
+                Friends area</a
+              >
+            </li>
+            <!--Settings. Necesaria la condición extra para que no aparezca en el menú del administrador-->
+            <li
+              *ngIf="menuIndicator == 'registeredUser'"
+              class="nav-link text-black nav-item settings hoverZoom"
+            >
+              <a
+                class="text-black"
+                routerLink="/settings"
+                routerLinkActive="active"
+              >
+                <img
+                  src="../../assets/settings.png"
+                  class="icon"
+                  alt="Settings"
+                />
+                Settings
+              </a>
+            </li>
+          </ul>
+        </ng-template>
+        <!--MODAL-->
+        <div
+          class="modal fade"
+          id="exampleModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content text-center">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">LOGOUT</h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">Are you sure?</div>
+              <div class="modal-footer justify-content-center">
+                <button
+                  type="button"
+                  class="btn botonNo"
+                  data-bs-dismiss="modal"
+                >
+                  No
+                </button>
+                <button
+                  type="button"
+                  class="btn botonYes"
+                  data-bs-dismiss="modal"
+                  (click)="logout()"
+                >
+                  Yes
+                </button>
+              </div>
             </div>
           </div>
         </div>
+
+        <!--ADMINISTRATIVE AREA-->
+        <ng-template #administrator>
+          <ul class="navbar-nav">
+            <!--incidences-->
+            <li class="nav-item hoverZoom">
+              <a
+                class="nav-link text-black hover-zoom"
+                routerLink="/administratorDashboard/incidences"
+                routerLinkActive="active"
+                ><img
+                  src="../../assets/friends.png"
+                  class="icon"
+                  alt="Friends area"
+                />
+                Incidences</a
+              >
+            </li>
+            <!--Users-->
+            <li class="nav-item hoverZoom">
+              <a
+                class="nav-link text-black hover-zoom"
+                routerLink="/administratorDashboard/showUsers"
+                routerLinkActive="active"
+                ><img
+                  src="../../assets/friends.png"
+                  class="icon"
+                  alt="Friends area"
+                />
+                Users</a
+              >
+            </li>
+
+            <!--logout-->
+            <li class="nav-item hoverZoom">
+              <a
+                class="nav-link text-black"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+                routerLinkActive="active"
+                ><img
+                  src="../../assets/logout.png"
+                  class="icon imgIconos"
+                  alt="Logout"
+                />
+                Logout</a
+              >
+            </li>
+          </ul>
+        </ng-template>
       </div>
-
-      <!--ADMINISTRATIVE AREA-->
-      <ng-template #administrator>
-        <ul class="navbar-nav">
-          <!--incidences-->
-          <li class="nav-item hoverZoom">
-            <a
-              class="nav-link text-black hover-zoom"
-              routerLink="/administratorDashboard/incidences"
-              routerLinkActive="active"
-              ><img
-                src="../../assets/friends.png"
-                class="icon"
-                alt="Friends area"
-              />
-              Incidences</a
-            >
-          </li>
-          <!--Users-->
-          <li class="nav-item hoverZoom">
-            <a
-              class="nav-link text-black hover-zoom"
-              routerLink="/administratorDashboard/showUsers"
-              routerLinkActive="active"
-              ><img
-                src="../../assets/friends.png"
-                class="icon"
-                alt="Friends area"
-              />
-              Users</a
-            >
-          </li>
-
-          <!--logout-->
-          <li class="nav-item hoverZoom">
-            <a
-              class="nav-link text-black"
-              data-bs-toggle="modal"
-              data-bs-target="#exampleModal"
-              routerLinkActive="active"
-              ><img
-                src="../../assets/logout.png"
-                class="icon imgIconos"
-                alt="Logout"
-              />
-              Logout</a
-            >
-          </li>
-        </ul>
-      </ng-template>
     </div>
-  </div>
-</nav>
+  </nav>
+</div>

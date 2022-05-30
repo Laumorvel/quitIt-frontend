@@ -9,113 +9,105 @@ import { PasswordValidatorService } from '../../services/password-validator.serv
 @Component({
   selector: 'app-change-pass',
   templateUrl: './change-pass.component.html',
-  styleUrls: ['./change-pass.component.css']
+  styleUrls: ['./change-pass.component.css'],
 })
 export class ChangePassComponent implements OnInit {
-
   constructor(
     private fb: FormBuilder,
     private validatorService: ValidatorService,
     private passwordValidatorService: PasswordValidatorService,
-    private userService: UserService,
-    private router: Router
+    private userService: UserService
   ) {}
-
 
   miFormulario: FormGroup = this.fb.group(
     {
-      password: [,[Validators.required],
-        [this.passwordValidatorService],
-      ],
+      password: [, [Validators.required], [this.passwordValidatorService]],
       password2: [, [Validators.required]],
       password3: [, [Validators.required]],
     },
     {
       validators: [
-        this.validatorService.camposIguales('password', 'password2')
+        this.validatorService.camposIguales('password2', 'password3')
       ]
     }
   );
 
-  get actuallypasswordError(): string{
+  get actuallypasswordError(): string {
     const errors = this.miFormulario.get('password')?.errors!;
-    if(errors['required']){
+    console.log(errors)
+    console.log(!this.miFormulario.get('password')?.errors!['passwordCodigo'])
+    if (errors['required']) {
       return 'Password required';
     }
-     if(errors['passwordCogido']){
-      console.log("COGIDO")
-      return 'This password is correct';
+    if (!errors['passwordCogido']) {
+      return 'This password is incorrect';
     }
-    else {
-      console.log("ERROR")
-    return 'This password is incorrect';
+    return '';
   }
 
-  }
-
-    /**
+  /**
    * Mensajes para la contraseña
    */
-     get passwordError(): string{
-      const errors = this.miFormulario.get('password')?.errors!;
-      if(errors['required']){
-        return 'Password required';
-      }
-      return '';
+  get passwordError(): string {
+    const errors = this.miFormulario.get('password2')?.errors!;
+    if (errors['required']) {
+      return 'Password required';
     }
-  
-  
-    ngOnInit(): void {
-      this.miFormulario.reset({
-        password: '',
-        password2: '',
-        password3: ''
-      });
-    }
-  
-    /**
-     *
-     * @param campo
-     * @returns Comprueba si la información introducida en un campo es valida
-     */
-    campoNoValido(campo: string) {
-      return (
-        this.miFormulario.get(campo)?.invalid &&
-        this.miFormulario.get(campo)?.touched
-      );
-    }
-  
-  
-    /**
-     * Registra el usuario en la base de datos
-     * @param objetivos
-     */
-    submitFormulario(objetivos :number[]) {
-      const user = this.miFormulario.value  
-     this.userService.changePass(user)
-      .subscribe({
-        next: (resp => {
-          /**
-   * RESETEAMOS LAS VARIABLES PARA CUANDO HAYA UN NUEVO REGISTRO NO PUEDAN DARNOS PROBLEMAS
+    return '';
+  }
+
+  ngOnInit(): void {
+    this.miFormulario.reset({
+      password: '',
+      password2: '',
+      password3: '',
+    });
+  }
+
+  /**
+   *
+   * @param campo
+   * @returns Comprueba si la información introducida en un campo es valida
    */
-          this.miFormulario.reset({
-            password: '',
-            password2: '',
-            password3: '',
-            condiciones: false
-          })
-  
-          this.router.navigateByUrl(`/login`);
-       }),
-        error: resp => {
-          Swal.fire({
-            title:'Error',
-            icon: 'error',
-            text:resp.error.mensaje,
-            confirmButtonColor:'##52ab98'
-          });
-        }
-     });
-    }
-  
+  campoNoValido(campo: string) {
+    return (
+      this.miFormulario.get(campo)?.invalid &&
+      this.miFormulario.get(campo)?.touched
+    );
+  }
+
+  /**
+   * Registra el usuario en la base de datos
+   * @param objetivos
+   */
+  submitFormulario() {
+
+    this.userService.changePass(this.miFormulario.get('password3')?.value).subscribe({
+      next: (resp) => {
+        /**
+         * RESETEAMOS LAS VARIABLES PARA CUANDO HAYA UN NUEVO REGISTRO NO PUEDAN DARNOS PROBLEMAS
+         */
+        this.miFormulario.reset({
+          password: '',
+          password2: '',
+          password3: '',
+          condiciones: false,
+        });
+        Swal.fire({
+          title: 'Success',
+          icon: 'success',
+          text: 'Password changed successfully',
+          confirmButtonColor: '##52ab98',
+        });
+      },
+      error: (resp) => {
+        Swal.fire({
+          title: 'Error',
+          icon: 'error',
+          text: resp.error.mensaje,
+          confirmButtonColor: '##52ab98',
+        });
+      },
+    });
+  }
 }

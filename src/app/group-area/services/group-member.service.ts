@@ -54,6 +54,13 @@ export class GroupMemberService {
     return this.http.delete(url, { headers: opcion });
   }
 
+  /**
+   * Modifica el rol del miembro
+   * @param idMember
+   * @param idGroup
+   * @param member
+   * @returns miembro de grupo modificado
+   */
   changeRoleOfmember(idMember: number, idGroup: number, member:GroupMember){
     const url = `${this.baseUrl}/group/${idGroup}/member/${idMember}`;
     let token = JSON.parse(<string>localStorage.getItem('token'));
