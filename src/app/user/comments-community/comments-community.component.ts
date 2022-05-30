@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Commentario, User } from 'src/app/public/interfaces/interfaces';
 import Swal from 'sweetalert2';
@@ -10,29 +10,29 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./comments-community.component.css'],
 })
 export class CommentsCommunityComponent implements OnInit {
-  constructor(private userService: UserService, private router:Router) {}
+  constructor(private userService: UserService, private router: Router) {}
 
-
+  @ViewChild('scrollBottom')
+  private scrollBottom!: ElementRef;
   user: User = JSON.parse(<string>localStorage.getItem('user'));
-
-
   comentarios: Commentario[] = [];
-
-  text: string="";
-
-
+  text: string = '';
 
   ngOnInit(): void {
     this.mostrarComentariosComunidad();
     setInterval(() => this.mostrarComentariosComunidad(), 10000);
+    this.scrollToBottom();
   }
 
+  ngAfterViewChecked() {
+    this.scrollToBottom();
+  }
 
   /**
    * Nos envia al compoenente de incidencias
    * @param id
    */
-  enviarIncidencia(id:number){
+  enviarIncidencia(id: number) {
     this.router.navigateByUrl(`/commentsCommunity/${id}/incidence`);
   }
 
@@ -59,19 +59,18 @@ export class CommentsCommunityComponent implements OnInit {
    * Crea un comentario en el chat de la comunidad
    */
   crearComentario() {
-    if(this.text==null || this.text.trim() == ""){
+    if (this.text == null || this.text.trim() == '') {
       Swal.fire({
         title: 'Error',
         icon: 'error',
         text: 'You must enter the comment before submitting it',
         confirmButtonColor: '#52ab98',
       });
-    }
-    else{
+    } else {
       this.userService.crearComentario(this.text).subscribe({
         next: (resp) => {
           this.comentarios.push(resp);
-          this.text="";
+          this.text = '';
         },
         error: (resp) => {
           Swal.fire({
@@ -83,22 +82,22 @@ export class CommentsCommunityComponent implements OnInit {
         },
       });
     }
-
   }
-
-
 
   /*Scroll*/
-  scrollToTheLastElementByClassName(){
+  scrollToTheLastElementByClassName() {
     let elements = document.getElementsByClassName('msj');
-    let ultimo:any = elements[(elements.length-1)];
-    let toppos =ultimo.offsetTop;
+    let ultimo: any = elements[elements.length - 1];
+    let toppos = ultimo.offsetTop;
 
     //@ts-ignore
-    document.getElementById('contenedorDeMensajes')?.scrollTop=toppos;
+    document.getElementById('contenedorDeMensajes')?.scrollTop = toppos;
   }
 
-
-
-
+  scrollToBottom(): void {
+    try {
+      this.scrollBottom.nativeElement.scrollTop =
+        this.scrollBottom.nativeElement.scrollHeight;
+    } catch (err) {}
+  }
 }

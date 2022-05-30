@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
 })
 export class PasswordValidatorService implements AsyncValidator {
 
-  
+
   constructor(private http: HttpClient) {}
 
   private baseUrl: string = environment.baseUrl;
@@ -33,8 +33,8 @@ export class PasswordValidatorService implements AsyncValidator {
 
   /**
    * Método para comprobar password en BBDD
-   * @param password 
-   * @returns 
+   * @param password
+   * @returns
    */
    compruebapassword(password: string) {
     const url = `${this.baseUrl}/email?password=${password}`;
@@ -45,5 +45,5 @@ export class PasswordValidatorService implements AsyncValidator {
    }
 
 
-   
+
 }
