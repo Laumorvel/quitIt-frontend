@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Commentario, User } from 'src/app/public/interfaces/interfaces';
 import Swal from 'sweetalert2';
@@ -13,9 +13,17 @@ import { CommentsGroupService } from '../services/comments-group.service';
 export class CommentsGroupComponent implements OnInit {
   constructor(  private rutaActiva: ActivatedRoute,private commentsGroupService: CommentsGroupService, private router: Router) {}
 
+  @ViewChild('scrollBottom')
+  private scrollBottom!: ElementRef;
+
   ngOnInit(): void {
     this.mostrarComentariosComunidad();
-   // setInterval(() => this.mostrarComentariosComunidad(), 10000);
+   setInterval(() => this.mostrarComentariosComunidad(), 10000);
+   this.scrollToBottom();
+  }
+
+  ngAfterViewChecked() {
+    this.scrollToBottom();
   }
 
   user: User = JSON.parse(<string>localStorage.getItem('user'));
@@ -59,13 +67,10 @@ export class CommentsGroupComponent implements OnInit {
     }
   }
 
-  /*Scroll*/
-  scrollToTheLastElementByClassName() {
-    let elements = document.getElementsByClassName('msj');
-    let ultimo: any = elements[elements.length - 1];
-    let toppos = ultimo.offsetTop;
-
-    //@ts-ignore
-    document.getElementById('contenedorDeMensajes')?.scrollTop = toppos;
+  scrollToBottom(): void {
+    try {
+      this.scrollBottom.nativeElement.scrollTop =
+        this.scrollBottom.nativeElement.scrollHeight;
+    } catch (err) {}
   }
 }

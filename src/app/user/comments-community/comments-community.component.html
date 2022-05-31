@@ -5,10 +5,11 @@
     Chat
   </div>
   <div class="card-body" >
-    <div id="contenedorDeMensajes" class="contenedorDeMensajes">
+    <div id="contenedorDeMensajes" class="contenedorDeMensajes" #scrollBottom>
         <div *ngFor="let i of comentarios" class="enviado p-2 msj" [ngClass]="(user.username==i.user.username)? 'enviado' : 'recibido'">
         <label class="username">{{i.user.username}}:</label> <br>
-        <label class="comentarioUser">{{i.text}}<img src="../../../assets/report.png" [ngClass]="(user.username==i.user.username)? 'enviado' : 'recibido'" class="imgReport" (click)="enviarIncidencia(i.id)"></label>
+        <label class="comentarioUser">{{i.text}}</label>
+          <img src="../../../assets/report.png"  class="imgReport" (click)="enviarIncidencia(i.id)">
         </div>
       </div>
   </div>

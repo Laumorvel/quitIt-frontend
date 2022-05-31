@@ -1,20 +1,46 @@
 <div class="card text-center cardContainer">
-  <div class="card-header">
-  </div>
-  <div class="card-body" >
-    <div id="contenedorDeMensajes" class="contenedorDeMensajes">
-        <div *ngFor="let i of comentarios" class="enviado p-2 msj" [ngClass]="(user.username==i.user.username)? 'enviado' : 'recibido'">
-        <label class="username">{{i.user.username}}:</label> <br>
-        <label class="comentarioUser">{{i.text}}</label>
-        </div>
-      </div>
-  </div>
-  <form action="get">
-  <div class="card-footer text-muted input-group" (ngSubmit)="crearComentario()">
-      <input type="text" class="form-control" value="{{text}}" placeholder=" *Your Comment" [(ngModel)]="text">
-      <div class="input-group-append" (click)="crearComentario()">
-        <button class="input-group-text " id="basic-addon2">Send</button>
+  <div class="card-header"></div>
+  <div class="card-body">
+    <div id="contenedorDeMensajes" class="contenedorDeMensajes" #scrollBottom>
+      <div
+        *ngFor="let i of comentarios"
+        class="enviado p-2 msj"
+        [ngClass]="user.username == i.user.username ? 'enviado' : 'recibido'"
+      >
+        <label class="username">{{ i.user.username }}:</label> <br />
+        <label class="comentarioUser">{{ i.text }}</label>
       </div>
     </div>
+    <form
+      (ngSubmit)="crearComentario()"
+      class="row text-center"
+      autocomplete="off"
+      #miFormulario="ngForm"
+      autocomplete="off"
+    >
+      <div
+        class=" card-footer text-muted input-group"
+      >
+        <div class="row textoContainer">
+          <input
+            type="text"
+            [(ngModel)]="text"
+            name="text"
+            id="text"
+            class="form-control texto"
+            placeholder=" *Your comment"
+            required="required"
+          />
+
+          <button
+            type="submit"
+            [disabled]="miFormulario.invalid"
+            class="btn"
+          >
+            Send
+          </button>
+        </div>
+      </div>
     </form>
+  </div>
 </div>
