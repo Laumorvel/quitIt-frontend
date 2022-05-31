@@ -2,19 +2,23 @@
 <div class="contenedor">
 
 
-<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table-striped row-border hover">
   <thead>
-    <tr>
+    <tr class="table-info">
       <th>Days without smoking</th>
       <th>Username</th>
-      
+
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let i of users">
-      <td>{{ i.daysInARowWithoutSmoking }}</td>
+      <td>  <img src="../../../assets/medal.png" class="icon2" *ngIf="i == users[0]"/>
+        <img src="../../../assets/medal(1).png" class="icon2" *ngIf="i == users[1]"/>
+        <img src="../../../assets/medal(2).png" class="icon2" *ngIf="i == users[2]"/>
+        {{ i.daysInARowWithoutSmoking }}
+        </td>
       <td>{{ i.username }}</td>
-     
+
     </tr>
   </tbody>
 </table>
