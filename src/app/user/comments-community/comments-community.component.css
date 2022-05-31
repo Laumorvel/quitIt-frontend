@@ -8,8 +8,9 @@
   border-radius: 10px;
 }
 
-.imgReport{
-    width: 10px;
+
+.imgReport:hover{
+  cursor:pointer;
 }
 
 .form-control{
@@ -21,7 +22,7 @@ button{
   background-color: #52ab98;
   color: white;
   width: 150px;
-  
+
 }
 
 
@@ -31,13 +32,13 @@ button{
     margin-left: 2em !important;
     width: 600px;
   }
-  
+
   button{
     background-color: #52ab98;
     color: white;
     width: 150px;
     margin-right: 2em;
-    
+
   }
 }
 
@@ -88,8 +89,8 @@ button{
 .contenedorDeMensajes{
   /*overflow: scroll;*/
     height: 70vh;
-    overflow: auto;  
-    scroll-snap-type: y mandatory;  
+    overflow: auto;
+    scroll-snap-type: y mandatory;
 }
 
 .contenedorDeMensajes::-webkit-scrollbar{
@@ -140,8 +141,8 @@ button{
   .contenedorDeMensajes{
     /*overflow: scroll;*/
       height: 80vh;
-      overflow: auto;  
-      scroll-snap-type: y mandatory;  
+      overflow: auto;
+      scroll-snap-type: y mandatory;
   }
 
   .barra{
@@ -171,11 +172,17 @@ button{
   .contenedorDeMensajes{
     /*overflow: scroll;*/
       height: 80vh;
-      overflow: auto;  
-      scroll-snap-type: y mandatory;  
+      overflow: auto;
+      scroll-snap-type: y mandatory;
   }
   .barra{
     margin-top: 250px;
   }
 
 }
+
+.imgReport{
+  max-width: 40px;
+  float:right;
+}
+

@@ -3,11 +3,23 @@
 
 
 .contenedor{
-    margin-left: 4em;
-    margin-right: 4em;
+    margin-left: 5rem;
+    margin-right: 5rem;
+    border-radius: 10px;
+    padding:2rem;
 }
 
 h1{
     text-align:  center;
     font-family: "Titan One", cursive;
+    font-size: 35px;
+}
+
+.icon2{
+  max-width: 30px;
+  height: auto;
+}
+
+th, td{
+  font-size: 24px;
 }

@@ -84,15 +84,6 @@ export class CommentsCommunityComponent implements OnInit {
     }
   }
 
-  /*Scroll*/
-  scrollToTheLastElementByClassName() {
-    let elements = document.getElementsByClassName('msj');
-    let ultimo: any = elements[elements.length - 1];
-    let toppos = ultimo.offsetTop;
-
-    //@ts-ignore
-    document.getElementById('contenedorDeMensajes')?.scrollTop = toppos;
-  }
 
   scrollToBottom(): void {
     try {

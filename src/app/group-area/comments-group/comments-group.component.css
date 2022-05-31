@@ -90,10 +90,6 @@ button {
   display: none; /*ESTO ES PARA QUE LA BARRA DE SCROLL NO SE VEA*/
 }
 
-.msj {
-  /*Para que haga scroll solo  cuandollegue un mensaje*/
-}
-
 .username {
   display: block;
   float: left;
@@ -105,4 +101,12 @@ button {
   float: left;
   padding-left: 0.2em;
   text-align: left !important;
+}
+
+.texto{
+  margin: 0 !important;
+}
+
+.textoContainer{
+  padding: 0.5rem;
 }
