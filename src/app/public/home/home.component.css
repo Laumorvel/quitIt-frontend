@@ -1,3 +1,7 @@
+@font-face {
+  font-family: "OpenDyslexic3Regular";
+  src: local("OpenDyslexic3Regular"), url(../../../assets/fonts/OpenDyslexic-Regular.otf) format("truetype");
+}
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,500&display=swap");
 
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,500&family=Titan+One&display=swap");
@@ -84,8 +88,62 @@
     background-color: #2b6777;
     height: 110px;
   }
+}
+
+.icon2{
+  max-width: 35px;
+  height: auto;
+}
+
+.hide{
+  display: none!important;
+}
+
+.show{
+  display:block;
+}
+
+.dyslexia{
+  font-family: 'OpenDyslexic3Regular'!important;
+  font-weight: normal;
+  font-style: normal;
+}
 
 
+.fade-in-text {
+display: inline-block;
+font-family: Arial, Helvetica, sans-serif;
+color: black;
+animation: fadeIn linear 1s;
+-webkit-animation: fadeIn linear 1s;
+-moz-animation: fadeIn linear 1s;
+-o-animation: fadeIn linear 1s;
+-ms-animation: fadeIn linear 1s;
+}
+
+@keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+@-moz-keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+@-webkit-keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+@-o-keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+@-ms-keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
 }
 
 

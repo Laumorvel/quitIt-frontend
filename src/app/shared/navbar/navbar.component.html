@@ -28,7 +28,9 @@
         >
           <!--Login-->
           <li class="nav-item hoverZoom">
-            <a
+            <a [ngClass]="{
+              dyslexia: dyslexia
+            }"
               routerLink="/login"
               class="nav-link text-black"
               alt="login"
@@ -84,6 +86,11 @@
               User area</a
             >
           </li>
+            <ul class="align-items-center"> Accesibility
+              <li class=" " (click)="dislexiaFriendly()">Dyslexia friendly font</li>
+          </ul>
+
+
         </ul>
 
         <!--USER AREA-->
