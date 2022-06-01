@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { ValidatorService } from 'src/app/auth/services/validator.service';
+import { AccesibilityService } from 'src/app/shared/services/accesibility.service';
 import Swal from 'sweetalert2';
 import { Message } from '../interfaces/interfaces';
 
@@ -14,7 +15,11 @@ export class ContactUsComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private validatorService: ValidatorService,
-    private authService: AuthService) {}
+    private authService: AuthService,
+    private accesibilityService: AccesibilityService
+  ) {}
+
+  dyslexia: boolean = false;
 
     correcto: boolean = false;
 
@@ -24,6 +29,11 @@ export class ContactUsComponent implements OnInit {
       text: '',
       subject:''
 
+    });
+    this.accesibilityService.searchChanges().subscribe((text) => {
+      if (text == 'dyslexia') {
+        this.dyslexia = this.dyslexia ? false : true;
+      }
     });
   }
 

@@ -1,5 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Cinzel&family=Federo&family=Quicksand:wght@300&display=swap");
+@font-face {
+  font-family: "OpenDyslexic3Regular";
+  src: local("OpenDyslexic3Regular"), url(../../../../assets/fonts/OpenDyslexic-Regular.otf) format("truetype");
+}
 
+.dyslexia{
+  font-family: 'OpenDyslexic3Regular'!important;
+  font-weight: normal;
+  font-style: normal;
+}
 * {
   font-family: "Quicksand", sans-serif;
   font-size: 20px;
@@ -23,3 +32,5 @@
     margin: 1em;
   }
  }
+
+

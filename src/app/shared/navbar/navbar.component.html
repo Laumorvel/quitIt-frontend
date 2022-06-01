@@ -1,8 +1,12 @@
-<div class="row">
+<div class="row" [ngClass]="{
+  biggerCursor: cursor
+}">
   <nav class="navbar navbar-expand-sm navbar-dark py-2 topnav">
     <div class="container-fluid">
       <!--LOGO-->
-      <a
+      <a [ngClass]="{
+        biggerCursor: cursor
+      }"
         class="navbar-brand"
         routerLink="/"
         routerLinkActive="active"
@@ -11,7 +15,9 @@
         <img src="./../../../assets/quitItLogo2.png" alt="logo" class="logo" />
       </a>
 
-      <button
+      <button [ngClass]="{
+        biggerCursor: cursor
+      }"
         class="navbar-toggler"
         type="button"
         data-bs-toggle="collapse"
@@ -28,7 +34,11 @@
         >
           <!--Login-->
           <li class="nav-item hoverZoom">
-            <a
+            <a [ngClass]="{
+              biggerCursor: cursor
+            }" [ngClass]="{
+              dyslexia: dyslexia
+            }" (click)="detectClick('login')"
               routerLink="/login"
               class="nav-link text-black"
               alt="login"
@@ -44,7 +54,11 @@
 
           <!--Signup-->
           <li class="nav-item hoverZoom">
-            <a
+            <a [ngClass]="{
+              biggerCursor: cursor
+            }" [ngClass]="{
+              dyslexia: dyslexia
+            }" (click)="detectClick('register')"
               routerLink="/register"
               class="nav-link text-black"
               alt="login"
@@ -60,7 +74,11 @@
 
           <!--Contact us-->
           <li class="nav-item hoverZoom">
-            <a
+            <a [ngClass]="{
+              biggerCursor: cursor
+            }" [ngClass]="{
+              dyslexia: dyslexia
+            }" (click)="detectClick('contactUs')"
               class="nav-link text-black mx-md-3 mx-sm-3"
               routerLink="/contactUs"
               routerLinkActive="active"
@@ -76,7 +94,11 @@
 
           <!--User area-->
           <li class="nav-item hoverZoom">
-            <a
+            <a [ngClass]="{
+              biggerCursor: cursor
+            }" [ngClass]="{
+              dyslexia: dyslexia
+            }" (click)="detectClick('userArea')"
               class="nav-link text-black hover-zoom"
               routerLink="/userArea"
               routerLinkActive="active"
@@ -84,6 +106,24 @@
               User area</a
             >
           </li>
+            <ul [ngClass]="{
+              biggerCursor: cursor
+            }" [ngClass]="{
+              dyslexia: dyslexia
+            }" class="align-items-center"> Accesibility
+              <li [ngClass]="{
+                biggerCursor: cursor
+              }" [ngClass]="{
+                dyslexia: dyslexia
+              }" (click)="dislexiaFriendly()">Dyslexia friendly font</li>
+              <li [ngClass]="{
+                dyslexia: dyslexia
+              }"  [ngClass]="{
+                biggerCursor: cursor
+              }" (click)="changeCursor()">Change cursor</li>
+          </ul>
+
+
         </ul>
 
         <!--USER AREA-->
@@ -94,7 +134,9 @@
           >
             <!--User area-->
             <li class="nav-item hoverZoom">
-              <a
+              <a [ngClass]="{
+                dyslexia: dyslexia
+              }" (click)="detectClick('userArea')"
                 class="nav-link text-black hover-zoom"
                 routerLink="/userArea"
                 routerLinkActive="active"
@@ -108,8 +150,10 @@
             </li>
 
             <!--logout-->
-            <li class="nav-item hoverZoom">
-              <a
+            <li class="nav-item hoverZoom ">
+              <a [ngClass]="{
+                dyslexia: dyslexia
+              }" (click)="detectClick('logOut')"
                 class="nav-link text-black"
                 data-bs-toggle="modal"
                 data-bs-target="#exampleModal"
@@ -125,7 +169,9 @@
 
             <!--group area-->
             <li class="nav-item hoverZoom">
-              <a
+              <a [ngClass]="{
+                dyslexia: dyslexia
+              }" (click)="detectClick('groupArea')"
                 class="nav-link text-black hover-zoom"
                 routerLink="/groupArea"
                 routerLinkActive="active"
@@ -140,7 +186,9 @@
 
             <!--friends-->
             <li class="nav-item hoverZoom">
-              <a
+              <a [ngClass]="{
+                dyslexia: dyslexia
+              }" (click)="detectClick('friends')"
                 class="nav-link text-black hover-zoom"
                 routerLink="/friends"
                 routerLinkActive="active"
@@ -157,7 +205,9 @@
               *ngIf="menuIndicator == 'registeredUser'"
               class="nav-link text-black nav-item settings hoverZoom"
             >
-              <a
+              <a [ngClass]="{
+                dyslexia: dyslexia
+              }"
                 class="text-black"
                 routerLink="/settings"
                 routerLinkActive="active"
@@ -183,7 +233,9 @@
           <div class="modal-dialog">
             <div class="modal-content text-center">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">LOGOUT</h5>
+                <h5 class="modal-title" [ngClass]="{
+                  dyslexia: dyslexia
+                }" id="exampleModalLabel">LOGOUT</h5>
                 <button
                   type="button"
                   class="btn-close"
@@ -191,16 +243,22 @@
                   aria-label="Close"
                 ></button>
               </div>
-              <div class="modal-body">Are you sure?</div>
+              <div class="modal-body" [ngClass]="{
+                dyslexia: dyslexia
+              }">Are you sure?</div>
               <div class="modal-footer justify-content-center">
-                <button
+                <button [ngClass]="{
+                  dyslexia: dyslexia
+                }"
                   type="button"
                   class="btn botonNo"
                   data-bs-dismiss="modal"
                 >
                   No
                 </button>
-                <button
+                <button [ngClass]="{
+                  dyslexia: dyslexia
+                }"
                   type="button"
                   class="btn botonYes"
                   data-bs-dismiss="modal"
@@ -218,7 +276,9 @@
           <ul class="navbar-nav">
             <!--incidences-->
             <li class="nav-item hoverZoom">
-              <a
+              <a [ngClass]="{
+                dyslexia: dyslexia
+              }"
                 class="nav-link text-black hover-zoom"
                 routerLink="/administratorDashboard/incidences"
                 routerLinkActive="active"
@@ -232,7 +292,9 @@
             </li>
             <!--Users-->
             <li class="nav-item hoverZoom">
-              <a
+              <a [ngClass]="{
+                dyslexia: dyslexia
+              }"
                 class="nav-link text-black hover-zoom"
                 routerLink="/administratorDashboard/showUsers"
                 routerLinkActive="active"
@@ -247,7 +309,9 @@
 
             <!--logout-->
             <li class="nav-item hoverZoom">
-              <a
+              <a [ngClass]="{
+                dyslexia: dyslexia
+              }"
                 class="nav-link text-black"
                 data-bs-toggle="modal"
                 data-bs-target="#exampleModal"

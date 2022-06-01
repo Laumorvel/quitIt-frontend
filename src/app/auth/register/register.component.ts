@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AccesibilityService } from 'src/app/shared/services/accesibility.service';
 import Swal from 'sweetalert2';
 import { AuthService } from '../services/auth.service';
 import { emailValidatorService } from '../services/email-validator.service';
@@ -20,8 +21,10 @@ export class RegisterComponent implements OnInit {
     private emailValidator: emailValidatorService,
     private usernameValidator: UsernameValidatorService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private accesibilityService: AccesibilityService
   ) {}
+  dyslexia: boolean = false;
 
   miFormulario: FormGroup = this.fb.group(
     {
@@ -140,6 +143,11 @@ export class RegisterComponent implements OnInit {
       username: '',
       password: '',
       password2: ''
+    });
+    this.accesibilityService.searchChanges().subscribe((text) => {
+      if (text == 'dyslexia') {
+        this.dyslexia = this.dyslexia ? false : true;
+      }
     });
   }
 

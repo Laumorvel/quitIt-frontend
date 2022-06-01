@@ -10,6 +10,7 @@ import { filter, Subscription } from 'rxjs';
 export class AppComponent {
   public subscriber!: Subscription;
 
+
   registeredUserRoutes: string[] = [
     'groupArea',
     'userArea',
@@ -47,6 +48,7 @@ export class AppComponent {
       .subscribe((event) => {
         this.checkRoute();
       });
+
   }
 
   ngOnDestroy() {

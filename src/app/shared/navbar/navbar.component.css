@@ -56,6 +56,17 @@
   padding-bottom: 0.2em;
 }
 
+@font-face {
+  font-family: "OpenDyslexic3Regular";
+  src: local("OpenDyslexic3Regular"), url(../../../assets/fonts/OpenDyslexic-Regular.otf) format("truetype");
+}
+
+.dyslexia{
+  font-family: 'OpenDyslexic3Regular'!important;
+  font-weight: normal;
+  font-style: normal;
+}
+
 .login {
   width: 22%;
   padding-bottom: 0.3em;
@@ -135,4 +146,60 @@
 
 .botonNo:hover{
  background-color: #c8d8e4 ;
+}
+
+
+/*SUBMENU DESPLEGABLE DE ACCESIBLIDAD*/
+ul ul li{
+  display: none;
+}
+
+ul ul:hover li:first-child{
+  display: block;
+  position: absolute;
+  padding-top: 1em;
+}
+
+ul ul:hover li:nth-child(2){
+  display: block;
+  position: absolute;
+ padding-top: 3em;
+}
+
+ul ul li:hover {
+  display: block;
+  position: absolute;
+  float: left;
+  padding-top: 1em;
+  cursor:pointer;
+}
+
+@font-face {
+  font-family: "OpenDyslexic3Regular";
+  src: local("OpenDyslexic3Regular"), url(../../../assets/fonts/OpenDyslexic-Regular.otf) format("truetype");
+}
+
+
+.icon2{
+  max-width: 35px;
+  height: auto;
+}
+
+.hide{
+  display: none!important;
+}
+
+.show{
+  display:block;
+}
+
+.dyslexia{
+  font-family: 'OpenDyslexic3Regular'!important;
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+.biggerCursor{
+  cursor: url('../../../assets/cursor(1).png'), auto!important;/*hay imitaciones en cuanto al tamaño de los cursores*/
 }
