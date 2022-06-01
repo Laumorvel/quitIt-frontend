@@ -19,4 +19,15 @@ export class AccesibilityService {
 searchChanges(): Observable<string> {
     return this.searchChanges$.asObservable();
 }
+
+private readonly searchChangesBoolean$ = new Subject<boolean>();
+
+
+  searchBoolean(type: boolean): void {
+    this.searchChangesBoolean$.next(type);
+}
+
+searchChangesBoolean(): Observable<boolean> {
+    return this.searchChangesBoolean$.asObservable();
+}
 }

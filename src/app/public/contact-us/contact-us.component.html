@@ -1,8 +1,14 @@
 
 <section class="get-in-touch">
-    <h1 class="title">Contact Us!</h1>
-    <div class="text-center">Contact: 656454323 <br>
-      <a href="https://www.madrid.es/portales/munimadrid/es/Inicio/Personas-con-discapacidad/Centro-de-intermediacion-telefonica-para-personas-sordas-o-con-discapacidad-auditiva-y-o-de-fonacion/?vgnextfmt=default&vgnextoid=5dcc362e7fa3c210VgnVCM1000000b205a0aRCRD&vgnextchannel=0d50b7dd3f7fe410VgnVCM1000000b205a0aRCRD" target="_blank" class="text-center">Get an interpreter for your call through a videocall!</a></div>
+    <h1 class="title" [ngClass]="{
+      dyslexia: dyslexia
+    }">Contact Us!</h1>
+    <div class="text-center" [ngClass]="{
+      dyslexia: dyslexia
+    }">Contact: 656454323 <br>
+      <a [ngClass]="{
+        dyslexia: dyslexia
+      }" href="https://www.madrid.es/portales/munimadrid/es/Inicio/Personas-con-discapacidad/Centro-de-intermediacion-telefonica-para-personas-sordas-o-con-discapacidad-auditiva-y-o-de-fonacion/?vgnextfmt=default&vgnextoid=5dcc362e7fa3c210VgnVCM1000000b205a0aRCRD&vgnextchannel=0d50b7dd3f7fe410VgnVCM1000000b205a0aRCRD" target="_blank" class="text-center">Get an interpreter for your call through a videocall!</a></div>
 
     <form
       class="contact-form row gx-0"
@@ -13,7 +19,9 @@
 
       <!--EMAIL-->
       <div class="form-field col-lg-6">
-        <input
+        <input [ngClass]="{
+          dyslexia: dyslexia
+        }"
           placeholder="*Email"
           id="fromUser"
           class="input-text js-input"
@@ -21,13 +29,17 @@
           type="fromUser"
           required
         />
-        <span class="form-text text-danger" *ngIf="campoNoValido('fromUser')">
+        <span [ngClass]="{
+          dyslexia: dyslexia
+        }" class="form-text text-danger" *ngIf="campoNoValido('fromUser')">
         </span>
       </div>
 
       <!--SUBJECT-->
       <div class="form-field col-lg-6">
-        <input
+        <input [ngClass]="{
+          dyslexia: dyslexia
+        }"
           placeholder="*Subject"
           id="subject"
           class="input-text js-input"
@@ -35,13 +47,17 @@
           type="subject"
           required
         />
-        <span class="form-text text-danger" *ngIf="campoNoValido('subject')">
+        <span [ngClass]="{
+          dyslexia: dyslexia
+        }" class="form-text text-danger" *ngIf="campoNoValido('subject')">
         </span>
       </div>
 
       <!--BODY MESSAGE-->
       <div class="form-field col-lg-12">
-        <input
+        <input [ngClass]="{
+          dyslexia: dyslexia
+        }"
           placeholder="*Message"
           id="text"
           class="input-text js-input"
@@ -49,12 +65,16 @@
           required
           formControlName="text"
         />
-        <span class="form-text text-danger" *ngIf="campoNoValido('mssg')">
+        <span [ngClass]="{
+          dyslexia: dyslexia
+        }" class="form-text text-danger" *ngIf="campoNoValido('mssg')">
           {{ mssgError }}
         </span>
       </div>
       <div class="form-field col-lg-12 text-center">
-        <input
+        <input [ngClass]="{
+          dyslexia: dyslexia
+        }"
           class="submit-btn"
           type="submit"
           value="Submit"

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AccesibilityService } from 'src/app/shared/services/accesibility.service';
 
 @Component({
   selector: 'app-quiz',
@@ -7,15 +8,24 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class QuizComponent implements OnInit {
 
-  
-  
+
+
   @Input()nombre:string ="";
   @Output()sendObjetivos = new EventEmitter<number[]>();
   objetivos:number[] = [];
 
-  constructor() { }
+  constructor(
+    private accesibilityService: AccesibilityService
+  ) {}
+
+  dyslexia: boolean = false;
 
   ngOnInit(): void {
+    this.accesibilityService.searchChanges().subscribe((text) => {
+      if (text == 'dyslexia') {
+        this.dyslexia = this.dyslexia ? false : true;
+      }
+    });
   }
 
   cigarettesBeforePerDay!:number;

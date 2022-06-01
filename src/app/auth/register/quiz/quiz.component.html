@@ -1,4 +1,6 @@
-<h2 class="text-center my-5">
+<h2 class="text-center my-5" [ngClass]="{
+  dyslexia: dyslexia
+}">
   Hi, {{ nombre }}! Set your ex-smoker information to complete your profile
 </h2>
 
@@ -7,12 +9,18 @@
   <div class="row gx-0">
     <!--CIGARETTES PER DAY-->
     <div class="form-group text-center col-md-6">
-      <label for="formControlRange" class="">Cigarettes per day</label>
+      <label for="formControlRange" class="" [ngClass]="{
+        dyslexia: dyslexia
+      }">Cigarettes per day</label>
       <div class="cigDay">
-        <div class="number mb-3">
+        <div class="number mb-3" [ngClass]="{
+          dyslexia: dyslexia
+        }">
           {{ cigarettesBeforePerDay }}
         </div>
-        <input
+        <input [ngClass]="{
+          dyslexia: dyslexia
+        }"
           type="number"
           [(ngModel)]="cigarettesBeforePerDay"
           name="cigarettesBeforePerDay"
@@ -23,12 +31,18 @@
     </div>
     <!--MONEY PER DAY-->
     <div class="form-group text-center col-md-6">
-      <label for="formControlRange" class="">Money per day</label>
+      <label for="formControlRange" class="" [ngClass]="{
+        dyslexia: dyslexia
+      }">Money per day</label>
       <div class="mony">
-        <div class="number mb-3">
+        <div class="number mb-3" [ngClass]="{
+          dyslexia: dyslexia
+        }">
           {{ moneyPerDay }}
         </div>
-        <input
+        <input [ngClass]="{
+          dyslexia: dyslexia
+        }"
           type="number"
           [(ngModel)]="moneyPerDay"
           name="moneyPerDay"
@@ -42,7 +56,9 @@
   <div class="row">
     <div class="form-group text-center">
       <div class="col">
-        <button
+        <button [ngClass]="{
+          dyslexia: dyslexia
+        }"
           class="btn btn-primary float-center my-5 boton"
           type="submit"
           (click)="enviaObjetivos()"

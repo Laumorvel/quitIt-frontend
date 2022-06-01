@@ -12,6 +12,7 @@ export class NavbarComponent implements OnInit {
   constructor(private router: Router, private accesibilityService: AccesibilityService) { }
 
   ngOnInit(): void {
+    this.dyslexia = false;
   }
 
   @Input()menuIndicator:string = "";
@@ -26,6 +27,15 @@ export class NavbarComponent implements OnInit {
   dislexiaFriendly() {
     this.dyslexia = this.dyslexia ? false : true;
     this.accesibilityService.search('dyslexia');
+    this.accesibilityService.searchBoolean(this.dyslexia);
+  }
+
+  /**
+   * Impide que se quede el menú con tipografía para disléxicos cuando el componente
+   * mostrado en el router outlet no la tiene
+   */
+  detectClick(text: string){
+    if(this.router.url.split('?')[0].split('/').pop() != text) this.dyslexia = false;
   }
 
   changeFont(operator: any) {

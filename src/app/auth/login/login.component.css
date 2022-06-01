@@ -92,3 +92,14 @@
    border-radius: 5px;
  }
 }
+
+@font-face {
+  font-family: "OpenDyslexic3Regular";
+  src: local("OpenDyslexic3Regular"), url(../../../assets/fonts/OpenDyslexic-Regular.otf) format("truetype");
+}
+
+.dyslexia{
+  font-family: 'OpenDyslexic3Regular'!important;
+  font-weight: normal;
+  font-style: normal;
+}
