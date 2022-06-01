@@ -103,3 +103,7 @@
   font-weight: normal;
   font-style: normal;
 }
+
+.biggerCursor{
+  cursor: url('../../../assets/cursor(1).png'), auto!important;/*hay imitaciones en cuanto al tamaño de los cursores*/
+}

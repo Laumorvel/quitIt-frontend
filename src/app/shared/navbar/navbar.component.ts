@@ -13,21 +13,21 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.dyslexia = false;
+    this.cursor = false;
   }
 
   @Input()menuIndicator:string = "";
   dyslexia: boolean = false;
-  shown: boolean = false;
-
-  dropDown() {
-   this.shown = this.shown ? false : true;
-  }
-
+  cursor: boolean = false;
 
   dislexiaFriendly() {
     this.dyslexia = this.dyslexia ? false : true;
-    this.accesibilityService.search('dyslexia');
     this.accesibilityService.searchBoolean(this.dyslexia);
+  }
+
+  changeCursor(){
+    this.cursor = this.cursor ? false : true;
+    this.accesibilityService.searchCursor(this.cursor);
   }
 
   /**
@@ -36,17 +36,9 @@ export class NavbarComponent implements OnInit {
    */
   detectClick(text: string){
     if(this.router.url.split('?')[0].split('/').pop() != text) this.dyslexia = false;
+    if(this.router.url.split('?')[0].split('/').pop() != text) this.cursor = false;
   }
 
-  changeFont(operator: any) {
-    // operator === '+' ? this.fontSize++ : this.fontSize--;
-    // document.getElementsByTagName(
-    //   'h2'
-    // )[0].style.fontSize = `${this.fontSize}px`;
-    // document.getElementsByTagName(
-    //   'h2'
-    // )[1].style.fontSize = `${this.fontSize}px`;
-  }
 
   logout(){
     localStorage.clear();
@@ -58,8 +50,5 @@ export class NavbarComponent implements OnInit {
    * Indicando qué opción se desea modificar.
    * @param type
    */
-  changeAccesibilityOptions(type: string){
-    this.accesibilityService.search(type);
-  }
 
 }

@@ -25,16 +25,16 @@ export class LoginComponent implements OnInit {
   ) {}
 
   dyslexia: boolean = false;
+  cursor: boolean = false;
+
 
   ngOnInit(): void {
     this.accesibilityService.searchChangesBoolean().subscribe((opcion) =>{
       this.dyslexia = opcion;
     })
-    this.accesibilityService.searchChanges().subscribe((text) => {
-      if (text == 'dyslexia') {
-        //this.dyslexia = this.dyslexia ? false : true;
-      }
-    });
+    this.accesibilityService.searchChangesCursor().subscribe((opcion) =>{
+      this.cursor = opcion;
+    })
   }
 
   /**
@@ -47,7 +47,6 @@ export class LoginComponent implements OnInit {
         this.getIdUser();
       },
       error: (resp) => {
-        console.log(resp.message);
         Swal.fire({
           title: 'Error',
           icon: 'error',

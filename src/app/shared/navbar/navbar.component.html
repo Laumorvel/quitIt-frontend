@@ -1,8 +1,12 @@
-<div class="row">
+<div class="row" [ngClass]="{
+  biggerCursor: cursor
+}">
   <nav class="navbar navbar-expand-sm navbar-dark py-2 topnav">
     <div class="container-fluid">
       <!--LOGO-->
-      <a
+      <a [ngClass]="{
+        biggerCursor: cursor
+      }"
         class="navbar-brand"
         routerLink="/"
         routerLinkActive="active"
@@ -11,7 +15,9 @@
         <img src="./../../../assets/quitItLogo2.png" alt="logo" class="logo" />
       </a>
 
-      <button
+      <button [ngClass]="{
+        biggerCursor: cursor
+      }"
         class="navbar-toggler"
         type="button"
         data-bs-toggle="collapse"
@@ -29,6 +35,8 @@
           <!--Login-->
           <li class="nav-item hoverZoom">
             <a [ngClass]="{
+              biggerCursor: cursor
+            }" [ngClass]="{
               dyslexia: dyslexia
             }" (click)="detectClick('login')"
               routerLink="/login"
@@ -47,6 +55,8 @@
           <!--Signup-->
           <li class="nav-item hoverZoom">
             <a [ngClass]="{
+              biggerCursor: cursor
+            }" [ngClass]="{
               dyslexia: dyslexia
             }" (click)="detectClick('register')"
               routerLink="/register"
@@ -65,6 +75,8 @@
           <!--Contact us-->
           <li class="nav-item hoverZoom">
             <a [ngClass]="{
+              biggerCursor: cursor
+            }" [ngClass]="{
               dyslexia: dyslexia
             }" (click)="detectClick('contactUs')"
               class="nav-link text-black mx-md-3 mx-sm-3"
@@ -83,6 +95,8 @@
           <!--User area-->
           <li class="nav-item hoverZoom">
             <a [ngClass]="{
+              biggerCursor: cursor
+            }" [ngClass]="{
               dyslexia: dyslexia
             }" (click)="detectClick('userArea')"
               class="nav-link text-black hover-zoom"
@@ -93,11 +107,20 @@
             >
           </li>
             <ul [ngClass]="{
+              biggerCursor: cursor
+            }" [ngClass]="{
               dyslexia: dyslexia
             }" class="align-items-center"> Accesibility
               <li [ngClass]="{
+                biggerCursor: cursor
+              }" [ngClass]="{
                 dyslexia: dyslexia
               }" (click)="dislexiaFriendly()">Dyslexia friendly font</li>
+              <li [ngClass]="{
+                dyslexia: dyslexia
+              }"  [ngClass]="{
+                biggerCursor: cursor
+              }" (click)="changeCursor()">Change cursor</li>
           </ul>
 
 
@@ -127,7 +150,7 @@
             </li>
 
             <!--logout-->
-            <li class="nav-item hoverZoom">
+            <li class="nav-item hoverZoom ">
               <a [ngClass]="{
                 dyslexia: dyslexia
               }" (click)="detectClick('logOut')"

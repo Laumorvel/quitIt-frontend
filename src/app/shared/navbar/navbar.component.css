@@ -154,15 +154,22 @@ ul ul li{
   display: none;
 }
 
-ul ul:hover li{
+ul ul:hover li:first-child{
   display: block;
   position: absolute;
   padding-top: 1em;
 }
 
+ul ul:hover li:nth-child(2){
+  display: block;
+  position: absolute;
+ padding-top: 3em;
+}
+
 ul ul li:hover {
   display: block;
   position: absolute;
+  float: left;
   padding-top: 1em;
   cursor:pointer;
 }
@@ -192,3 +199,7 @@ ul ul li:hover {
   font-style: normal;
 }
 
+
+.biggerCursor{
+  cursor: url('../../../assets/cursor(1).png'), auto!important;/*hay imitaciones en cuanto al tamaño de los cursores*/
+}
