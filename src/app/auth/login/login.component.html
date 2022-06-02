@@ -1,9 +1,11 @@
 <div class="row text-center gx-0" [ngClass]="{
-  biggerCursor: cursor
+  biggerCursor: cursor,
+  spacing: spacing
 }">
   <section class="get-in-touch">
     <h1 class="title" [ngClass]="{
-      dyslexia: dyslexia
+      dyslexia: dyslexia,
+      spacing: spacing
     }">Login!</h1>
 
     <div class="col-md-12 offset-md-1 box-content">
@@ -19,7 +21,9 @@
           <div class="mb-3 row justify-content-center">
             <div class="col-sm-9">
               <input [ngClass]="{
-                dyslexia: dyslexia
+                dyslexia: dyslexia,
+                spacing: spacing,
+                biggerCursor: cursor
               }"
                 type="email"
                 class="form-control"
@@ -37,7 +41,9 @@
           <div class="mb-3 row justify-content-center">
             <div class="col-sm-9">
               <input [ngClass]="{
-                dyslexia: dyslexia
+                dyslexia: dyslexia,
+                spacing: spacing,
+                biggerCursor: cursor
               }"
                 type="password"
                 class="form-control"
@@ -54,7 +60,8 @@
             <div class="row mt-4">
               <div class="col">
                 <button [ngClass]="{
-                  dyslexia: dyslexia
+                  dyslexia: dyslexia,
+                  spacing: spacing
                 }"
                   type="submit"
                   [disabled]="miFormulario.invalid"
@@ -68,7 +75,8 @@
             <div class="row">
               <div class="col mt-5">
                 <span [ngClass]="{
-                  dyslexia: dyslexia
+                  dyslexia: dyslexia,
+                  spacing: spacing
                 }">Don't you have an account yet?</span>
               </div>
             </div>
@@ -76,7 +84,9 @@
             <div class="row">
               <div class="col">
                 <button [ngClass]="{
-                  dyslexia: dyslexia
+                  dyslexia: dyslexia,
+                  spacing: spacing,
+                  biggerCursor: cursor
                 }"
                   class="col-md-4 offset-md-1 mt-3 btn m-2 register"
                   routerLink="/register"

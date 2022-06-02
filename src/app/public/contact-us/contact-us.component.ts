@@ -22,6 +22,8 @@ export class ContactUsComponent implements OnInit {
   dyslexia: boolean = false;
 
     correcto: boolean = false;
+    cursor:boolean = false;
+    spacing: boolean = false;
 
   ngOnInit(): void {
     this.miFormulario.reset({
@@ -30,11 +32,16 @@ export class ContactUsComponent implements OnInit {
       subject:''
 
     });
-    this.accesibilityService.searchChanges().subscribe((text) => {
-      if (text == 'dyslexia') {
-        this.dyslexia = this.dyslexia ? false : true;
-      }
+    this.accesibilityService.searchChangesBoolean().subscribe((text) => {
+        this.dyslexia = text;
     });
+
+    this.accesibilityService.searchChangesSpacing().subscribe(option => {
+      this.spacing = option;
+    })
+    this.accesibilityService.searchChangesCursor().subscribe(option => {
+      this.cursor = option;
+    })
   }
 
   miFormulario: FormGroup = this.fb.group({

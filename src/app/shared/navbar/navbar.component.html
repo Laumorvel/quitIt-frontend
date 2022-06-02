@@ -1,5 +1,6 @@
 <div class="row" [ngClass]="{
-  biggerCursor: cursor
+  biggerCursor: cursor,
+  spacing: spacing
 }">
   <nav class="navbar navbar-expand-sm navbar-dark py-2 topnav">
     <div class="container-fluid">
@@ -45,7 +46,7 @@
               routerLinkActive="active"
               ><img
                 src="../../assets/login.png"
-                class="icon imgIconos signup"
+                class="icon2"
                 alt="Signup"
               />
               Login</a
@@ -65,7 +66,7 @@
               routerLinkActive="active"
               ><img
                 src="../../assets/account.png"
-                class="icon imgIconos signup"
+                class="icon2"
                 alt="Signup"
               />
               Sign up</a
@@ -85,7 +86,7 @@
             >
               <img
                 src="../../assets/email.png"
-                class="icon imgIconos"
+                class="icon2 "
                 alt="Contact us"
               />
               Contact Us</a
@@ -102,15 +103,18 @@
               class="nav-link text-black hover-zoom"
               routerLink="/userArea"
               routerLinkActive="active"
-              ><img src="../../assets/casa.png" class="icon" alt="Dashboard" />
+              ><img src="../../../assets/casa.png" class="icon2" alt="Dashboard" />
               User area</a
             >
           </li>
+          <!--Accesibilidad-->
+             <div class="contenidoAccesible"> <!--<img src="../../../assets/accesibility(1).png" class="icon2 ml-5" alt="Accesibility" /> -->
+
             <ul [ngClass]="{
               biggerCursor: cursor
             }" [ngClass]="{
               dyslexia: dyslexia
-            }" class="align-items-center"> Accesibility
+            }" class="align-items-center"><img src="../../../assets/accesibility(1).png" class="icon2" alt="Accesibility" /> Accesibility
               <li [ngClass]="{
                 biggerCursor: cursor
               }" [ngClass]="{
@@ -121,8 +125,13 @@
               }"  [ngClass]="{
                 biggerCursor: cursor
               }" (click)="changeCursor()">Change cursor</li>
+              <li [ngClass]="{
+                dyslexia: dyslexia
+              }"  [ngClass]="{
+                biggerCursor: cursor
+              }" (click)="changeSpacing()">Letter spacing</li>
           </ul>
-
+        </div>
 
         </ul>
 
