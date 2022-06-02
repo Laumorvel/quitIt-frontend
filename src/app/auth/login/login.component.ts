@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
 
   dyslexia: boolean = false;
   cursor: boolean = false;
-
+  spacing: boolean = false;
 
   ngOnInit(): void {
     this.accesibilityService.searchChangesBoolean().subscribe((opcion) =>{
@@ -34,6 +34,9 @@ export class LoginComponent implements OnInit {
     })
     this.accesibilityService.searchChangesCursor().subscribe((opcion) =>{
       this.cursor = opcion;
+    })
+    this.accesibilityService.searchChangesSpacing().subscribe(option => {
+      this.spacing = option;
     })
   }
 

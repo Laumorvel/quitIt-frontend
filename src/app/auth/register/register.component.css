@@ -81,6 +81,9 @@ input{
   margin-top: 2rem;
 }
 
+.biggerCursor{
+  cursor: url('../../../assets/cursor(1).png'), auto!important;/*hay imitaciones en cuanto al tamaño de los cursores*/
+}
 
 /*MOVILES*/
 @media screen and (max-width: 769px) {
@@ -106,4 +109,8 @@ input{
   font-family: 'OpenDyslexic3Regular'!important;
   font-weight: normal;
   font-style: normal;
+}
+
+.spacing{
+  letter-spacing: 3px!important;
 }

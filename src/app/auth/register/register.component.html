@@ -1,4 +1,7 @@
-<div class="row">
+<div class="row" [ngClass]="{
+  biggerCursor: cursor,
+  spacing: spacing
+}">
     <section class="get-in-touch">
         <h1 class="title" [ngClass]="{
           dyslexia: dyslexia
@@ -8,14 +11,20 @@
         <form class="contact-form row"
             autocomplete="off"
             [formGroup]="miFormulario"
-            (ngSubmit)="submitFormulario($event)"
+            (ngSubmit)="submitFormulario($event)" [ngClass]="{
+              biggerCursor: cursor,
+              spacing: spacing
+            }"
             class="m-4"
             >
             <div class="row">
                 <!-- Name -->
                 <div class="form-group col-md-6">
                 <input [ngClass]="{
-                  dyslexia: dyslexia
+                  dyslexia: dyslexia,
+                  spacing: spacing
+                }" [ngClass]="{
+                  biggerCursor: cursor
                 }"
                     type="text"
                     placeholder="*Name"
@@ -26,7 +35,8 @@
                     name="mame"
                 />
                 <span [ngClass]="{
-                  dyslexia: dyslexia
+                  dyslexia: dyslexia,
+                  spacing: spacing
                 }" class="form-text text-danger" *ngIf="campoNoValido('name')">
                     {{ nameError }}
                 </span>
@@ -35,7 +45,10 @@
                 <!--lastName-->
                 <div class="form-group col-md-6">
                 <input  [ngClass]="{
-                  dyslexia: dyslexia
+                  dyslexia: dyslexia,
+                  spacing: spacing
+                }" [ngClass]="{
+                  biggerCursor: cursor
                 }"
                     type="text"
                     placeholder="*Last Name"
@@ -45,7 +58,8 @@
                     class="input-text js-input"
                     />
                 <span [ngClass]="{
-                  dyslexia: dyslexia
+                  dyslexia: dyslexia,
+                  spacing: spacing
                 }" class="form-text text-danger" *ngIf="campoNoValido('lastName')">
                     {{ lastNameError }}
                 </span>
@@ -56,7 +70,10 @@
             <div class="row">
                 <div class="form-group col-md-6">
                 <input [ngClass]="{
-                  dyslexia: dyslexia
+                  dyslexia: dyslexia,
+                  spacing: spacing
+                }" [ngClass]="{
+                  biggerCursor: cursor
                 }"
                     type="email"
                     placeholder="*Email"
@@ -76,7 +93,10 @@
                 <!-- Username -->
                 <div class="form-group col-md-6">
                 <input  [ngClass]="{
-                  dyslexia: dyslexia
+                  dyslexia: dyslexia,
+                  spacing: spacing
+                }" [ngClass]="{
+                  biggerCursor: cursor
                 }"
                     type="text"
                     placeholder="*Username"
@@ -86,7 +106,8 @@
                     class="input-text js-input"
                     />
                 <span  [ngClass]="{
-                  dyslexia: dyslexia
+                  dyslexia: dyslexia,
+                  spacing: spacing
                 }" class="form-text text-danger" *ngIf="campoNoValido('username')">
                     {{ usernameError }}
                 </span>
@@ -97,7 +118,10 @@
             <div class="row">
                 <div class="form-group col-md-6">
                 <input  [ngClass]="{
-                  dyslexia: dyslexia
+                  dyslexia: dyslexia,
+                  spacing: spacing
+                }" [ngClass]="{
+                  biggerCursor: cursor
                 }"
                     type="password"
                     placeholder="*Password"
@@ -107,7 +131,8 @@
                     class="input-text js-input"
                 />
                 <span  [ngClass]="{
-                  dyslexia: dyslexia
+                  dyslexia: dyslexia,
+                  spacing: spacing
                 }" class="form-text text-danger" *ngIf="campoNoValido('password')">
                     {{passwordError}}
                 </span>
@@ -116,7 +141,10 @@
                 <!-- Password2 -->
                 <div class="form-group col-md-6">
                 <input [ngClass]="{
-                  dyslexia: dyslexia
+                  dyslexia: dyslexia,
+                  spacing: spacing
+                }" [ngClass]="{
+                  biggerCursor: cursor
                 }"
                 type="password"
                 placeholder="*Confirm password"
@@ -124,7 +152,8 @@
                 formControlName="password2"
                 class="input-text js-input"/>
                 <span [ngClass]="{
-                  dyslexia: dyslexia
+                  dyslexia: dyslexia,
+                  spacing: spacing
                 }" class="form-text text-danger" *ngIf="campoNoValido('password2')">
                     Both passwords must be equal.
                 </span>

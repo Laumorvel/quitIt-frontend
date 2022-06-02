@@ -107,3 +107,7 @@
 .biggerCursor{
   cursor: url('../../../assets/cursor(1).png'), auto!important;/*hay imitaciones en cuanto al tamaño de los cursores*/
 }
+
+.spacing{
+  letter-spacing: 3px!important;
+}
