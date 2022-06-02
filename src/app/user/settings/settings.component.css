@@ -16,3 +16,23 @@
 a{
   margin-left: 1em;
 }
+
+
+
+/*MOVILES*/
+@media screen and (max-width: 768px) {
+  a{
+    text-align: center;
+  }
+}
+
+/*IPAD*/
+@media screen and (min-width: 769px) and (max-width: 1278px) {
+
+}
+
+/*PANTALLAS*/
+@media screen and (min-width: 1279px) {
+
+}
+
