@@ -79,7 +79,7 @@ ul ul li{
 }
 
 ul ul:hover li{
-  display: block;
+  display: block!important;
   position: absolute;
   font-weight: bold;
 }
@@ -111,7 +111,7 @@ ul ul:hover li:nth-child(3){
  }
 
 ul ul li:hover {
-  display: block;
+  display: block!important;
   position: absolute;
   float: left;
   cursor:pointer;
@@ -119,7 +119,13 @@ ul ul li:hover {
 
 
 .contenidoAccesible:hover li{
-  display: block !important;
+  display: block ;
+  padding-top: 1em;
+  cursor:pointer;
+}
+
+.contenidoAccesible li{
+  display: none ;
   padding-top: 1em;
   cursor:pointer;
 }
@@ -135,9 +141,6 @@ ul ul li:hover {
   height: auto;
 }
 
-.hide{
-  display: none!important;
-}
 
 .show{
   display:block;
@@ -175,11 +178,13 @@ ul ul li:hover {
     padding-top: 5em!important;
     z-index: 1!important;
     background-color: white;
+    display:block!important;
   }
 
   .showMobileTop{
     z-index: 2!important;
     background-color: white;
+    display: block!important;
   }
 
   .login {
@@ -191,6 +196,9 @@ ul ul li:hover {
     width: 10%;
     margin-right: 0.5rem;
   }
+
+
+
 
 }
 
@@ -221,6 +229,13 @@ ul ul li:hover {
   li{
     margin-left: 0px !important;
   }
+
+  .contenidoAccesible li{
+    display: none !important;
+    padding-top: 1em;
+    cursor:pointer;
+  }
+
 
 }
 

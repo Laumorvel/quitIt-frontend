@@ -1,5 +1,8 @@
 <app-clock></app-clock>
-<div class="content mt-3">
+<div
+  class="content mt-3"
+  [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }"
+>
   <div class="row justify-content-around">
     <!--COMMUNITY-->
     <div class="card col-md-2 text-center" routerLink="/commentsCommunity">
