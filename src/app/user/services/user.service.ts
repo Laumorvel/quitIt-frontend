@@ -151,7 +151,7 @@ export class UserService {
    * @returns lista de meet ups
    */
   buscarMeetUps() {
-    const url = `${this.baseUrl}/meetUp`;
+    const url = `${this.baseUrl}/meetUps`;
 
     let token = JSON.parse(<string>localStorage.getItem('token'));
     const opcion = new HttpHeaders().set('Authorization', `Bearer ${token}`);
@@ -369,6 +369,26 @@ export class UserService {
       const opcion = new HttpHeaders().set('Authorization', `Bearer ${token}`);
       opcion.append('Access-Control-Allow-Origin', '*');
       return this.http.put<User>(url, body, { headers: opcion });
+    }
+
+
+    getAllMeetUpsUserAttendance(){
+      let verdadero = true;
+      const url = `${this.baseUrl}/meetUp?choice=${verdadero}`;
+      let token = JSON.parse(<string>localStorage.getItem('token'));
+      const opcion = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+      opcion.append('Access-Control-Allow-Origin', '*');
+      return this.http.get<MeetUP[]>(url, { headers: opcion });
+
+    }
+
+    getAllMeetUpsUserNotAttendance(){
+      let falso = false;
+      const url = `${this.baseUrl}/meetUp?choice=${falso}`;
+      let token = JSON.parse(<string>localStorage.getItem('token'));
+      const opcion = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+      opcion.append('Access-Control-Allow-Origin', '*');
+      return this.http.get<MeetUP[]>(url, { headers: opcion });
     }
 
 }
