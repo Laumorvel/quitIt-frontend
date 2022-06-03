@@ -6,7 +6,7 @@
       role="tablist"
       aria-orientation="vertical"
     >
-      <a
+      <a [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }"
         class="nav-link text-dark"
         id="v-pills-profile-tab"
         data-toggle="pill"
@@ -18,7 +18,7 @@
         (click)="clicked = true"
         >General data</a
       >
-      <a
+      <a [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }"
         class="nav-link text-dark"
         id="v-pills-messages-tab"
         data-toggle="pill"
@@ -30,7 +30,7 @@
         (click)="clicked = true"
         >Smoking data</a
       >
-      <a
+      <a [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }"
         class="nav-link text-dark"
         id="v-pills-settings-tab"
         data-toggle="pill"
@@ -44,7 +44,7 @@
         >Change password</a
       >
 
-      <a
+      <a [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }"
         class="nav-link text-dark"
         href="https://www.amazon.es/s?k=stop+smoking+books&__mk_es_ES=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=P0L10B3DDN7L&sprefix=stop+smoking+books%2Caps%2C87&ref=nb_sb_noss"
         target="_blank"

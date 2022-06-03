@@ -3,6 +3,8 @@ import { User } from 'src/app/public/interfaces/interfaces';
 import Swal from 'sweetalert2';
 import { UserService } from '../../services/user.service';
 
+import { AccesibilityService } from 'src/app/shared/services/accesibility.service';
+
 @Component({
   selector: 'app-show-friends',
   templateUrl: './show-friends.component.html',
@@ -17,11 +19,24 @@ export class ShowFriendsComponent implements OnInit {
   usuarioRecibido: boolean = false;
   existeUsuario: boolean = false;
 
-  constructor(private userService: UserService) {}
+  dyslexia: boolean = false;
+  cursor: boolean = false;
+  spacing: boolean = false;
+
+  constructor(private userService: UserService, private accesibilityService: AccesibilityService) {}
 
   ngOnInit(): void {
     this.updateUserData();
     this.searchMyFriends();
+    this.accesibilityService.searchChangesBoolean().subscribe((opcion) =>{
+      this.dyslexia = opcion;
+    })
+    this.accesibilityService.searchChangesCursor().subscribe((opcion) =>{
+      this.cursor = opcion;
+    })
+    this.accesibilityService.searchChangesSpacing().subscribe(option => {
+      this.spacing = option;
+    })
   }
 
   /**

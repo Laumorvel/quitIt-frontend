@@ -5,6 +5,7 @@ import { Group, GroupMember, User } from '../public/interfaces/interfaces';
 import { UserService } from '../user/services/user.service';
 import { FriendUsernameValidatorService } from './services/friend-username-validator.service';
 import { GroupServiceService } from './services/group-service.service';
+import { AccesibilityService } from 'src/app/shared/services/accesibility.service';
 
 @Component({
   selector: 'app-group-area',
@@ -16,7 +17,8 @@ export class GroupAreaComponent implements OnInit {
     private fb: FormBuilder,
     private userService: UserService,
     private usernameFriendService: FriendUsernameValidatorService,
-    private groupService: GroupServiceService
+    private groupService: GroupServiceService,
+    private accesibilityService: AccesibilityService
   ) {}
 
   //ATRIBUTOS
@@ -35,6 +37,9 @@ export class GroupAreaComponent implements OnInit {
   userSelected!: User;
   search: string = '';
   memberAlreadyAddedMistake: boolean = false;
+  dyslexia: boolean = false;
+  cursor: boolean = false;
+  spacing: boolean = false;
 
   ngOnInit(): void {
     this.getUserData();
@@ -43,6 +48,16 @@ export class GroupAreaComponent implements OnInit {
       memberName: '',
     });
     this.getGroupsFromUser();
+
+    this.accesibilityService.searchChangesBoolean().subscribe((opcion) =>{
+      this.dyslexia = opcion;
+    })
+    this.accesibilityService.searchChangesCursor().subscribe((opcion) =>{
+      this.cursor = opcion;
+    })
+    this.accesibilityService.searchChangesSpacing().subscribe(option => {
+      this.spacing = option;
+    })
   }
 
   //FORMULARIO

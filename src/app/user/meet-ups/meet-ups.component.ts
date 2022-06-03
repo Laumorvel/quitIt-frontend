@@ -1,8 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
-import { MeetUP } from 'src/app/public/interfaces/interfaces';
-import Swal from 'sweetalert2';
-import { UserService } from '../services/user.service';
+import { Component, OnInit } from '@angular/core';
+import { AccesibilityService } from 'src/app/shared/services/accesibility.service';
 
 @Component({
   selector: 'app-meet-ups',
@@ -11,11 +8,25 @@ import { UserService } from '../services/user.service';
 })
 export class MeetUpsComponent implements  OnInit {
 
-  constructor() { }
+  constructor(private accesibilityService: AccesibilityService) { }
 
-  ngOnInit(): void {}
+  dyslexia: boolean = false;
+  cursor: boolean = false;
+  spacing: boolean = false;
 
- 
+  ngOnInit(): void {
+    this.accesibilityService.searchChangesBoolean().subscribe((opcion) =>{
+      this.dyslexia = opcion;
+    })
+    this.accesibilityService.searchChangesCursor().subscribe((opcion) =>{
+      this.cursor = opcion;
+    })
+    this.accesibilityService.searchChangesSpacing().subscribe(option => {
+      this.spacing = option;
+    })
+  }
+
+
   showMeetUpsVisible:boolean=true;
   createMeetUpsVisible:boolean=false;
 
@@ -28,5 +39,5 @@ export class MeetUpsComponent implements  OnInit {
     this.showMeetUpsVisible=false;
     this.createMeetUpsVisible=true;
   }
-  
+
 }

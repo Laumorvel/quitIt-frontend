@@ -5,6 +5,8 @@ import { FileServiceService } from '../../services/file-service.service';
 import { UploadService } from '../../services/upload.service';
 import { UserService } from '../../services/user.service';
 
+import { AccesibilityService } from 'src/app/shared/services/accesibility.service';
+
 @Component({
   selector: 'app-general-data',
   templateUrl: './general-data.component.html',
@@ -14,16 +16,28 @@ export class GeneralDataComponent implements OnInit {
   constructor(
     private userService: UserService,
     private fileService: FileServiceService,
-    private _uploadService: UploadService
+    private _uploadService: UploadService,
+    private accesibilityService: AccesibilityService
   ) {}
 
   user: User = JSON.parse(<string>localStorage.getItem('user'));
   img: string = '';
   currentFile?: File;
-  change:boolean = false;
+  change:boolean = false;dyslexia: boolean = false;
+  cursor: boolean = false;
+  spacing: boolean = false;
 
   ngOnInit(): void {
     this.getUserData();
+    this.accesibilityService.searchChangesBoolean().subscribe((opcion) =>{
+      this.dyslexia = opcion;
+    })
+    this.accesibilityService.searchChangesCursor().subscribe((opcion) =>{
+      this.cursor = opcion;
+    })
+    this.accesibilityService.searchChangesSpacing().subscribe(option => {
+      this.spacing = option;
+    })
   }
 
   getUserData() {

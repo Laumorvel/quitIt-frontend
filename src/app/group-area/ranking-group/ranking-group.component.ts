@@ -2,6 +2,7 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/cor
 import { ActivatedRoute } from '@angular/router';
 import { Group, GroupMember, User } from '../../public/interfaces/interfaces';
 import { GroupServiceService } from '../services/group-service.service';
+import { AccesibilityService } from 'src/app/shared/services/accesibility.service';
 
 @Component({
   selector: 'app-ranking-group',
@@ -10,7 +11,7 @@ import { GroupServiceService } from '../services/group-service.service';
 })
 export class RankingGroupComponent implements OnInit, OnChanges {
 
-  constructor( private rutaActiva: ActivatedRoute,
+  constructor( private rutaActiva: ActivatedRoute,private accesibilityService: AccesibilityService,
     private groupService: GroupServiceService,) { }
 
 /**
@@ -24,6 +25,15 @@ export class RankingGroupComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.getGroupFromUser();
+    this.accesibilityService.searchChangesBoolean().subscribe((opcion) =>{
+      this.dyslexia = opcion;
+    })
+    this.accesibilityService.searchChangesCursor().subscribe((opcion) =>{
+      this.cursor = opcion;
+    })
+    this.accesibilityService.searchChangesSpacing().subscribe(option => {
+      this.spacing = option;
+    })
   }
 
   @Input() reload: boolean = false;
@@ -31,7 +41,9 @@ export class RankingGroupComponent implements OnInit, OnChanges {
   membersUsers: User[]=[];
   id = this.rutaActiva.snapshot.params['id'];
   group!: Group;
-
+  dyslexia: boolean = false;
+  cursor: boolean = false;
+  spacing: boolean = false;
 
 
   /**

@@ -1,4 +1,4 @@
-<h1 class="text-center title mb-3">General Data</h1>
+<h1 class="text-center title mb-3" [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">General Data</h1>
 <!--FOTO + name-->
 <div class="row text-center card">
   <div class="card-body">
@@ -8,7 +8,7 @@
       </div>
       <!--Subida de imagen - drag and drop-->
       <div>
-        <button class="btn btn-primary boton" (click)="changeImg()">Change Profile Image</button>
+        <button class="btn btn-primary boton" (click)="changeImg()" [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">Change Profile Image</button>
       </div>
       <div *ngIf="change">
         <ngx-dropzone
@@ -16,7 +16,7 @@
           (change)="onSelect($event)"
           class="dropzone justify-content-center"
         >
-          <ngx-dropzone-label>Select a profile picture</ngx-dropzone-label>
+          <ngx-dropzone-label [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">Select a profile picture</ngx-dropzone-label>
           <ngx-dropzone-image-preview
             ngProjectAs="ngx-dropzone-preview"
             class="dropSelect"
@@ -28,18 +28,18 @@
           </ngx-dropzone-image-preview>
         </ngx-dropzone>
         <div>
-          <button class="btn btn-dark" (click)="onUpload()">Upload</button>
+          <button class="btn btn-dark" (click)="onUpload()" [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">Upload</button>
         </div>
       </div>
-      <div class="h3 mt-3 name">{{ user.name }} {{ user.lastName }}</div>
+      <div  [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }" class="h3 mt-3 name">{{ user.name }} {{ user.lastName }}</div>
     </div>
   </div>
 
   <!--Data-->
   <div class="row text-center divInferior">
-    <div class="data mb-3">
+    <div class="data mb-3" [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">
       <!--email-->
-      <div>
+      <div  [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">
         <img
           src="../../../../assets/correo-electronico-vacio.png"
           alt="User email"
@@ -48,7 +48,7 @@
         {{ user.email }}
       </div>
       <!--start date-->
-      <div>
+      <div [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">
         <img
           src="../../../../assets/calendar(1).png"
           alt="User email"

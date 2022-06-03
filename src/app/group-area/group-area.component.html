@@ -1,9 +1,9 @@
-<div>
+<div [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">
   <div class="row">
-    <h3 class="title">My groups</h3>
+    <h3 class="title" [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">My groups</h3>
     <!--Create group-->
     <div class="mt-5">
-      <button class="btn boton text-center newGroup" (click)="crearGroup()">
+      <button class="btn boton text-center newGroup" (click)="crearGroup()" [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">
         Create group
       </button>
     </div>
@@ -12,8 +12,8 @@
       <form class="form" autocomplete="off" [formGroup]="myForm">
         <!--GROUP NAME-->
         <div class="form-group">
-          <label for="groupName">Group name</label>
-          <input
+          <label for="groupName" [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">Group name</label>
+          <input [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }"
             type="text"
             class="form-control"
             id="groupName"
@@ -21,7 +21,7 @@
             name="groupName"
             placeholder="Enter a group name"
           />
-          <span
+          <span [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }"
             class="form-text text-danger"
             *ngIf="campoNoValido('groupName')"
           >
@@ -39,8 +39,8 @@
         >
           <!--MEMBER NAME-->
           <div class="form-group grupo">
-            <label for="memberName">Member name</label>
-            <input
+            <label for="memberName" [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">Member name</label>
+            <input [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }"
               type="text"
               class="form-control"
               formControlName="memberName"
@@ -50,13 +50,13 @@
               (keyup)="searchFriend()"
             />
 
-            <span
+            <span [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }"
               class="form-text text-danger"
               *ngIf="campoNoValido('memberName')"
             >
               {{ memberNameError }}
             </span>
-            <span class="form-text text-danger" *ngIf="!checkFieldOfFriend()">
+            <span [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }" class="form-text text-danger" *ngIf="!checkFieldOfFriend()">
               {{ memberAlreadyAdded }}
             </span>
             <!--TABLA DE AMIGOS COINCIDENTES -->
@@ -71,7 +71,7 @@
               <tbody>
                 <tr *ngFor="let friend of friendsFound">
 
-                  <td (click)="selectFriend($event)" class="username">
+                  <td (click)="selectFriend($event)" class="username" [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">
                     {{ friend.username }}
                   </td>
                 </tr>
@@ -85,12 +85,12 @@
               class="form-check-input"
               formControlName="admin"
             />
-            <label class="form-check-label" for="admin">Make admin</label>
+            <label class="form-check-label" for="admin" [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">Make admin</label>
           </div>
         </div>
         <!--ADD MEMBER-->
         <div>
-          <button
+          <button [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }"
             [disabled]="myForm.invalid || memberAlreadyAddedMistake == true"
             class="btn boton mt-4"
             (click)="pushMember()"
@@ -105,7 +105,7 @@
             type="submit"
             class="btn boton"
             [disabled]="groupMembers.length < 1"
-            (click)="submitForm()"
+            (click)="submitForm()" [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }"
           >
             CREATE
           </button>
@@ -129,8 +129,8 @@
           <img *ngIf="member.user.imageUrl != null; else elseBlock" class="centrar" src="{{member.user.imageUrl}}" width="300" height="150" alt="User image"/>
           <ng-template #elseBlock> <img src="https://picsum.photos/300/150" width="300" height="150" alt="placeholder" class="centrar"></ng-template>
             <div class="card-body">
-              <h5 class="letraAmigo">{{ member.user.username }} - {{ member.cargo }}</h5>
-              <button class="btn boton" (click)="deleteMember(member)">DELETE</button>
+              <h5 class="letraAmigo" [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">{{ member.user.username }} - {{ member.cargo }}</h5>
+              <button class="btn boton" [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }" (click)="deleteMember(member)">DELETE</button>
             </div>
           </div>
         </div>
@@ -149,11 +149,11 @@
         *ngFor="let group of groups"
         routerLink="/groupArea/group/{{ group.id }}"
       >
-        <div class="title">{{ group.name }}</div>
+        <div class="title" [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">{{ group.name }}</div>
       </div>
     </div>
     <ng-template #elseBlock>
-      <div class="noGroups">You don't have any group yet.</div>
+      <div class="noGroups" [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">You don't have any group yet.</div>
     </ng-template>
   </div>
 </div>

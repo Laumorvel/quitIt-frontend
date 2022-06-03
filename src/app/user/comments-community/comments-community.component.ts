@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Commentario, User } from 'src/app/public/interfaces/interfaces';
+import { AccesibilityService } from 'src/app/shared/services/accesibility.service';
 import Swal from 'sweetalert2';
 import { UserService } from '../services/user.service';
 
@@ -10,18 +11,30 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./comments-community.component.css'],
 })
 export class CommentsCommunityComponent implements OnInit {
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(private userService: UserService, private router: Router, private accesibilityService: AccesibilityService) {}
 
   @ViewChild('scrollBottom')
   private scrollBottom!: ElementRef;
   user: User = JSON.parse(<string>localStorage.getItem('user'));
   comentarios: Commentario[] = [];
   text: string = '';
+  dyslexia: boolean = false;
+  cursor: boolean = false;
+  spacing: boolean = false;
 
   ngOnInit(): void {
     this.mostrarComentariosComunidad();
     setInterval(() => this.mostrarComentariosComunidad(), 10000);
     this.scrollToBottom();
+    this.accesibilityService.searchChangesBoolean().subscribe((opcion) =>{
+      this.dyslexia = opcion;
+    })
+    this.accesibilityService.searchChangesCursor().subscribe((opcion) =>{
+      this.cursor = opcion;
+    })
+    this.accesibilityService.searchChangesSpacing().subscribe(option => {
+      this.spacing = option;
+    })
   }
 
   ngAfterViewChecked() {

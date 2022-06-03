@@ -1,48 +1,154 @@
-<div class="row content mt-5">
+<div
+  class="row content mt-5"
+  [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }"
+>
   <!--NON-SMOKING DATA-->
   <div class="col-md-12 col-lg-4 card card1">
     <div class="card-body">
-      <h5 class="card-title titulo-card">Smokeless data</h5>
+      <h5
+        class="card-title titulo-card"
+        [ngClass]="{
+          dyslexia: dyslexia,
+          biggerCursor: cursor,
+          spacing: spacing
+        }"
+      >
+        Smokeless data
+      </h5>
       <h6 class="card-subtitle mb-2 text-muted">
         Check your non-smoking tracking
       </h6>
       <hr />
       <div class="card-text">
-        <p>
+        <p
+          [ngClass]="{
+            dyslexia: dyslexia,
+            biggerCursor: cursor,
+            spacing: spacing
+          }"
+        >
           Days in a row without smoking: {{ user.daysInARowWithoutSmoking }}
         </p>
-        <p>Cigarettes avoided: {{ user.cigarettesAvoided }}</p>
-        <p>
+        <p
+          [ngClass]="{
+            dyslexia: dyslexia,
+            biggerCursor: cursor,
+            spacing: spacing
+          }"
+        >
+          Cigarettes avoided: {{ user.cigarettesAvoided }}
+        </p>
+        <p
+          [ngClass]="{
+            dyslexia: dyslexia,
+            biggerCursor: cursor,
+            spacing: spacing
+          }"
+        >
           Total time without smoking: {{ user.totalTimeWithoutSmoking }} days
         </p>
-        <p>Money saved: {{ user.moneySaved }}€</p>
+        <p
+          [ngClass]="{
+            dyslexia: dyslexia,
+            biggerCursor: cursor,
+            spacing: spacing
+          }"
+        >
+          Money saved: {{ user.moneySaved }}€
+        </p>
       </div>
     </div>
   </div>
   <!--FAILED DAYS-->
   <div class="col-md-12 col-lg-3 card card2">
     <div class="card-body">
-      <h5 class="card-title titulo-card">Smoky data</h5>
-      <h6 class="card-subtitle mb-2 text-muted">Check your failures</h6>
+      <h5
+        class="card-title titulo-card"
+        [ngClass]="{
+          dyslexia: dyslexia,
+          biggerCursor: cursor,
+          spacing: spacing
+        }"
+      >
+        Smoky data
+      </h5>
+      <h6
+        class="card-subtitle mb-2 text-muted"
+        [ngClass]="{
+          dyslexia: dyslexia,
+          biggerCursor: cursor,
+          spacing: spacing
+        }"
+      >
+        Check your failures
+      </h6>
       <hr />
       <div class="card-text">
-        <p>Days you failed: {{ user.smokingDays }}</p>
-        <p>Cigarettes you smoked: {{ user.cigarettesSmoked }}</p>
+        <p
+          [ngClass]="{
+            dyslexia: dyslexia,
+            biggerCursor: cursor,
+            spacing: spacing
+          }"
+        >
+          Days you failed: {{ user.smokingDays }}
+        </p>
+        <p
+          [ngClass]="{
+            dyslexia: dyslexia,
+            biggerCursor: cursor,
+            spacing: spacing
+          }"
+        >
+          Cigarettes you smoked: {{ user.cigarettesSmoked }}
+        </p>
       </div>
     </div>
   </div>
   <!--FORMER SMOKER DATA-->
   <div class="col-md-12 col-lg-3 card card3">
     <div class="card-body">
-      <h5 class="card-title titulo-card">Former smoker data</h5>
-      <h6 class="card-subtitle mb-2 text-muted">
+      <h5
+        class="card-title titulo-card"
+        [ngClass]="{
+          dyslexia: dyslexia,
+          biggerCursor: cursor,
+          spacing: spacing
+        }"
+      >
+        Former smoker data
+      </h5>
+      <h6
+        class="card-subtitle mb-2 text-muted"
+        [ngClass]="{
+          dyslexia: dyslexia,
+          biggerCursor: cursor,
+          spacing: spacing
+        }"
+      >
         Check your previous data as a smoker
       </h6>
       <hr />
       <div *ngIf="!modificando; else elseBlock">
         <div class="card-text">
-          <p>Money spent per day: {{ user.moneyPerDay }}€</p>
-          <p>Cigarettes per day: {{ user.cigarettesBeforePerDay }}</p>
+          <p
+            [ngClass]="{
+              dyslexia: dyslexia,
+              biggerCursor: cursor,
+              spacing: spacing
+            }"
+          >
+            Money spent per day: {{ user.moneyPerDay }}€
+          </p>
+          <p
+            [ngClass]="{
+              dyslexia: dyslexia,
+              biggerCursor: cursor,
+              spacing: spacing
+            }"
+          >
+            Cigarettes per day: {{ user.cigarettesBeforePerDay }}
+          </p>
         </div>
         <!--Botón para modificar datos iniciales-->
         <div class="text-center">
@@ -51,10 +157,39 @@
       </div>
       <ng-template #elseBlock>
         <div class="card-text">
-          <label for="money">Money spent per day:</label
-          ><input [(ngModel)]="money" type="number" name="money" min="1" />
-          <label for="cigarettes">Cigarettes per day:</label
+          <label
+            for="money"
+            [ngClass]="{
+              dyslexia: dyslexia,
+              biggerCursor: cursor,
+              spacing: spacing
+            }"
+            >Money spent per day:</label
           ><input
+            [ngClass]="{
+              dyslexia: dyslexia,
+              biggerCursor: cursor,
+              spacing: spacing
+            }"
+            [(ngModel)]="money"
+            type="number"
+            name="money"
+            min="1"
+          />
+          <label
+            for="cigarettes"
+            [ngClass]="{
+              dyslexia: dyslexia,
+              biggerCursor: cursor,
+              spacing: spacing
+            }"
+            >Cigarettes per day:</label
+          ><input
+            [ngClass]="{
+              dyslexia: dyslexia,
+              biggerCursor: cursor,
+              spacing: spacing
+            }"
             [(ngModel)]="cigarettes"
             type="number"
             name="cigarettes"
@@ -72,6 +207,7 @@
 <!--Botón para resetear datos recogidos-->
 <div class="text-center mt-3">
   <button
+    [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }"
     class="btn boton"
     data-bs-toggle="modal"
     data-bs-target="#exampleModalReset"
@@ -89,7 +225,15 @@
     <div class="modal-dialog">
       <div class="modal-content text-center">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">
+          <h5
+            class="modal-title"
+            id="exampleModalLabel"
+            [ngClass]="{
+              dyslexia: dyslexia,
+              biggerCursor: cursor,
+              spacing: spacing
+            }"
+          >
             Are you sure you want to reset all your collected data until now?
           </h5>
           <button
@@ -99,15 +243,36 @@
             aria-label="Close"
           ></button>
         </div>
-        <div class="modal-body">
+        <div
+          class="modal-body"
+          [ngClass]="{
+            dyslexia: dyslexia,
+            biggerCursor: cursor,
+            spacing: spacing
+          }"
+        >
           It means that you'll set all these data to zero so you can start all
           over again
         </div>
         <div class="modal-footer justify-content-center">
-          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+          <button
+            type="button"
+            class="btn btn-danger"
+            data-bs-dismiss="modal"
+            [ngClass]="{
+              dyslexia: dyslexia,
+              biggerCursor: cursor,
+              spacing: spacing
+            }"
+          >
             No
           </button>
           <button
+            [ngClass]="{
+              dyslexia: dyslexia,
+              biggerCursor: cursor,
+              spacing: spacing
+            }"
             type="button"
             class="btn btn-primary"
             data-bs-dismiss="modal"

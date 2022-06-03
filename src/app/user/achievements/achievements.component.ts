@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { UserService } from '../services/user.service';
 import { Achievement, User } from '../../public/interfaces/interfaces';
+import { AccesibilityService } from 'src/app/shared/services/accesibility.service';
 
 @Component({
   selector: 'app-achievements',
@@ -13,11 +14,22 @@ export class AchievementsComponent implements OnInit {
   ruta: string = '../../../assets/logros/';
   user: User = JSON.parse(<string>localStorage.getItem('user'));
   blur: boolean = false;
-
-  constructor(private userService: UserService) {}
+  dyslexia: boolean = false;
+  cursor: boolean = false;
+  spacing: boolean = false;
+  constructor(private userService: UserService,private accesibilityService: AccesibilityService) {}
 
   ngOnInit(): void {
     this.cargarLogros();
+    this.accesibilityService.searchChangesBoolean().subscribe((opcion) =>{
+      this.dyslexia = opcion;
+    })
+    this.accesibilityService.searchChangesCursor().subscribe((opcion) =>{
+      this.cursor = opcion;
+    })
+    this.accesibilityService.searchChangesSpacing().subscribe(option => {
+      this.spacing = option;
+    })
   }
 
   /**

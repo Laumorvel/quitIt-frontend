@@ -1,4 +1,5 @@
-<div class="row gx-0">
+<div class="row gx-0"
+[ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">
   <article class="card card--1 col-md-5 col-sm-12" *ngFor="let i of logros">
     <!--Hover-->
     <div class="card__info-hover pb">
@@ -34,8 +35,10 @@
     </ng-template>
 
     <div class="card__info">
-      <h3 class="card__title">{{ i.name }}</h3>
-      <span class="card__by card__author">{{ i.text }}</span>
+      <h3 class="card__title"
+      [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">{{ i.name }}</h3>
+      <span class="card__by card__author"
+      [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">{{ i.text }}</span>
     </div>
   </article>
 </div>

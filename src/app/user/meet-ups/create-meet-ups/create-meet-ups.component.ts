@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AccesibilityService } from 'src/app/shared/services/accesibility.service';
 import Swal from 'sweetalert2';
-import { AuthService } from '../../../auth/services/auth.service';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -15,10 +15,22 @@ export class CreateMeetUpsComponent implements OnInit {
   date !: string;
   type !: string;
   place !: string;
+  dyslexia: boolean = false;
+  cursor: boolean = false;
+  spacing: boolean = false;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private accesibilityService: AccesibilityService) { }
 
   ngOnInit(): void {
+    this.accesibilityService.searchChangesBoolean().subscribe((opcion) =>{
+      this.dyslexia = opcion;
+    })
+    this.accesibilityService.searchChangesCursor().subscribe((opcion) =>{
+      this.cursor = opcion;
+    })
+    this.accesibilityService.searchChangesSpacing().subscribe(option => {
+      this.spacing = option;
+    })
   }
 
   guardarType(tipo:string){
