@@ -75,6 +75,7 @@
 /*SUBMENU DESPLEGABLE DE ACCESIBLIDAD*/
 ul ul li{
   display: none;
+  z-index: 1;
 }
 
 ul ul:hover li{
@@ -83,19 +84,15 @@ ul ul:hover li{
   font-weight: bold;
 }
 .show0{
-  display:block;
+  display:block!important;
   position: absolute;
   font-weight: bold;
   cursor: pointer;
+  padding-top: 1em;
+  cursor:pointer;
 }
 
-.show1{
-  z-index: 0;
-}
 
-ul ul:hover li:first-child{
-  z-index: 0;/*Se utiliza para poder colocar el li encima del padding del siguiente div*/
-}
 
 .show2{
   margin-top: 2em;
@@ -105,14 +102,12 @@ ul ul:hover li:nth-child(2){
  margin-top: 2em;
 }
 
-.show3{
-  margin-top: 4em;
-  background-color: white;
-}
+
 
 ul ul:hover li:nth-child(3){
   margin-top: 4em;
   background-color: white;
+
  }
 
 ul ul li:hover {
@@ -122,11 +117,6 @@ ul ul li:hover {
   cursor:pointer;
 }
 
-.show4{
-  display: block !important;
-  padding-top: 1em;
-  cursor:pointer;
-}
 
 .contenidoAccesible:hover li{
   display: block !important;
@@ -181,7 +171,16 @@ ul ul li:hover {
     text-decoration: none;
   }
 
+  .showMobile {
+    padding-top: 5em!important;
+    z-index: 1!important;
+    background-color: white;
+  }
 
+  .showMobileTop{
+    z-index: 2!important;
+    background-color: white;
+  }
 
   .login {
     width: 10%;
@@ -258,5 +257,7 @@ ul ul li:hover {
  background-color: #c8d8e4 ;
 }
 
+.accesible{
 
+}
 

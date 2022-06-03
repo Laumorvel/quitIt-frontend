@@ -16,6 +16,7 @@
 .content {
   margin-right: 2.3rem;
   margin-left: 2.3rem;
+  z-index: 0;
 }
 
 .card {

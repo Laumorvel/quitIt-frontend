@@ -147,8 +147,7 @@
                   biggerCursor: cursor,
                   show0: show,
                   dyslexia: dyslexia,
-                  show1: show,
-                  show4: show
+                  show1: show
                 }"
                 (click)="dislexiaFriendly()"
               >
@@ -159,8 +158,7 @@
                   dyslexia: dyslexia,
                   biggerCursor: cursor,
                   show0: show,
-                  show2: show,
-                  show4: show
+                  show2: show
                 }"
                 (click)="changeCursor()"
               >
@@ -171,8 +169,7 @@
                   dyslexia: dyslexia,
                   biggerCursor: cursor,
                   show0: show,
-                  show3: show,
-                  show4: show
+                  show3: show
                 }"
                 (click)="changeSpacing()"
               >
@@ -285,6 +282,60 @@
                 Settings
               </a>
             </li>
+            <!--Accesibilidad-->
+          <div class="contenidoAccesible" (click)="showAccesibility()">
+            <!--<img src="../../../assets/accesibility(1).png" class="icon2 ml-5" alt="Accesibility" /> -->
+
+            <ul
+              [ngClass]="{
+                biggerCursor: cursor,
+                dyslexia: dyslexia
+              }"
+              class="align-items-center accesible"
+            >
+              <img
+                src="../../../assets/accesibility(1).png"
+                class="icon2"
+                alt="Accesibility"
+              />
+              Accesibility
+              <li
+                [ngClass]="{
+                  biggerCursor: cursor,
+                  show0: show,
+                  dyslexia: dyslexia,
+                  show1: show,
+                  showMobileTop: show
+                }"
+                (click)="dislexiaFriendly()"
+              >
+                Dyslexia friendly font
+              </li>
+              <li
+                [ngClass]="{
+                  dyslexia: dyslexia,
+                  biggerCursor: cursor,
+                  show0: show,
+                  show2: show,
+                  showMobileTop: show
+                }"
+                (click)="changeCursor()"
+              >
+                Change cursor
+              </li>
+              <li
+                [ngClass]="{
+                  dyslexia: dyslexia,
+                  biggerCursor: cursor,
+                  show0: show,
+                  showMobile: show
+                }"
+                (click)="changeSpacing()"
+              >
+                Letter spacing
+              </li>
+            </ul>
+          </div>
           </ul>
         </ng-template>
         <!--MODAL-->
