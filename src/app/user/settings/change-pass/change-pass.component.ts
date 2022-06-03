@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import { UserService } from '../../services/user.service';
 import { ValidatorService } from '../../services/validator.service';
 import { PasswordValidatorService } from '../../services/password-validator.service';
+import { AccesibilityService } from 'src/app/shared/services/accesibility.service';
 
 @Component({
   selector: 'app-change-pass',
@@ -16,8 +17,14 @@ export class ChangePassComponent implements OnInit {
     private fb: FormBuilder,
     private validatorService: ValidatorService,
     private passwordValidatorService: PasswordValidatorService,
-    private userService: UserService
+    private userService: UserService,
+    private accesibilityService: AccesibilityService
   ) {}
+
+  dyslexia: boolean = false;
+  cursor: boolean = false;
+  spacing: boolean = false;
+
 
   miFormulario: FormGroup = this.fb.group(
     {
@@ -62,6 +69,15 @@ export class ChangePassComponent implements OnInit {
       password2: '',
       password3: '',
     });
+    this.accesibilityService.searchChangesBoolean().subscribe((opcion) =>{
+      this.dyslexia = opcion;
+    })
+    this.accesibilityService.searchChangesCursor().subscribe((opcion) =>{
+      this.cursor = opcion;
+    })
+    this.accesibilityService.searchChangesSpacing().subscribe(option => {
+      this.spacing = option;
+    })
   }
 
   /**

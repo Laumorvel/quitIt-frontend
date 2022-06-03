@@ -30,6 +30,10 @@
   position: relative;
   margin: 32px 0;
 }
+
+.biggerCursor{
+  cursor: url('../../../assets/cursor(1).png'), auto!important;/*hay imitaciones en cuanto al tamaño de los cursores*/
+}
 .contact-form .input-text {
   display: block;
   width: 100%;
@@ -117,4 +121,8 @@
 .row{
   margin-left: 0em !important;
   margin-right: 0em !important;
+}
+
+.spacing{
+  letter-spacing: 3px;
 }

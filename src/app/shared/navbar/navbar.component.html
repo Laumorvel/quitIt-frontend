@@ -1,12 +1,17 @@
-<div class="row" [ngClass]="{
-  biggerCursor: cursor
-}">
+<div
+  class="row"
+  [ngClass]="{
+    biggerCursor: cursor,
+    spacing: spacing
+  }"
+>
   <nav class="navbar navbar-expand-sm navbar-dark py-2 topnav">
     <div class="container-fluid">
       <!--LOGO-->
-      <a [ngClass]="{
-        biggerCursor: cursor
-      }"
+      <a
+        [ngClass]="{
+          biggerCursor: cursor
+        }"
         class="navbar-brand"
         routerLink="/"
         routerLinkActive="active"
@@ -15,9 +20,10 @@
         <img src="./../../../assets/quitItLogo2.png" alt="logo" class="logo" />
       </a>
 
-      <button [ngClass]="{
-        biggerCursor: cursor
-      }"
+      <button
+        [ngClass]="{
+          biggerCursor: cursor
+        }"
         class="navbar-toggler"
         type="button"
         data-bs-toggle="collapse"
@@ -26,7 +32,10 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <!--MENÚ-->
-      <div class="collapse navbar-collapse justify-content-center" id="collapsibleNavbar">
+      <div
+        class="collapse navbar-collapse justify-content-center"
+        id="collapsibleNavbar"
+      >
         <!--PUBLIC AREA-->
         <ul
           *ngIf="menuIndicator == 'userNotRegistered'; else loggedIn"
@@ -34,58 +43,59 @@
         >
           <!--Login-->
           <li class="nav-item hoverZoom">
-            <a [ngClass]="{
-              biggerCursor: cursor
-            }" [ngClass]="{
-              dyslexia: dyslexia
-            }" (click)="detectClick('login')"
+            <a
+              [ngClass]="{
+                biggerCursor: cursor
+              }"
+              [ngClass]="{
+                dyslexia: dyslexia
+              }"
+              (click)="detectClick('login')"
               routerLink="/login"
               class="nav-link text-black"
               alt="login"
               routerLinkActive="active"
-              ><img
-                src="../../assets/login.png"
-                class="icon imgIconos signup"
-                alt="Signup"
-              />
+              ><img src="../../assets/login.png" class="icon2" alt="Signup" />
               Login</a
             >
           </li>
 
           <!--Signup-->
           <li class="nav-item hoverZoom">
-            <a [ngClass]="{
-              biggerCursor: cursor
-            }" [ngClass]="{
-              dyslexia: dyslexia
-            }" (click)="detectClick('register')"
+            <a
+              [ngClass]="{
+                biggerCursor: cursor
+              }"
+              [ngClass]="{
+                dyslexia: dyslexia
+              }"
+              (click)="detectClick('register')"
               routerLink="/register"
               class="nav-link text-black"
               alt="login"
               routerLinkActive="active"
-              ><img
-                src="../../assets/account.png"
-                class="icon imgIconos signup"
-                alt="Signup"
-              />
+              ><img src="../../assets/account.png" class="icon2" alt="Signup" />
               Sign up</a
             >
           </li>
 
           <!--Contact us-->
           <li class="nav-item hoverZoom">
-            <a [ngClass]="{
-              biggerCursor: cursor
-            }" [ngClass]="{
-              dyslexia: dyslexia
-            }" (click)="detectClick('contactUs')"
+            <a
+              [ngClass]="{
+                biggerCursor: cursor
+              }"
+              [ngClass]="{
+                dyslexia: dyslexia
+              }"
+              (click)="detectClick('contactUs')"
               class="nav-link text-black mx-md-3 mx-sm-3"
               routerLink="/contactUs"
               routerLinkActive="active"
             >
               <img
                 src="../../assets/email.png"
-                class="icon imgIconos"
+                class="icon2"
                 alt="Contact us"
               />
               Contact Us</a
@@ -94,36 +104,79 @@
 
           <!--User area-->
           <li class="nav-item hoverZoom">
-            <a [ngClass]="{
-              biggerCursor: cursor
-            }" [ngClass]="{
-              dyslexia: dyslexia
-            }" (click)="detectClick('userArea')"
+            <a
+              [ngClass]="{
+                biggerCursor: cursor
+              }"
+              [ngClass]="{
+                dyslexia: dyslexia
+              }"
+              (click)="detectClick('userArea')"
               class="nav-link text-black hover-zoom"
               routerLink="/userArea"
               routerLinkActive="active"
-              ><img src="../../assets/casa.png" class="icon" alt="Dashboard" />
+              ><img
+                src="../../../assets/casa.png"
+                class="icon2"
+                alt="Dashboard"
+              />
               User area</a
             >
           </li>
-            <ul [ngClass]="{
-              biggerCursor: cursor
-            }" [ngClass]="{
-              dyslexia: dyslexia
-            }" class="align-items-center"> Accesibility
-              <li [ngClass]="{
-                biggerCursor: cursor
-              }" [ngClass]="{
-                dyslexia: dyslexia
-              }" (click)="dislexiaFriendly()">Dyslexia friendly font</li>
-              <li [ngClass]="{
-                dyslexia: dyslexia
-              }"  [ngClass]="{
-                biggerCursor: cursor
-              }" (click)="changeCursor()">Change cursor</li>
-          </ul>
+          <!--Accesibilidad-->
+          <div class="contenidoAccesible" (click)="showAccesibility()">
+            <!--<img src="../../../assets/accesibility(1).png" class="icon2 ml-5" alt="Accesibility" /> -->
 
-
+            <ul
+              [ngClass]="{
+                biggerCursor: cursor
+              }"
+              [ngClass]="{
+                dyslexia: dyslexia
+              }"
+              class="align-items-center"
+            >
+              <img
+                src="../../../assets/accesibility(1).png"
+                class="icon2"
+                alt="Accesibility"
+              />
+              Accesibility
+              <li
+                [ngClass]="{
+                  biggerCursor: cursor,
+                  show0: show,
+                  dyslexia: dyslexia,
+                  show1: show
+                }"
+                (click)="dislexiaFriendly()"
+              >
+                Dyslexia friendly font
+              </li>
+              <li
+                [ngClass]="{
+                  dyslexia: dyslexia,
+                  biggerCursor: cursor,
+                  show0: show,
+                  show2: show
+                }"
+                (click)="changeCursor()"
+              >
+                Change cursor
+              </li>
+              <li
+                [ngClass]="{
+                  dyslexia: dyslexia,
+                  biggerCursor: cursor,
+                  show0: show,
+                  show3: show
+                }"
+                (click)="changeSpacing()"
+              >
+                Letter spacing
+              </li>
+            </ul>
+          </div>
         </ul>
 
         <!--USER AREA-->
@@ -134,9 +187,11 @@
           >
             <!--User area-->
             <li class="nav-item hoverZoom">
-              <a [ngClass]="{
-                dyslexia: dyslexia
-              }" (click)="detectClick('userArea')"
+              <a
+                [ngClass]="{
+                  dyslexia: dyslexia
+                }"
+                (click)="detectClick('userArea')"
                 class="nav-link text-black hover-zoom"
                 routerLink="/userArea"
                 routerLinkActive="active"
@@ -150,10 +205,12 @@
             </li>
 
             <!--logout-->
-            <li class="nav-item hoverZoom ">
-              <a [ngClass]="{
-                dyslexia: dyslexia
-              }" (click)="detectClick('logOut')"
+            <li class="nav-item hoverZoom">
+              <a
+                [ngClass]="{
+                  dyslexia: dyslexia
+                }"
+                (click)="detectClick('logOut')"
                 class="nav-link text-black"
                 data-bs-toggle="modal"
                 data-bs-target="#exampleModal"
@@ -169,9 +226,11 @@
 
             <!--group area-->
             <li class="nav-item hoverZoom">
-              <a [ngClass]="{
-                dyslexia: dyslexia
-              }" (click)="detectClick('groupArea')"
+              <a
+                [ngClass]="{
+                  dyslexia: dyslexia
+                }"
+                (click)="detectClick('groupArea')"
                 class="nav-link text-black hover-zoom"
                 routerLink="/groupArea"
                 routerLinkActive="active"
@@ -186,9 +245,11 @@
 
             <!--friends-->
             <li class="nav-item hoverZoom">
-              <a [ngClass]="{
-                dyslexia: dyslexia
-              }" (click)="detectClick('friends')"
+              <a
+                [ngClass]="{
+                  dyslexia: dyslexia
+                }"
+                (click)="detectClick('friends')"
                 class="nav-link text-black hover-zoom"
                 routerLink="/friends"
                 routerLinkActive="active"
@@ -205,9 +266,10 @@
               *ngIf="menuIndicator == 'registeredUser'"
               class="nav-link text-black nav-item settings hoverZoom"
             >
-              <a [ngClass]="{
-                dyslexia: dyslexia
-              }"
+              <a
+                [ngClass]="{
+                  dyslexia: dyslexia
+                }"
                 class="text-black"
                 routerLink="/settings"
                 routerLinkActive="active"
@@ -220,6 +282,60 @@
                 Settings
               </a>
             </li>
+            <!--Accesibilidad-->
+          <div class="contenidoAccesible" (click)="showAccesibility()">
+            <!--<img src="../../../assets/accesibility(1).png" class="icon2 ml-5" alt="Accesibility" /> -->
+
+            <ul
+              [ngClass]="{
+                biggerCursor: cursor,
+                dyslexia: dyslexia
+              }"
+              class="align-items-center accesible"
+            >
+              <img
+                src="../../../assets/accesibility(1).png"
+                class="icon2"
+                alt="Accesibility"
+              />
+              Accesibility
+              <li
+                [ngClass]="{
+                  biggerCursor: cursor,
+                  show0: show,
+                  dyslexia: dyslexia,
+                  show1: show,
+                  showMobileTop: show
+                }"
+                (click)="dislexiaFriendly()"
+              >
+                Dyslexia friendly font
+              </li>
+              <li
+                [ngClass]="{
+                  dyslexia: dyslexia,
+                  biggerCursor: cursor,
+                  show0: show,
+                  show2: show,
+                  showMobileTop: show
+                }"
+                (click)="changeCursor()"
+              >
+                Change cursor
+              </li>
+              <li
+                [ngClass]="{
+                  dyslexia: dyslexia,
+                  biggerCursor: cursor,
+                  show0: show,
+                  showMobile: show
+                }"
+                (click)="changeSpacing()"
+              >
+                Letter spacing
+              </li>
+            </ul>
+          </div>
           </ul>
         </ng-template>
         <!--MODAL-->
@@ -233,9 +349,15 @@
           <div class="modal-dialog">
             <div class="modal-content text-center">
               <div class="modal-header">
-                <h5 class="modal-title" [ngClass]="{
-                  dyslexia: dyslexia
-                }" id="exampleModalLabel">LOGOUT</h5>
+                <h5
+                  class="modal-title"
+                  [ngClass]="{
+                    dyslexia: dyslexia
+                  }"
+                  id="exampleModalLabel"
+                >
+                  LOGOUT
+                </h5>
                 <button
                   type="button"
                   class="btn-close"
@@ -243,22 +365,29 @@
                   aria-label="Close"
                 ></button>
               </div>
-              <div class="modal-body" [ngClass]="{
-                dyslexia: dyslexia
-              }">Are you sure?</div>
-              <div class="modal-footer justify-content-center">
-                <button [ngClass]="{
+              <div
+                class="modal-body"
+                [ngClass]="{
                   dyslexia: dyslexia
                 }"
+              >
+                Are you sure?
+              </div>
+              <div class="modal-footer justify-content-center">
+                <button
+                  [ngClass]="{
+                    dyslexia: dyslexia
+                  }"
                   type="button"
                   class="btn botonNo"
                   data-bs-dismiss="modal"
                 >
                   No
                 </button>
-                <button [ngClass]="{
-                  dyslexia: dyslexia
-                }"
+                <button
+                  [ngClass]="{
+                    dyslexia: dyslexia
+                  }"
                   type="button"
                   class="btn botonYes"
                   data-bs-dismiss="modal"
@@ -276,9 +405,10 @@
           <ul class="navbar-nav">
             <!--incidences-->
             <li class="nav-item hoverZoom">
-              <a [ngClass]="{
-                dyslexia: dyslexia
-              }"
+              <a
+                [ngClass]="{
+                  dyslexia: dyslexia
+                }"
                 class="nav-link text-black hover-zoom"
                 routerLink="/administratorDashboard/incidences"
                 routerLinkActive="active"
@@ -292,9 +422,10 @@
             </li>
             <!--Users-->
             <li class="nav-item hoverZoom">
-              <a [ngClass]="{
-                dyslexia: dyslexia
-              }"
+              <a
+                [ngClass]="{
+                  dyslexia: dyslexia
+                }"
                 class="nav-link text-black hover-zoom"
                 routerLink="/administratorDashboard/showUsers"
                 routerLinkActive="active"
@@ -309,9 +440,10 @@
 
             <!--logout-->
             <li class="nav-item hoverZoom">
-              <a [ngClass]="{
-                dyslexia: dyslexia
-              }"
+              <a
+                [ngClass]="{
+                  dyslexia: dyslexia
+                }"
                 class="nav-link text-black"
                 data-bs-toggle="modal"
                 data-bs-target="#exampleModal"

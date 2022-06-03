@@ -72,8 +72,98 @@
   padding-bottom: 0.3em;
 }
 
+/*SUBMENU DESPLEGABLE DE ACCESIBLIDAD*/
+ul ul li{
+  display: none;
+  z-index: 1;
+}
+
+ul ul:hover li{
+  display: block!important;
+  position: absolute;
+  font-weight: bold;
+}
+.show0{
+  display:block!important;
+  position: absolute;
+  font-weight: bold;
+  cursor: pointer;
+  padding-top: 1em;
+  cursor:pointer;
+}
+
+
+
+.show2{
+  margin-top: 2em;
+}
+
+ul ul:hover li:nth-child(2){
+ margin-top: 2em;
+}
+
+
+
+ul ul:hover li:nth-child(3){
+  margin-top: 4em;
+  background-color: white;
+
+ }
+
+ul ul li:hover {
+  display: block!important;
+  position: absolute;
+  float: left;
+  cursor:pointer;
+}
+
+
+.contenidoAccesible:hover li{
+  display: block ;
+  padding-top: 1em;
+  cursor:pointer;
+}
+
+.contenidoAccesible li{
+  display: none ;
+  padding-top: 1em;
+  cursor:pointer;
+}
+
+@font-face {
+  font-family: "OpenDyslexic3Regular";
+  src: local("OpenDyslexic3Regular"), url(../../../assets/fonts/OpenDyslexic-Regular.otf) format("truetype");
+}
+
+
+.icon2{
+  max-width: 35px;
+  height: auto;
+}
+
+
+.show{
+  display:block;
+}
+
+.dyslexia{
+  font-family: 'OpenDyslexic3Regular'!important;
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+.biggerCursor{
+  cursor: url('../../../assets/cursor(1).png'), auto!important;/*hay imitaciones en cuanto al tamaño de los cursores*/
+}
+
+.spacing{
+  letter-spacing: 3px;
+}
+
 /*Móvil*/
 @media screen and (max-width: 575px) {
+
   .settings {
     position: relative;
     list-style: none;
@@ -82,6 +172,19 @@
 
   .settings a {
     text-decoration: none;
+  }
+
+  .showMobile {
+    padding-top: 5em!important;
+    z-index: 1!important;
+    background-color: white;
+    display:block!important;
+  }
+
+  .showMobileTop{
+    z-index: 2!important;
+    background-color: white;
+    display: block!important;
   }
 
   .login {
@@ -93,6 +196,10 @@
     width: 10%;
     margin-right: 0.5rem;
   }
+
+
+
+
 }
 
 /*TÁBLET EN ADELANTE*/
@@ -107,12 +214,26 @@
     text-decoration: none;
   }
 
+  .show3{
+    background-color: transparent;
+  }
+
+  ul ul:hover li:nth-child(3){
+    background-color: transparent;
+   }
+
   .nav-item {
     margin-left: 2rem;
   }
 
   li{
     margin-left: 0px !important;
+  }
+
+  .contenidoAccesible li{
+    display: none !important;
+    padding-top: 1em;
+    cursor:pointer;
   }
 
 
@@ -125,11 +246,14 @@
   font-size: 21px;
 }
 
+
+
 /*PANTALLAS*/
 @media screen and (min-width: 1279px){
   li{
     margin-left: 0px !important;
   }
+
 }
 
 .botonYes {
@@ -148,58 +272,7 @@
  background-color: #c8d8e4 ;
 }
 
+.accesible{
 
-/*SUBMENU DESPLEGABLE DE ACCESIBLIDAD*/
-ul ul li{
-  display: none;
 }
 
-ul ul:hover li:first-child{
-  display: block;
-  position: absolute;
-  padding-top: 1em;
-}
-
-ul ul:hover li:nth-child(2){
-  display: block;
-  position: absolute;
- padding-top: 3em;
-}
-
-ul ul li:hover {
-  display: block;
-  position: absolute;
-  float: left;
-  padding-top: 1em;
-  cursor:pointer;
-}
-
-@font-face {
-  font-family: "OpenDyslexic3Regular";
-  src: local("OpenDyslexic3Regular"), url(../../../assets/fonts/OpenDyslexic-Regular.otf) format("truetype");
-}
-
-
-.icon2{
-  max-width: 35px;
-  height: auto;
-}
-
-.hide{
-  display: none!important;
-}
-
-.show{
-  display:block;
-}
-
-.dyslexia{
-  font-family: 'OpenDyslexic3Regular'!important;
-  font-weight: normal;
-  font-style: normal;
-}
-
-
-.biggerCursor{
-  cursor: url('../../../assets/cursor(1).png'), auto!important;/*hay imitaciones en cuanto al tamaño de los cursores*/
-}

@@ -19,13 +19,20 @@ export class QuizComponent implements OnInit {
   ) {}
 
   dyslexia: boolean = false;
+  cursor: boolean = false;
+  spacing: boolean = false;
 
   ngOnInit(): void {
-    this.accesibilityService.searchChanges().subscribe((text) => {
-      if (text == 'dyslexia') {
-        this.dyslexia = this.dyslexia ? false : true;
-      }
+    this.accesibilityService.searchChangesBoolean().subscribe((text) => {
+        this.dyslexia = text;
     });
+
+    this.accesibilityService.searchChangesCursor().subscribe(option => {
+      this.cursor = option;
+    })
+    this.accesibilityService.searchChangesSpacing().subscribe(option => {
+      this.spacing = option;
+    })
   }
 
   cigarettesBeforePerDay!:number;

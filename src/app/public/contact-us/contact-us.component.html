@@ -1,5 +1,8 @@
 
-<section class="get-in-touch">
+<section class="get-in-touch" [ngClass]="{
+  biggerCursor: cursor,
+  spacing: spacing
+}">
     <h1 class="title" [ngClass]="{
       dyslexia: dyslexia
     }">Contact Us!</h1>
@@ -8,6 +11,8 @@
     }">Contact: 656454323 <br>
       <a [ngClass]="{
         dyslexia: dyslexia
+      }"  [ngClass]="{
+        biggerCursor: cursor
       }" href="https://www.madrid.es/portales/munimadrid/es/Inicio/Personas-con-discapacidad/Centro-de-intermediacion-telefonica-para-personas-sordas-o-con-discapacidad-auditiva-y-o-de-fonacion/?vgnextfmt=default&vgnextoid=5dcc362e7fa3c210VgnVCM1000000b205a0aRCRD&vgnextchannel=0d50b7dd3f7fe410VgnVCM1000000b205a0aRCRD" target="_blank" class="text-center">Get an interpreter for your call through a videocall!</a></div>
 
     <form
@@ -21,6 +26,9 @@
       <div class="form-field col-lg-6">
         <input [ngClass]="{
           dyslexia: dyslexia
+        }" [ngClass]="{
+          biggerCursor: cursor,
+          spacing: spacing
         }"
           placeholder="*Email"
           id="fromUser"
@@ -39,6 +47,9 @@
       <div class="form-field col-lg-6">
         <input [ngClass]="{
           dyslexia: dyslexia
+        }" [ngClass]="{
+          biggerCursor: cursor,
+          spacing: spacing
         }"
           placeholder="*Subject"
           id="subject"
@@ -57,6 +68,9 @@
       <div class="form-field col-lg-12">
         <input [ngClass]="{
           dyslexia: dyslexia
+        }" [ngClass]="{
+          biggerCursor: cursor,
+          spacing: spacing
         }"
           placeholder="*Message"
           id="text"
@@ -74,6 +88,9 @@
       <div class="form-field col-lg-12 text-center">
         <input [ngClass]="{
           dyslexia: dyslexia
+        }" [ngClass]="{
+          biggerCursor: cursor,
+          spacing: spacing
         }"
           class="submit-btn"
           type="submit"

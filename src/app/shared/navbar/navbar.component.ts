@@ -12,13 +12,17 @@ export class NavbarComponent implements OnInit {
   constructor(private router: Router, private accesibilityService: AccesibilityService) { }
 
   ngOnInit(): void {
-    this.dyslexia = false;
-    this.cursor = false;
   }
 
   @Input()menuIndicator:string = "";
   dyslexia: boolean = false;
   cursor: boolean = false;
+  spacing: boolean  =false;
+  show: boolean = false;
+
+  showAccesibility(){
+    this.show = this.show ? false : true;
+  }
 
   dislexiaFriendly() {
     this.dyslexia = this.dyslexia ? false : true;
@@ -28,6 +32,11 @@ export class NavbarComponent implements OnInit {
   changeCursor(){
     this.cursor = this.cursor ? false : true;
     this.accesibilityService.searchCursor(this.cursor);
+  }
+
+  changeSpacing(){
+    this.spacing = this.spacing ? false: true;
+    this.accesibilityService.searchSpacing(this.spacing);
   }
 
   /**

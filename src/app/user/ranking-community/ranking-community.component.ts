@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { User } from 'src/app/public/interfaces/interfaces';
+import { AccesibilityService } from 'src/app/shared/services/accesibility.service';
 import Swal from 'sweetalert2';
 import { UserService } from '../services/user.service';
 
@@ -15,8 +16,12 @@ export class RankingCommunityComponent implements  OnDestroy, OnInit {
 
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
+  dyslexia: boolean = false;
+  cursor: boolean = false;
+  spacing: boolean = false;
 
-  constructor(private userService: UserService) { }
+
+  constructor(private userService: UserService,private accesibilityService: AccesibilityService) { }
   ngOnInit(): void {
 
     this.dtOptions = {
@@ -26,6 +31,15 @@ export class RankingCommunityComponent implements  OnDestroy, OnInit {
       order: [[0, 'desc']]
     };
     this.mostrarUsuarios();
+    this.accesibilityService.searchChangesBoolean().subscribe((opcion) =>{
+      this.dyslexia = opcion;
+    })
+    this.accesibilityService.searchChangesCursor().subscribe((opcion) =>{
+      this.cursor = opcion;
+    })
+    this.accesibilityService.searchChangesSpacing().subscribe(option => {
+      this.spacing = option;
+    })
   }
 
 

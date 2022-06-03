@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../../../public/interfaces/interfaces';
 import { UserService } from '../../services/user.service';
 import Swal from 'sweetalert2';
+import { AccesibilityService } from 'src/app/shared/services/accesibility.service';
 
 @Component({
   selector: 'app-exsmoker-data',
@@ -9,14 +10,27 @@ import Swal from 'sweetalert2';
   styleUrls: ['./exsmoker-data.component.css'],
 })
 export class ExsmokerDataComponent implements OnInit {
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private accesibilityService: AccesibilityService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.accesibilityService.searchChangesBoolean().subscribe((opcion) =>{
+      this.dyslexia = opcion;
+    })
+    this.accesibilityService.searchChangesCursor().subscribe((opcion) =>{
+      this.cursor = opcion;
+    })
+    this.accesibilityService.searchChangesSpacing().subscribe(option => {
+      this.spacing = option;
+    })
+  }
 
   user: User = JSON.parse(<string>localStorage.getItem('user'));
   modificando: boolean = false;
   cigarettes: number = this.user.cigarettesBeforePerDay;
   money: number = this.user.moneyPerDay;
+  dyslexia: boolean = false;
+  cursor: boolean = false;
+  spacing: boolean = false;
 
   getUserData() {
     this.userService.updateUser().subscribe({

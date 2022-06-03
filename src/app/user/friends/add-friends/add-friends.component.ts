@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/public/interfaces/interfaces';
+import { AccesibilityService } from 'src/app/shared/services/accesibility.service';
 import Swal from 'sweetalert2';
 import { UserService } from '../../services/user.service';
 
@@ -12,10 +13,23 @@ export class AddFriendsComponent implements OnInit {
   usuariosEncontrados!: User[];
   busqueda!: String;
   usuarioRecibido: boolean = false;
+  dyslexia: boolean = false;
+  cursor: boolean = false;
+  spacing: boolean = false;
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private accesibilityService: AccesibilityService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.accesibilityService.searchChangesBoolean().subscribe((opcion) =>{
+      this.dyslexia = opcion;
+    })
+    this.accesibilityService.searchChangesCursor().subscribe((opcion) =>{
+      this.cursor = opcion;
+    })
+    this.accesibilityService.searchChangesSpacing().subscribe(option => {
+      this.spacing = option;
+    })
+  }
 
   /**
    * Busca un usuario por su username

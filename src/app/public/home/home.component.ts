@@ -10,25 +10,22 @@ export class HomeComponent implements OnInit {
   constructor(private accesibilityService: AccesibilityService) {}
 
   ngOnInit(): void {
-    this.accesibilityService.searchChanges().subscribe(text =>{
-      if(text == 'dyslexia'){
-        this.dyslexia = this.dyslexia ? false : true;
-      }
+    this.accesibilityService.searchChangesBoolean().subscribe(text =>{
+        this.dyslexia = text;
+    })
+    this.accesibilityService.searchChangesCursor().subscribe(option => {
+      this.cursor = option;
+    })
+    this.accesibilityService.searchChangesSpacing().subscribe(option => {
+      this.spacing = option;
     })
   }
 
   fontSize = 20;
   dyslexia: boolean = false;
-  shown: boolean = false;
+  cursor: boolean = false;
+  spacing: boolean = false;
 
-  dropDown() {
-   this.shown = this.shown ? false : true;
-  }
-
-
-  dislexiaFriendly() {
-    this.dyslexia = this.dyslexia ? false : true;
-  }
 
   changeFont(operator: any) {
     operator === '+' ? this.fontSize++ : this.fontSize--;

@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { MeetUP, User } from 'src/app/public/interfaces/interfaces';
+import { AccesibilityService } from 'src/app/shared/services/accesibility.service';
 import Swal from 'sweetalert2';
 import { UserService } from '../../services/user.service';
 
@@ -23,20 +24,37 @@ export class ShowMeetUpsComponent implements OnDestroy, OnInit  {
 
   listaCargada:boolean=false;
 
-  constructor(private userService: UserService) { }
+  dyslexia: boolean = false;
+  cursor: boolean = false;
+  spacing: boolean = false;
+
+  constructor(private userService: UserService, private accesibilityService: AccesibilityService) { }
 
   ngOnInit(): void {
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 10,
       ordering: true
-      
+
     };
 
     this.listaCargada=true;
     this.cargarMeetUps();
+
+
+    this.accesibilityService.searchChangesBoolean().subscribe((opcion) =>{
+      this.dyslexia = opcion;
+    })
+    this.accesibilityService.searchChangesCursor().subscribe((opcion) =>{
+      this.cursor = opcion;
+    })
+    this.accesibilityService.searchChangesSpacing().subscribe(option => {
+      this.spacing = option;
+    })
+
     this.getAllMeetUpsUserAttendance();
     this.getAllMeetUpsUserNotAttendance();
+
   }
 
     /**

@@ -26,7 +26,7 @@
     transform: translateY(-7px);
     }
 
-    
+
 
 /*Titulo*/
 .get-in-touch {
@@ -41,4 +41,23 @@
     font-family: "Titan One", cursive;
     font-weight: bold;
     text-shadow: 4px 4px 2px #c8d8e4;
+  }
+
+  @font-face {
+    font-family: "OpenDyslexic3Regular";
+    src: local("OpenDyslexic3Regular"), url(../../../assets/fonts/OpenDyslexic-Regular.otf) format("truetype");
+  }
+
+  .dyslexia{
+    font-family: 'OpenDyslexic3Regular'!important;
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  .biggerCursor{
+    cursor: url('../../../assets/cursor(1).png'), auto!important;/*hay imitaciones en cuanto al tamaño de los cursores*/
+  }
+
+  .spacing{
+    letter-spacing: 3px!important;
   }

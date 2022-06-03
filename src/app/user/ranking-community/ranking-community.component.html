@@ -1,25 +1,72 @@
-<h1>RANKING</h1>
+<h1 [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">
+  RANKING
+</h1>
 <div class="contenedor">
-
-
-<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table-striped row-border hover">
-  <thead>
-    <tr class="table-info">
-      <th>Days without smoking</th>
-      <th>Username</th>
-
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let i of users">
-      <td>  <img src="../../../assets/medal.png" class="icon2" *ngIf="i == users[0]"/>
-        <img src="../../../assets/medal(1).png" class="icon2" *ngIf="i == users[1]"/>
-        <img src="../../../assets/medal(2).png" class="icon2" *ngIf="i == users[2]"/>
-        {{ i.daysInARowWithoutSmoking }}
+  <table
+    datatable
+    [dtOptions]="dtOptions"
+    [dtTrigger]="dtTrigger"
+    class="table-striped row-border hover"
+  >
+    <thead>
+      <tr class="table-info">
+        <th
+          [ngClass]="{
+            dyslexia: dyslexia,
+            biggerCursor: cursor,
+            spacing: spacing
+          }"
+        >
+          Days without smoking
+        </th>
+        <th
+          [ngClass]="{
+            dyslexia: dyslexia,
+            biggerCursor: cursor,
+            spacing: spacing
+          }"
+        >
+          Username
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let i of users"
+        [ngClass]="{
+          dyslexia: dyslexia,
+          biggerCursor: cursor,
+          spacing: spacing
+        }"
+      >
+        <td>
+          <img
+            src="../../../assets/medal.png"
+            class="icon2"
+            *ngIf="i == users[0]"
+          />
+          <img
+            src="../../../assets/medal(1).png"
+            class="icon2"
+            *ngIf="i == users[1]"
+          />
+          <img
+            src="../../../assets/medal(2).png"
+            class="icon2"
+            *ngIf="i == users[2]"
+          />
+          {{ i.daysInARowWithoutSmoking }}
         </td>
-      <td>{{ i.username }}</td>
-
-    </tr>
-  </tbody>
-</table>
+        <td
+          [ngClass]="{
+            dyslexia: dyslexia,
+            biggerCursor: cursor,
+            spacing: spacing
+          }"
+        >
+          {{ i.username }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>

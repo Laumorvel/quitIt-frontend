@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Commentario, User } from 'src/app/public/interfaces/interfaces';
 import Swal from 'sweetalert2';
 import { CommentsGroupService } from '../services/comments-group.service';
+import { AccesibilityService } from 'src/app/shared/services/accesibility.service';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { CommentsGroupService } from '../services/comments-group.service';
   styleUrls: ['./comments-group.component.css'],
 })
 export class CommentsGroupComponent implements OnInit {
-  constructor(  private rutaActiva: ActivatedRoute,private commentsGroupService: CommentsGroupService, private router: Router) {}
+  constructor(private accesibilityService: AccesibilityService,  private rutaActiva: ActivatedRoute,private commentsGroupService: CommentsGroupService, private router: Router) {}
 
   @ViewChild('scrollBottom')
   private scrollBottom!: ElementRef;
@@ -20,6 +21,15 @@ export class CommentsGroupComponent implements OnInit {
     this.mostrarComentariosComunidad();
    setInterval(() => this.mostrarComentariosComunidad(), 10000);
    this.scrollToBottom();
+   this.accesibilityService.searchChangesBoolean().subscribe((opcion) =>{
+    this.dyslexia = opcion;
+  })
+  this.accesibilityService.searchChangesCursor().subscribe((opcion) =>{
+    this.cursor = opcion;
+  })
+  this.accesibilityService.searchChangesSpacing().subscribe(option => {
+    this.spacing = option;
+  })
   }
 
   ngAfterViewChecked() {
@@ -30,7 +40,9 @@ export class CommentsGroupComponent implements OnInit {
   comentarios: Commentario[] = [];
   text: string = "";
   id = this.rutaActiva.snapshot.params['id'];
-
+  dyslexia: boolean = false;
+  cursor: boolean = false;
+  spacing: boolean = false;
   /**
    * Muestra todos los comentarios del grupo
    */

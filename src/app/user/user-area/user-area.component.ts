@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AccesibilityService } from 'src/app/shared/services/accesibility.service';
 
 @Component({
   selector: 'app-user-area',
@@ -7,10 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserAreaComponent implements OnInit {
 
-  constructor() { }
+  constructor(private accesibilityService: AccesibilityService
+  ) {}
+
+  dyslexia: boolean = false;
+  cursor: boolean = false;
+  spacing: boolean = false;
 
   ngOnInit(): void {
-
+    this.accesibilityService.searchChangesBoolean().subscribe((opcion) =>{
+      this.dyslexia = opcion;
+    })
+    this.accesibilityService.searchChangesCursor().subscribe((opcion) =>{
+      this.cursor = opcion;
+    })
+    this.accesibilityService.searchChangesSpacing().subscribe(option => {
+      this.spacing = option;
+    })
   }
 
 }

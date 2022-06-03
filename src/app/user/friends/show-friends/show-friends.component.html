@@ -1,5 +1,5 @@
 <div>
-  <p class="title text-center mt-5 mb-4">Friends</p>
+  <p class="title text-center mt-5 mb-4" [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">Friends</p>
 </div>
 <!-- <div class="row ml-auto" id="cover">
     <div class="col "></div>
@@ -16,17 +16,17 @@
       </form>
   </div> -->
 <div *ngIf="amigosEncontrados[0] == null">
-  <p class="text-center mt-5">You don't have friends yet</p>
+  <p class="text-center mt-5" [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">You don't have friends yet</p>
 </div>
 <div>
   <div class="grid" *ngIf="existeUsuario">
     <div class="cardcontainer" *ngFor="let j of amigosEncontrados">
       <img *ngIf="j.imageUrl != null; else elseBlock"  src="{{j.imageUrl}}" width="300" height="150" alt="User image"/>
       <ng-template #elseBlock> <img src="https://picsum.photos/300/150" width="300" height="150" alt="placeholder"></ng-template>
-      <h1 class="text-center mt-1">{{ j.username }}</h1>
+      <h1 class="text-center mt-1" [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">{{ j.username }}</h1>
       <br />
-      <p class="mt-4">Name: {{ j.name }}</p>
-      <p>Lastname: {{ j.lastName }}</p>
+      <p class="mt-4" [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">Name: {{ j.name }}</p>
+      <p [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">Lastname: {{ j.lastName }}</p>
     </div>
   </div>
 </div>
