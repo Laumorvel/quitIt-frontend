@@ -30,10 +30,6 @@
   margin-top: 8rem;
 }
 
-form{
-  margin: 2rem 8rem;
-}
-
 .icon {
   max-width: 30px;
   height: auto;
@@ -78,9 +74,7 @@ form{
   background-color: #f2f2f2;
 }
 
-.conjuntoGrupo{
-  margin: auto 7rem;
-}
+
 
 .group{
   padding: 2rem;
@@ -111,6 +105,9 @@ form{
   letter-spacing: 3px!important;
 }
 
+.tt{
+  cursor: pointer;
+}
 
 
 /*MOVILES*/
@@ -124,6 +121,41 @@ form{
     align-items: center;
     }
 
+    .form{
+      margin: 1rem 1rem;
+    }
+
+    input:not([type = "checkbox"]){
+      width:100%;
+    }
+
+      .form-group{
+      margin-left: 0!important;
+      margin-right: 0!important;
+    }
+
 }
+
+
+
+/*IPAD*/
+@media screen and (min-width: 769px) and (max-width: 1279px) {
+  form{
+    margin: 2rem 8rem;
+  }
+  .conjuntoGrupo{
+    margin: auto 7rem;
+  }
+ }
+
+ /*PANTALLAS*/
+ @media screen and (min-width: 1279px) {
+  form{
+    margin: 2rem 8rem;
+  }
+  .conjuntoGrupo{
+    margin: auto 7rem;
+  }
+ }
 
 

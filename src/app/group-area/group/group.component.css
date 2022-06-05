@@ -1,7 +1,4 @@
-* {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-}
+
 
 .chat {
   margin: 1rem 5rem;
@@ -57,14 +54,6 @@
   padding: 1rem;
 }
 
-.boton {
-  background-color: #52ab98;
-  float: right;
-  margin-right: 3em;
-  position: relative;
-  margin-left: 3em;
-
-}
 
 .addMemberForm{
   margin-left: 4rem;
@@ -89,6 +78,60 @@
 }
 
 
-button { 
-  margin:auto
+
+
+
+/*MOVILES*/
+@media screen and (max-width: 769px) {
+
+  .content{
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .boton {
+    background-color: #52ab98;
+    position: relative;
+  }
+
+}
+
+
+
+/*IPAD*/
+@media screen and (min-width: 769px) and (max-width: 1279px) {
+  button {
+    margin:auto
+  }
+  * {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.boton {
+  background-color: #52ab98;
+  float: right;
+  margin-right: 3em;
+  position: relative;
+  margin-left: 3em;
+}
+}
+
+/*PANTALLAS*/
+@media screen and (min-width: 1279px) {
+  button {
+    margin:auto
+  }
+  * {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.boton {
+  background-color: #52ab98;
+  float: right;
+  margin-right: 3em;
+  position: relative;
+  margin-left: 3em;
+}
 }

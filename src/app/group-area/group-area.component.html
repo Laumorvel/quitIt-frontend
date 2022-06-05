@@ -61,7 +61,7 @@
             </span>
             <!--TABLA DE AMIGOS COINCIDENTES -->
             <table
-              class="table table-hover"
+              class="table table-hover tt"
               *ngIf="
                 friendsFound.length > 0 &&
                 showTable &&
@@ -103,7 +103,7 @@
         <div class="text-center">
           <button
             type="submit"
-            class="btn boton"
+            class="btn boton mt-3"
             [disabled]="groupMembers.length < 1"
             (click)="submitForm()" [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }"
           >
