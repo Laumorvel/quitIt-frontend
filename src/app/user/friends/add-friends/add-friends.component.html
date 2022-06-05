@@ -1,11 +1,11 @@
 <div>
-  <p class="title text-center mt-5">Search your friends</p>
+  <p class="title text-center mt-5" [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">Search your friends</p>
 </div>
 <div class="row ml-auto justify-content-center mt-5" id="cover">
     <div class="col "></div>
       <form method="get">
         <div class="tb">
-          <div class="td text-center justify-content-center"><input class="texto" type="text" name="busqueda" [(ngModel)]="busqueda" placeholder="Search user" required></div>
+          <div [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }" class="td text-center justify-content-center"><input class="texto" type="text" name="busqueda" [(ngModel)]="busqueda" placeholder="Search user" required></div>
           <div class="td" id="s-cover">
             <button type="submit" (click)="buscarUser()">
               <div id="s-circle"></div>
@@ -22,10 +22,10 @@
         <div class="cardcontainer" *ngFor="let i of usuariosEncontrados">
           <img *ngIf="i.imageUrl != null; else elseBlock"  src="{{i.imageUrl}}" width="300" height="150" alt="User image"/>
           <ng-template #elseBlock> <img src="https://picsum.photos/300/150" width="300" height="150" alt="placeholder"></ng-template>
-          <h1 class="text-center mt-1">{{i.username}}</h1><br>
-          <p class="mt-4">Name: {{i.name}}</p>
-          <p>Lastname: {{i.lastName}}</p>
-          <button (click)="addFriend(i)" class="btnDelete">Add friend</button>
+          <h1 class="text-center mt-1" [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">{{i.username}}</h1><br>
+          <p class="mt-4" [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">Name: {{i.name}}</p>
+          <p [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">Lastname: {{i.lastName}}</p>
+          <button [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }" (click)="addFriend(i)" class="btnDelete">Add friend</button>
       </div>
         </div>
     </div>

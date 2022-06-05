@@ -18,6 +18,11 @@ export class NavbarComponent implements OnInit {
   dyslexia: boolean = false;
   cursor: boolean = false;
   spacing: boolean  =false;
+  show: boolean = false;
+
+  showAccesibility(){
+    this.show = this.show ? false : true;
+  }
 
   dislexiaFriendly() {
     this.dyslexia = this.dyslexia ? false : true;

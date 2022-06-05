@@ -7,7 +7,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FriendUsernameValidatorService } from '../services/friend-username-validator.service';
 import { UserService } from 'src/app/user/services/user.service';
 import { GroupMemberService } from '../services/group-member.service';
-import { filter } from 'rxjs';
+import { AccesibilityService } from 'src/app/shared/services/accesibility.service';
 
 @Component({
   selector: 'app-group',
@@ -22,7 +22,8 @@ export class GroupComponent implements OnInit {
     private rutaActiva: ActivatedRoute,
     private groupService: GroupServiceService,
     private groupMemberService: GroupMemberService,
-    private router:Router
+    private router:Router,
+    private accesibilityService: AccesibilityService
   ) {}
 
   ngOnInit(): void {
@@ -32,6 +33,15 @@ export class GroupComponent implements OnInit {
       memberName: '',
     });
     this.membersToDelete = this.group.groupMembers.filter(f => f.user.username != this.user.username);
+    this.accesibilityService.searchChangesBoolean().subscribe((opcion) =>{
+      this.dyslexia = opcion;
+    })
+    this.accesibilityService.searchChangesCursor().subscribe((opcion) =>{
+      this.cursor = opcion;
+    })
+    this.accesibilityService.searchChangesSpacing().subscribe(option => {
+      this.spacing = option;
+    })
   }
 
   //ATRIBUTOS
@@ -58,6 +68,9 @@ export class GroupComponent implements OnInit {
   cargoOption: string = "";
   usernameEditing: string = "";
   groupToChangeRole: GroupMember[] = [];
+  dyslexia: boolean = false;
+  cursor: boolean = false;
+  spacing: boolean = false;
 
 
   /**

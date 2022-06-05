@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { MeetUP, User } from 'src/app/public/interfaces/interfaces';
+import { AccesibilityService } from 'src/app/shared/services/accesibility.service';
 import Swal from 'sweetalert2';
 import { UserService } from '../../services/user.service';
 
@@ -12,6 +13,8 @@ import { UserService } from '../../services/user.service';
 export class ShowMeetUpsComponent implements OnDestroy, OnInit  {
 
   meetUps:MeetUP[]=[];
+  userAttendace:MeetUP[]=[];
+  userNotAttendace:MeetUP[]=[];
   choice!:String;
 
   user: User = JSON.parse(<string>localStorage.getItem('user'));
@@ -21,18 +24,37 @@ export class ShowMeetUpsComponent implements OnDestroy, OnInit  {
 
   listaCargada:boolean=false;
 
-  constructor(private userService: UserService) { }
+  dyslexia: boolean = false;
+  cursor: boolean = false;
+  spacing: boolean = false;
+
+  constructor(private userService: UserService, private accesibilityService: AccesibilityService) { }
 
   ngOnInit(): void {
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 10,
       ordering: true
-      
+
     };
 
     this.listaCargada=true;
     this.cargarMeetUps();
+
+
+    this.accesibilityService.searchChangesBoolean().subscribe((opcion) =>{
+      this.dyslexia = opcion;
+    })
+    this.accesibilityService.searchChangesCursor().subscribe((opcion) =>{
+      this.cursor = opcion;
+    })
+    this.accesibilityService.searchChangesSpacing().subscribe(option => {
+      this.spacing = option;
+    })
+
+    this.getAllMeetUpsUserAttendance();
+    this.getAllMeetUpsUserNotAttendance();
+
   }
 
     /**
@@ -57,6 +79,52 @@ export class ShowMeetUpsComponent implements OnDestroy, OnInit  {
     )
     }
 
+     /**
+   * Recupera todos los meet ups disponibles
+   */
+      getAllMeetUpsUserAttendance(){
+        this.userService.getAllMeetUpsUserAttendance().subscribe({
+          next: (resp) => {
+            this.userAttendace = resp;
+            this.dtTrigger.next(null);
+            console.log("QUE ASISTEAL MEET UP" );
+            console.log(this.userAttendace);
+          },
+          error: (e) => {
+            Swal.fire({
+              title:'Error',
+              icon: 'error',
+              text:'There are no services available at this time',
+              confirmButtonColor:'#52ab98'
+            });
+          }
+        }
+      )
+      }
+
+       /**
+   * Recupera todos los meet ups disponibles
+   */
+        getAllMeetUpsUserNotAttendance(){
+      this.userService.getAllMeetUpsUserNotAttendance().subscribe({
+        next: (resp) => {
+          this.userNotAttendace=resp;
+          this.dtTrigger.next(null);
+          console.log("QUE NO ASISTE AL MEET UP");
+          console.log(resp);
+        },
+        error: (e) => {
+          Swal.fire({
+            title:'Error',
+            icon: 'error',
+            text:'There are no services available at this time',
+            confirmButtonColor:'#52ab98'
+          });
+        }
+      }
+    )
+    }
+
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
   }
@@ -66,6 +134,7 @@ export class ShowMeetUpsComponent implements OnDestroy, OnInit  {
       this.userService.asistenciaMeetUp(id).subscribe({
         next: (resp) => {
           this.cargarMeetUps();
+          this.getAllMeetUpsUserAttendance();
           this.dtTrigger.next(null);
           console.log(resp);
         },
@@ -86,6 +155,7 @@ export class ShowMeetUpsComponent implements OnDestroy, OnInit  {
     this.userService.noAsistenciaMeetUp(id).subscribe({
       next: (resp) => {
         this.cargarMeetUps();
+        this.getAllMeetUpsUserNotAttendance();
         this.dtTrigger.next(null);
         console.log(resp);
       },

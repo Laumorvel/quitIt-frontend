@@ -1,11 +1,25 @@
 <app-clock></app-clock>
-<div class="content mt-3">
-  <div class="row justify-content-around">
+<div
+  class="content mt-3"
+  [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }"
+>
+  <div class="row justify-content-around" [ngClass]="{
+    dyslexia: dyslexia,
+    biggerCursor: cursor
+  }" >
     <!--COMMUNITY-->
-    <div class="card col-md-2 text-center" routerLink="/commentsCommunity">
-      <div class="title">Community</div>
+    <div class="card col-md-2 text-center" [ngClass]="{
+      biggerCursor: cursor
+    }"  routerLink="/commentsCommunity">
+      <div class="title" [ngClass]="{
+        dyslexia: dyslexia,
+        biggerCursor: cursor
+      }" >Community</div>
       <br />
-      <img
+      <img [ngClass]="{
+        dyslexia: dyslexia,
+        biggerCursor: cursor
+      }"
         src="../../../assets/earth.png"
         alt="imagen de un minicarro de la compra y un ordenador portatil"
         class="img"
@@ -13,8 +27,14 @@
     </div>
     <!--MEET UPS-->
     <div class="card col-md-2 text-center" routerLink="/meetUps">
-      <div class="title">Meet ups</div>
-      <img
+      <div class="title" [ngClass]="{
+        dyslexia: dyslexia,
+        biggerCursor: cursor
+      }" >Meet ups</div>
+      <img [ngClass]="{
+        dyslexia: dyslexia,
+        biggerCursor: cursor
+      }"
         src="../../../assets/evento.png"
         alt="imagen de un minicarro de la compra y un ordenador portatil"
         class="img"
@@ -23,9 +43,15 @@
 
     <!--RANKING-->
     <div class="card col-md-2 text-center" routerLink="/rankingCommunity">
-      <div class="title">Ranking</div>
+      <div class="title" [ngClass]="{
+        dyslexia: dyslexia,
+        biggerCursor: cursor
+      }" >Ranking</div>
       <br />
-      <img
+      <img [ngClass]="{
+        dyslexia: dyslexia,
+        biggerCursor: cursor
+      }"
         src="../../../assets/ranking.png"
         alt="imagen de un minicarro de la compra y un ordenador portatil"
         class="img"
@@ -34,8 +60,14 @@
 
     <!--ACHIEVEMENTS-->
     <div class="card col-md-2 text-center" routerLink="/achievements">
-      <div class="title">Achievements</div>
-      <img
+      <div class="title" [ngClass]="{
+        dyslexia: dyslexia,
+        biggerCursor: cursor
+      }" >Achievements</div>
+      <img [ngClass]="{
+        dyslexia: dyslexia,
+        biggerCursor: cursor
+      }"
         src="../../../assets/badge.png"
         alt="imagen de un minicarro de la compra y un ordenador portatil"
         class="img"
@@ -44,8 +76,14 @@
 
     <!--PENALTIES-->
     <div class="card col-md-2 text-center" routerLink="/penalties">
-      <div class="title">Penalties</div>
-      <img
+      <div class="title" [ngClass]="{
+        dyslexia: dyslexia,
+        biggerCursor: cursor
+      }" >Penalties</div>
+      <img [ngClass]="{
+        dyslexia: dyslexia,
+        biggerCursor: cursor
+      }"
         src="../../../assets/red-card.png"
         alt="imagen constituida con fragmentos de diferentes elementos como un ordenador, un minicarro de la compra, dinero y un cartel luminoso"
         class="img"

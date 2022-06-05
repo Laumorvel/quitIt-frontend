@@ -2,13 +2,13 @@
   <div class="card-header"></div>
   <div class="card-body">
     <div id="contenedorDeMensajes" class="contenedorDeMensajes" #scrollBottom>
-      <div
+      <div [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }"
         *ngFor="let i of comentarios"
         class="enviado p-2 msj"
         [ngClass]="user.username == i.user.username ? 'enviado' : 'recibido'"
       >
-        <label class="username">{{ i.user.username }}:</label> <br />
-        <label class="comentarioUser">{{ i.text }}</label>
+        <label [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }" class="username">{{ i.user.username }}:</label> <br />
+        <label [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }" class="comentarioUser">{{ i.text }}</label>
       </div>
     </div>
     <form
@@ -22,7 +22,7 @@
         class=" card-footer text-muted input-group"
       >
         <div class="row textoContainer">
-          <input
+          <input [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }"
             type="text"
             [(ngModel)]="text"
             name="text"
@@ -32,7 +32,7 @@
             required="required"
           />
 
-          <button
+          <button [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }"
             type="submit"
             [disabled]="miFormulario.invalid"
             class="btn"

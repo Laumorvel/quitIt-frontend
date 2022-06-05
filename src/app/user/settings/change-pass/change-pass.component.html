@@ -1,6 +1,6 @@
-<div class="row">
+<div class="row" [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">
   <section class="get-in-touch">
-    <h1 class="title">Change your password!</h1>
+    <h1 class="title" [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">Change your password!</h1>
 
     <form
       class="contact-form row"
@@ -12,7 +12,7 @@
       <!-- Current password -->
       <div class="row mx-5">
         <div class="form-group col-md-6">
-          <input
+          <input [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }"
             type="password"
             placeholder="*Current password"
             class="form-control"
@@ -21,7 +21,7 @@
             id="password"
             class="input-text js-input"
           />
-          <span class="form-text text-danger" *ngIf="campoNoValido('password')">
+          <span [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }" class="form-text text-danger" *ngIf="campoNoValido('password')">
             {{ actuallypasswordError }}
           </span>
         </div>
@@ -32,7 +32,7 @@
         <!--  new password -->
         <div class="row mx-5">
           <div class="form-group col-md-6 " >
-            <input
+            <input [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }"
               type="password"
               placeholder="*New password"
               class="form-control"
@@ -40,7 +40,7 @@
               id="password2"
               class="input-text js-input"
             />
-            <span
+            <span [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }"
               class="form-text text-danger"
               *ngIf="campoNoValido('password2')"
             >
@@ -50,7 +50,7 @@
 
           <!-- Password2 -->
           <div class="form-group col-md-6">
-            <input
+            <input [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }"
               type="password"
               placeholder="*Confirm password"
               class="form-control"
@@ -58,7 +58,7 @@
               id="password3"
               class="input-text js-input"
             />
-            <span
+            <span [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }"
               class="form-text text-danger"
               *ngIf="campoNoValido('password3')"
             >
@@ -68,7 +68,7 @@
         </div>
         <!--Submit-->
         <div class="text-center">
-          <button
+          <button [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }"
             class="btn btn-primary float-center my-5 boton"
             type="submit"
             [disabled]="miFormulario.get('password2')?.errors! || miFormulario.get('password3')?.errors! || miFormulario.get('password')?.errors!['passwordCogido'] != true"

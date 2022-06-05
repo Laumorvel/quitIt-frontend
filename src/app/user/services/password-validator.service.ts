@@ -32,16 +32,18 @@ export class PasswordValidatorService implements AsyncValidator {
   }
 
   /**
-   * Método para comprobar password en BBDD
+   * Método para comprobar password en BBDD.
+   * Se hace un post en vez de un get para no mostrar la contraseña y
+   * poder guardarla en el body sin que aparezca en la petición.
    * @param password
-   * @returns
+   * @returns usuario
    */
    compruebapassword(password: string) {
-    const url = `${this.baseUrl}/email?password=${password}`;
+    const url = `${this.baseUrl}/password`;
     let token = JSON.parse(<string>localStorage.getItem('token'));
       const opcion = new HttpHeaders().set('Authorization', `Bearer ${token}`);
       opcion.append('Access-Control-Allow-Origin', '*');
-    return this.http.get<User>(url,{ headers: opcion });
+    return this.http.post<User>(url,password,{ headers: opcion });
    }
 
 

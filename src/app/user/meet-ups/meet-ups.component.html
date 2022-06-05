@@ -1,12 +1,12 @@
 <!--Título y botones de acceso-->
-<div class="row">
+<div class="row"  [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">
     <div class="col-lg-12 col-xs-6">
         <div class="get-in-touch">
-            <h3 class="title">Meet ups</h3>
+            <h3 class="title" [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">Meet ups</h3>
         </div>
         <div class="frame text-center">
-            <button class="custom-btn btn"  (click)="showMeetUps()"><span>Meet ups</span></button>
-            <button class="custom-btn btn"  (click)="createMeetUps()"><span>Create meet ups</span></button>
+            <button class="custom-btn btn"   [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }" (click)="showMeetUps()"><span>Meet ups</span></button>
+            <button class="custom-btn btn"   [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }" (click)="createMeetUps()"><span>Create meet ups</span></button>
           </div>
     </div>
   </div>

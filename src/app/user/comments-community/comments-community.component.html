@@ -1,14 +1,14 @@
 <!--EH AQUI EL CHAT!-->
 
-<div class="card text-center cardContainer">
-  <div class="card-header">
+<div class="card text-center cardContainer" [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">
+  <div class="card-header" [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">
     Chat
   </div>
   <div class="card-body" >
     <div id="contenedorDeMensajes" class="contenedorDeMensajes" #scrollBottom>
         <div *ngFor="let i of comentarios" class="enviado p-2 msj" [ngClass]="(user.username==i.user.username)? 'enviado' : 'recibido'">
-        <label class="username">{{i.user.username}}:</label> <br>
-        <label class="comentarioUser">{{i.text}}</label>
+        <label class="username" [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">{{i.user.username}}:</label> <br>
+        <label class="comentarioUser" [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">{{i.text}}</label>
           <img src="../../../assets/report.png"  class="imgReport" (click)="enviarIncidencia(i.id)">
         </div>
       </div>
@@ -22,7 +22,7 @@
 
       <div class="mb-3 row justify-content-center card-footer text-muted input-group barra">
             <div class="col-md-12 barra2">
-              <input
+              <input [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }"
                 type="text"
                 class="form-control "
                 [(ngModel)]="text"
@@ -33,7 +33,7 @@
                 required="required"
               />
               <button
-              type="submit"
+              type="submit" [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }"
               [disabled]="miFormulario.invalid"
               class="custom-btn btn">
               Send
