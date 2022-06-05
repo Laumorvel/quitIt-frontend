@@ -130,3 +130,81 @@ button {
 .textoContainer{
   padding: 0.5rem;
 }
+
+
+
+
+/*PANTALLAS*/
+@media screen and (min-width: 1279px){
+  input{
+    width: 70%;
+    border-radius: 5px;
+    height: 46px;
+    padding-bottom: 7px;
+    margin-right: 2em;
+  }
+  .barra{
+    margin-top: 100px;
+  }
+}
+
+
+/*IPAD*/
+@media screen and (min-width: 769px) and (max-width: 1279px) {
+  input{
+    width: 60%;
+    border-radius: 5px;
+    height: 46px;
+    padding-bottom: 7px;
+    margin-right: 2em;
+    margin-left: 1em;
+  }
+
+  .contenedorDeMensajes{
+    /*overflow: scroll;*/
+      height: 40vh;
+      overflow: auto;
+      scroll-snap-type: y mandatory;
+      margin-bottom: 10px;
+  }
+
+  .barra{
+    margin-top: 370px;
+  }
+
+  form{
+    height: 100px;
+  }
+}
+
+
+/*MOVILES*/
+@media screen and (max-width: 769px) {
+  input{
+    width: 60%;
+    border-radius: 5px;
+    height: 46px;
+    padding-bottom: 7px;
+    margin-right: 10px;
+    margin-left: 1em;
+  }
+  button{
+    width: 22%;
+  }
+
+  .contenedorDeMensajes{
+    /*overflow: scroll;*/
+      height: 80vh;
+      overflow: auto;
+      scroll-snap-type: y mandatory;
+  }
+  .barra{
+    margin-top: 250px;
+  }
+
+}
+
+.imgReport{
+  max-width: 40px;
+  float:right;
+}

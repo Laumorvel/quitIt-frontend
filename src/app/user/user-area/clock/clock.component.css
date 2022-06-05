@@ -77,6 +77,86 @@ p {
   letter-spacing: 3px!important;
 }
 
+<<<<<<< HEAD
 .ocultar{
   z-index: -1;
 }
+=======
+
+/*MOVILES*/
+@media screen and (max-width: 769px) {
+  .tituloOficial {
+    font-family: "Playfair Display", serif;
+    font-family: "Titan One", cursive;
+    font-size: 40px;
+    margin-bottom: 0px !important;
+    color: black;
+    text-shadow: white 0.1em 0.1em 0.2em;
+    text-align: center;
+    line-height: 1;
+  }
+
+  .diasSinfumar{
+    line-height: 1;
+  }
+
+  .progressFont{
+    margin-left: 0px !important;
+  }
+
+  .miniImg {
+    width: 30px;
+    margin: 0 !important;
+  }
+  
+  .datos{
+    margin-top: 18px;
+  }
+
+}
+
+
+
+/*PANTALLAS*/
+@media screen and (min-width: 1279px) {
+  
+  .diasSinfumar{
+    line-height: 1;
+  }
+
+  .progressFont{
+    margin-left: 0px !important;
+  }
+
+  .miniImg {
+    width: 30px;
+    margin: 0 !important;
+  }
+  
+  .datos{
+    margin-top: 18px;
+  }
+}
+
+
+
+/*IPAD*/
+@media screen and (min-width: 769px) and (max-width: 1279px) {
+  .diasSinfumar{
+    line-height: 1;
+  }
+
+  .progressFont{
+    margin-left: 0px !important;
+  }
+
+  .miniImg {
+    width: 30px;
+    margin: 0 !important;
+  }
+  
+  .datos{
+    margin-top: 18px;
+  }
+}
+>>>>>>> 8649788fd0306200185549953eb36bbd373520d5
