@@ -94,6 +94,28 @@
     position: relative;
   }
 
+  .b1{
+    float:right; 
+    margin-right: 0.5em; 
+    margin-bottom:0.1em;
+  }
+
+  .b2{
+    float:left; 
+    margin-left:1.8em!important;
+  }
+
+  .b3{
+    float:left; 
+    margin-left:1.8em;
+    margin-top:0.1em;
+  }
+
+  .b4{
+    float:right; 
+    margin-right:0.5em;
+  }
+
 }
 
 
@@ -101,8 +123,13 @@
 /*IPAD*/
 @media screen and (min-width: 769px) and (max-width: 1279px) {
   button {
-    margin:auto
+    margin:auto;
   }
+
+  .b1,.b2,.b3,.b4{
+    margin-right: 0.5em;
+  }
+
   * {
     margin-left: 0 !important;
     margin-right: 0 !important;
@@ -122,6 +149,10 @@
   button {
     margin:auto
   }
+  .b1,.b2,.b3,.b4{
+    margin-right: 1em!important;
+  }
+
   * {
     margin-left: 0 !important;
     margin-right: 0 !important;
