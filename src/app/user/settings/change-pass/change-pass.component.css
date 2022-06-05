@@ -31,3 +31,7 @@ form{
 .spacing{
   letter-spacing: 3px!important;
 }
+
+.centrado{
+ margin: auto;
+}

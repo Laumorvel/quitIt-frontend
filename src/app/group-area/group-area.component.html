@@ -12,7 +12,7 @@
       <form class="form" autocomplete="off" [formGroup]="myForm">
         <!--GROUP NAME-->
         <div class="form-group">
-          <label for="groupName" [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">Group name</label>
+          <label for="groupName" class="izquierda" [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">Group name</label>
           <input [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }"
             type="text"
             class="form-control"
@@ -145,7 +145,7 @@
       *ngIf="groups.length > 0; else elseBlock"
     >
       <div
-        class="card col-md-2 text-center group"
+        class="card col-md-9 mb-5 col-lg-5 text-center group p-5"
         *ngFor="let group of groups"
         routerLink="/groupArea/group/{{ group.id }}"
       >

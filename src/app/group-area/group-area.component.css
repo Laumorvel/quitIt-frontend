@@ -110,3 +110,20 @@ form{
 .spacing{
   letter-spacing: 3px!important;
 }
+
+
+
+/*MOVILES*/
+@media screen and (max-width: 769px) {
+    .izquierda{
+    float: left;
+  }
+
+  .boton{
+    background-color: #52ab98 ;
+    align-items: center;
+    }
+
+}
+
+
