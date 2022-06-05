@@ -190,6 +190,10 @@ ul ul li:hover {
     z-index: 1 !important;
   }
 
+  .pegar{
+    padding-top: 1em !important;
+  }
+
   .showMobile {
     z-index: 2 !important;
   }
@@ -200,7 +204,6 @@ ul ul li:hover {
   .settings {
     position: relative;
     list-style: none;
-    margin-top: 0.5em;
   }
 
   .settings a {
@@ -236,6 +239,10 @@ ul ul li:hover {
   z-index: 2!important;
   padding-top: 1em!important;
 }
+
+.pegar{
+  padding-top: 1em !important;
+}
 }
 
 .active {
@@ -254,6 +261,12 @@ ul ul li:hover {
   ul ul li{
     display: none!important;
   }
+
+  .show1{
+    margin-top: 1em!important;
+  }
+
+
 }
 
 .botonYes {
@@ -272,5 +285,3 @@ ul ul li:hover {
   background-color: #c8d8e4;
 }
 
-.accesible {
-}

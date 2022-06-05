@@ -77,3 +77,6 @@ p {
   letter-spacing: 3px!important;
 }
 
+.ocultar{
+  z-index: -1;
+}
