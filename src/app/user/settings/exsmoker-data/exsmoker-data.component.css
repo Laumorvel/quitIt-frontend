@@ -78,7 +78,10 @@ background-color: #52ab98 ;
     margin-top: 2em;
   }
 
-  
+  .content{
+    margin-right: 0;
+    margin-left: 0;
+  }
 
 
 }
@@ -89,4 +92,20 @@ background-color: #52ab98 ;
 
 .card-subtitle{
   font-size: 15px;
+}
+
+.botonYes {
+  background-color: #52ab98;
+}
+
+.botonYes:hover {
+  background-color: #c8d8e4;
+}
+
+.botonNo {
+  background-color: #2b6777;
+}
+
+.botonNo:hover {
+  background-color: #c8d8e4;
 }

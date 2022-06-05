@@ -77,6 +77,9 @@ p {
   letter-spacing: 3px!important;
 }
 
+.ocultar{
+  z-index: -1;
+}
 
 /*MOVILES*/
 @media screen and (max-width: 769px) {
@@ -103,7 +106,7 @@ p {
     width: 30px;
     margin: 0 !important;
   }
-  
+
   .datos{
     margin-top: 18px;
   }
@@ -114,7 +117,7 @@ p {
 
 /*PANTALLAS*/
 @media screen and (min-width: 1279px) {
-  
+
   .diasSinfumar{
     line-height: 1;
   }
@@ -127,7 +130,7 @@ p {
     width: 30px;
     margin: 0 !important;
   }
-  
+
   .datos{
     margin-top: 18px;
   }
@@ -149,7 +152,7 @@ p {
     width: 30px;
     margin: 0 !important;
   }
-  
+
   .datos{
     margin-top: 18px;
   }
