@@ -3,15 +3,15 @@
     <h1 class="title" [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">Change your password!</h1>
 
     <form
-      class="contact-form row"
+      class="contact-form row formulario"
       autocomplete="off"
       [formGroup]="miFormulario"
       (ngSubmit)="submitFormulario()"
       class="m-4"
     >
       <!-- Current password -->
-      <div class="row mx-5 centrado">
-        <div class="form-group col-md-6">
+      <div class="row margin centrado column">
+        <div class="form-group col-md-6 campos">
           <input [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }"
             type="password"
             placeholder="*Current password"
@@ -30,8 +30,8 @@
         </div>
       </div>
         <!--  new password -->
-        <div class="row mx-5">
-          <div class="form-group col-md-6 " >
+        <div class="row margin column ">
+          <div class="form-group col-md-4 newPassword campos" >
             <input [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }"
               type="password"
               placeholder="*New password"
@@ -49,7 +49,7 @@
           </div>
           <br>
           <!-- Password2 -->
-          <div class="form-group col-md-6 ">
+          <div class="form-group col-md-4 campos">
             <input [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }"
               type="password"
               placeholder="*Confirm password"

@@ -35,3 +35,57 @@ form{
 .centrado{
  margin: auto;
 }
+
+.margin{
+  margin-right: 3rem;
+  margin-left: 3rem;
+}
+
+
+.izq{
+  float: left;
+}
+
+.der{
+  float:right;
+}
+
+/*MOVILES*/
+@media screen and (max-width: 769px) {
+
+  .get-in-touch{
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  .formulario{
+    margin-right: 0!important;
+    margin-left: 0!important;
+  }
+
+  .column{
+    margin-left: 0!important;
+    margin-right: 0!important;
+    text-align:center;
+  }
+
+  input{
+    width: 90%;
+  }
+
+}
+
+
+/*IPAD*/
+@media screen and (min-width: 769px) and (max-width: 1279px) {
+ .newPassword{
+   margin-right: 13rem;
+ }
+}
+
+/*PANTALLAS*/
+@media screen and (min-width: 1279px) {
+  form{
+    margin-right: 5rem!important;
+  }
+}
