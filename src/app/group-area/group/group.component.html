@@ -1,8 +1,8 @@
 <p [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }" class="title mt-2 mb-5">{{ group.name }}</p>
 <div class="row">
-  <div class="row">
+  <div class="row gx-0" >
     <!--OPCIONES DE GRUPO-->
-    <div class="mt-5">
+    <div class="mt-5 mb-4">
       <button class="btn boton text-center" (click)="addMember()" [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">
         Add member
       </button>
@@ -105,8 +105,10 @@
         </form>
       </div>
     </div>
+
+
     <!--INFO DE GRUPO-->
-    <div class="row clase justify-content-around">
+    <div class="row gx-0 clase justify-content-around">
       <div class="col-4 members">
         <p class="titleMembers mb-4" [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">Members</p>
         <div class="text-center">

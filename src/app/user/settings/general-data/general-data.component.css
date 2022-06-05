@@ -76,3 +76,17 @@ label{
 .boton:hover{
   background-color: #226456;
 }
+
+
+/*MOVILES*/
+@media screen and (max-width: 769px) {
+ .card{
+   word-wrap: normal;
+   margin: auto !important;
+   margin-top: 2em !important;
+ } 
+
+ .title{
+  margin-top: 1em !important;
+ }
+}

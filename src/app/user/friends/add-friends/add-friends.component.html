@@ -18,7 +18,7 @@
 
     <div *ngIf="usuarioRecibido">
       <div class="grid">
-
+        
         <div class="cardcontainer" *ngFor="let i of usuariosEncontrados">
           <img *ngIf="i.imageUrl != null; else elseBlock"  src="{{i.imageUrl}}" width="300" height="150" alt="User image"/>
           <ng-template #elseBlock> <img src="https://picsum.photos/300/150" width="300" height="150" alt="placeholder"></ng-template>

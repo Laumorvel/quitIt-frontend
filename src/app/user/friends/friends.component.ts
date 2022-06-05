@@ -34,11 +34,16 @@ export class FriendsComponent implements OnInit {
   checkmyfriends(){
     this.checkmyfriendsVisible=true;
     this.newfriendsVisible=false;
+
+
   }
 
   newfriends(){
     this.checkmyfriendsVisible=false;
     this.newfriendsVisible=true;
+
+
+
   }
 
 }

@@ -16,40 +16,40 @@
       <div class="tituloOficial" [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">Your progress!</div>
       <div>
         <img src="../../../../assets/clock.png" class="imgClock mt-3 mb-3" />
-        <p [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">{{ user.daysInARowWithoutSmoking }} days in a row without smoking</p>
+        <p [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }" class="diasSinfumar">{{ user.daysInARowWithoutSmoking }} days in a row without smoking</p>
       </div>
     </div>
   </div>
 
   <div class="row text-center mt-5">
-    <div class="col-12 progreso">
-      <div class="subtitulo">
-        <label [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }" class="progressFont">Smoke free days</label>
+  
+      <div class="subtitulo col-12 col-md-4">
+        <label [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }" class="progressFont col-12">Smoke free days</label>
         <img src="../../../../assets/calendar.png" class="miniImg" />
-        <p [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">{{ user.totalTimeWithoutSmoking }}</p>
+        <p [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }" class="datos">{{ user.totalTimeWithoutSmoking }}</p>
       </div>
 
-      <div class="subtitulo">
-        <label [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }" class="progressFont">Cigarettes avoided</label
+      <div class="subtitulo col-12 col-md-4">
+        <label [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }" class="progressFont col-12">Cigarettes avoided</label
         ><img src="../../../../assets/no-smoking.png" class="miniImg" />
-        <p [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">{{ user.cigarettesAvoided }}</p>
+        <p [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }" class="datos">{{ user.cigarettesAvoided }}</p>
       </div>
 
-      <div class="subtitulo">
-        <label [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }" class="progressFont">Money Saved</label
+      <div class="subtitulo col-12 col-md-4">
+        <label [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }" class="progressFont col-12">Money Saved</label
         ><img src="../../../../assets/piggy-bank.png" class="miniImg" />
-        <p [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">{{ user.moneySaved }}€</p>
+        <p [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }" class="datos">{{ user.moneySaved }}€</p>
       </div>
-    </div>
+   
   </div>
   <div class="text-center">
     <button
-      class="btn fail mb-4"
+      class="btn fail mb-5 mt-4"
       data-bs-toggle="modal"
       data-bs-target="#cigarettesModal"
       routerLinkActive="active"
     >
-      <strong [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }"> I failed! </strong>
+      <strong [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }" > I failed! </strong>
     </button>
 
     <div [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }"

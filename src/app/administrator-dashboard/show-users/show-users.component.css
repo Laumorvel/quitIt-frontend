@@ -26,6 +26,10 @@
   .td {
     display: table-cell;
     vertical-align: middle;
+    position: absolute;
+    margin-left: 20px;
+    right: 23%;
+  
   }
   
   input,
@@ -44,7 +48,8 @@
    /* top: 25%;
     left: 40px;
     right: 0;*/
-    width: 500px;
+    width: 400px;
+    height: 150px;
     padding: 35px;
     /*margin: -83px auto 0 auto;*/
     margin-right: 2em;
@@ -52,6 +57,7 @@
     border-radius: 20px;
     box-shadow: 0 10px 40px #2b6777, 0 0 0 20px #ffffffeb;
     transform: scale(0.6);
+    
   }
   
   form {

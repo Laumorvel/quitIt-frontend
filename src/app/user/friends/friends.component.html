@@ -1,14 +1,14 @@
-<div class="row" [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">
-    <div class="col-lg-12 col-xs-6">
+<div class="row gx-0 divTituloBotones" [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">
+    <div class="col-lg-10 col-xs-6 divPrincipal">
         <h1 class="text-center titulo" [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }"> WELCOME {{user.name | uppercase}} TO THE FRIENDS AREA!</h1>
         <div class="frame text-center" [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">
-            <button class="custom-btn btn" (click)="checkmyfriends()"><span [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">Check my friends</span></button>
-            <button class="custom-btn btn" (click)="newfriends()"><span [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">Search user</span></button>
+            <button class="custom-btn btn" id="boton1" (click)="checkmyfriends()"><span [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">Check my friends</span></button>
+            <button class="custom-btn btn" id="boton2" (click)="newfriends()"><span [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">Search user</span></button>
           </div>
     </div>
   </div>
 
-  <div *ngIf="checkmyfriendsVisible">
+  <div *ngIf="checkmyfriendsVisible" >
     <app-show-friends></app-show-friends>
 </div>
 

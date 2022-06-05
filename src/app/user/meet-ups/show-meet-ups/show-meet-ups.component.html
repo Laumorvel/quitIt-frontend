@@ -1,65 +1,3 @@
-
-<div class="contenedor" [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">
-
-    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
-      <thead>
-        <tr [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">
-          <th  [ngClass]="{ dyslexia: dyslexia }">Name</th>
-          <th  [ngClass]="{ dyslexia: dyslexia }">Type</th>
-          <th  [ngClass]="{ dyslexia: dyslexia }">Date</th>
-          <th  [ngClass]="{ dyslexia: dyslexia }">Attendace</th>
-          <th  [ngClass]="{ dyslexia: dyslexia }">Place</th>
-          <th  [ngClass]="{ dyslexia: dyslexia }">Choice</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let i of meetUps" if="listaCargada">
-
-          <td  [ngClass]="{ dyslexia: dyslexia }">{{ i.title }}</td>
-          <td  [ngClass]="{ dyslexia: dyslexia }">{{ i.type }}</td>
-          <td  [ngClass]="{ dyslexia: dyslexia }">{{ i.date | date: 'dd-MM-yyyy' }} {{ i.date | date: 'HH:mm' }}</td>
-          <td  [ngClass]="{ dyslexia: dyslexia }">{{ i.assistantsList.length}}</td>
-          <td  [ngClass]="{ dyslexia: dyslexia }">{{ i.place }}</td>
-          <td><img  [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }" src="../../../../assets/meetups/cheque.png" class="img1" (click)="asistenciaMeetUp(i.id)"> <img src="../../../../assets/meetups/cancelar.png" class="img2" (click)="noAsistenciaMeetUp(i.id)"></td>
-
-          <!--
-          <td class="text-center">
-            <div *ngFor="let j of i.assistantsList">
-              <div *ngIf="j.username===user.username">
-
-              </div>
-              <div>
-
-              </div>
-
-              <ng-container
-              *ngIf="j.username===user.username; then userYes; else userNo">
-            </ng-container>
-
-            <ng-template #userYes>
-              <div>
-                <img  src="../../../../assets/meetups/cheque.png" class="img1 border" (click)="asistenciaMeetUp(i.id)">  <img src="../../../../assets/meetups/cancelar.png" class="img2" (click)="noAsistenciaMeetUp(i.id)">
-              </div>
-            </ng-template>
-            <ng-template #userNo>
-              <div>
-                <img  src="../../../../assets/meetups/cheque.png" class="img1" (click)="asistenciaMeetUp(i.id)">  <img src="../../../../assets/meetups/cancelar.png" class="img2 border" (click)="noAsistenciaMeetUp(i.id)">
-              </div>
-            </ng-template>
-              </div>
-          </td>-->
-
-
-        </tr>
-      </tbody>
-    </table>
-    </div>-->
-
-
-
-
-
-
 <!--TABS-->
 <div class="container justify-content-center col-md-9 col-sm-12 col-xs-12">
   <!--Pestañas-->
@@ -143,7 +81,7 @@
       </table>
     </div>
 
-    <!--FOOD-->
+    <!--USER ATTENDACE-->
     <div
       class="tab-pane fade"
       id="attendance"
@@ -177,7 +115,7 @@
       </table>
     </div>
 
-    <!--SPORT-->
+    <!--USER NOT ATTENDACE-->
     <div
       class="tab-pane fade"
       id="notAttendance"
