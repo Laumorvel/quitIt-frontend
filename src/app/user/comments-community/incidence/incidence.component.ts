@@ -35,7 +35,6 @@ this.getComentario();
     this.userService.buscarComentariosPorId(this.idComentario!).subscribe({
       next: (resp) => {
         this.comentario = resp;
-        console.log(resp);
       },
       error: (e) => {
         Swal.fire({
@@ -61,7 +60,6 @@ this.getComentario();
        
      }),
       error: resp => {
-        console.log(resp.message);
         Swal.fire({
           title:'Error',
           icon: 'error',
@@ -85,7 +83,6 @@ this.getComentario();
        
      }),
       error: resp => {
-        console.log(resp.message);
         Swal.fire({
           title:'Error',
           icon: 'error',

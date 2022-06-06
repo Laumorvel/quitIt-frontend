@@ -65,7 +65,6 @@ export class ShowMeetUpsComponent implements OnDestroy, OnInit  {
         next: (resp) => {
           this.meetUps = resp;
           this.dtTrigger.next(null);
-          console.log(resp);
         },
         error: (e) => {
           Swal.fire({
@@ -87,8 +86,6 @@ export class ShowMeetUpsComponent implements OnDestroy, OnInit  {
           next: (resp) => {
             this.userAttendace = resp;
             this.dtTrigger.next(null);
-            console.log("QUE ASISTEAL MEET UP" );
-            console.log(this.userAttendace);
           },
           error: (e) => {
             Swal.fire({
@@ -110,8 +107,6 @@ export class ShowMeetUpsComponent implements OnDestroy, OnInit  {
         next: (resp) => {
           this.userNotAttendace=resp;
           this.dtTrigger.next(null);
-          console.log("QUE NO ASISTE AL MEET UP");
-          console.log(resp);
         },
         error: (e) => {
           Swal.fire({
@@ -136,7 +131,6 @@ export class ShowMeetUpsComponent implements OnDestroy, OnInit  {
           this.cargarMeetUps();
           this.getAllMeetUpsUserAttendance();
           this.dtTrigger.next(null);
-          console.log(resp);
         },
         error: (e) => {
           Swal.fire({
@@ -157,7 +151,6 @@ export class ShowMeetUpsComponent implements OnDestroy, OnInit  {
         this.cargarMeetUps();
         this.getAllMeetUpsUserNotAttendance();
         this.dtTrigger.next(null);
-        console.log(resp);
       },
       error: (e) => {
         Swal.fire({

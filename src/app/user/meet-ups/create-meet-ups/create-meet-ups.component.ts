@@ -51,7 +51,6 @@ export class CreateMeetUpsComponent implements OnInit {
         });
      }),
       error: resp => {
-        console.log(resp.message);
         Swal.fire({
           title:'Error',
           icon: 'error',

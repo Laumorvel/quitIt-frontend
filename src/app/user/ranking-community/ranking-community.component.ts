@@ -49,10 +49,7 @@ export class RankingCommunityComponent implements  OnDestroy, OnInit {
   mostrarUsuarios(){
     this.userService.mostrarUsuarios().subscribe({
       next: (resp:any) => {
-     //   console.log("ok");
-     //   console.log(resp);
         this.users=resp;
-       console.log(this.users);
         this.dtTrigger.next(null);
       },
       error: (e) => {

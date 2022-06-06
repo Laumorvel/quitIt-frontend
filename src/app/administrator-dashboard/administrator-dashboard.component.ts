@@ -26,7 +26,6 @@ export class AdministratorDashboardComponent implements OnInit {
     this.adminService.buscarIncidencias().subscribe({
       next: (resp) => {
         this.incidencias = resp;
-        console.log(resp);
       },
       error: (e) => {
         Swal.fire({
