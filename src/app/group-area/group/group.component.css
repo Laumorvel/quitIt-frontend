@@ -95,25 +95,39 @@
   }
 
   .b1{
-    float:right; 
-    margin-right: 0.5em; 
+    float:right;
+    margin-right: 0.5em;
     margin-bottom:0.1em;
   }
 
   .b2{
-    float:left; 
+    float:left;
     margin-left:1.8em!important;
   }
 
   .b3{
-    float:left; 
+    float:left;
     margin-left:1.8em;
     margin-top:0.1em;
   }
 
   .b4{
-    float:right; 
+    float:right;
     margin-right:0.5em;
+  }
+
+  .infoGrupo{
+    margin-left: 1rem;
+  }
+
+
+  .chatDiv{
+    margin: 0;
+  }
+
+  .addMemberForm{
+    margin-left: 2rem;
+    margin-bottom: 2rem;
   }
 
 }
@@ -142,6 +156,7 @@
   position: relative;
   margin-left: 3em;
 }
+
 }
 
 /*PANTALLAS*/

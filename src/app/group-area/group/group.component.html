@@ -108,7 +108,7 @@
 
 
     <!--INFO DE GRUPO-->
-    <div class="row gx-0 clase justify-content-around">
+    <div class="row gx-0 clase justify-content-around infoGrupo">
       <div class="col-md-4 col-12 members">
         <p class="titleMembers mb-4" [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">Members</p>
         <div class="text-center">
@@ -164,7 +164,7 @@
         <app-ranking-group [reload]="reload"></app-ranking-group>
       </div>
     </div>
-    <div class="row justify-content-center chat mb-5">
+    <div class="row justify-content-center chat mb-5 chatDiv">
       <div class="col-9 chat">
         <p [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }" class="titleMembers">CHAT</p>
         <app-comments-group></app-comments-group>
