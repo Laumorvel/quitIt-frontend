@@ -34,7 +34,8 @@ export class ShowMeetUpsComponent implements OnDestroy, OnInit  {
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 10,
-      ordering: true
+      ordering: true,
+      responsive: true
 
     };
 

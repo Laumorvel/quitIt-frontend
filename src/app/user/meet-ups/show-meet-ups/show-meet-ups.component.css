@@ -31,3 +31,7 @@
 .spacing{
   letter-spacing: 3px!important;
 }
+
+table{
+  width: 100% ;
+}

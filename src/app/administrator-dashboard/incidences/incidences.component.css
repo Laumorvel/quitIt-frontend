@@ -1,5 +1,4 @@
 
-
 table {
     border-collapse: collapse;
     border-spacing: 0;
@@ -30,3 +29,13 @@ table {
     color: red;
   }
 
+select{
+  margin-left: 0.5em;
+}
+
+/*IPAD*/
+@media screen and (min-width: 769px) and (max-width: 1279px) {
+  select{
+    margin-left: 0 !important;
+  }
+}
