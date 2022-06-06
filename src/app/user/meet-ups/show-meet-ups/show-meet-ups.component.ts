@@ -11,22 +11,17 @@ import { UserService } from '../../services/user.service';
   templateUrl: './show-meet-ups.component.html',
   styleUrls: ['./show-meet-ups.component.css'],
 })
-export class ShowMeetUpsComponent implements OnDestroy, OnInit {
+export class ShowMeetUpsComponent implements  OnInit {
   meetUps: MeetUP[] = [];
   userAttendace: MeetUP[] = [];
   userNotAttendace: MeetUP[] = [];
   choice!: String;
 
+  carga:boolean=false;
+
   user: User = JSON.parse(<string>localStorage.getItem('user'));
 
-  dtOptions: DataTables.Settings = {};
-  @ViewChildren(DataTableDirective)
-  dtElements: DataTableDirective[] = [];
-  dtTrigger: Subject<any> = new Subject();
-  dtTrigger1: Subject<any> = new Subject();
-  dtTrigger2: Subject<any> = new Subject();
-
-  listaCargada: boolean = false;
+  scrollableTabs: any[] = Array.from({ length: 50 }, (_, i) => ({ title: `Tab ${i + 1}`, content: `Tab ${i + 1} Content` }));
 
   dyslexia: boolean = false;
   cursor: boolean = false;
@@ -43,11 +38,6 @@ export class ShowMeetUpsComponent implements OnDestroy, OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.dtOptions = {
-      pagingType: 'full_numbers',
-      pageLength: 10,
-      ordering: true,
-    };
 
 
     this.accesibilityService.searchChangesBoolean().subscribe((opcion) => {
@@ -60,6 +50,8 @@ export class ShowMeetUpsComponent implements OnDestroy, OnInit {
       this.spacing = option;
     });
 
+    this.cargarMeetUps();
+
     this.getAllMeetUpsUserAttendance();
     this.getAllMeetUpsUserNotAttendance();
   }
@@ -71,7 +63,8 @@ export class ShowMeetUpsComponent implements OnDestroy, OnInit {
     this.userService.buscarMeetUps().subscribe({
       next: (resp) => {
         this.meetUps = resp;
-        this.rerender();
+       
+        console.log(this.meetUps)
       },
       error: (e) => {
         Swal.fire({
@@ -94,7 +87,7 @@ export class ShowMeetUpsComponent implements OnDestroy, OnInit {
         this.userAttendace = resp;
         this.getAllMeetUpsUserNotAttendance();
         this.callMeetUpsNonAttendance();
-        this.rerender();
+       
       },
       error: (e) => {
         Swal.fire({
@@ -111,7 +104,7 @@ export class ShowMeetUpsComponent implements OnDestroy, OnInit {
     this.userService.getAllMeetUpsUserAttendance().subscribe({
       next: (resp) => {
         this.userAttendace = resp;
-        this.rerender();
+       
       },
       error: (e) => {
         Swal.fire({
@@ -128,7 +121,7 @@ export class ShowMeetUpsComponent implements OnDestroy, OnInit {
     this.userService.getAllMeetUpsUserNotAttendance().subscribe({
       next: (resp) => {
         this.userNotAttendace = resp;
-        this.rerender();
+       
       },
       error: (e) => {
         Swal.fire({
@@ -149,7 +142,7 @@ export class ShowMeetUpsComponent implements OnDestroy, OnInit {
       next: (resp) => {
         this.userNotAttendace = resp;
         this.callMeetUpsAttendance();
-        this.rerender();
+       
       },
       error: (e) => {
         Swal.fire({
@@ -167,7 +160,7 @@ export class ShowMeetUpsComponent implements OnDestroy, OnInit {
       next: (resp) => {
         this.cargarMeetUps();
         this.getAllMeetUpsUserAttendance();
-        this.rerender();
+       
       },
       error: (e) => {
         Swal.fire({
@@ -185,7 +178,7 @@ export class ShowMeetUpsComponent implements OnDestroy, OnInit {
       next: (resp) => {
         this.cargarMeetUps();
         this.getAllMeetUpsUserNotAttendance();
-        this.rerender();
+       
       },
       error: (e) => {
         Swal.fire({
@@ -198,28 +191,16 @@ export class ShowMeetUpsComponent implements OnDestroy, OnInit {
     });
   }
 
-  /**
-   * Función para renderizar la tabla tras añadirle nuevos datos o modificarlos.
-   */
-  rerender(): void {
-    this.dtElements.forEach((dtElement: DataTableDirective) => {
-      if (dtElement.dtInstance)
-        dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
-          dtInstance.destroy();
-        });
-    });
-    this.dtTrigger.next(this.dtOptions);
-    this.dtTrigger1.next(this.dtOptions);
-    this.dtTrigger2.next(this.dtOptions);
+
+
+
+  applyFilterGlobal($event: any, stringVal: any,  dt: any) {
+    dt!.filterGlobal(($event.target as HTMLInputElement).value, 'contains');
   }
 
-  ngOnDestroy() {
-    this.meetUps = [];
-    this.userAttendace = [];
-    this.userNotAttendace = [];
-  }
 
-  // ngOnDestroy(): void {
-  //   this.dtTrigger.unsubscribe();
-  // }
+
+
+
+
 }
