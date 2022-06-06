@@ -27,4 +27,8 @@ export class UserAreaComponent implements OnInit {
     })
   }
 
+  goToMeetUps(){
+    window.location.href = 'http://localhost:4200/meetUps';
+  }
+
 }
