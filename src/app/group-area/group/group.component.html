@@ -3,29 +3,29 @@
   <div class="row gx-0" >
     <!--OPCIONES DE GRUPO-->
     <div class="mt-5 mb-4">
-      <button class="btn boton text-center" style="float:right; margin-right: 0.5em; margin-bottom:0.1em" (click)="addMember()" [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">
+      <button class="btn boton text-center b1" (click)="addMember()" [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">
         Add member
       </button>
-      <button style="float:left; margin-left:1.8em" [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }"
+      <button [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }"
         *ngIf="checkUsersRole()"
-        class="btn boton text-center"
+        class="btn boton text-center b2"
         data-bs-toggle="modal"
         data-bs-target="#deleteMemberModal"
         routerLinkActive="active"
       >
         Delete member
       </button>
-      <button style="float:left; margin-left:1.8em;margin-top:0.1em" [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }"
-        class="btn boton text-center"
+      <button [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }"
+        class="btn boton text-center b3"
         data-bs-toggle="modal"
         data-bs-target="#leaveGroupModal"
         routerLinkActive="active"
       >
         Leave group
       </button>
-      <button style="float:right; margin-right:0.5em" [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }"
+      <button [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }"
         *ngIf="checkUsersRole()"
-        class="btn boton text-center"
+        class="btn boton text-center b4"
         data-bs-toggle="modal"
         data-bs-target="#deleteGroupModal"
         routerLinkActive="active"
@@ -108,7 +108,7 @@
 
 
     <!--INFO DE GRUPO-->
-    <div class="row gx-0 clase justify-content-around">
+    <div class="row gx-0 clase justify-content-around infoGrupo">
       <div class="col-md-4 col-12 members">
         <p class="titleMembers mb-4" [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }">Members</p>
         <div class="text-center">
@@ -164,7 +164,7 @@
         <app-ranking-group [reload]="reload"></app-ranking-group>
       </div>
     </div>
-    <div class="row justify-content-center chat mb-5">
+    <div class="row justify-content-center chat mb-5 chatDiv">
       <div class="col-9 chat">
         <p [ngClass]="{ dyslexia: dyslexia, biggerCursor: cursor, spacing: spacing }" class="titleMembers">CHAT</p>
         <app-comments-group></app-comments-group>

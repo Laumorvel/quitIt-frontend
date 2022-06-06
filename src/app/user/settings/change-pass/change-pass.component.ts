@@ -41,8 +41,6 @@ export class ChangePassComponent implements OnInit {
 
   get actuallypasswordError(): string {
     const errors = this.miFormulario.get('password')?.errors!;
-    console.log(errors)
-    console.log(!this.miFormulario.get('password')?.errors!['passwordCodigo'])
     if (errors['required']) {
       return 'Password required';
     }
