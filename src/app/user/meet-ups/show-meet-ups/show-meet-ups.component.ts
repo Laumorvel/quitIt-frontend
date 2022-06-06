@@ -49,8 +49,6 @@ export class ShowMeetUpsComponent implements OnDestroy, OnInit {
       ordering: true,
     };
 
-    this.listaCargada = true;
-    this.cargarMeetUps();
 
     this.accesibilityService.searchChangesBoolean().subscribe((opcion) => {
       this.dyslexia = opcion;
