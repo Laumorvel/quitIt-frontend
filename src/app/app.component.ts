@@ -60,8 +60,7 @@ export class AppComponent {
    */
   checkRoute() {
     let route = this.router.url.split('?')[0].split('/').pop(); //consigo la última parte de la url
-    //route = this.checkAUxRouter(route);
-    //console.log(route);
+    
     if (route != undefined) {
       //es necesario hacer esta comprobación para que no nos diga que puede ser undefined
       if (this.administratorRoutes.includes(route)) {

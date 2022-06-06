@@ -364,7 +364,6 @@ export class GroupComponent implements OnInit {
     this.editing = false;
     let member = this.group.groupMembers.filter(f => f.user.username == this.usernameEditing)[0];
     member.cargo = this.cargoOption;
-    console.log(this.cargoOption)
     if(member.id != undefined)
     this.groupMemberService.changeRoleOfmember(member.id, this.id, member).subscribe({
       next: (resp) => {

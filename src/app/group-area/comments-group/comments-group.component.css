@@ -43,21 +43,6 @@ button {
 }
 
 
-/*IPAD*/
-@media screen and (min-width: 769px) and (max-width: 1279px) {
-  .form-control {
-    margin-left: 2em !important;
-    width: 600px;
-  }
-
-  button {
-    background-color: #52ab98;
-    color: white;
-    width: 150px;
-    margin-right: 2em;
-  }
-}
-
 /*EH AQUI EL CHAT!*/
 .cardContainer {
   height: 500px;
@@ -99,12 +84,7 @@ button {
   margin-bottom: 1em;
 }
 
-.contenedorDeMensajes {
-  /*overflow: scroll;*/
-  height: 50vh;
-  overflow: auto;
-  scroll-snap-type: y mandatory;
-}
+
 
 .contenedorDeMensajes::-webkit-scrollbar {
   display: none; /*ESTO ES PARA QUE LA BARRA DE SCROLL NO SE VEA*/
@@ -146,6 +126,12 @@ button {
   .barra{
     margin-top: 100px;
   }
+  .contenedorDeMensajes {
+    /*overflow: scroll;*/
+    height: 106%;
+    overflow: auto;
+    scroll-snap-type: y mandatory;
+  }
 }
 
 
@@ -160,6 +146,18 @@ button {
     margin-left: 1em;
   }
 
+  .form-control {
+    margin-left: 2em !important;
+    width: 600px;
+  }
+
+  button {
+    background-color: #52ab98;
+    color: white;
+    width: 150px;
+    margin-right: 2em;
+  }
+
   .contenedorDeMensajes{
     /*overflow: scroll;*/
       height: 40vh;
@@ -170,6 +168,14 @@ button {
 
   .barra{
     margin-top: 370px;
+  }
+
+  .texto{
+    width: 100%;
+  }
+
+  .textoContainer{
+    justify-content: center;
   }
 
   form{
@@ -194,12 +200,24 @@ button {
 
   .contenedorDeMensajes{
     /*overflow: scroll;*/
-      height: 80vh;
+      /*height: 80vh;*/
       overflow: auto;
       scroll-snap-type: y mandatory;
   }
+
+  #contenedorDeMensajes{
+    height: 106%;
+  }
   .barra{
     margin-top: 250px;
+  }
+
+  .texto{
+    width: 100%;
+  }
+
+  .send{
+    width: 40%;
   }
 
 }

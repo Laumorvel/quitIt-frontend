@@ -32,6 +32,7 @@
   letter-spacing: 3px!important;
 }
 
-table{
-  width: 100% ;
+
+img:hover{
+  cursor:pointer;
 }

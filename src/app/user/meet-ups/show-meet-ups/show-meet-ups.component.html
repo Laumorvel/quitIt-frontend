@@ -26,7 +26,7 @@
         aria-controls="attendance"
         aria-selected="false"
       >
-        Attendance
+        Going
       </button>
     </li>
     <li class="nav-item">
@@ -39,7 +39,7 @@
         aria-controls="notAttendance"
         aria-selected="false"
       >
-        Not Attendance
+        Not Going
       </button>
     </li>
   </ul>
@@ -91,7 +91,7 @@
       <table
         datatable="ng"
         [dtOptions]="dtOptions"
-        [dtTrigger]="dtTrigger"
+        [dtTrigger]="dtTrigger1"
         class="table table-striped table-bordered row-border table-hover"
       >
         <thead>
@@ -125,7 +125,7 @@
       <table
         datatable
         [dtOptions]="dtOptions"
-        [dtTrigger]="dtTrigger"
+        [dtTrigger]="dtTrigger2"
         class="table table-striped table-bordered row-border table-hover"
       >
         <thead>
