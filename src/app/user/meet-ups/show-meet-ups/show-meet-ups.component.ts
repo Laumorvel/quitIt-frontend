@@ -11,26 +11,21 @@ import { UserService } from '../../services/user.service';
   templateUrl: './show-meet-ups.component.html',
   styleUrls: ['./show-meet-ups.component.css'],
 })
-export class ShowMeetUpsComponent implements  OnInit {
+export class ShowMeetUpsComponent implements OnInit {
   meetUps: MeetUP[] = [];
   userAttendace: MeetUP[] = [];
   userNotAttendace: MeetUP[] = [];
   choice!: String;
-
-  carga:boolean=false;
-
+  carga: boolean = false;
   user: User = JSON.parse(<string>localStorage.getItem('user'));
-
-  scrollableTabs: any[] = Array.from({ length: 50 }, (_, i) => ({ title: `Tab ${i + 1}`, content: `Tab ${i + 1} Content` }));
+  scrollableTabs: any[] = Array.from({ length: 50 }, (_, i) => ({
+    title: `Tab ${i + 1}`,
+    content: `Tab ${i + 1} Content`,
+  }));
 
   dyslexia: boolean = false;
   cursor: boolean = false;
   spacing: boolean = false;
-
-  //Variable necesarias para no crear un bucle infinito
-  //al actualizar las listas
-  clickNo:boolean = false;
-  clickYes:boolean = false;
 
   constructor(
     private userService: UserService,
@@ -38,8 +33,6 @@ export class ShowMeetUpsComponent implements  OnInit {
   ) {}
 
   ngOnInit(): void {
-
-
     this.accesibilityService.searchChangesBoolean().subscribe((opcion) => {
       this.dyslexia = opcion;
     });
@@ -80,13 +73,11 @@ export class ShowMeetUpsComponent implements  OnInit {
    * Recupera todos los meet ups a los que el usurio asiste
    */
   getAllMeetUpsUserAttendance() {
-    
     this.userService.getAllMeetUpsUserAttendance().subscribe({
       next: (resp) => {
         this.userAttendace = resp;
         this.getAllMeetUpsUserNotAttendance();
         this.callMeetUpsNonAttendance();
-       
       },
       error: (e) => {
         Swal.fire({
@@ -99,11 +90,10 @@ export class ShowMeetUpsComponent implements  OnInit {
     });
   }
 
-  callMeetUpsAttendance(){
+  callMeetUpsAttendance() {
     this.userService.getAllMeetUpsUserAttendance().subscribe({
       next: (resp) => {
         this.userAttendace = resp;
-       
       },
       error: (e) => {
         Swal.fire({
@@ -116,11 +106,10 @@ export class ShowMeetUpsComponent implements  OnInit {
     });
   }
 
-  callMeetUpsNonAttendance(){
+  callMeetUpsNonAttendance() {
     this.userService.getAllMeetUpsUserNotAttendance().subscribe({
       next: (resp) => {
         this.userNotAttendace = resp;
-       
       },
       error: (e) => {
         Swal.fire({
@@ -141,7 +130,6 @@ export class ShowMeetUpsComponent implements  OnInit {
       next: (resp) => {
         this.userNotAttendace = resp;
         this.callMeetUpsAttendance();
-       
       },
       error: (e) => {
         Swal.fire({
@@ -154,12 +142,15 @@ export class ShowMeetUpsComponent implements  OnInit {
     });
   }
 
+  /**
+   * Se inscribe al user en un meetUp
+   * @param id
+   */
   asistenciaMeetUp(id: number) {
     this.userService.asistenciaMeetUp(id).subscribe({
       next: (resp) => {
         this.cargarMeetUps();
         this.getAllMeetUpsUserAttendance();
-       
       },
       error: (e) => {
         Swal.fire({
@@ -177,7 +168,6 @@ export class ShowMeetUpsComponent implements  OnInit {
       next: (resp) => {
         this.cargarMeetUps();
         this.getAllMeetUpsUserNotAttendance();
-       
       },
       error: (e) => {
         Swal.fire({
@@ -190,16 +180,7 @@ export class ShowMeetUpsComponent implements  OnInit {
     });
   }
 
-
-
-
-  applyFilterGlobal($event: any, stringVal: any,  dt: any) {
+  applyFilterGlobal($event: any, stringVal: any, dt: any) {
     dt!.filterGlobal(($event.target as HTMLInputElement).value, 'contains');
   }
-
-
-
-
-
-
 }

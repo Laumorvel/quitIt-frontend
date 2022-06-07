@@ -1,32 +1,54 @@
 <div class="row ml-auto" id="cover">
-  <div class="col "></div>
-    <form method="get" action="">
-      <div class="tb">
-        <div class="td"><input type="text" name="busqueda" [(ngModel)]="busqueda" placeholder="Search user" required></div>
-        <div class="td" id="s-cover">
-          <button type="submit" (click)="buscarUser()">
-            <div id="s-circle"></div>
-            <span></span>
-          </button>
-        </div>
+  <div class="col"></div>
+  <form method="get" action="">
+    <div class="tb">
+      <div class="td">
+        <input
+          type="text"
+          name="busqueda"
+          [(ngModel)]="busqueda"
+          placeholder="Search user"
+          required
+        />
       </div>
-    </form>
+      <div class="td" id="s-cover">
+        <button type="submit" (click)="buscarUser()">
+          <div id="s-circle"></div>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </form>
 </div>
 
-  <div *ngIf="usuarioRecibido">
-    <div class="grid">
-      <div class="cardcontainer" *ngFor="let i of usuariosEncontrados">
-        <img *ngIf="i.imageUrl != null; else elseBlock"  src="{{i.imageUrl}}" width="300" height="150" alt="User image"/>
-        <ng-template #elseBlock> <img src="https://picsum.photos/300/150" width="300" height="150" alt="placeholder"></ng-template>
-        <h1 class="text-center mt-1">{{i.username}}</h1><br>
-        <p class="mt-4">Name: {{i.name}}</p>
-        <p>Lastname: {{i.lastName}}</p>
-        <p>Email: {{i.email}}</p>
-        <p>Start date: {{i.startDate}}</p>
-        <button (click)="deleteUser(i.id)" class="btnDelete">Delete user</button>
-      </div>
+<div *ngIf="usuarioRecibido">
+  <div class="grid">
+    <div class="cardcontainer" *ngFor="let i of usuariosEncontrados">
+      <img
+        *ngIf="i.imageUrl != null; else elseBlock"
+        src="{{ i.imageUrl }}"
+        width="300"
+        height="150"
+        alt="User image"
+      />
+      <ng-template #elseBlock>
+        <img
+          src="https://picsum.photos/300/150"
+          width="300"
+          height="150"
+          alt="placeholder"
+      /></ng-template>
+      <h1 class="text-center mt-1">{{ i.username }}</h1>
+      <br />
+      <p class="mt-4">Name: {{ i.name }}</p>
+      <p>Lastname: {{ i.lastName }}</p>
+      <p>Email: {{ i.email }}</p>
+      <p>Start date: {{ i.startDate }}</p>
+      <button (click)="deleteUser(i.id)" class="btnDelete">Delete user</button>
+    </div>
   </div>
 
   <div *ngIf="error">
     <p>There is no user that matches the data entered</p>
   </div>
+</div>
