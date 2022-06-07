@@ -1,10 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,500&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,500&family=Titan+One&display=swap");
 @font-face {
   font-family: "OpenDyslexic3Regular";
   src: local("OpenDyslexic3Regular"), url(../../../assets/fonts/OpenDyslexic-Regular.otf) format("truetype");
 }
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,500&display=swap");
-
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,500&family=Titan+One&display=swap");
 
 * {
   font-family: "Playfair Display", serif;
