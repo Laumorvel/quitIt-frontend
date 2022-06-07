@@ -31,13 +31,17 @@ export class FriendsComponent implements OnInit {
   checkmyfriendsVisible:boolean=true;
   newfriendsVisible:boolean=false;
 
+  /**
+   * Habilita el componente de showfriends
+   */
   checkmyfriends(){
     this.checkmyfriendsVisible=true;
     this.newfriendsVisible=false;
-
-
   }
 
+  /**
+   * Habilita el componente de add friends
+   */
   newfriends(){
     this.checkmyfriendsVisible=false;
     this.newfriendsVisible=true;

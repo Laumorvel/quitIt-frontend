@@ -36,4 +36,10 @@
 img:hover{
   cursor:pointer;
 }
+input{
+  width: 80% !important;
+}
 
+.card{
+  margin-top: 2em;
+}
