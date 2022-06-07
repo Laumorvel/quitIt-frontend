@@ -6,82 +6,69 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-show-users',
   templateUrl: './show-users.component.html',
-  styleUrls: ['./show-users.component.css']
+  styleUrls: ['./show-users.component.css'],
 })
 export class ShowUsersComponent implements OnInit {
+  usuariosEncontrados!: User[];
+  busqueda!: String;
+  usuarioRecibido: boolean = false;
+  error: boolean = false;
 
+  constructor(private adminService: AdminService) {}
 
-  usuariosEncontrados!:User[];
-  busqueda!:String;
-
-  usuarioRecibido:boolean=false;
-  error:boolean=false;
-
-  constructor(private adminService: AdminService) { }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   /**
    * Busca un usuario por su username
    */
-  buscarUser(){
+  buscarUser() {
     this.adminService.buscarUsuariosCoincidentes(this.busqueda).subscribe({
       next: (resp) => {
         this.usuariosEncontrados = resp;
-        if(resp!=null){
-           this.usuarioRecibido=true;
+        if (resp != null) {
+          this.usuarioRecibido = true;
         }
-        if(resp===null){
-           this.error=true;
+        if (resp === null) {
+          this.error = true;
         }
       },
       error: (e) => {
         Swal.fire({
-          title:'Error',
+          title: 'Error',
           icon: 'error',
-          text:'There are no results that match your search',
-          confirmButtonColor:'##52ab98'
+          text: 'There are no results that match your search',
+          confirmButtonColor: '##52ab98',
         });
-      }
-    }
-  )
+      },
+    });
   }
 
   /**
    * Borra un usuario por su id
    */
-  deleteUser(id:number){
-    this.adminService.deleteUser(id)
-    .subscribe({
-      next: (resp => {
+  deleteUser(id: number) {
+    this.adminService.deleteUser(id).subscribe({
+      next: (resp) => {
         Swal.fire({
-          title:'Success',
+          title: 'Success',
           icon: 'success',
-          text:'The user has been deleted',
-          confirmButtonColor:'#52ab98'
+          text: 'The user has been deleted',
+          confirmButtonColor: '#52ab98',
         });
-       // this.buscarUser();
-
-     }),
-      error: resp => {
-        if(resp.message==null){
+        // this.buscarUser();
+      },
+      error: (resp) => {
+        if (resp.message == null) {
           this.buscarUser();
-        }
-        else{
+        } else {
           Swal.fire({
-            title:'Error',
+            title: 'Error',
             icon: 'error',
-            text:'The user could not be deleted',
-            confirmButtonColor:'#52ab98'
+            text: 'The user could not be deleted',
+            confirmButtonColor: '#52ab98',
           });
         }
-
-      }
-   });
+      },
+    });
   }
-
-
-
 }
-
