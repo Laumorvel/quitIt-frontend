@@ -51,6 +51,10 @@ export class AddFriendsComponent implements OnInit {
     });
   }
 
+  /**
+   * Añade un usuario a amigo
+   * @param usuario 
+   */
   addFriend(usuario: User) {
     this.userService.addFriend(usuario).subscribe({
       next: (resp) => {

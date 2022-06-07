@@ -32,6 +32,9 @@ export class ExsmokerDataComponent implements OnInit {
   cursor: boolean = false;
   spacing: boolean = false;
 
+  /**
+   * Busca los datos del usuario
+   */
   getUserData() {
     this.userService.updateUser().subscribe({
       next: (resp) => {

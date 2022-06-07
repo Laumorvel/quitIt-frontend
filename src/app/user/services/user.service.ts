@@ -322,6 +322,11 @@ export class UserService {
       return this.http.get<User[]>(url, { headers: opcion });
     }
 
+    /**
+     * Indica que asistira al meet up
+     * @param id 
+     * @returns  meet up
+     */
     asistenciaMeetUp(id:number){
       let verdadero = true;
       const url = `${this.baseUrl}/meetUp/${id}?choice=${verdadero}`;
@@ -333,6 +338,11 @@ export class UserService {
 
     }
 
+  /**
+   * Indica que no asistira al meet up
+   * @param id 
+   * @returns 
+   */
     noAsistenciaMeetUp(id:number){
       let falso = false;
       const url = `${this.baseUrl}/meetUp/${id}?choice=${falso}`;
@@ -342,7 +352,15 @@ export class UserService {
       opcion.append('Access-Control-Allow-Origin', '*');
       return this.http.post<MeetUP>(url, envioVacio, { headers: opcion });
     }
-
+    /**
+     * Crea un nuevo meet up
+     * @param title 
+     * @param description 
+     * @param date 
+     * @param type 
+     * @param place 
+     * @returns  meet up
+     */
     createMeetUp(title:string, description:string, date:string, type:string, place:string){
       const url = `${this.baseUrl}/meetUp`;
 
@@ -360,6 +378,11 @@ export class UserService {
       return this.http.post<MeetUP>(url, body, { headers: opcion });
     }
 
+    /**
+     * Cambia la contraseña 
+     * @param password 
+     * @returns 
+     */
     changePass(password:string){
       const url = `${this.baseUrl}/user`;
       let body = {
@@ -371,7 +394,10 @@ export class UserService {
       return this.http.put<User>(url, body, { headers: opcion });
     }
 
-
+    /**
+     * 
+     * @returns Lista de los meet ups a los que asiste el usuario
+     */
     getAllMeetUpsUserAttendance(){
       let verdadero = true;
       const url = `${this.baseUrl}/meetUp?choice=${verdadero}`;
@@ -382,6 +408,10 @@ export class UserService {
 
     }
 
+    /**
+     * 
+     * @returns Lista de los meet ups a los que no asiste en usuario
+     */
     getAllMeetUpsUserNotAttendance(){
       let falso = false;
       const url = `${this.baseUrl}/meetUp?choice=${falso}`;

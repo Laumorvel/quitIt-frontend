@@ -33,12 +33,18 @@ export class CreateMeetUpsComponent implements OnInit {
     })
   }
 
+  /**
+   * 
+   * @param tipo Guarda el tipo del meet up
+   */
   guardarType(tipo:string){
     this.type=tipo;
   }
 
 
-
+  /**
+   * Crea un nuevo meet up
+   */
   creeateMeetUp(){
     this.userService.createMeetUp(this.title, this.description, this.date, this.type, this.place)
     .subscribe({

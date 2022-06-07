@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card container p-3 bg-white">
   <p-tabView>
     <p-tabPanel header="All">
       <div class="container p-4 bg-white">
@@ -94,7 +94,7 @@
             <div class="p-d-flex">
               <div style="text-align: right">
                 <i class="pi pi-search" style="margin:4px 4px 0 0"></i>
-                <input pInputText type="text" (input)="applyFilterGlobal($event, 'contains', dt)" placeholder="Search" size="30" style="width:auto" />
+                <input pInputText type="text" (input)="applyFilterGlobal($event, 'contains', dt)" placeholder="Search" size="30" class="buscador"/>
             </div>
             </div>
           </ng-template>

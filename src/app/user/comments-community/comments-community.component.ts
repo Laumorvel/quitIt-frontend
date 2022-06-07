@@ -97,7 +97,9 @@ export class CommentsCommunityComponent implements OnInit {
     }
   }
 
-
+  /**
+   * Scroll del chat
+   */
   scrollToBottom(): void {
     try {
       this.scrollBottom.nativeElement.scrollTop =

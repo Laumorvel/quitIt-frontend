@@ -63,8 +63,7 @@ export class ShowMeetUpsComponent implements  OnInit {
     this.userService.buscarMeetUps().subscribe({
       next: (resp) => {
         this.meetUps = resp;
-       
-        console.log(this.meetUps)
+       this.carga=true;
       },
       error: (e) => {
         Swal.fire({

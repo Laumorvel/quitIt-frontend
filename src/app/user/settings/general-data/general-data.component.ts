@@ -40,6 +40,9 @@ export class GeneralDataComponent implements OnInit {
     })
   }
 
+  /**
+   * Devuelve los datos el usuario
+   */
   getUserData() {
     this.userService.updateUser().subscribe({
       next: (resp) => {

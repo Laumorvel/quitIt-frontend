@@ -75,6 +75,9 @@ export class ShowFriendsComponent implements OnInit {
     });
   }
 
+  /**
+   * Actualiza la información del usuario
+   */
   updateUserData() {
     this.userService.updateUser().subscribe({
       next: (resp) => {
